@@ -1,2 +1,2 @@
 # tbrk.github.io
-GitHub Pages for turk
+GitHub Pages for tbrk
