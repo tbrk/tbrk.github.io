@@ -1,0 +1,10 @@
+MIDlet-1: Mnemojojo, mnemosyne.png, mnemojojo.FireMIDlet
+MIDlet-Icon: mnemosyne.png
+MIDlet-Jar-Size: 245052
+MIDlet-Jar-URL: mnemojojo.jar
+MIDlet-Name: Mnemojojo
+MIDlet-Permissions: javax.microedition.io.Connector.file.read,javax.microedition.io.Connector.file.write
+MIDlet-Vendor: Timothy Bourke
+MIDlet-Version: 2.0.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

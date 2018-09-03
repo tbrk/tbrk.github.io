@@ -1,0 +1,108 @@
+
+WTKPATH=/opt/WTK2.5.2
+JAVACJ2ME=javac \
+    -bootclasspath \
+      $(WTKPATH)/lib/cldcapi11.jar:$(WTKPATH)/lib/midpapi20.jar:$(WTKPATH)/lib/jsr75.jar \
+    -source 1.4 -target 1.4
+
+ANDROIDPATH=/opt/android-sdk-linux_86
+JAVACANDROID=javac -bootclasspath \
+      $(ANDROIDPATH)/platforms/android-1.1/android.jar
+
+MNEMOGOGO=./mnemogogo
+
+.PHONY : jar-j2me jar-android tarball zip
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+zip: version src-j2me src-android jar-j2me jar-android
+	@make -C $(MNEMOGOGO)/mnemogogo/ clean 1>/dev/null 2>&1
+	-@rm `cat version`.zip 2> /dev/null
+	(cd mnemogogo; zip --quiet -r ../`cat ../version`.zip * \
+	    -x \*.hgtags \
+	    -x \*.hg\* \
+	    -x mnemogogo/mobile/\*)
+	@echo
+	@echo
+	@unzip -l `cat version`.zip
+	@echo "Don't forget to update the download URLs on your homepage!"
+	@echo "Don't forget to update getjar!"
+	@diff -q version versiontag
+
+tarball: version src-j2me src-android jar-j2me jar-android
+	@make -C $(MNEMOGOGO)/mnemogogo/ clean 1>/dev/null 2>&1
+	tar czvf `cat version`.tar.gz --exclude '.hg*' ./mnemogogo
+
+jar-j2me: versionnum
+	@echo
+	@echo '** jar-j2me'
+	@mkdir -p $@/mnemogogo/mobile/hexcsv
+	@find $(MNEMOGOGO)/mnemogogo/mobile -iregex '.*.java' \
+	    -and -not -iregex '.*Android.java' \
+	    -exec $(JAVACJ2ME) -cp $@:$(MNEMOGOGO) -d $@ {} \;
+	jar cf $(MNEMOGOGO)/mnemogogo/mnemogogo-j2me-`cat versionnum`.jar \
+	    -C $@ mnemogogo
+
+src-j2me: versionnum
+	@echo
+	@echo '** src-j2me'
+	@mkdir -p $@/mnemogogo/mobile/hexcsv
+	@find $(MNEMOGOGO)/mnemogogo/mobile -iregex '.*.java' \
+	    -and -not -iregex '.*Android.java' \
+	    -exec cp {} $@/mnemogogo/mobile/hexcsv/ \;
+	tar czf mnemogogo/mnemogogo/mnemogogo-j2me-`cat versionnum`-src.tar.gz \
+	    -C $@ mnemogogo
+
+jar-android: versionnum
+	@echo
+	@echo '** jar-android'
+	@mkdir -p $@/mnemogogo/mobile/hexcsv
+	@sed -e 's#/\*Android:\(.*\):\*/#\1#' \
+	    $(MNEMOGOGO)/mnemogogo/mobile/hexcsv/Config.java \
+	    > $@/Config.java
+	$(JAVACANDROID) -cp $(MNEMOGOGO) -d $@ $@/Config.java
+	@rm $@/Config.java
+	@find $(MNEMOGOGO)/mnemogogo/mobile -iregex '.*.java' \
+	    -and -not -iregex '.*J2ME.java' \
+	    -and -not -name 'Config.java' \
+	    -and -not -name 'Debug.java' \
+	    -exec $(JAVACANDROID) -Xlint:unchecked -cp $@:$(MNEMOGOGO) -d $@ {} \;
+	jar cf mnemogogo/mnemogogo/mnemogogo-android-`cat versionnum`.jar \
+	    -C $@ mnemogogo
+
+src-android: versionnum
+	@echo
+	@echo '** src-android'
+	@mkdir -p $@/mnemogogo/mobile/hexcsv
+	@find $(MNEMOGOGO)/mnemogogo/mobile -iregex '.*.java' \
+	    -and -not -iregex '.*J2ME.java' \
+	    -and -not -name 'Config.java' \
+	    -and -not -name 'Debug.java' \
+	    -exec cp {} $@/mnemogogo/mobile/hexcsv/ \;
+	@sed -e 's#/\*Android:\(.*\):\*/#\1#' \
+	    $(MNEMOGOGO)/mnemogogo/mobile/hexcsv/Config.java \
+	    > $@/mnemogogo/mobile/hexcsv/Config.java
+	tar czf mnemogogo/mnemogogo/mnemogogo-android-`cat versionnum`-src.tar.gz \
+	    -C $@ mnemogogo
+
+version: mnemogogo/mnemogogo_plugin.py versiontag
+	@cat mnemogogo/mnemogogo_plugin.py | sed -ne 's/.*version = "\(.*\)".*/mnemogogo-\1/p' > version
+
+versiontag: ./mnemogogo/.hgtags
+	hg -R ./mnemogogo tags \
+	    | grep -v tip \
+	    | head -1 \
+	    | cut -d ' ' -f 1 > versiontag
+
+versionnum: version
+	sed -e 's/^.*-//' version > versionnum
+
+clean:
+	@make -C $(MNEMOGOGO)/mnemogogo/ clean 1>/dev/null 2>&1
+	@rm -r jar-j2me jar-android 2>/dev/null
+	@rm -r src-j2me src-android 2>/dev/null
+	@rm version versionnum versiontag 2> /dev/null
+
+cleanall:
+	@make -C $(MNEMOGOGO)/mnemogogo/ cleanall 1>/dev/null 2>&1
+

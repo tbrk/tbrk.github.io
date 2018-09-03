@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Mnemogogo and Mnemojojo development</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Notes and resources related to the development of Mnemogogo and Mnemojojo." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="Mnemododo" href="mnemododo.html" />
+    <link rel="prev" title="design" href="mnemogogo-design.html" />
+    <link rel="up" title="Mnemogogo" href="mnemogogo.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta name="keywords" content="Mnemosyne Project, Mnemogogo, Mnemojojo, mobile devices, development, source code, J2ME, Android" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h1>Mnemogogo development</h1>
+
+<p>
+    This page contains some brief notes on the development of the Mnemogogo
+    plugin and each of the two mobile clients.
+    Please <a href="mailto:tim@tbrk.org">email me</a> if you would like more
+    information.
+</p>
+
+<table class="table table-sm">
+    <tr><th colspan="3">Quick links</th></tr>
+
+    <tr>
+	<td>Mnemogogo</td>
+	<td><a href="https://launchpad.net/mnemogogo">source code</a></td>
+	<td><a href="#gogo">instructions</a></td>
+    </tr>
+
+    <tr>
+	<td>Mnemojojo</td>
+	<td><a href="https://launchpad.net/mnemojojo">source code</a></td>
+	<td><a href="#jojo">instructions</a></td>
+    </tr>
+
+    <tr>
+	<td>Mnemododo</td>
+	<td><a href="https://launchpad.net/mnemododo">source code</a></td>
+	<td><a href="#dodo">instructions</a></td>
+    </tr>
+</table>
+
+<h2 id="gogo">Mnemogogo</h2>
+
+<p>The
+    <a href="https://launchpad.net/mnemogogo">Mnemogogo source repository</a>
+can be checked-out using Bazaar:</p>
+
+<pre>
+bzr branch lp:mnemogogo
+</pre>
+
+<p>Additionally, there is a (rough)
+    <a href="Mnemogogo-Makefile">Makefile</a> for building the zipped
+    distribution.</p>
+
+<p>The Mnemogogo code has two parts:</p>
+
+<ul>
+    <li>A <a href="#gogo-plugin">plugin</a> for Mnemosyne 1.2.2 written in
+	Python.</li>
+    <li>A Java <a href="#gogo-library">library</a> for accessing the files
+	exported by the plugin.</li>
+</ul>
+
+<h3 id="gogo-plugin">Mnemogogo: plugin</h3>
+
+<p>
+The plugin comprises the <code>mnemogogo_plugin.py</code> file to interface
+with Mnemosyne, and the library routines and other files in the
+<code>mnemogogo</code> subdirectory.
+The main library files are:
+</p>
+
+<dl class="files">
+    <dt>core.py</dt>
+    <dd>The basic infrastructure and generic routines for import/export
+	plugins.</dd>
+
+    <dt>gogo_frm.ui, gogo_dlg.py</dt>
+    <dd>The pyqt 3.x user interface and the routines it triggers.</dd>
+
+    <dt>lock_enabling.py, locked.png</dt>
+    <dd>Tricks for 'locking' QT Widgets (viz. the Mnemosyne question and
+	answer boxes).</dd>
+
+    <dt>html_lib.py</dt>
+    <dd>Replace HTML character references and entities with unicode
+	characters.</dd>
+</dl>
+
+<p>
+    Mnemogogo has its own notion of an import/export plugin, though there is
+    only really one: <code>interface/hex_csv.py</code>.
+    These routines convert between data within Mnemosyne and the
+    collection of files that the mobile clients read and update.
+</p>
+
+<p>
+    The <code>util</code> directory contains utility scripts for testing and
+    debugging Mnemogogo.
+    The <code>dump_database.py</code> script is especially useful for
+    validating the plugin's operation.
+    It dumps a Mnemosyne database to stdout.
+</p>
+
+<h3 id="gogo-library">Mnemogogo: library</h3>
+
+<p>
+    The library routines are kept in the <code>mobile/hexcsv</code>
+    subdirectory.
+    The library is used by both the J2ME and Android clients; where the code
+    differs between the two platforms there is usually a specific class file
+    for each (with a name ending in either <code>J2ME</code> or
+    <code>Android</code>), but some more minor modifications required for
+    the Android platform (Java 1.6) are marked by comments beginning with
+    the string <code>Android:</code>.
+    The Makefile described above contains scripts for building separate J2ME
+    and Android source and jar files.
+</p>
+
+
+<h2 id="jojo">Mnemojojo</h2>
+
+<p>Three components are required to build Mnemojojo:</p>
+
+<ol>
+    <li>The Mnemojojo source.</li>
+    <li>A patched version of Pashalis Padeleris'
+	<a href="http://sourceforge.net/projects/fire-j2me/">Fire UI
+	    library</a> (now included in contrib subdirectory).</li>
+    <li>The J2ME version of the Mnemogogo library
+	(<code>mnemogogo-j2me-x.y.z.jar</code>) distributed with the
+	Mnemogogo plugin package.</li>
+</ol>
+
+<p>Follow these instructions to setup a build tree:</p>
+
+<ol class="stepbystep">
+    <li>Check out the
+	<a href="https://launchpad.net/mnemojojo">Mnemojojo
+	source repository</a> with:
+<pre>
+bzr branch lp:mnemojojo
+</pre></li>
+
+    <li>Open the Mnemojojo <code>Makefile</code> and adjust the
+	<code>MNEMOGOGO</code> variable to point at the the jar file
+	distributed with the Mnemogogo plugin.</li>
+
+  <li>Type <code>make</code> to build the source. Two files should be added
+      to the <code>bin/</code> subdirectory: <code>mnemojojo.jad</code> and
+      <code>mnemojojo.jar</code>.
+      These are ready to install on a mobile device.</li>
+
+  <li>Alternatively, the Makefile also contains <code>emulator</code> and
+      <code>microemulator</code> targets to run Mnemojojo on, respectively,
+      the <a href="http://java.sun.com/products/sjwtoolkit/">Sun JWTK Emulator</a>
+      and the <a href="http://www.microemu.org/">Open-source Microemulator</a>.
+      In both cases you will need to arrange for the files exported by
+      Mnemogogo to be present on an emulated SD card.</li>
+</ol>
+
+<h2 id="dodo">Mnemododo</h2>
+
+<p>The <a href="https://launchpad.net/mnemododo">Mnemododo
+    source repository</a> can be checked-out with:</p>
+<pre>
+bzr branch lp:mnemododo
+</pre>
+
+<p>It requires the Mnemogogo client library.</p>
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2012-05-20 22:07:13 +1000</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                    <ul>
+                      <li>
+                        <a href="mnemododo.html">Mnemododo</a>
+                      </li>
+                      <li>
+                        <a href="mnemojojo.html">Mnemojojo</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-notes.html">extra notes</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-design.html">design</a>
+                      </li>
+                      <li>
+                        <span class="active">
+                          <a href="mnemogogo-devel.html">development</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="mnemogogo.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mnemogogo</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="mnemododo.html">Mnemododo</a>
+                  <a class="dropdown-item button" href="mnemojojo.html">Mnemojojo</a>
+                  <a class="dropdown-item button" href="mnemogogo-notes.html">extra notes</a>
+                  <a class="dropdown-item button" href="mnemogogo-design.html">design</a>
+                  <a class="dropdown-item button" href="mnemogogo-devel.html">development</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">development</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemogogo.html",
+            "name": "Mnemogogo"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemogogo-devel.html",
+            "name": "development"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2757 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Publications: details</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Abstracts of publications" />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="up" title="Publications" href="papers.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+<h1>Abstracts</h1>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="scopes2018" itemprop="headline">Towards a verified Lustre compiler
+    with modular reset</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~brun/"><span itemprop="author">L. Brun</span></a>
+    <span class="affiliation">(École normale supérieure and Inria)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2018-05-28">28 May 2018</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  This paper presents ongoing work to add a modular reset construct to a
+  verified Lustre compiler.
+  We present a novel formal specification for the construct and sketch our
+  plans to integrate it into the compiler and its correctness proof.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Synchronous Languages (Lustre);
+    Verified Compilation
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM Press</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This paper was presented as a <em>research presentation</em> (and not
+    a reviewed research paper) at
+    <a href="https://www.scopesconf.org/scopes-18/">SCOPES 2018</a>,
+    the 21st International Workshop on Software &amp; Compilers for
+    Embedded Systems at St. Goar in Germany in May 2018.
+  </li>
+
+  <li>
+    A <a href="https://hal.inria.fr/hal-01817949/document">preprint</a>
+    is also available (with some slight corrections).
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="eptcs2018" itemprop="headline">Sundials/ML: connecting OCaml to
+    the Sundials numeric solvers</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="https://sites.google.com/site/juninoueprofessional/"><span itemprop="author">J. Inoue</span></a>
+    <span class="affiliation">(AIST)</span></div><span class="comma">,</span><br />
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2018-?">Accepted 2018</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  This paper describes the design and implementation of a comprehensive OCaml 
+  interface to the Sundials library of numeric solvers for ordinary 
+  differential equations, differential algebraic equations, and non-linear 
+  equations.
+  The interface provides a convenient and memory-safe alternative to using 
+  Sundials directly from C and facilitates application development by 
+  integrating with higher-level language features, like garbage-collected 
+  memory management, algebraic data types, and exceptions.
+  Our benchmark results suggest that the interface overhead is acceptable: the 
+  standard examples are rarely twice as slow in OCaml than in C, and often 
+  less than 50% slower.
+  The challenges in interfacing with Sundials are to efficiently and safely 
+  share data structures between OCaml and C, to support multiple 
+  implementations of vector operations and linear solvers through a common 
+  interface, and to manage calls and error signalling to and from OCaml.
+  We explain how we overcame these difficulties using a combination of 
+  standard techniques such as phantom types and polymorphic variants, and 
+  carefully crafted data representations.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Foreign Function Interfaces;
+    OCaml;
+    Numeric solvers;
+    Applications of static typing
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Open Publishing Association</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This is the significantly extended journal version of a
+    <a href="#ml16">paper</a>
+    at the <a href="http://www.mlworkshop.org">ACM Workshop on ML</a>.
+  </li>
+
+  <li>
+    This paper is accepted to appear in the
+    <em>Proceedings of the ML Family / OCaml Users and Developers workshops</em>
+    in 2018.
+  </li>
+
+<!--
+  <li>
+    A <a href="https://hal.inria.fr/hal-01549183/document">preprint</a>
+    is also available.
+  </li>
+-->
+  <li>
+    The <a href="http://inria-parkas.github.io/sundialsml/">Sundials/ML</a>
+    software is available under a BSD license.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="nahs2017" itemprop="headline">A type-based analysis of causality loops in
+    hybrid systems modelers</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
+  <div class="author">
+    <span itemprop="author">B. Pagano</span>
+    <span class="affiliation">(Esterel-Technologies)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2017-11">November 2017</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  Explicit hybrid systems modelers like <em>Simulink/Stateflow</em> allow
+  for programming both discrete- and continuous-time behaviors with
+  complex interactions between them.  An important step
+  in their compilation is the static
+  detection of algebraic or <em>causality</em> loops.  Such loops can
+  cause simulations to deadlock
+  and prevent the generation of statically scheduled code.
+  </p>
+
+  <p>
+  This paper addresses this issue for a hybrid modeling language that
+  combines synchronous 
+  data-flow equations with Ordinary
+  Differential Equations (ODEs).  We introduce the operator
+  <code>last(x)</code>
+  for the left-limit of a signal <code>x</code>.
+  The <code>last(x)</code> operator is used to break
+  causality loops and permits a uniform treatment of discrete and
+  continuous state variables. The semantics of the language relies
+  on non-standard analysis, defining an execution as a sequence of
+  infinitesimally small
+  steps.  A signal is deemed <em>causally correct</em> when it can be
+  computed sequentially and only changes infinitesimally outside of
+  announced discrete events like zero-crossings.  The causality analysis
+  takes the form of a type system that expresses dependencies
+  between signals. In well-typed programs, signals are provably continuous
+  during integration provided that imported external functions are also
+  continuous.
+  </p>
+
+  <p>
+  The effectiveness of the system is illustrated with several examples
+  written in Zélus, a Lustre-like synchronous language extended with
+  ODEs.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Hybrid systems; Synchronous programming languages; Type systems
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Elsevier</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This is the journal version of a
+    <a href="#hscc14">conference paper</a>
+    at HSCC 2014.
+    It contains extra material and numerous small improvements.
+  </li>
+
+  <li>
+    This paper is accepted for 
+    <a href="https://doi.org/10.1016/j.nahs.2017.04.004">Nonlinear Analysis: Hybrid Systems</a>.
+    It is available online now and will appear in print in November 2017.
+  </li>
+
+  <li>
+    A <a href="https://hal.inria.fr/hal-01549183/document">preprint</a>
+    is also available.
+  </li>
+
+  <li>Examples and proofs are available
+      <a href="http://zelus.di.ens.fr/nahs2016/">online</a>.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="emsoft2017" itemprop="headline">A Synchronous Look at the Simulink
+    Standard Library</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <span itemprop="author">F. Carcenac</span>
+    <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span> 
+  <div class="author">
+    <span itemprop="author">B. Pagano</span>
+    <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
+  <div class="author">
+    <span itemprop="author">C. Pasteur</span>
+    <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span> 
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2017-10">October 2017</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  Hybrid systems modelers like Simulink come with a rich collection of
+  discrete-time and continuous-time blocks. Most blocks are not defined in
+  terms of more elementary ones—and some cannot be—but are instead
+  written in imperative code and explained informally in a reference manual.
+  This raises the question of defining a minimal set of orthogonal
+  programming constructs such that most blocks can be <em>programmed</em>
+  directly and thereby given a specification that is mathematically precise,
+  and whose compiled version performs comparably to handwritten code.
+  </p>
+  
+  <p>
+  In this paper, we show that a fairly large set of blocks from the Simulink
+  standard library can be programmed in a precise, purely functional
+  language using stream equations, hierarchical automata, Ordinary
+  Differential Equations (ODEs), and deterministic synchronous parallel
+  composition. Some blocks cannot be expressed as they mix discrete-time and
+  continuous-time signals in unprincipled ways and so are statically
+  forbidden by the type checker.
+  </p>
+
+  <p>
+  The experiment is conducted in Zélus, a synchronous language that
+  conservatively extends Lustre with constructs for programming systems
+  that mix discrete-time and continuous-time signals.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Hybrid systems; Synchronous programming languages; Type systems
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This article was presented at the 17th annual ACM SIGPLAN
+    conference on
+    <a href="http://esweek.org/emsoft/">Embedded Software (EMSOFT 2017)</a>,
+    in Seoul, South Korea in October 2017.
+  </li>
+
+  <li>
+    <div class="acmdlitem" id="item3126516">
+      <img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" />
+      <a href="http://dl.acm.org/authorize?N40710" title="A Synchronous Look at the Simulink Standard Library">A Synchronous Look at the Simulink Standard Library</a>
+      <div style="margin-left:25px">
+	<a href="http://dl.acm.org/author_page.cfm?id=81341488413">Timothy Bourke</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=99659205896">Francois Carcenac</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=81100608108">Jean-Louis Colaço</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=81100622646">Bruno Pagano</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=81502796332">Cédric Pasteur</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=81100032823">Marc Pouzet</a>
+	<br />ACM Transactions on Embedded Computing Systems (TECS) - Special Issue ESWEEK 2017, CASES 2017, CODES + ISSS 2017 and EMSOFT 2017, 2017
+      </div>
+    </div>
+    <div class="acmdlstat" id="stats3126516">
+      <iframe src="http://dl.acm.org/authorizestats?N40710" width="100%" height="30" scrolling="no" frameborder="0">frames are not supported</iframe>
+    </div>
+  </li>
+
+  <li>Examples and proofs are available
+      <a href="http://zelus.di.ens.fr/emsoft2016/">online</a>.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="fdl2017" itemprop="headline">Symbolic Simulation of Dataflow
+    Synchronous Programs with Timers</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.di.ens.fr/~baudart/"><span itemprop="author">G. Baudart</span></a>
+    <span class="affiliation">(IBM Research)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2017-09">September 2017</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  The synchronous language Lustre and its descendants have long been used to
+  program and model discrete controllers. Recent work shows how to mix
+  discrete and continuous elements in a Lustre-like language called Zélus.
+  The resulting hybrid programs are simulated with a numerical solver. In
+  this article, we focus on a subset of hybrid programs where continuous
+  behaviors are expressed using timers to measure time elapsing,
+  nondeterministic guards, and invariants, as in Timed Safety Automata. We
+  propose a source-to-source compilation pass to generate discrete code
+  that, coupled with standard operations on Difference-Bound Matrices,
+  produces symbolic traces that each represent a set of concrete traces.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Synchronous programming languages; Timed automata; Symbolic simulation
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">IEEE</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This article was presented at the 12th annual forum on
+    <a href="http://ecsi.org/fdl">Specification and Design
+      Languages (FDL 2017)</a>,
+    in Verona, Italy in September 2017.
+    The paper is available in
+    <a href="http://ieeexplore.ieee.org/document/8303894/">IEEE Xplore</a>.
+  </li>
+
+  <li>
+    A <a href="https://hal.inria.fr/hal-01575621v2/document">preprint</a>,
+    the <a href="https://github.com/gbdrt/zsy">prototype
+      implementation</a>, and
+    <a href="fdl17-slides.pdf">the slides</a>
+    are also available.
+  </li>
+
+  <li>
+    This paper received the best paper award.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="fdl2017b" itemprop="headline">Real-Time Ticks for Synchronous
+    Programming</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.rtsys.informatik.uni-kiel.de/en/team/rvh"><span itemprop="author">R. von Hanxleden</span></a>
+    <span class="affiliation">(CAU Kiel)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://pop-art.inrialpes.fr/~girault/"><span itemprop="author">A. Girault</span></a>
+	<span class="affiliation">(Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2017-09">September 2017</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    We address the problem of synchronous programs that cannot be easily
+    executed in a classical time-triggered nor event-triggered execution
+    loop. We propose a novel approach, referred to as <em>dynamic ticks</em>,
+    that reconciles the semantic timing abstraction of the
+    synchronous approach with the desire to give the application
+    fine-grained control over its real-time behavior. The main idea is to
+    allow the application to dynamically specify its own wake-up times
+    rather than ceding their control to the environment. As we illustrate in
+    this paper, synchronous languages such as Esterel are already well
+    equipped for this; no language extensions are needed. All that is
+    required is a rather minor adjustment of the way the tick function is
+    called.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Synchronous programming; Real-time systems; Physical time; Esterel
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">IEEE</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This article was presented at the 12th annual forum on
+    <a href="http://ecsi.org/fdl">Specification and Design
+      Languages (FDL 2017)</a>,
+    in Verona, Italy in September.
+    It is available in
+    <a href="http://ieeexplore.ieee.org/document/8303893/">IEEE Xplore</a>.
+  </li>
+
+  <li>
+    A <a href="https://hal.inria.fr/hal-01575629/">preprint</a>
+    is also available.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="pldi2017" itemprop="headline">A formally verified compiler for Lustre</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~brun/"><span itemprop="author">L. Brun</span></a>
+    <span class="affiliation">(École normale supérieure and Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="https://pages.lip6.fr/Pierre-Evariste.Dagand/"><span itemprop="author">P.-É. Dagand</span></a>
+    <span class="affiliation">(Univ. Pierre et Marie Curie, CNRS, and Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://gallium.inria.fr/~xleroy/"><span itemprop="author">X. Leroy</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://perso.ens-lyon.fr/lionel.rieg/"><span itemprop="author">L. Rieg</span></a>
+    <span class="affiliation">(Yale and Collège de France)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2017-06">June 2017</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  The correct compilation of block diagram languages like Lustre, Scade, and
+  a discrete subset of Simulink is important since they are used to program
+  critical embedded control software. We describe the specification and
+  verification in an Interactive Theorem Prover of a compilation chain that
+  treats the key aspects of Lustre: sampling, nodes, and delays. Building on
+  CompCert, we show that repeated execution of the generated assembly code
+  faithfully implements the dataflow semantics of source programs.
+  </p>
+
+  <p>
+  We resolve two key technical challenges. The first is the change from a
+  synchronous dataflow semantics, where programs manipulate streams of
+  values, to an imperative one, where computations manipulate memory
+  sequentially. The second is the verified compilation of an imperative
+  language with encapsulated state to C code where the state is realized by
+  nested records. We also treat a standard control optimization that
+  eliminates unnecessary conditional statements.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Synchronous Languages (Lustre);
+    Verified Compilation;
+    Interactive Theorem Proving (Coq)
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+      <!-- ACM DL Article: A formally verified compiler for Lustre -->
+      <div class="acmdlitem" id="item3062358"><img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" /><a href="http://dl.acm.org/authorize?N30002" title="A formally verified compiler for Lustre">A formally verified compiler for Lustre</a><div style="margin-left:25px"><a href="http://dl.acm.org/author_page.cfm?id=81341488413">Timothy Bourke</a>, <a href="http://dl.acm.org/author_page.cfm?id=99659179268">Lélio Brun</a>, <a href="http://dl.acm.org/author_page.cfm?id=81413605432">Pierre-Évariste Dagand</a>, <a href="http://dl.acm.org/author_page.cfm?id=81100078576">Xavier Leroy</a>, <a href="http://dl.acm.org/author_page.cfm?id=81100032823">Marc Pouzet</a>, <a href="http://dl.acm.org/author_page.cfm?id=81375593860">Lionel Rieg</a><br />PLDI 2017 Proceedings of the 38th ACM SIGPLAN Conference on Programming Language Design and Implementation, 2017</div></div>
+      <!-- ACM DL Bibliometrics: A formally verified compiler for Lustre-->
+      <div class="acmdlstat" id="stats3062358"><iframe src="http://dl.acm.org/authorizestats?N30002" width="100%" height="30" scrolling="no" frameborder="0">frames are not supported</iframe></div>
+    </li>
+
+    <li>
+      This article was presented at the 38th annual ACM SIGPLAN
+      conference on
+      <a href="http://conf.researchr.org/home/pldi-2017">Programming Language Design and Implementation (PLDI 2017)</a>,
+      in Barcelona, Spain in June 2017.
+    </li>
+
+    <li>
+      The talk was
+      <a href="https://www.youtube.com/watch?v=nDOhBabuVzI&amp;index=28&amp;list=PLMTm6Ln7vQZZv6sQ0I4R7iaIjvSVhHXod">recorded</a> and the
+      <a href="pldi17-slides.pdf">slides</a> are available.
+    </li>
+
+    <li>
+      The compiler was made available to reviewers and passed the artefact
+      evaluation process, but is not yet available online.
+      We want to tidy up a few things before making a proper release.
+    </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="jfla17" itemprop="headline">Vérification de la génération modulaire
+    du code impératif pour Lustre</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="https://pages.lip6.fr/Pierre-Evariste.Dagand/"><span itemprop="author">P.-É. Dagand</span></a>
+    <span class="affiliation">(Univ. Pierre et Marie Curie, CNRS, and Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://perso.ens-lyon.fr/lionel.rieg/"><span itemprop="author">L. Rieg</span></a>
+    <span class="affiliation">(Collège de France)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2017-01">January 2017</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    Les langages synchrones sont utilisés pour programmer des logiciels de
+    contrôle-commande d'applications critiques. Le langage Scade, utilisé
+    dans l'industrie pour ces applications, est fondé sur le langage Lustre
+    introduit par Caspi et Halbwachs. On s'intéresse ici à la formalisation
+    et la preuve, dans l'assistant de preuve Coq, d'une étape clef de la
+    compilation: la traduction de programmes Lustre vers des programmes d'un
+    langage impératif. Le défi est de passer d'une sémantique synchrone flot
+    de données, où un programme manipule des flots, à une sémantique
+    impérative, où un programme manipule la mémoire de façon séquentielle.
+    Nous spécifions et vérifions un générateur de code simple qui gère les
+    traits principaux de Lustre: l'échantillonnage, les nœuds et les délais.
+    La preuve utilise un modèle sémantique intermédiaire qui mélange des
+    traits flot de données et impératifs et permet de définir un invariant
+    inductif essentiel. Nous exploitons la formalisation proposée pour
+    vérifier une optimisation classique qui fusionne des structures
+    conditionnelles dans le code impératif généré.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Langages synchrones (Lustre);
+    Assistants de preuve (Coq);
+    Compilation vérifiée
+  </span>
+</div>
+<!--
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+-->
+
+<div class="notelist">
+<ul>
+    <li>
+      Cet article a été présenté aux <a href="http://jfla.inria.fr">Journées
+      Francophones des Langages Applicatifs</a>
+      (<a href="http://jfla.inria.fr/2017/index.html">JFLA 2017</a>)
+      à Gourette aux Pyrénées en janvier 2017.
+    </li>
+
+    <li>
+      L'article est disponible sur
+      <a href="https://hal.inria.fr/hal-01403830">HAL</a>.
+    </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="tecs2016" itemprop="headline">Loosely Time-Triggered Architectures:
+	Improvements and Comparisons</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://guillaume.baudart.eu"><span itemprop="author">G. Baudart</span></a>
+    <span class="affiliation">(DI, École normale supérieure and Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2016-08">August 2016</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    Loosely Time-Triggered Architectures (LTTAs) are a proposal for
+    constructing distributed embedded control systems.
+    They build on the quasi-periodic architecture, where computing units
+    execute <em>nearly periodically</em>, by adding a thin layer of
+    middleware that facilitates the implementation of synchronous
+    applications.
+  </p>
+
+  <p>
+    In this paper, we show how the deployment of a synchronous application
+    on a quasi-periodic architecture can be modeled using a synchronous
+    formalism.
+    Then we detail two protocols, <em>Back-Pressure</em> LTTA,
+    reminiscent of elastic circuits, and <em>Time-Based</em> LTTA, based on
+    waiting.  Compared to previous work, we present controller models that
+    can be compiled for execution, a simplified version of the Time-Based
+    protocol and optimizations for systems using broadcast communication.
+    We also compare the LTTA approach with architectures based on clock
+    synchronization.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Quasi-Periodic Architecture;
+    Loosely Time-Triggered Architecture;
+    Time-Based LTTA;
+    Back-Pressure LTTA
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+      <div class="acmdlitem" id="item2932189">
+	<img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" />
+	<a href="http://dl.acm.org/authorize?N19116" title="Loosely Time-Triggered Architectures: Improvements and Comparisons">Loosely Time-Triggered Architectures: Improvements and Comparisons</a>
+	<div style="margin-left:25px">
+	  <a href="http://dl.acm.org/author_page.cfm?id=83058625757">Guillaume Baudart</a>,
+	  <a href="http://dl.acm.org/author_page.cfm?id=81100522290">Albert Benveniste</a>,
+	  <a href="http://dl.acm.org/author_page.cfm?id=81341488413">Timothy Bourke</a>
+	  <br />ACM Transactions on Embedded Computing Systems (TECS), 2016
+	</div>
+      </div>
+      <div class="acmdlstat" id="stats2932189">
+	<iframe src="http://dl.acm.org/authorizestats?N19116" width="100%" height="30" scrolling="no" frameborder="0">frames
+	  are not supported</iframe>
+      </div>
+    </li>
+
+    <li>
+      This article is the journal version of a
+      <a href="#emsoft2015">paper</a> presented at EMSOFT in 2015.
+      Compared to the conference paper, we include an overview of
+      <a href="http://zelus.di.ens.fr">Zélus</a>, improvements and
+      simplifications to some proofs, and a new section on optimizations
+      under specific network assumptions.
+    </li>
+
+    <li>
+      The source code to all models is available on Guillaume's
+      <a href="http://www.baudart.eu/tecs2016">website</a>.
+    </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="fmcad2016" itemprop="headline">Soundness of the Quasi-Synchronous
+    Abstraction</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://guillaume.baudart.eu"><span itemprop="author">G. Baudart</span></a>
+    <span class="affiliation">(DI, École normale supérieure and Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span> <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2016">October 2016</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  Many critical real-time embedded systems are implemented as a set of
+  processes that execute periodically with bounded jitter and communicate
+  with bounded transmission delay. The quasi-synchronous abstraction was
+  introduced by P. Caspi for model-checking the safety properties of
+  applications running on such systems. The simplicity of the abstraction is
+  appealing: the only events are process activations; logical steps account
+  for transmission delays; and no process may be activated more than twice
+  between two successive activations of any other.
+  </p>
+
+  <p>
+  We formalize the relation between the real-time model and the
+  quasi-synchronous abstraction by introducing the notion of a unitary
+  discretization. Even though the abstraction has been applied several times
+  in the literature, we show, surprisingly, that it is not sound for general
+  systems of more than two processes. Our central result is to propose
+  necessary and sufficient conditions on both communication topologies and
+  timing parameters to recover soundness.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Distributed Embedded Systems;
+    Real-Time Models;
+    Verification;
+    Model Checking;
+    Synchronous Languages
+  </span>
+</div>
+<!--
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Springer</span>
+</div>
+-->
+
+<div class="notelist">
+<ul>
+  <li>
+    This paper was presented at the
+    <a href="http://www.cs.utexas.edu/users/hunt/FMCAD/FMCAD16/index.shtml">FMCAD 2016</a> conference
+    in Mountain View, California, USA in October 2016.
+  </li>
+  <li>
+    The <a href="http://www.cs.utexas.edu/users/hunt/FMCAD/FMCAD16/proceedings/fmcad-2016-proceedings.pdf">full proceedings</a> are freely accessible online.
+    Our <a href="https://hal.inria.fr/hal-01408208/document">article</a> is also directly available.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="ml16" itemprop="headline">Sundials/ML: interfacing with numerical
+    solvers</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="https://sites.google.com/site/juninoueprofessional/"><span itemprop="author">J. Inoue</span></a>
+    <span class="affiliation">(AIST)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2016">September 2016</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  We describe a comprehensive OCaml interface to the Sundials suite of
+  numerical solvers (version 2.6.2). Noteworthy features include the treatment
+  of the central vector data structure and benchmarking results.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Foreign Function Interfaces;
+    OCaml;
+    Numerical Solvers
+  </span>
+</div>
+<!--
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Springer</span>
+</div>
+-->
+
+<div class="notelist">
+<ul>
+  <li>
+    This work was accepted at the
+    <a href="http://www.mlworkshop.org">ACM Workshop on ML</a>, but it was
+    presented the next day during
+    <a href="https://ocaml.org/meetings/ocaml/2016/">OCAML 2016</a>
+    (both workshops were colocated
+    with <a href="http://conf.researchr.org/home/icfp-2016/">ICFP</a>)
+    in Nara, Japan, in September.
+  </li>
+  <li>
+    A brief
+    <a href="http://inria-parkas.github.io/sundialsml/mlworkshop2016.pdf">abstract</a>
+    appears in the informal proceedings of the
+    <a href="http://www.mlworkshop.org/ml2016/">workshop</a>.
+    A longer description is under preparation.
+  </li>
+  <li>
+    The <a href="http://inria-parkas.github.io/sundialsml/">Sundials/ML</a>
+    software is available under a BSD license.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="jar2016" itemprop="headline">Mechanizing a Process Algebra
+    for Network Protocols</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://theory.stanford.edu/~rvg/"><span itemprop="author">R. J. van Glabbeek</span></a>
+    <span class="affiliation">(NICTA and CSE, UNSW)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.hoefner-online.de/home/index.html"><span itemprop="author">P. Höfner</span></a>
+    <span class="affiliation">(NICTA and CSE, UNSW)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2016">March 2016</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  This paper presents the mechanization of a process algebra for Mobile Ad
+  hoc Networks and Wireless Mesh Networks, and the development of a
+  compositional framework for proving invariant properties.
+  Mechanizing the core process algebra in Isabelle/HOL is relatively
+  standard, but its layered structure necessitates special treatment.
+  The control states of reactive processes, such as nodes in a network, are
+  modelled by terms of the process algebra.
+  We propose a technique based on these terms to streamline proofs of
+  inductive invariance.
+  This is not sufficient, however, to state and prove invariants that relate
+  states across multiple processes (entire networks).
+  To this end, we propose a novel compositional technique for lifting global
+  invariants stated at the level of individual nodes to networks of nodes.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Interactive Theorem Proving;
+    Isabelle/HOL;
+    Process Algebra;
+    Compositional Invariant Proofs;
+    Wireless Mesh Networks;
+    Mobile Ad hoc Networks
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Springer</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This paper is an extended version of the work presented at
+    <a href="#itp2014">ITP2014</a>.
+    It includes a small running example, several new or reworked
+    explanatory paragraphs, and new figures.
+    Besides the presentation, only a few minor technical details have changed.
+  </li>
+  <li>
+    This <a href="https://doi.org/10.1007/s10817-015-9358-9">paper</a>
+    appears in
+    <a href="http://link.springer.com/journal/10817/56/3/page/1">Volume 56,
+      Issue 3</a> of the
+    <a href="http://link.springer.com/journal/10817">Journal of Automated Reasoning</a>.
+    A <a href="https://arxiv.org/pdf/1512.07304.pdf">preprint</a>
+    is available.
+  </li>
+  <li>
+    The proof scripts are available from the
+    <a href="http://www.isa-afp.org/entries/AWN.shtml">Archive of Formal
+      Proofs</a> (and also as a <a href="http://www.isa-afp.org/browser_info/current/AFP/AWN/document.pdf">pdf file</a>).
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="emsoft2015" itemprop="headline">Loosely Time-Triggered Architectures:
+    Improvements and Comparisons</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.di.ens.fr/~baudart/"><span itemprop="author">G. Baudart</span></a>
+    <span class="affiliation">(DI, École normale supérieure and Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2015-10">October 2015</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  Loosely Time-Triggered Architectures (LTTAs) are a proposal for
+  constructing distributed embedded control systems. They build on the
+  quasi-periodic architecture, where computing units execute ‘almost
+  periodically’, by adding a thin layer of middleware that facilitates the
+  implementation of synchronous applications.
+  </p>
+
+  <p>
+  In this paper, we show how the deployment of a synchronous application on
+  a quasi-periodic architecture can be modeled using a synchronous
+  formalism. Then we detail two protocols, <em>Back-Pressure LTTA</em>,
+  reminiscent of elastic circuits, and <em>Time-Based LTTA</em>, based on
+  waiting. Compared to previous work, we present controller models that can
+  be compiled for execution and a simplified version of the Time-Based
+  protocol. We also compare the LTTA approach with architectures based on
+  clock synchronization.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Distributed controllers; synchronous programming.
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">IEEE</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This paper was presented at the
+    <a href="http://www.emsoft.org">EMSOFT</a>
+    conference in Amsterdam in October 2015.
+    An enhanced <a href="#tecs2016">version</a> is included in an
+    ESWEEK special issue of ACM TECS.
+  </li>
+  <li>
+    The paper is available on
+    <a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=7318263">IEEE Xplore</a>.
+  </li>
+  <li>
+    The <a href="https://hal.inria.fr/hal-01243005/document">author's version</a> is also available.
+  </li>
+  <li>
+    The source code to all models is available on Guillaume's
+    <a href="http://www.baudart.eu/emsoft2015">website</a>.
+    The models are written in <a href="http://zelus.di.ens.fr">Zélus</a>.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="cc2015" itemprop="headline">A Synchronous-based Code Generator For
+    Explicit Hybrid Systems Languages</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <span itemprop="author">J.-L. Colaço</span>
+    <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
+  <div class="author">
+    <span itemprop="author">B. Pagano</span>
+    <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
+  <div class="author">
+    <span itemprop="author">C. Pasteur</span>
+    <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2015-04">April 2015</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  Modeling languages for hybrid systems are cornerstones of embedded systems
+  development in which software interacts with a physical environment.
+  Sequential code generation from such languages is important for simulation
+  efficiency and for producing code for embedded targets. Despite being
+  routinely used in industrial compilers, code generation is rarely, if ever,
+  described in full detail, much less formalized. Yet formalization is an
+  essential step in building trustable compilers for critical embedded
+  software development.
+  </p>
+
+  <p>
+  This paper presents a novel approach for generating code from a hybrid
+  systems modeling language. By building on top of an existing synchronous
+  language and compiler, it reuses almost all the existing infrastructure with
+  only a few modifications. Starting from an existing synchronous data-flow
+  language conservatively extended with Ordinary Differential Equations
+  (ODEs), this paper details the sequence of source-to-source transformations
+  that ultimately yield sequential code. A generic intermediate language is
+  introduced to represent transition functions. The versatility of this
+  approach is exhibited by treating two classical simulation targets: code
+  that complies with the <a href="https://www.fmi-standard.org/">FMI standard</a>
+  and code directly linked with an off-the-shelf numerical solver
+  (<a href="https://computation.llnl.gov/casc/sundials/main.html">Sundials
+    CVODE</a>).
+  </p>
+
+  <p>
+  The presented material has been implemented in the
+  <a href="http://zelus.di.ens.fr/">Zélus</a> compiler and the
+  industrial Scade Suite KCG code generator of
+  <a href="http://www.esterel-technologies.com/products/scade-suite/">Scade 6</a>.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Hybrid modelling; synchronous programming; compilation.
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Springer</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This paper was presented at the
+    <a href="http://www.etaps.org">ETAPS</a>
+    <a href="http://www.etaps.org/index.php/2015/cc">Compiler Construction (CC)</a>
+    conference in London in April 2015.
+  </li>
+  <li>
+    The <a href="http://zelus.di.ens.fr/cc2015/paper.pdf">prepress</a>
+    and
+    <a href="http://link.springer.com/chapter/10.1007%2F978-3-662-46663-6_4">final</a>
+    versions are available.
+  </li>
+  <li>
+    The <a href="http://zelus.di.ens.fr">Zélus</a> compiler binary
+    is available online.
+    As are the
+    <a href="http://zelus.di.ens.fr/cc2015">source code and generated code</a>
+    from the paper.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="atva2014" itemprop="headline">A mechanized proof of loop freedom of
+    the (untimed) AODV routing protocol</h3>
+
+<div class="authors">
+  <div class="author">
+      <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+      <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://theory.stanford.edu/~rvg/"><span itemprop="author">R. J. van Glabbeek</span></a>
+    <span class="affiliation">(NICTA and CSE, UNSW)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.hoefner-online.de/home/index.html"><span itemprop="author">P. Höfner</span></a>
+    <span class="affiliation">(NICTA and CSE, UNSW)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2014-11">November 2014</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  The <a href="https://tools.ietf.org/html/rfc3561">Ad hoc On-demand
+    Distance Vector (AODV)</a> routing protocol allows the nodes in a Mobile
+  Ad hoc Network (MANET) or a Wireless Mesh Network (WMN) to know where to
+  forward data packets. Such a protocol is ‘loop free’ if it never leads to
+  routing decisions that forward packets in circles. This paper describes
+  the mechanization of an existing pen-and-paper proof of loop freedom of
+  AODV in the interactive theorem prover
+  <a href="http://isabelle.in.tum.de/index.html">Isabelle/HOL</a>.
+  The mechanization relies on a novel compositional approach for lifting
+  invariants to networks of nodes. We exploit the mechanization to analyse
+  several improvements of AODV and show that Isabelle/HOL can re-establish
+  most proof obligations automatically and identify exactly the steps that
+  are no longer valid.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    AODV; protocol verification; Isabelle/HOL.
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Springer</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This paper was presented at
+    <a href="http://atva-conferences.org">ATVA</a>
+    in Sydney in November 2014.
+  </li>
+  <li>
+    The <a href="https://arxiv.org/pdf/1505.05646.pdf">prepress</a> and
+    <a href="http://link.springer.com/chapter/10.1007/978-3-319-11936-6_5">final</a>
+    versions are available.
+  </li>
+  <li>
+    The proof scripts are available from the
+    <a href="http://www.isa-afp.org/entries/AODV.shtml">Archive of Formal
+      Proofs</a> (and also as a <a href="http://www.isa-afp.org/browser_info/current/AFP/AODV/document.pdf">pdf file</a>).
+  </li>
+  <li>
+    Further information is available on the pages of the
+    <a href="https://ssrg.nicta.com.au/projects/concurrency/aodvmech.pml">NICTA
+      Concurrency group</a>.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="itp2014" itemprop="headline">Showing invariance compositionally for
+    a process algebra for network protocols</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://theory.stanford.edu/~rvg/"><span itemprop="author">R. J. van Glabbeek</span></a>
+    <span class="affiliation">(NICTA and CSE, UNSW)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.hoefner-online.de/home/index.html"><span itemprop="author">P. Höfner</span></a>
+    <span class="affiliation">(NICTA and CSE, UNSW)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2014-07">July 2014</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  This paper presents the mechanization of a process algebra for Mobile Ad hoc
+  Networks and Wireless Mesh Networks, and the development of a compositional
+  framework for proving invariant properties. Mechanizing the core process
+  algebra in <a href="http://isabelle.in.tum.de/index.html">Isabelle/HOL</a>
+  is relatively standard, but its layered structure
+  necessitates special treatment. The control states of reactive processes,
+  such as nodes in a network, are modelled by terms of the process algebra. We
+  propose a technique based on these terms to streamline proofs of inductive
+  invariance. This is not sufficient, however, to state and prove invariants
+  that relate states across multiple processes (entire networks). To this end,
+  we propose a novel compositional technique for lifting global invariants
+  stated at the level of individual nodes to networks of nodes.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Isabelle/HOL; process algebra; reactive systems; invariance proofs;
+    network protocols
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Springer</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This paper was presented at
+    <a href="http://www.cs.uwyo.edu/~ruben/itp-2014/">ITP</a>
+    in Vienna in July.
+    The <a href="itp2014_slides.pdf">slides</a> are available
+    (the cake was baked by
+    <a href="http://www.bettycrocker.com/recipes/rainbow-layer-cake/4969fed8-141e-45f5-9a04-e03addd20fbb">someone
+      else</a>).
+  </li>
+  <li>
+    The <a href="https://arxiv.org/pdf/1407.3519.pdf">prepress</a> and
+    <a href="http://dx.doi.org/10.1007/978-3-319-08970-6_10">final</a>
+    versions are available.
+  </li>
+  <li>
+    The proof scripts are in the
+    <a href="http://www.isa-afp.org/entries/AWN.shtml">Archive of Formal
+      Proofs</a> (and also as a <a href="http://www.isa-afp.org/browser_info/current/AFP/AWN/document.pdf">pdf file</a>).
+  </li>
+  <li>
+    Further information can be found on the pages of the
+    <a href="https://ssrg.nicta.com.au/projects/concurrency/aodvmech.pml">NICTA
+      Concurrency group</a>.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="hscc14" itemprop="headline">A Type-based Analysis of Causality Loops in
+    Hybrid Systems Modelers</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
+  <div class="author">
+    <span itemprop="author">B. Pagano</span>
+    <span class="affiliation">(Esterel-Technologies)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2014-04">April 2014</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    Explicit hybrid systems modelers like <em>Simulink/Stateflow</em> allow
+    for programming both discrete- and continuous-time behaviors with
+    complex interactions between them.  A key issue in their compilation is
+    the static detection of algebraic or <em>causality</em> loops.  Such
+    loops can cause simulations to deadlock and prevent the generation of
+    statically scheduled code.
+  </p>
+
+  <p>
+    This paper addresses this issue for a hybrid modeling language that
+    combines synchronous data-flow equations with Ordinary Differential
+    Equations (ODEs).  We introduce the operator <code>last(x)</code> for
+    the left-limit of a signal <code>x</code>.  This operator is used to
+    break causality loops and permits a uniform treatment of discrete and
+    continuous state variables. The semantics relies on non-standard
+    analysis, defining an execution as a sequence of infinitesimally small
+    steps.  A signal is deemed <em>causally correct</em> when it can be
+    computed sequentially and only changes infinitesimally outside of
+    announced discrete events like zero-crossings.  The causality analysis
+    takes the form of a type system that expresses dependences between
+    signals. In well-typed programs, signals are provably continuous during
+    integration provided that imported external functions are also
+    continuous.
+  </p>
+
+  <p>
+    The effectiveness of this system is illustrated with several examples
+    written in <a href="http://zelus.di.ens.fr">Zélus</a>, a Lustre-like
+    synchronous language extended with hierarchical automata and ODEs.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Hybrid systems; Synchronous programming languages; Type systems;
+    Block diagrams; Static analysis
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    <!-- ACM DL Article: A type-based analysis of causality loops in hybrid systems modelers -->
+    <div class="acmdlitem" id="item2562125">
+      <img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" />
+      <a href="http://dl.acm.org/authorize?6999840" title="A type-based analysis of causality loops in hybrid systems modelers">A
+	type-based analysis of causality loops in hybrid systems modelers</a>
+      <div style="margin-left:25px">
+	<a href="http://dl.acm.org/author_page.cfm?id=81100522290">Albert Benveniste</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=81341488413">Timothy Bourke</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=81367596546">Benoit Caillaud</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=81100622646">Bruno Pagano</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=81100032823">Marc Pouzet</a><br />HSCC
+	'14 Proceedings of the 17th international conference on Hybrid systems:
+	computation and control, 2014
+      </div>
+    </div>
+    <!-- ACM DL Bibliometrics: A type-based analysis of causality loops in hybrid systems modelers-->
+    <div class="acmdlstat" id="stats2562125">
+      <iframe src="http://dl.acm.org/authorizestats?6999840" width="100%" height="30" scrolling="no" frameborder="0">frames are not supported</iframe>
+    </div>
+  </li>
+
+  <li>
+      This paper was presented at <a href="http://2014.hscc-conference.org/">HSCC</a>
+      conference in Berlin in April 2014.
+  </li>
+
+  <li>Examples and proofs are available
+      <a href="http://zelus.di.ens.fr/hscc2014/">online</a>.
+  </li>
+
+  <li>A <a href="#nahs17">journal version</a> is also available.</li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="synchron13" itemprop="headline">A slow afternoon chez PARKAS and a very
+    fast fly (a fun talk).</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria; ENS)</span></div>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <span class="affiliation">(ENS; Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2013-11">November 2013</div>
+
+<div class="abstract" itemprop="description">
+    <p>
+      We briefly present a problem posed to use by Rafel Cases and <a href="http://www.lsi.upc.edu/~jordicf/">Jordi Cortadella</a> 
+      during a lunch organised by
+      <a href="http://www-sop.inria.fr/members/Gerard.Berry/">Gérard Berry</a>
+      (it is a variation of a
+      <a href="http://www.primepuzzle.com/leeslightest/howfar.html">classic problem</a>).
+      We propose solutions in the
+      <a href="http://www.mathworks.com/products/simulink/">Simulink tool</a> and our 
+      language <a href="http://zelus.di.ens.fr">Zélus</a>.
+    </p>
+
+    <p>
+      Imagine two cars. One starts at Barcelona and travels at 50 km/hr toward 
+      Girona—a distance of 100 km. The other starts at Girona and travels at 50 
+      km/hr toward Barcelona. Between the two is a fly travelling at 80 km/hr, 
+      initially from Barcelona toward Girona, and changing direction instantaneously 
+      whenever it meets either car. There are two questions.
+    </p>
+    <ol>
+      <li>How many zig-zags does the fly do during the two hours of travel?</li>
+      <li>Where will the fly be when the two cars reach their destinations?</li>
+    </ol>
+
+    <p>
+      We first modelled this problem in Simulink. The number of zig-zags, to
+      our great surprise and pleasure, was <b>42</b>!
+      <a href="http://www.douglasadams.com/creations/0345391802.html">[Adams
+	1979]</a> (Using R2012a with the ODE45 solver and a relative
+      tolerance of 1 ⨯ 10<sup>-3</sup>.)
+    </p>
+
+    <p>
+      We then modelled the problem in Zélus. This gave an answer of
+      <b>48</b>. (Using the Sundials CVODE solver and a custom
+      implementation of the Illinois algorithm.)
+    </p>
+
+    <p>
+      Obviously neither answer is correct since the system is not well
+      defined at the instant the cars pass each other. The important
+      questions are whether we should, or even can, statically detect and
+      reject such cases? or stop with an error at runtime?
+    </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Synchronous languages; Zélus; Simulink; Hybrid Modelling;
+    Zero-crossings; Simulation
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Unpublished</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>Presented as a short amusement at the Daghstuhl workshop
+	<a href="http://www.dagstuhl.de/en/program/calendar/semhp/?semnr=13471">Synchron
+	    2013</a> and published in the
+	<a href="http://dx.doi.org/10.4230/DagRep.3.11.117">proceedings</a> (p.126).
+    </li>
+
+    <li>A slightly longer <a href="synchron2013.pdf">abstract</a>, the <a href="synchron2013-slides.pdf">slides</a>, the <a href="fly.ls">Zélus source</a>, and the <a href="fly.mdl">Simulink
+	model</a> are available.</li>
+
+    <li>The Synchron 2013 workshop was not referreed.</li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="sp13" itemprop="headline">seL4: from General Purpose to a Proof of
+    Information Flow Enforcement</h3>
+<div class="authors">
+
+  <div class="author">
+    <a href="http://www.ssrg.nicta.com.au/people/?cn=Toby+Murray"><span itemprop="author">T. Murray</span></a>
+    <span class="affiliation">(NICTA and UNSW)</span></div><span class="comma">,</span>
+
+  <div class="author">
+    <a href="http://www.ssrg.nicta.com.au/people/?cn=Daniel+Matichuk"><span itemprop="author">D. Matichuk</span></a>
+    <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
+
+  <div class="author">
+    <a href="http://ssrg.nicta.com.au/people/?cn=Matthew+Brassil"><span itemprop="author">M. Brassil</span></a>
+    <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
+
+  <div class="author">
+    <a href="http://peteg.org/"><span itemprop="author">P. Gammie</span></a>
+    <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
+
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
+
+  <div class="author">
+    <a href="http://seanseefried.com/"><span itemprop="author">S. Seefried</span></a>
+    <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
+
+  <div class="author">
+    <a href="http://www.ssrg.nicta.com.au/people/?cn=Corey+Lewis"><span itemprop="author">C. Lewis</span></a>
+    <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
+
+  <div class="author">
+    <a href="http://www.ssrg.nicta.com.au/people/?cn=Xin+Gao"><span itemprop="author">X. Gao</span></a>
+    <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
+
+  <div class="author">
+    <span class="and">and</span>
+    <a href="http://www.cse.unsw.edu.au/~kleing/"><span itemprop="author">G. Klein</span></a>
+    <span class="affiliation">(NICTA and UNSW)</span></div>
+
+</div>
+<div class="date" itemprop="datePublished" content="2013-05">May 2013</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+      In contrast to testing, mathematical reasoning and formal verification
+      can show the absence of whole classes of security vulnerabilities. We
+      present the, to our knowledge, first complete, formal, machine-checked
+      verification of information flow security for the implementation of a
+      general-purpose mi- crokernel; namely seL4. Unlike previous proofs of
+      information flow security for operating system kernels, ours applies
+      to the actual 9,600 lines of C code that implement seL4, and so rules
+      out the possibility of invalidation by implementation errors in this
+      code. We assume correctness of compiler, assembly code, hardware, and
+      boot code. We prove everything else. This proof is strong evidence of
+      seL4’s utility as a separation kernel, and describes precisely how the
+      general purpose kernel should be configured to enforce isolation and
+      mandatory information flow control. We describe the information flow
+      security statement we proved (a variant of intransitive
+      noninterference), including the assumptions on which it rests, as well
+      as the modifications that had to be made to seL4 to ensure it was
+      enforced. We discuss the practical limitations and implications of
+      this result, including covert channels not covered by the formal
+      proof.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Correctness proofs; Information flow controls; Mechanical verification
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">IEEE</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+	This paper was presented by Toby in May at the
+	<a href="http://www.ieee-security.org/TC/SP2013/">IEEE Symposium
+	on Security and Privacy</a>, San Francisco, CA, USA.
+    </li>
+    <li>
+      Versions are available through
+      <a href="http://dx.doi.org/10.1109/SP.2013.35">IEEE Xplore</a>
+      and <a href="http://www.nicta.com.au/pub?doc=6464">NICTA</a>.
+    </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="hscc13" itemprop="headline">Zélus: A Synchronous Language with ODEs</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(NICTA and Inria)</span></div>
+    <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+				   École normale supérieure and
+				   Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2013-04">April 2013</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    Zélus is a new programming language for modeling systems that mix
+    discrete logical time and continuous time behaviors. From a user's
+    perspective, its main originality is to extend an existing Lustre-like
+    synchronous language with Ordinary Differential Equations (ODEs). The
+    extension is conservative: any synchronous program expressed as
+    data-flow equations and hierarchical automata can be composed
+    arbitrarily with ODEs in <em>the same source code</em>.
+  </p>
+
+  <p>
+    A dedicated type system and causality analysis ensure that all discrete
+    changes are aligned with zero-crossing events so that no side effects or
+    discontinuities occur during integration. Programs are statically
+    scheduled and translated into sequential code which, by construction,
+    runs in bounded time and space. Compilation is effected by
+    source-to-source translation into a small synchronous subset which is
+    processed by a standard synchronous compiler architecture. The resulting
+    code is paired with an off-the-shelf numeric solver.
+  </p>
+
+  <p>
+    We show that it is possible to build a modeler for explicit hybrid
+    systems <em>à la Simulink/Stateflow</em> on top of an existing
+    synchronous language, using it both as a semantic basis and as a target
+    for code generation.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Hybrid systems; Hybrid automata; Synchronous languages; Block diagrams;
+    Type systems
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    <!-- ACM DL Article: Zélus: a synchronous language with ODEs -->
+    <div class="acmdlitem" id="item2461348">
+      <img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" />
+      <a href="http://dl.acm.org/authorize?6817427" title="Z&#xE9;lus: a synchronous language with ODEs">Zélus: a synchronous language with ODEs</a>
+      <div style="margin-left:25px">
+	<a href="http://dl.acm.org/author_page.cfm?id=81341488413">Timothy Bourke</a>,
+	<a href="http://dl.acm.org/author_page.cfm?id=81100032823">Marc Pouzet</a><br />
+	HSCC '13 Proceedings of the 16th international conference on Hybrid systems:
+	computation and control, 2013
+      </div>
+    </div>
+    <!-- ACM DL Bibliometrics: Zélus: a synchronous language with ODEs-->
+    <div class="acmdlstat" id="stats2461348">
+      <iframe src="http://dl.acm.org/authorizestats?6817427" width="100%" height="30" scrolling="no" frameborder="0">frames are not supported</iframe>
+    </div>
+  </li>
+
+  <li>
+      This paper was presented at <a href="http://hscc2013.hscc-conference.org/">HSCC</a>
+      in Philadelphia in April. The slides are <a href="hscc13-slides.pdf">available</a>.
+  </li>
+
+  <!-- <li>Conference acceptance rate: 47% (40/86)</li> -->
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="tecs13" itemprop="headline">Analyzing an Embedded Sensor with Timed
+    Automata in Uppaal</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <span class="affiliation">(University of NSW)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2013-12">December 2013</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    An infrared sensor is modeled and analyzed in Uppaal. The sensor
+    typifies the sort of component that engineers regularly integrate into
+    larger systems by writing interface hardware and software.
+  </p>
+
+  <p>
+    In all, three main models are developed. For the first, the timing
+    diagram of the sensor is interpreted and modeled as a timed safety
+    automaton. This model serves as a specification for the complete system.
+    A second model that emphasizes the separate roles of driver and sensor
+    is then developed. It is validated against the timing diagram model
+    using an existing construction that permits the verification of timed
+    trace inclusion, for certain models, by reachability analysis (i.e.,
+    model checking). A transmission correctness property is also stated by
+    means of an auxiliary automaton and shown to be satisfied by the model.
+  </p>
+
+  <p>
+    A third model is created from an assembly language driver program, using
+    a direct translation from the instruction set of a processor with simple
+    timing behavior. This model is validated against the driver component of
+    the second timing diagram model using the timed trace inclusion
+    validation technique. The approach and its limitations offer insight
+    into the nature and challenges of programming in real time.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Timed automata; Uppaal; Timing diagrams; Timed trace inclusion
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+      <!-- ACM DL Article: Analyzing an embedded sensor with timed automata in uppaal -->
+      <div class="acmdlitem" id="item2539040">
+	<img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" />
+	<a href="http://dl.acm.org/authorize?6962896" title="Analyzing an embedded sensor with timed automata in uppaal">Analyzing
+	      an embedded sensor with timed automata in uppaal</a>
+	<div style="margin-left:25px">
+	  <a href="http://dl.acm.org/author_page.cfm?id=81341488413">Timothy Bourke</a>,
+	  <a href="http://dl.acm.org/author_page.cfm?id=81100584518">Arcot Sowmya</a>
+	  <br />ACM Transactions on Embedded Computing Systems (TECS), 2013
+	</div>
+      </div>
+      <!-- ACM DL Bibliometrics: Analyzing an embedded sensor with timed automata in uppaal-->
+      <div class="acmdlstat" id="stats2539040">
+	<iframe src="http://dl.acm.org/authorizestats?6962896" width="100%" height="30" scrolling="no" frameborder="0">frames are not supported</iframe>
+      </div>
+    </li>
+
+    <li>
+	The Uppaal models described in this paper are available for
+	<a href="irsensor-20111214.zip">download</a>.
+    </li>
+
+    <li>
+	The specification sheet of the GP2D02 infrared sensor is also
+	<a href="sharp_gp2d02.pdf">available</a>.
+    </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="cicm12" itemprop="headline">Challenges and Experiences in Managing
+    Large-Scale Proofs</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://ssrg.nicta.com.au/people/?cn=Matthias+Daum"><span itemprop="author">M. Daum</span></a>
+    <span class="affiliation">(NICTA, UNSW)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.doclsf.de/"><span itemprop="author">G. Klein</span></a>
+    <span class="affiliation">(NICTA, UNSW)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://xaph.net/"><span itemprop="author">R. Kolanski</span></a>
+    <span class="affiliation">(NICTA, UNSW)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2012-07">July 2012</div>
+
+<div class="abstract" itemprop="description">
+  <p>Large-scale verification projects pose particular challenges. Issues
+     include proof exploration, efficiency of the edit-check cycle, and
+     proof refactoring for documentation and maintainability. We draw on
+     insights from two large-scale verification projects, L4.verified and
+     Verisoft, that both used the Isabelle/HOL prover. We identify the main
+     challenges in large-scale proofs, propose possible solutions, and
+     discuss the <em>Levity</em> tool, which we developed to automatically
+     move lemmas to appropriate theories, as an example of the kind of tool
+     required by such proofs.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Large-scale proofs; Isabelle/HOL; Interactive theorem proving
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Springer</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+	This paper was presented at
+	<a href="http://www.informatik.uni-bremen.de/cicm2012/cicm.php">CICM</a>
+	(<a href="http://www.informatik.uni-bremen.de/cicm2012/cicm.php?event=mkm">MKM track</a>)
+	in July 2012, where it won the best paper award.
+    </li>
+
+    <li> 
+    Published in
+    <a href="http://link.springer.com/book/10.1007/978-3-642-31374-5/page/1">Intelligent
+    Computer Mathematics, LNCS 7362</a>,
+    <a href="http://dx.doi.org/10.1007/978-3-642-31374-5_3">pp 32-48</a>.
+    </li>
+
+    <li>
+    The submitted version is <a href="cicm2012.pdf">available</a>.
+    </li>
+</ul>
+</div>
+
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="emsoft11" itemprop="headline">A Hybrid Synchronous Language with
+    Hierarchical Automata: Static Typing and Translation to
+    Synchronous Code</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
+  <div class="author">
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <span class="affiliation">(DI, École normale supérieure)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2011-10">October 2011</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    Hybrid modeling tools like Simulink have evolved from simulation platforms
+    into development platforms on which testing, verification and code
+    generation are also performed. It is critical to ensure that the results of
+    simulation, compilation and verification are consistent. Synchronous
+    languages have addressed these issues but only for discrete systems.
+  </p>
+
+  <p>
+    Reprising earlier work, we present a hybrid modeler built from a
+    synchronous language and an off-the-shelf numerical solver. The main
+    novelty is a language with hierarchical automata that can be arbitrarily
+    mixed with data-flow and ordinary differential equations (ODEs). A type
+    system statically ensures that discrete state changes are aligned with
+    zero-crossing events and that the function passed to the numerical
+    solver has no side-effects during integration. Well-typed programs are
+    compiled by source-to-source translation into synchronous code which is
+    then translated into sequential code using an existing synchronous
+    language compiler.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Real-time systems; hybrid systems; synchronous Languages; block
+    diagrams; compilation; semantics; type systems
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+
+    <li>
+	<!-- ACM DL Article: A hybrid synchronous language with hierarchical automata: static typing and translation to synchronous code -->
+	<div class="acmdlitem" id="item2038664">
+	    <img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" />
+	    <a href="http://dl.acm.org/authorize?6582566" title="A hybrid synchronous language with hierarchical automata: static typing and translation to synchronous code">A hybrid synchronous language with hierarchical automata: static typing and translation to synchronous code</a>
+	    <div style="margin-left:25px">
+		<a href="http://dl.acm.org/author_page.cfm?id=81100522290">Albert Benveniste</a>,
+		<a href="http://dl.acm.org/author_page.cfm?id=81490645212">Timothy Bourke</a>,
+		<a href="http://dl.acm.org/author_page.cfm?id=81490672943">Benoît Caillaud</a>,
+		<a href="http://dl.acm.org/author_page.cfm?id=81490663238">Marc Pouzet</a>
+
+		<br />EMSOFT '11 Proceedings of the ninth ACM international
+		conference on Embedded software, 2011
+	    </div>
+	</div>
+	<!-- ACM DL Bibliometrics: A hybrid synchronous language with hierarchical automata: static typing and translation to synchronous code-->
+	<div class="acmdlstat" id="stats2038664">
+	    <iframe src="http://dl.acm.org/authorizestats?6582566" width="100%" height="30" scrolling="no" frameborder="0">frames are not supported</iframe>
+	</div>
+    </li>
+
+    <li>This paper was presented at
+	<a href="http://www.emsoft.org">EMSOFT</a> in Taipei in October.
+	The slides are <a href="emsoft11-slides.pdf">available</a>.</li>
+
+    <!-- <li>Conference acceptance rate: 24% (27/113)</li> -->
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="jcss12" itemprop="headline">Non-Standard Semantics of Hybrid
+    Systems Modelers</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
+  <div class="author">
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <span class="affiliation">(École normale supérieure)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2012-05">May 2012</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  Hybrid system modelers have become a corner stone of complex embedded
+  system development. Embedded systems include not only control components
+  and software, but also physical devices. In this area, Simulink is a de
+  facto standard design framework, and Modelica a new player. However, such
+  tools raise several issues related to the lack of reproducibility of
+  simulations (sensitivity to simulation parameters and to the choice of a
+  simulation engine).
+  </p>
+
+  <p>
+  In this paper we propose using techniques from <em>non-standard
+  analysis</em> to define a semantic domain for hybrid systems.
+  Non-standard analysis is an extension of classical analysis in which
+  infinitesimal (the ε and η in the celebrated generic sentence ∀ε ∃η ... of
+  college maths) can be manipulated as first class citizens.  This approach
+  allows us to define both a denotational semantics, a constructive
+  semantics, and a Kahn Process Network semantics for hybrid systems, thus
+  establishing simulation engines on a sound but flexible mathematical
+  foundation.  These semantics offer a clear distinction between the
+  concerns of the numerical analyst (solving differential equations) and
+  those of the computer scientist (generating execution schemes).
+  </p>
+
+  <p>
+  We also discuss a number of practical and fundamental issues in hybrid
+  system modelers that give rise to non reproducibility of results,
+  nondeterminism, and undesirable side effects. Of particular importance are
+  cascaded mode changes (also called <em>zero-crossings</em> in the context
+  of hybrid systems modelers).
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Non-standard semantics; hybrid systems; Simulink; synchronous languages;
+    block diagrams; zero-crossings
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Elsevier</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>This paper appears in the
+	<a href="http://www.elsevier.com/locate/jcss">Journal
+	    of Computer and System Sciences</a>,
+	<a href="http://dx.doi.org/10.1016/j.jcss.2011.08.009">Volume 78,
+	    Issue 3, pages 877–910</a>.</li>
+
+    <li>The preprint is also <a href="jcss2012.pdf">available</a>.</li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="lctes11" itemprop="headline">Divide and Recycle: Types and Compilation
+    for a Hybrid Synchronous Language</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
+  <div class="author">
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie; LIENS,
+	  École normale supérieure)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2011-04">April 2011</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  Hybrid modelers such as Simulink have become corner stones of embedded 
+  systems development.
+  They allow both <em>discrete</em> controllers and their <em>continuous</em> 
+  environments to be expressed <em>in a single language</em>.
+  Despite the availability of such tools, there remain a number of issues 
+  related to the lack of reproducibility of simulations and to the 
+  separation of the continuous part, which has to be exercised by a 
+  numerical solver, from the discrete part, which must be guaranteed not to 
+  evolve during a step.
+  </p>
+
+  <p>
+  Starting from a minimal, yet full-featured, Lustre-like synchronous
+  language, this paper presents a conservative extension
+  where data-flow equations can be mixed with ordinary differential
+  equations (ODEs) with possible reset.
+  A type system is proposed to statically distinguish discrete computations 
+  from continuous ones and to ensure that signals are used in their proper 
+  domains.
+  We propose a semantics based on <em>non-standard analysis</em> which gives a 
+  synchronous interpretation to the whole language, clarifies the 
+  discrete/continuous interaction and the treatment of zero-crossings, and 
+  also allows the correctness of the type system to be established.
+  </p>
+
+  <p>
+  The extended data-flow language is realized through a source-to-source 
+  transformation into a synchronous subset, which can then be compiled using 
+  existing tools into routines that are both efficient and bounded in their 
+  use of memory.
+  These routines are orchestrated with a single off-the-shelf numerical 
+  solver using a simple but precise algorithm which treats causally-related 
+  cascades of zero-crossings.
+  We have validated the viability of the approach through experiments with 
+  the Sundials library.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Real-time systems; hybrid systems; synchronous Languages; block
+    diagrams; compilation; semantics; type systems
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+	<!-- ACM DL Article: Divide and recycle: types and compilation for a hybrid synchronous language -->
+	<div class="acmdlitem" id="item1967687">
+	    <img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" />
+	    <a href="http://dl.acm.org/authorize?482638" title="Divide and recycle: types and compilation for a hybrid synchronous language">Divide and recycle: types and compilation for a hybrid synchronous language</a>
+	    <div style="margin-left:25px">
+		<a href="http://dl.acm.org/author_page.cfm?id=81100522290">Albert Benveniste</a>,
+		<a href="http://dl.acm.org/author_page.cfm?id=81341488413">Timothy Bourke</a>,
+		<a href="http://dl.acm.org/author_page.cfm?id=81367596546">Benoît Caillaud</a>,
+		<a href="http://dl.acm.org/author_page.cfm?id=81100032823">Marc Pouzet</a>
+		<br />LCTES '11 Proceedings of the 2011 SIGPLAN/SIGBED
+		conference on Languages, compilers and tools for embedded
+		systems, pages 61–70, Chicago, USA, April 2011.
+	    </div>
+	</div>
+	<!-- ACM DL Bibliometrics: Divide and recycle: types and compilation for a hybrid synchronous language-->
+	<div class="acmdlstat" id="stats1967687">
+	    <iframe src="http://dl.acm.org/authorizestats?482638" width="100%" height="30" scrolling="no" frameborder="0">frames are not supported</iframe>
+	</div>
+    </li>
+
+    <li>This paper was presented at
+	<a href="http://lctes2011.elis.ugent.be">LCTES</a> in Chicago in April.
+	The slides are <a href="lctes11-slides.pdf">available</a> (and
+	also <a href="lctes11-slides-handout.pdf">without overlays</a>).</li>
+
+    <!-- <li>Conference acceptance rate: 33% (17/51)</li> -->
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="wadt10" itemprop="headline">New Results on Timed Specifications</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://people.cs.aau.dk/~adavid/"><span itemprop="author">A. David</span></a>
+    <span class="affiliation">(Aalborg University)</span></div><span class="comma">,</span><br />
+  <div class="author">
+    <a href="http://people.cs.aau.dk/~kgl/"><span itemprop="author">K. G. Larsen</span></a>
+    <span class="affiliation">(Aalborg University)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.montefiore.ulg.ac.be/~legay/"><span itemprop="author">A. Legay</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
+  <div class="author">
+    <a href="http://www.irccyn.ec-nantes.fr/~lime/"><span itemprop="author">D. Lime</span></a>
+    <span class="affiliation">(Ecole Centrale de Nantes)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://people.cs.aau.dk/~ulrik/"><span itemprop="author">U. Nyman</span></a>
+    <span class="affiliation">(Aalborg University)</span></div><span class="comma">,</span>
+  <span class="and">and</span><br />
+  <div class="author">
+    <a href="http://www.itu.dk/~wasowski/"><span itemprop="author">A. Wąsowski</span></a>
+	<span class="affiliation">(IT University of Copenhagen)</span></div>
+<br />
+
+</div>
+<div class="date" itemprop="datePublished" content="2010-07">July 2010</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    Recently, we have proposed a new design theory for timed systems.
+    This theory, building on Timed I/O Automata with game
+    semantics, includes classical operators like satisfaction, consistency, 
+    logical composition and structural composition.
+    This  paper presents a new efficient algorithm for checking
+    Büchi objectives of timed games.
+    This new algorithm can be used to enforce liveness in an interface, or
+    to guarantee that the interface can indeed be implemented. 
+    We illustrate the framework with an infrared sensor case study.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Timed automata; timed refinement; modelling; specification
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Springer</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>Published in
+	<a href="http://dx.doi.org/10.1007/978-3-642-28412-0">Lecture Notes in
+	    Computer Science 7137</a>,
+	<em>Recent Trends in Algebraic Development Techniques,
+	    Revised Selected Papers of the 20th International Workshop on Algebraic
+	    Development Techniques
+	    (<a href="http://www.informatik.uni-bremen.de/wadt2010/">WADT10</a>)</em>,
+    Schloss Etelsen, Germany, July 2010.</li>
+
+  <li>The submitted version is <a href="wadt10.pdf">available</a>.</li>
+
+  <li>The model described in Section 4 is available for
+      <a href="href://www.tbrk.org/papers/wadt10.tar.gz">download</a>.</li>
+
+  <li>My main contribution to this workshop paper involved the adaptation of
+      the infrared sensor case study from my <a href="phdthesis">PhD
+	  thesis</a>, to the theory and tool developed by my coauthors.</li>
+
+  <li>There was a rigorous review process for inclusion in the proceedings
+      of this workshop.</li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="phdthesis" itemprop="headline">Modelling and Programming Embedded
+    Controllers with Timed Automata and Synchronous Languages</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(NICTA; UNSW CSE)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2009-12">December 2009</div>
+
+<div class="abstract" itemprop="description">
+
+    <p>
+    Embedded controllers coordinate the behaviours of specialised hardware
+    components to satisfy broader application requirements. They are
+    difficult to model and to program. One of the greatest challenges is to
+    express intricate timing behaviours—which arise from the physical
+    characteristics of components—while not precluding efficient
+    implementations on resource-constrained platforms. Aspects of this
+    challenge are addressed by this thesis through four distinct
+    applications of timed automata and the synchronous languages Argos and
+    Esterel.
+    </p>
+
+    <p>
+    A novel framework for simulating controllers written in an imperative
+    synchronous language is described. It includes a transformation of
+    synchronous models into timed automata that accounts for timing
+    properties which are important in constrained implementations but
+    ignored by the usual assumption of synchrony. The transformation
+    provides an interface between the discrete time of synchronous programs
+    and a continuous model of time. This interface is extended to provide a
+    way for simulating Argos programs within the widely-used Simulink
+    software.
+    </p>
+
+    <p>
+    Timed automata are well-suited for semantic descriptions, like the
+    aforementioned transformation, and for modelling abstract algorithms and
+    protocols. This thesis also includes a different type of case study. The
+    timing diagram of a small-scale embedded component is modelled in more
+    detail than usual with the aim of studying timing properties in this
+    type of system. Multiple models are constructed, including one of an
+    assembly language controller. Their interrelations are verified in
+    Uppaal using a construction for timed trace inclusion testing.
+    </p>
+
+    <p>
+    Existing constructions for testing timed trace inclusion do not directly
+    address recent features of the Uppaal modelling language. Novel
+    solutions for the problems presented by selection bindings, quantifiers,
+    and channel arrays in Uppaal are presented in this thesis. The first
+    known implementation of a tool for automatically generating a timed
+    trace inclusion construction is described.
+    </p>
+
+    <p>
+    The timed automata case study demonstrates one way of implementing
+    application timing behaviours while respecting implementation
+    constraints. A more challenging, but less detailed, example is proposed
+    to evaluate the adequacy of Esterel for such tasks. Since none of the
+    standard techniques are completely adequate, a novel alternative for
+    expressing delays in physical time is proposed. Programs in standard
+    Esterel are recovered through syntactic transformations that account for
+    platform constraints.
+    </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Timed Automata; Synchronous Languages; Argos; Esterel; modelling; real-time;
+    Simulink; Stateflow; timing diagrams
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">UNSW</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>The <a href="tbourke-phd.pdf">thesis</a>.</li>
+    <li>At the
+	<a href="http://unsworks.unsw.edu.au/vital/access/manager/Repository/unsworks:8045">UNSW library</a>.</li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="synchron09" itemprop="headline">Delays in Esterel</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(NICTA; UNSW CSE)</span></div>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <span class="affiliation">(UNSW CSE)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2009-11">November 2009</div>
+
+<div class="abstract" itemprop="description">
+    <p>
+    The timing details in many embedded applications are inseparable from
+    other behavioural aspects. Time is also a resource; a physical
+    constraint on system design that introduces limitations and costs.
+    Design and implementation choices are often explored and decided
+    simultaneously, complicating both tasks and encouraging platform
+    specific programs where the meaning of a specification is mixed with the
+    mechanisms of implementation.
+    </p>
+
+    <p>
+    The Esterel programming language is ideal for describing complex
+    reactive behaviours. But, perhaps surprisingly, timing details cannot be
+    expressed without making significant implementation choices at early
+    stages of design. We illustrate this point with an example application
+    where reactive behaviour and physical time are intertwined.
+    </p>
+
+    <p>
+    A simple solution is proposed: add a statement for expressing delays in
+    physical time. While there are similar statements or library calls in
+    many programming languages, the novelty of our proposal is that the
+    delay statements are later replaced with standard Esterel statements
+    when platform details become available. Delays are thus expressed
+    directly in terms of physical time, but later implemented as a discrete
+    controller using existing techniques. This approach is familiar in
+    control system design where analytical models are constructed in
+    continuous time and then later discretized to produce implementations.
+    </p>
+
+    <p>
+    We present some ideas for performing the translation and outline some of
+    the remaining challenges and uncertainties.
+    </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Synchronous languages; Esterel; real-time programming; embedded
+    controllers; control software
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Unpublished</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>Presented at the Daghstuhl workshop
+	<a href="http://www.dagstuhl.de/en/program/calendar/semhp/?semnr=09481">Synchron
+	    2009</a>, and published in the
+	<a href="http://drops.dagstuhl.de/portals/index.php?semnr=09481">proceedings</a>,
+	and also available <a href="synchron2009.pdf">here</a>.
+    </li>
+
+    <li>The Synchron 2009 workshop was not referreed.</li>
+
+    <li>This paper is an abridged version of a chapter from my thesis.</li>
+
+    <li>The slides are <a href="http://www.dagstuhl.de/Materials/Files/09/09481/09481.BourkeTimothy.Slides.pdf">online</a>.</li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="emsoft08" itemprop="headline">Automatically transforming and relating
+    Uppaal models of embedded systems</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(NICTA; UNSW CSE)</span></div>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <span class="affiliation">(UNSW CSE)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2008-10">October 2008</div>
+
+<div class="abstract" itemprop="description">
+<p>Relations between models are important for effective automatic
+    validation, for comparing implementations with specifications, and
+    for increased understanding of embedded systems designs. Timed
+    automata may be used to model a system at multiple levels of
+    abstraction, and timed trace inclusion is one way to relate the
+    models.</p>
+
+<p>It is known that a deterministic and tau-free timed automaton can be
+    transformed such that reachability analysis can decide timed trace
+    inclusion with another timed automaton. Performing the
+    transformation manually is tedious and error-prone. We have
+    developed a tool that does it automatically for a large subset of
+    Uppaal models.</p>
+
+<p>Certain features of the Uppaal modeling language, namely selection
+    bindings and channel arrays, complicate the transformation. We
+    formalize these features and extend the validation technique to
+    incorporate them. We find it impracticable to manipulate some forms
+    of channel array subscripts, and some combinations of selection
+    bindings and universal quantifiers; doing so either requires
+    premature parameter instantiation or produces models that Uppaal
+    rejects.</p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Timed trace inclusion; Uppaal; model transformation.
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+	<!-- ACM DL Article: Automatically transforming and relating Uppaal models of embedded systems -->
+	<div class="acmdlitem" id="item1450068">
+	    <img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" />
+	    <a href="http://dl.acm.org/authorize?036358" title="Automatically transforming and relating Uppaal models of embedded systems">Automatically transforming and relating Uppaal models of embedded systems</a>
+	    <div style="margin-left:25px">
+		<a href="http://dl.acm.org/author_page.cfm?id=81341488413">Timothy Bourke</a>,
+		<a href="http://dl.acm.org/author_page.cfm?id=81100584518">Arcot Sowmya</a>
+		<br />EMSOFT '08 Proceedings of the 8th ACM international
+		conference on Embedded software, pages 59–68, Atlanta USA, October 2008.
+	    </div>
+	</div>
+	<!-- ACM DL Bibliometrics: Automatically transforming and relating Uppaal models of embedded systems-->
+	<div class="acmdlstat" id="stats1450068">
+	    <iframe src="http://dl.acm.org/authorizestats?036358" width="100%" height="30" scrolling="no" frameborder="0">frames are not supported</iframe>
+	</div>
+    </li>
+
+    <!-- <li>Conference acceptance rate: 25% (28/110)</li> -->
+
+    <li>This paper contains important improvements to an earlier technical report: <a href="ftp://ftp.cse.unsw.edu.au/pub/doc/papers/UNSW/0723.pdf">UNSW-CSE-TR0723</a>.</li>
+
+    <li>Most of the techniques described in the paper are implemented in a
+	tool called <a href="../software/urpal.html">urpal</a>.</li>
+
+    <li>The slides are <a href="emsoft08-slides.pdf">online</a>.</li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="hotdep07" itemprop="headline">Reliable device drivers require
+    well-defined protocols</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.cse.unsw.edu.au/~leonidr/"><span itemprop="author">L. Ryzhyk</span></a>
+    <span class="affiliation">(NICTA; UNSW CSE)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(NICTA; UNSW CSE)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.cse.unsw.edu.au/~ikuz/"><span itemprop="author">I. Kuz</span></a>
+    <span class="affiliation">(NICTA; UNSW CSE)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2007-06">June 2007</div>
+
+<div class="abstract" itemprop="description">
+<p>Current operating systems lack well-defined protocols for interaction 
+with device drivers.
+We argue that this hinders the development of reliable drivers and thereby 
+undermines overall system stability.
+We present an approach to specify driver protocols using a formalism based 
+on state machines.
+We show that it can simplify device programming, facilitate static analysis 
+of drivers against protocol specifications, and enable detection of 
+incorrect behaviours at runtime.</p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Device drivers; modelling; systems engineering
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Usenix</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>Published in
+  <em>Proceedings of the 3rd workshop on Hot Topics in System 
+  Dependability</em>,
+  <a href="http://www.ertos.nicta.com.au/publications/papers/Ryzhyk_BK_07.pdf">article 3</a>,
+  Edinburgh, June 2007.</li>
+
+  <li>This workshop presentation describes Ryzhyk's work.
+    I co-developed the
+    <a href="http://www.cse.unsw.edu.au/~leonidr/psm.pdf">underlying 
+    model</a>, which applies much from Argos, Statecharts, and ultimately 
+    the idea of <em>constraint-oriented specification</em> originating in 
+    CSP and LOTOS.</li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="emsoft06" itemprop="headline">A Timing Model for Synchronous Language
+    Implementations in Simulink</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(UNSW CSE; NICTA)</span></div>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <span class="affiliation">(UNSW CSE; NICTA; UNSW Asia)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2006-10">October 2006</div>
+
+<div class="abstract" itemprop="description">
+<p>We describe a simple scheme for mapping synchronous language models, in the 
+form of Boolean Mealy Machines, into timed automata. The mapping captures 
+certain idealised implementation details that are ignored, or assumed away, 
+by the synchronous paradigm. In this regard, the scheme may be compared with 
+other approaches such as the AASAP semantics. However, our model addresses 
+input latching and reaction triggering differently. Additionally, the focus 
+is not on model-checking but rather on creating a semantic model for 
+simulating synchronous controllers within Simulink.</p>
+
+<p>The model considers both sample-driven and event-driven execution paradigms, 
+and clarifies their similarities and differences. It provides a means of 
+analysing the timing behaviour of small-scale embedded controllers. The 
+integration of the timed automata models into Simulink is described and 
+related work is discussed.</p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Synchronous languages; Simulink; Timed automata
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <!-- <li>Conference acceptance rate: 33% (31/94)</li> -->
+
+  <li>
+  <!-- ACM DL Article: A timing model for synchronous language implementations in simulink -->
+  <div class="acmdlitem" id="item1176901">
+      <img src="http://dl.acm.org/images/oa.gif" width="25" height="25" border="0" alt="ACM DL Author-ize service" style="vertical-align:middle" />
+      <a href="http://dl.acm.org/authorize?832215" title="A timing model for synchronous language implementations in simulink">A timing model for synchronous language implementations in simulink</a>
+      <div style="margin-left:25px">
+	  <a href="http://dl.acm.org/author_page.cfm?id=81341488413">Timothy Bourke</a>,
+	  <a href="http://dl.acm.org/author_page.cfm?id=81100584518">Arcot Sowmya</a>
+	  <br />EMSOFT '06 Proceedings of the 6th ACM &amp; IEEE
+	  International conference on Embedded software, pages 93–101, Seoul, October 2006.
+      </div>
+  </div>
+  <!-- ACM DL Bibliometrics: A timing model for synchronous language implementations in simulink-->
+  <div class="acmdlstat" id="stats1176901">
+      <iframe src="http://dl.acm.org/authorizestats?832215" width="100%" height="30" scrolling="no" frameborder="0">frames are not supported</iframe>
+  </div>
+  </li>
+
+  <li>The slides are <a href="emsoft06-slides.pdf">online</a>.</li>
+
+  <li>This <a href="emsoft06.pdf">version</a> includes a correction to the
+  last sentence on page 7.</li>
+
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="iehsc05" itemprop="headline">Formal Models in Industry Standard Tools:
+    An Argos Block within Simulink</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(UNSW CSE; NICTA)</span></div>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <span class="affiliation">(UNSW CSE; NICTA)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2005-04">April 2005</div>
+
+<div class="abstract" itemprop="description">
+<p>Simulink is widely used within industry for simulation
+and model-driven development, and reactive behaviours are often modelled using
+an add-on called Stateflow. Argos is one of the synchronous languages that
+have been proposed for the specification, validation and implementation of
+reactive systems. It is a rigorously defined graphical notation which,
+although not as powerful as Stateflow, is much less complicated. This paper
+describes the implementation of an Argos block for Simulink.</p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Reactive systems; synchronous languages; Simulink; Stateflow; Argos
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">Springer</span>
+</div>
+
+<div class="notelist">
+<ul>
+
+  <li><a href="iehsc05.pdf">Available</a> in F. E. Tay, editor,
+  <em>International Journal of Software Engineering and Knowledge
+  Engineering: Selected Papers from the 2005 International Conference on
+  Embedded and Hybrid Systems</em>, volume 15(2), <a href="http://dx.doi.org/10.1142/S0218194005002300">pages
+  389–395</a>, Singapore, April 2005.</li>
+
+  <li>The slides are <a href="iehsc05-slides.pdf">online</a>.</li>
+
+</ul>
+</div>
+</div>
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2017-09-21 15:29:47 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="papers.html">Publications</a>
+                <ul>
+                  <li>
+                    <span class="active">
+                      <a href="abstracts.html">Abstracts</a>
+                    </span>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../software/index.html">Software</a>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Publications</li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Abstracts</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/papers/papers.html",
+            "name": "Publications"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/papers/abstracts.html",
+            "name": "Abstracts"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

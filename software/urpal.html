@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Urpal: manipulate Uppaal models</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Urpal is your pal for Uppaal. Urpal is written in Standard ML, it manipulates Uppaal models most especially for timed trace inclusion verification." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="FreeBSD" href="freebsd.html" />
+    <link rel="prev" title="Treeplate" href="treeplate.html" />
+    <link rel="last" title="Miscellany" href="miscellany.html" />
+    <link rel="next" title="Miscellany" href="miscellany.html" />
+    <link rel="up" title="Software" href="index.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+<h1>Urpal</h1>
+
+<p>Urpal is your pal for <a href="http://www.uppaal.com/">Uppaal</a>.</p>
+
+<p>Urpal takes an Uppaal model as input, performs manipulations as described
+    by a simple command language, and writes the resulting model back to a
+    file. Its prime feature is the ability to construct a testing automaton
+    for determining timed trace inclusion for a restricted class of timed
+    automata. Uppaal can also: duplicate automata; create automata ready to
+    accept all synchronisations on a set of channels; prune transitions
+    based on their action label; conflate, drop and rename locations; and
+    scale the graphical layout of a model. More details are in the <a href="urpal-man.html">manual page</a>.</p>
+
+<p>Descriptions of the testing construction can be found in:</p>
+    <ul>
+	<li>The <a href="http://wwwhome.cs.utwente.nl/~marielle/thesis.html">thesis</a>
+	    of <a href="http://wwwhome.cs.utwente.nl/~marielle/">Mariëlle
+		Stoelinga</a>, specifically Chapter 7 and Appendix A.
+	    Development on Urpal began from the descriptions therein at the
+	    suggestion of <a href="http://www.cs.ru.nl/~fvaan/">Frits
+	    Vaandrager</a>.</li>
+	
+	<li>The <a href="http://dx.doi.org/10.1007/3-540-45352-0_4">Scaling
+	    up Uppaal</a> paper of Henrik Ejersbo Jensen, <a href="http://www.cs.aau.dk/~kgl/">Kim Guldstrand Larsen</a>, and
+	    <a href="http://www.cs.aau.dk/~ask/">Arne Skou</a>. Urpal
+	    incorporates their construction for handling urgent locations
+	    and shared variables.</li>
+
+	<li>The <a href="../papers/abstracts.html#emsoft08">paper</a> by
+	    <a href="http://www.cse.unsw.edu.au/~sowmya/">Arcot Sowmya</a> and me,
+	    to be presented at <a href="http://www.emsoft.org/">EMSOFT 2008</a>.
+	    This paper presents several improvements to the original
+	    <a href="ftp://ftp.cse.unsw.edu.au/pub/doc/papers/UNSW/0723.pdf">CSE
+	      technical report (UNSW-CSE-TR-0723)</a>.
+	    There is also an edited and slightly less compressed description in
+	    Chapter 5 of my
+	    <a href="http://www.tbrk.org/papers/abstracts.html#phdthesis">thesis</a>.</li>
+    </ul>
+
+<p>The testing construction cannot be performed on all timed automata, specifically
+	several modelling features are <emph>not</emph> supported:</p>
+    <ul>
+	<li>non-deterministic automata (this assumption is not checked, but
+	    see the later <a href="#validate-test">notes</a>),</li>
+	<li>non-synchronizing (τ) transitions,</li>
+	<li>committed locations,</li>
+	<li>process priorities,</li>
+	<li>channel priorities,</li>
+	<li>inputs on broadcast channels,</li>
+	<li>some combinations of <code>forall</code> and <code>select</code>
+	    bindings (see this <a href="../papers/abstracts.html#emsoft08">paper</a>).</li>
+    </ul>
+
+<p>The software was developed at the <a href="http://www.unsw.edu.au/">The University of NSW</a>
+    and <a href="http://www.nicta.com.au/">NICTA</a>. It is released under a
+    <a href="bsdlicense2008.html">BSD License</a>.</p>
+
+<p><strong>The <a href="https://github.com/tbrk/urpal">source repository</a> can be
+      browsed online.</strong></p>
+    
+<p>This software is provided as a prototype only: use at your own risk!
+    <span class="text-danger">It surely contains faults</span>, please <a href="mailto:tim@tbrk.org">report</a> them.</p>
+
+<!--  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<h2 id="download">Download</h2>
+
+<p>The latest version is <b>1.1.0</b> (20080829).
+    It processes Uppaal 4.0.6 models.</p>
+
+<table class="table">
+    <tr><th>Operating System</th>
+	<th>Architecture</th>
+	<th></th>
+    </tr>
+    <tr><td colspan="2">Source code</td>
+      <td><a href="https://github.com/tbrk/urpal/archive/urpal-1.1.0.tar.gz"><img class="icon" src="compress.png" /><span class="withicon">urpal-1.1.0.tar.gz</span></a></td>
+    </tr>
+</table>
+
+<p><a href="http://www.graphviz.org/">Graphviz</a> is required to run Urpal.
+    The source code has additional
+    <a href="https://github.com/tbrk/urpal#software-required-for-compilation">compilation
+	dependencies</a>.</p>
+
+<!--  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<h2 id="examples">Step-by-step Example</h2>
+
+<ol class="stepbystep">
+    <li>Download and extract <a href="#download">Urpal</a>.</li>
+    <li>Download the Uppaal <abbr title="Document Type Definition">DTD</abbr>,
+	<a href="http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd">flat-1_1.dtd</a>.</li>
+    <li>Install <a href="http://www.graphviz.org/">Graphviz</a> if necessary.</li>
+    <li>Edit <code>urpalrc</code>, setting the paths to flat-1_1.dtd and
+	Graphviz:
+<pre class="mt-2">dtd_path="<span class="text-warning">flat-1_1.dtd</span>"
+graphviz {
+    path = "<span class="text-warning">/usr/local</span>"
+    engine = neato
+}</pre>
+	Urpal will look for the Graphviz executables, like <code>fdp</code>
+	and <code>neato</code>, in a <code>bin</code> subdirectory of the
+	path given.</li>
+    <li>Download this simple <a href="urpal-example.xml">example model</a>.
+      <figure>
+	<img src="urpal-example.png" />
+      </figure>
+    </li>
+
+    <li>Start a terminal, and run urpal:
+	<pre>./urpal -i urpal-example.xml -o urpal-example-after.xml -e "Test=maketest(Template)"</pre>
+	In the Windows command interpreter (<code>cmd.exe</code>), type rather:
+	<pre>urpal -i urpal-example.xml -o urpal-example-after.xml -e "Test=maketest(Template)"</pre>
+    </li>
+
+    <li>The program should produce a model
+	<code>urpal-example-after.xml</code> that can be opened in Uppaal.
+	The new <a href="urpal-example-after.xml">model</a>
+	should contain the original <code>Template</code> automaton and a new
+	<code>Test</code> automaton.
+	After tidying up the labels, the latter should resemble:
+	<figure><img src="urpal-example-after.png" /></figure>
+    </li>
+</ol>
+
+<p id="validate-test">One good way to verify the result is to model check the original
+    automaton against the generated test automaton, which
+    also exposes models that are not deterministic.
+    This would be done for the above example by first changing the system
+    declaration to: <code><b>system</b> Template, Test;</code>, then
+    verifying the formula: <code>A[] (not Test.Err)</code>.</p>
+
+<p>Such tests have previously revealed faults in Urpal.
+    Another test is to verify that no new deadlocks are introduced, as 
+    Test automata are always ready to synchronize.
+    Since there are already two possibilities for deadlock in the example,
+    the formula is:</p>
+<pre>A[] (deadlock imply ((Template.s2 and Template.x &gt;=3 and Template.x &lt; 4) or Template.s3))</pre>
+
+<p>The source repository includes a number of small <a href="https://github.com/tbrk/urpal/blob/master/tests/">test
+    models</a>, and a larger
+    <a href="https://github.com/tbrk/urpal/tree/master/examples/railway">railway crossing controller</a>
+  example.</p>
+    
+<!--  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<h2 id="layout">Improving the appearance of results</h2>
+
+<p>The layout routines rarely give perfect results, but they
+    usually make the basic structure clear enough so that sense can be made
+    of counter-example traces, and they are a reasonable starting point for
+    manual rearrangement of label positions (the transition nails make other
+    changes painful). If the results are very poor, try:</p>
+
+    <ul>
+	<li>Scaling the source model before generating the test automaton.
+	    For example, <code>Test=maketest(scale(Template, 2.0))</code>.</li>
+
+	<li>Tabulating the labels on transitions to the error state.
+	    For example, <code>Test=tabulate(maketest(Template), {Err})</code>.</li>
+
+	<li>Trying different Graphviz layout routines.
+	    For example, either fdp <code>--set=graphviz{engine=fdp}</code>
+	    or the other spring-based approach neato
+	    <code>--set=graphviz{engine=neato}</code>.
+	    Usually one will give better results than the other for a
+	    particular model.</li>
+	<li>Various combinations of the above.</li>
+	<li>Ultimately, manual rearranging the original automaton or the
+	    resulting test automaton is sometimes the only satisfactory
+	    approach.
+	    Scaling the model and using the <code>tabulate</code> feature
+	    can make it easier.</li>
+    </ul>
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2013-10-20 23:40:02 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <span class="active">
+                      <a href="urpal.html">Urpal</a>
+                    </span>
+                    <ul>
+                      <li>
+                        <a href="urpal-man.html">man page</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a class="button dropdown-toggle nav-link" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Urpal</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="urpal-man.html">man page</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/urpal.html",
+            "name": "Urpal"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

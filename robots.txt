@@ -1,0 +1,7 @@
+User-agent: *
+Disallow:  software/urpal-0.9.0.x86-cygwin.zip
+Disallow:  software/urpal-0.9.0.x86-linux.tar.gz
+Disallow:  distfiles/
+
+Sitemap:   http://www.tbrk.org/sitemap.xml
+

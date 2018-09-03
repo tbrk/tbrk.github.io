@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>500 Server Error</title>
+    <link rel="stylesheet" href="basic.css" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="home" title="Home" href="index.html" />
+    <link rel="author" title="Timothy Bourke"
+          href="mailto:tim@tbrk.org" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+<body>
+<h1>500 Server Error</h1>
+
+Please contact the <a href="mailto:tim@tbrk.org">author</a>.
+
+</body>
+</html>

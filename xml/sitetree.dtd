@@ -1,0 +1,38 @@
+<!ENTITY % itemdata "prefix?, suffix?, author?, style*, script*, icon?,
+		     ?navbar, header?, link*, keyword*">
+
+<!ELEMENT sitetree           (%itemdata;, rooturl, item*)>
+<!ELEMENT rooturl            (#PCDATA)>
+<!ELEMENT item               (%itemdata;, name, file, item*)>
+<!ATTLIST item directory     CDATA #IMPLIED>
+<!ATTLIST item inmenu        CDATA "yes">
+<!ATTLIST item homelink      CDATA #IMPLIED>
+<!ATTLIST item sitemap       CDATA "yes">
+<!ATTLIST item changefreq    (always|hourly|daily|weekly|
+			      monthly|yearly|never) "monthly">
+<!ATTLIST item priority      CDATA "0.5">
+<!ELEMENT prefix             (#PCDATA)>
+<!ELEMENT suffix             (#PCDATA)>
+<!ELEMENT author             (#PCDATA)>
+<!ATTLIST author href        CDATA #REQUIRED>
+<!ATTLIST author media       CDATA #IMPLIED>
+<!ELEMENT style              (#PCDATA)>
+<!ELEMENT script             (#PCDATA)>
+<!ATTLIST src script         CDATA #IMPLIED>
+<!ELEMENT icon               (#PCDATA)>
+<!ELEMENT navbar             (#PCDATA)>
+<!ATTLIST navbar class       CDATA #REQUIRED>
+<!ELEMENT header             (#PCDATA)>
+<!ELEMENT name               (#PCDATA)>
+<!ELEMENT file               (#PCDATA)>
+<!ATTLIST file extension     CDATA "html">
+<!ATTLIST file url	     CDATA #IMPLIED>
+<!ATTLIST file rellinkprefix CDATA #IMPLIED>
+<!ELEMENT description        (#PCDATA)>
+
+<!ELEMENT link		     (#PCDATA)>
+<!ATTLIST link rel	     CDATA #REQUIRED>
+
+<!ELEMENT keyword	     (#PCDATA)>
+<!ATTLIST keyword inherit    CDATA "yes">
+

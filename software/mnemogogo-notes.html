@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Mnemogogo: making Mnemosyne mobile — extra notes</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Extra notes and tips for using Mnemogogo and Mnemojojo." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="Mnemododo" href="mnemododo.html" />
+    <link rel="prev" title="Mnemojojo" href="mnemojojo.html" />
+    <link rel="last" title="development" href="mnemogogo-devel.html" />
+    <link rel="next" title="design" href="mnemogogo-design.html" />
+    <link rel="up" title="Mnemogogo" href="mnemogogo.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta name="keywords" content="Mnemosyne Project, Mnemogogo, spaced repetition, mobile devices" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h1>Notes on Mnemogogo and Related Topics</h1>
+
+<ol>
+    <li><a href="#marketqa">Android Market: Responses</a></li>
+    <li><a href="#security-prompts">Disabling security prompts on J2ME phones</a></li>
+    <li><a href="#fonts">Adjusting the font in Mnemojojo</a></li>
+    <li><a href="#faq">Frequently Asked Questions</a></li>
+    <li><a href="#spacedrep">Spaced Repetition</a></li>
+</ol>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="marketqa">Android Market: Responses</h2>
+
+<p>The Android Market allows users to make comments (and leave ratings), but
+   no way for developers to respond!
+   If you have a problem, question, or suggestion about Mnemododo, please
+   <a href="mailto:tim@tbrk.org">mail</a> it to me directly. I usually
+   respond within a number of hours. Here are a few responses to comments
+   posted on the Market:</p>
+
+<dl>
+    <dt><img src="3stars.png" /> David on Sunday, 22 April 2012 at 20:33:
+	suggestion please add an option to filter questions.</dt>
+
+    <dd><p>Do you mean by category? This is possible. Press the
+	<emph>menu</emph> button and then click <emph>Categories</emph>.</p></dd>
+
+    <dt><img src="3stars.png" /> mijette on Wednesday, 25 May 2011 at 06:56:
+	    doesn't quite work for linux somehow I can't copy files back
+	    from my android on to my linux pc. If I am paying for an app I
+	    expect better performance.</dt>
+
+    <dd><p>Mnemogogo/dodo works perfectly under Linux. Please see the
+	<a href="http://www.tbrk.org/software/mnemododo.html#configuration">instructions</a>
+	or email <a href="mailto:tim@tbrk.org">me</a> directly if you have a
+	problem.</p></dd>
+
+    <dt><img src="2stars.png" /> A Google User on Friday, 30 November 2012 at 18:25:
+	Unexpectedly antiquated	I wanted this app so I could quickly review
+	some cards while on the go, but this app in combination with
+	mnemosyne is anything but quick! I've tried multiple ways to synch
+	my files but to no avail! And even if I had it running I would still
+	have to export and import the cards manually each time I switch
+	devices. In this day and age this is unacceptable and way to tedious
+	and sort of defeats the whole purpose I thought his would have. I
+	hope updates will make this usable,until then don't waste your 3
+	euros.</dt>
+
+    <dd><p>Setting up the syncing can be tedious at first. Whenever contacted
+	by direct <a href="mailto:tim@tbrk.org">email</a>, I have always been
+	able to help make Mnemododo sync on any Android device with access to
+	the Market from Windows, Mac, or Linux.</p>
+
+	<p>It is true that Mnemododo must be synchronized periodically with
+	Mnemosyne, but I expect that it is nearly always more convenient
+	to review cards on a phone or tablet with Mnemododo and to only
+	use Mnemosyne to enter and edit cards. For most users, it will
+	be possible to go for two to four weeks without syncing.
+	Personally, I sync every seven days and it only takes five
+	minutes. Furthermore, I like the separation of reviewing and
+	editing; it helps me to focus on learning facts and not playing with
+	software!</p>
+
+	<p>Mnemododo is tuned for efficient learning. The client is minimal
+	and cards load quickly. I have been using it for more than two
+	years to review between 150 and 200 cards per day on an older Android
+	phone.</p>
+	
+    <p>Finally, if you are not happy with Mnemododo, <a href="mailto:tim@tbrk.org">email me directly</a> and either I
+	will be able to help or I will refund your 3 euros!</p>
+    </dd>
+</dl>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="security-prompts">Disabling security prompts on J2ME phones</h2>
+
+<h3 id="security-prompts-bb9530">BlackBerry 9530 (v5.0.0.328)</h3>
+
+<p>With thanks to Galal Gough:</p>
+
+<ol>
+<li>Go to options&gt;applications.</li>
+<li>Select <code>Mnemojojo</code>.</li>
+<li>Select <code>Edit Permissions</code>.</li>
+<li>Across the top is listed <code>RIM | MIDP groups | MIDP JSRs</code>.</li>
+<li>Select <code>MIDP groups</code>.</li>
+<li>Select <code>Data Space</code> to expand some hidden options.</li>
+<li>Change both the options <code>.file.read [ONESHOT_NO]</code> and
+    <code>.file.write [ONESHOT_NO]</code> to <code>ALLOWED</code>.</li>
+<li>Exit, then select <code>Save</code> to save the new settings.</li>
+</ol>
+
+<h3 id="security-prompts-esmertec">Esmertec Jbed Java MIDlet Manager (20080912.5.1)</h3>
+
+<p>With thanks to Hamidreza Jafari:</p>
+
+<ol>
+    <li>Edit the <code>\windows\appdb\selector.utf</code> file.<br />
+	Either <a href="http://pdaphonehome.com/forums/htc-tytn-ii-kaiser-p4550-t-tilt-8925/93628-java-security-permission.html">manually</a>
+	or using a
+	<a href="http://pdaphonehome.com/forums/ppc-6800-xv6800/91837-opera-mini-4-beta-2-released-includes-info-new-java-midlet-manager.html#post656281">special-purpose
+	    script</a>.</li>
+    <li><a href="http://forum.xda-developers.com/showthread.php?t=380504">Download</a> the <code>policy.utf</code>
+	file and place it in the same directory as <code>selector.utf</code>.</li>
+</ol>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="fonts">Adjusting the font in Mnemojojo</h2>
+
+<p>Mnemojojo cannot always display the characters necessary to study certain
+subjects—for instance, Chinese or Japanese characters, or the symbols of
+the <abbr title="International Phonetic Alphabet">IPA</abbr>—because, as a
+J2ME application, it is limited in its ability to select a display font,
+and, furthermore, because the underlying Fire UI library does not currently support
+custom bitmap fonts (though
+<a href="http://sourceforge.net/projects/fire-j2me/forums/forum/643293/topic/3480970">it
+    may someday</a>).
+It may be possible, however, on some phones to replace or enhance the font
+used for Java applications.
+Some suggestions are provided below but you use them at your own risk!
+Please feel free to <a href="mailto:tim@tbrk.org">email me</a> any others
+that you have tested successfully.
+</p>
+
+<p>An alternative work-around for font limitations is to render non-supported
+characters on your PC during a Mnemogogo export.
+The <a href="http://www.mnemosyne-proj.org/old/node/249">Gogorender</a> plugin
+does just that to produce image files for display in Mnemojojo.
+On phones with the security prompt curse, however, note that each such image
+will generate an annoying prompt.
+</p>
+
+<h3 id="fonts-sonyericcson">On Sony Ericcson phones</h3>
+
+<p>Apparently, the font used by Java applications on some Sony Ericcson phones
+can be <a href="http://www.taintedworld.net/forum/viewtopic.php?f=75&amp;t=16781">changed</a>
+(thanks to Mackan Svensson for this link).
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="faq">Frequently Asked Questions</h2>
+
+<ol>
+    <li><a href="#faq-samealgo">Do Mnemogogo and Mnemojojo use the same
+	    algorithm as Mnemosyne?</a></li>
+    <li><a href="#faq-newcards">How are new (unseen) cards handled?</a></li>
+    <li><a href="#faq-statistics">Are statistics collected and uploaded
+	    to the Mnemosyne project?</a></li>
+    <li><a href="#faq-newfeatures">Could you please add feature X?</a></li>
+    <li><a href="#faq-fileformat">Why can't I just copy my Mnemosyne
+	    database onto my phone for use with Mnemododo/jojo?</a></li>
+</ol>
+
+<h3 id="faq-samealgo">Do Mnemogogo and Mnemojojo use the same algorithm as Mnemosyne?</h3>
+
+<p>Yes (well, almost).
+The routines for scheduling and grading cards are ported directly from
+Mnemosyne.
+The scheduling of cards graded 0 and 1, after all other cards have been
+reviewed, differs slightly.
+</p>
+
+<h3 id="faq-newcards">How are new (unseen) cards handled?</h3>
+
+<p>Mnemogogo respects the “Number of grade 0 cards to hold in your hand”
+setting (found in the Mnemosyne configuration dialog box).
+If this value is 10, and you export cards for 8 days, then 80 new cards will
+be included.
+</p>
+
+<h3 id="faq-statistics">Are statistics collected and uploaded to the
+    Mnemosyne project?</h3>
+
+<p>Yes, if the “Upload anonymous logs” setting in Mnemosyne is enabled.</p>
+
+<h3 id="faq-newfeatures">Could you please add feature X?</h3>
+
+<p>No, sorry.
+   Mnemogogo is intended to be a simple system for reviewing and grading Mnemosyne
+   cards remotely.
+   The source code is, however, freely <a href="mnemogogo-devel.html">available</a>,
+   so feel free to add whatever features you want!
+   </p>
+
+<h3 id="faq-fileformat">Why can't I just copy my Mnemosyne database onto my
+    phone for use with Mnemododo/jojo?</h3>
+
+<p>It would be possible to write an app (as suggested
+<a href="https://blueprints.launchpad.net/mnemosyne-proj/+spec/droid-program-that-directly-alters-mem-files">here</a>.)
+that reads mnemosyne databases directly. Such an approach certainly has
+advantages, but also some complications. The problems can be understood by
+considering the three main reasons behind the
+<a href="mnemogogo-design.html">current design</a> of Mnemogogo and its
+two mobile clients:
+</p>
+
+<ol>
+    <li>The Mnemosyne file format is Python-specific, but Mnemojojo and
+   Mnemododo are both written in Java.</li>
+
+   <li><p>Mobile phone applications must be careful in their use of the memory,
+   processor, and battery. The file format is designed so that the two
+   mobile clients can work reasonably efficiently and on phones with very
+   little memory and slow processors. This efficiency can be measured both
+   in terms of perceivable startup and response times, and in resources
+   consumed.
+   </p>
+   
+   <p>It's true though that the original design was for low-end J2ME phones
+   which are much less capable than modern iPhones and Android phones.
+   </p></li>
+
+   <li><p>Mnemogogo does some preprocessing of card markup and images to ensure
+   optimal results on mobiles (which use different rendering engines than
+   the PC version), and on smaller screens. Some of these things—like
+   rendering characters in special fonts or processing Latex commands—are
+   not easily done on mobile phones. Furthermore, the other transformations
+   are easier to program in Python on a PC, they only have to be written
+   once for all mobile clients, and they do not need any extra phone
+   resources.
+   </p></li>
+</ol>
+
+<p>All of that said, it seems that the next generation of mobile clients
+based around Mnemosyne 2.0 will use a more convenient synchronisation
+protocol. But it is not clear when the new system will be ready for
+daily use.
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="spacedrep">Spaced Repetition</h2>
+
+<p>Mnemogogo works with Mnemosyne to allow <em>spaced repetition</em> study on mobile phones.
+Spaced repetition is a very effective technique for memorising material, 
+which is an important component of learning.
+There are many good articles which explain and/or justify this
+technique, here are some links to some of them:
+</p>
+
+<ul>
+    <li>
+	<p>
+	<a href="http://www.wired.com/medtech/health/magazine/16-05/ff_wozniak">Want
+	    to Remember Everything You'll Ever Learn? Surrender to this
+	    Algorithm</a>, Gary Wolf in Wired. Explains the basic concepts
+	of spaced repetition very well, and talks with and about Piotr
+	Woźniak who led the development of <a href="http://www.supermemo.com">SuperMemo</a>, and designed the
+	SM-2 algorithm that has been adapted for Mnemosyne (and thus
+	Mnemojojo and Mnemododo).
+	</p>
+    </li>
+
+    <li>
+	<p>The <a href="http://www.supermemo.com/english/contents.htm">SuperMemo
+	    website</a> includes a set of great articles and notes by Piotr
+	Woźniak on learning in general, how to structure material for spaced
+	repetition learning, how to write flashcards, and much more.
+	</p>
+    </li>
+
+    <li>
+	<p><a href="http://www.nytimes.com/2010/09/07/health/views/07mind.html">Forget
+	    What You Know About Good Study Habits</a>, Benedict Carey in the
+	    New York Times (20101106). Overview of research suggesting that:</p>
+
+	<ul>
+	    <li>The act of testing, being forced to respond to
+		questions, helps with acquisition.</li>
+	    <li>There are benefits to studying the same material in
+		different places.</li>
+	</ul>
+
+	<p>The first is another benefit of spaced repetition learning.
+	The second is a particular benefit of mobile learning software!
+	Thanks to <a href="http://nbarth.net">Nils von Barth</a> for this link.
+	</p>
+    </li>
+</ul>
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2012-12-11 06:47:20 +0100</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                    <ul>
+                      <li>
+                        <a href="mnemododo.html">Mnemododo</a>
+                      </li>
+                      <li>
+                        <a href="mnemojojo.html">Mnemojojo</a>
+                      </li>
+                      <li>
+                        <span class="active">
+                          <a href="mnemogogo-notes.html">extra notes</a>
+                        </span>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-design.html">design</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-devel.html">development</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="mnemogogo.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mnemogogo</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="mnemododo.html">Mnemododo</a>
+                  <a class="dropdown-item button" href="mnemojojo.html">Mnemojojo</a>
+                  <a class="dropdown-item button" href="mnemogogo-notes.html">extra notes</a>
+                  <a class="dropdown-item button" href="mnemogogo-design.html">design</a>
+                  <a class="dropdown-item button" href="mnemogogo-devel.html">development</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">extra notes</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemogogo.html",
+            "name": "Mnemogogo"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemogogo-notes.html",
+            "name": "extra notes"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

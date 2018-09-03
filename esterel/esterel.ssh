@@ -1,0 +1,65 @@
+# Style sheet for Esterel
+# $Id: esterel.ssh 31 2006-02-09 01:24:54Z tbourke $
+#
+style Esterel is
+requires a2ps 4.13
+
+written by "Timothy Bourke <tim@tbrk.org>"
+version is 0.1
+documentation is
+   "Based on 'The Esterel v5 Language Primer', v5_91, Gérard Berry, 2000"
+end documentation
+
+first alphabet is
+   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+second alphabet is
+   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
+
+case sensitive
+
+keywords in Keyword are
+	pre,
+	not, and, or,
+	true, false,
+	mod,
+	boolean, integer, float, double, string
+end keywords
+
+keywords in Keyword_strong are
+	module, "end",
+	type, constant, function, procedure, task,
+	input, output, inputoutput, sensor, return,
+	relation,
+	combine, with,
+	nothing, pause, halt,
+	emit, sustain,
+	call,
+	present,
+	then, else,
+	"case", do,
+	if, elsif,
+	loop, each, every,
+	positive, repeat, times,
+	weak, abort, when,
+	await, suspend,
+	immediate,
+	trap, exit, handle,
+	run, exec,
+	signal, var, "in",
+
+	watching, timeout, upto
+end keywords
+
+optional operators are
+	||,
+	:=,
+	<= \leq,
+	>= \geq,
+	=> \Rightarrow
+end operators
+
+sequences are
+    "%" Comment
+end sequences
+
+end style

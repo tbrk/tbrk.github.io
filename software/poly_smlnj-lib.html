@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - mlyacc-lib and smlnj-lib in Poly/ML</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Instructions for using the SML/NJ Library in Poly/ML" />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="last" title="sml_tk patches" href="sml_tk.html" />
+    <link rel="next" title="Fxp patches" href="sml-fxp.html" />
+    <link rel="up" title="Standard ML" href="sml.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+<h1>ML-Yacc &amp; SML/NJ Libraries in Poly/ML</h1>
+
+<p>The <a href="http://www.smlnj.org/doc/smlnj-lib/Manual/toc.html">SML/NJ
+Library</a> includes many features that the <a href="http://www.standardml.org/Basis/">Standard ML Basis library</a> does
+not, including: maps, sets, random numbers, atoms, parser combinators,
+pretty printing, regular expressions, and HTML generation. The manual pages
+do not do the library justice; a careful study of the source can be
+rewarding.</p>
+
+<p><a href="http://www.cs.princeton.edu/~appel/modern/ml/ml-yacc/">ML-Yacc</a> is
+required to build the SML/NJ library.</p>
+
+<!--************************************************************-->
+<h2>Step-by-step instructions</h2>
+
+<p>The SML/NJ Library can be used in Poly/ML, on i386 and PPC, with
+little effort, using either the MLton or SML/NJ distributions. In the latter
+case, patches must be applied, and both <samp>mlyacc</samp> and
+<samp>mllex</samp> are required.</p>
+
+<h3>Building from an MLton installation</h3>
+
+<ol>
+<li><a href="http://mlton.org/Download">Download</a> and install MLton.</li>
+
+<li>Download the <a href="poly_mlyacc.sml">poly_mlyacc.sml</a> and <a href="poly_smlnj-lib.sml">poly_smlnj-lib.sml</a> scripts.</li>
+
+<li>Edit the <samp>root</samp> path in both scripts to point at the
+<samp>sml</samp> subdirectory of the MLton installation.</li>
+
+<li>Inside Poly/ML type:
+<pre>
+use "poly_mlyacc.sml";
+use "poly_smlnj-lib.sml";
+</pre></li>
+</ol>
+
+<h3>Building from an SML/NJ installation</h3>
+
+<ol>
+<li>Make copies of the <samp>ml-yacc</samp> and <samp>smlnj-lib</samp>
+subdirectories of the SML/NJ installation.</li>
+
+<li>Apply some minor <a href="poly_smlnj-lib.patch">patches</a>, taken
+from MLton, by typing
+<pre>
+patch -p0 &lt; poly_smlnj-lib.patch
+</pre></li>
+
+<li>Download the <a href="poly_mlyacc.sml">poly_mlyacc.sml</a> and <a href="poly_smlnj-lib.sml">poly_smlnj-lib.sml</a> scripts.</li>
+
+<li>Edit the <samp>root</samp> path in both scripts to point at the
+directory containing the copied subdirectories.</li>
+
+<li>Inside Poly/ML type:
+<pre>
+use "poly_mlyacc.sml";
+use "poly_smlnj-lib.sml";
+</pre></li>
+</ol>
+
+<h3>Building from the SML/NJ distribution with mllex and mlyacc</h3>
+
+<ol>
+
+<li>Download and extract the
+<a href="http://smlnj.cs.uchicago.edu/dist/working/110.65/ml-yacc.tgz">ml-yacc source</a> and the
+<a href="http://smlnj.cs.uchicago.edu/dist/working/110.65/smlnj-lib.tgz">smlnj-lib source</a>,</li>
+
+<li>Build the lexer and grammar files
+<pre>
+mllex smlnj-lib/HTML/html-lex
+mlyacc smlnj-lib/HTML/html-grm
+</pre>
+</li>
+
+<li>Apply some minor <a href="poly_smlnj-lib.patch">patches</a>, taken
+from MLton, by typing
+<pre>
+patch -p0 &lt; poly_smlnj-lib.patch
+</pre></li>
+
+<li>Download the <a href="poly_mlyacc.sml">poly_mlyacc.sml</a> and <a href="poly_smlnj-lib.sml">poly_smlnj-lib.sml</a> scripts.</li>
+
+<li>Edit the <samp>root</samp> path in both scripts to point at the
+directory containing the patched subdirectories.</li>
+
+<li>Inside Poly/ML type:
+<pre>
+use "poly_mlyacc.sml";
+use "poly_smlnj-lib.sml";
+</pre></li>
+</ol>
+
+<!--************************************************************-->
+<h2>The patches</h2>
+
+<p>Four files (<samp>Util/hash-string.sml</samp>,
+<samp>Util/array-qsort.sml</samp>, <samp>Util/real-order-stats.sml</samp>,
+and <samp>Util/univariate-stats.sml</samp>) use SML/NJ's <samp>Unsafe</samp>
+structure, which does not exist in Poly/ML.</p>
+
+<p>Three files (<samp>Util/redblack-set-fn.sml</samp>,
+<samp>Util/redblack-map-fn</samp>, and <samp>Util/graph-scc-fn.sml</samp>)
+use a non-standard <samp>where</samp> qualification over structures.</p>
+
+<p>Two files (<samp>HTML/html-elements-fn.sml</samp> and
+<samp>HTML/html-attrs-fn.sml</samp>) use non-standard <a href="http://www.smlnj.org/doc/features.html">Or-patterns</a>.</p>
+
+<p>All issues are easily <a href="poly_smlnj-lib.patch">patched</a>,
+after extracting the distribution:</p>
+<pre>
+patch -p0 &lt; poly_smlnj-lib.patch
+</pre>
+
+<p>The <samp>where type</samp> and Or-pattern patches were taken from the
+MLton distribution of the SML/NJ Library, but the <samp>Unsafe</samp>
+patches are also needed under Poly/ML unless the additional declaration is
+made:</p>
+<pre>
+structure Unsafe = struct
+  structure CharVector = CharVector
+  structure Array = Array
+end;
+</pre>
+
+<!--************************************************************-->
+<h2>Importing files</h2>
+
+<p>The basis is enriched by declaring library components in order of their
+dependencies, that is, the file containing a signature, structure, or
+functor must be loaded (with <samp>use</samp>) before any other file that
+relies upon the declaration. Unfortunately, each SML implementation handles
+this issue differently.</p>
+
+<p>The <samp>*.mlb</samp> files used by <a href="http://mlton.org/SMLNJLibrary">MLton</a> list the library
+<samp>*.sml</samp> files in the required order. They are easily transformed
+into a list of strings, using <samp>grep</samp> and <samp>sed</samp>, for
+example</p>
+<pre>
+cat sml/smlnj-lib/Util/smlnj-lib.mlb | sed 's/ *(\*.*\*) *//'  \
+                                     | egrep '\.(sml|sig)$'    \
+                                     | sed 's/^ *\(.*\)/"\1",/'
+</pre>
+
+<p>The <samp>poly_mlyacc.sml</samp> and <samp>poly_smlnj-lib.sml</samp>
+files described above are built from MLton's <samp>*.mlb</samp> files by
+running the shell scripts <a href="makemlyacc">makemlyacc</a> and <a href="makesmlnj-lib">makesmlnj-lib</a> respectively.</p>
+
+<p>Six files are intentionally missing from the
+<samp>smlnj-lib/Util/smlnj-lib.mlb</samp> file:</p>
+
+<table class="table">
+<tr><td><samp>array2-sig.sml</samp>, <samp>array2.sml</samp></td>
+    <td>The SML Basis Library already includes an <samp>Array2</samp>
+    structure.</td></tr>
+<tr><td><samp>bit-vector.sml</samp></td>
+    <td>Requires BitArray.Vector, which is not exported.</td></tr>
+<tr><td><samp>iterate-sig.sml</samp>, <samp>iterate.sml</samp></td>
+    <td>TODO suggests that this module will be revised.</td></tr>
+<tr><td><samp>time-limit.sml</samp></td>
+    <td>Relies on <samp>SMLofNJ.cont.callcc</samp>.</td></tr>
+</table>
+
+<p>The SML/NJ Library requires a <samp>Word31</samp> structure that is not
+provided by Poly/ML. Since Poly/ML's default <samp>Word</samp>
+structure has 31 bits (<samp>Word.wordSize = 31</samp>), at least on i386
+and PPC, a simple declaration can help:</p>
+<pre>
+structure Word31 = Word;
+</pre>
+
+<p>On other platforms, five files should be excluded from the list:
+<samp>random-sig.sml</samp>, <samp>random.sml</samp>,
+<samp>real-order-stats.sml</samp>, <samp>univariate-stats.sml</samp>,
+<samp>rand-sig.sml</samp> and <samp>rand.sml</samp>.</p>
+
+<p>The library also requires an <samp>Int32</samp> structure, but Poly/ML
+does not support fixed precision integers. Again, a simple declaration can
+help:</p>
+<pre>
+structure Int32 = Int;</pre>
+
+<p>Otherwise, the <samp>rand.sml</samp> file should be excluded.</p>
+
+<p>The modifications and list described above, as well as details from the
+next section are incorporated available in the <a href="poly_smlnj-lib.sml">poly_smlnj-lib.sml</a> file.</p>
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2008-06-07 06:04:19 +0000</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                    <ul>
+                      <li>
+                        <span class="active">
+                          <a href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                        </span>
+                      </li>
+                      <li>
+                        <a href="sml-fxp.html">Fxp patches</a>
+                      </li>
+                      <li>
+                        <a href="smlnj-reactive.html">SML/NJ Reactive</a>
+                      </li>
+                      <li>
+                        <a href="sml_tk.html">sml_tk patches</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="sml.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Standard ML</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                  <a class="dropdown-item button" href="sml-fxp.html">Fxp patches</a>
+                  <a class="dropdown-item button" href="smlnj-reactive.html">SML/NJ Reactive</a>
+                  <a class="dropdown-item button" href="sml_tk.html">sml_tk patches</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">NJ Lib in Poly/ML</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/sml.html",
+            "name": "Standard ML"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/poly_smlnj-lib.html",
+            "name": "NJ Lib in Poly/ML"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

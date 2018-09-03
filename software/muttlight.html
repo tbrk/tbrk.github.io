@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Muttlight: Search and preview for MailDir files on MacOS</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Muttlight is a MacOS application that improves search and preview for email stored in MailDir format. Specifically, it allows the associated file extensions to be specified, provides a Spotlight importer to extract meta data, integrates with Quick Look to provide previews and thumbnails, and allows files to be opened directly in Mutt." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="FreeBSD" href="freebsd.html" />
+    <link rel="prev" title="Mnemogogo" href="mnemogogo.html" />
+    <link rel="last" title="Miscellany" href="miscellany.html" />
+    <link rel="next" title="Treeplate" href="treeplate.html" />
+    <link rel="up" title="Software" href="index.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta name="keywords" content="Mutt, MailDir, MacOS, Spotlight, Quick Look, Search, Preview, Email" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/bigfoot.min.css" type="text/css" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h1>Muttlight: MailDir files on MacOS</h1>
+
+<p>
+  Muttlight is a MacOS application that changes the appearance of search
+  results for emails stored in MailDir directories from this:
+</p>
+
+<figure id="fig_1">
+  <a href="muttlight-sl-before.png">
+    <img src="muttlight-sl-before.png" alt="Screenshot of the Spotlight dialog box before installation        of Muttlight." title="Spotlight dialog before Muttlight installation" class="figure-img-tighter img-screenshot-medium" />
+  </a>
+  <figcaption class="pt-0">
+    <span class="caption">Figure 1:</span> The Spotlight dialog
+    <strong>before</strong> Muttlight.
+  </figcaption>
+</figure>
+
+<p>—where the filenames are rather cryptic, the contents are not shown, and
+  it's not possible to open the file directly in mutt—into this:</p>
+
+<figure id="fig_2">
+  <a href="muttlight-sl-after.png">
+    <img src="muttlight-sl-after.png" alt="Screenshot of the Spotlight dialog box after installation        of Muttlight." title="Spotlight dialog after Muttlight installation" class="img-screenshot-medium" />
+  </a>
+  <figcaption class="pt-0">
+    <span class="caption">Figure 2:</span> The Spotlight dialog
+    <strong>after</strong> Muttlight.
+  </figcaption>
+</figure>
+
+<p>
+  In fact, the <a href="#fig_1">first</a> screenshot was made artificially:
+  the mail files are not even properly indexed without Muttlight.
+</p>
+  
+<p>
+  In other words, Muttlight improves the integration of files stored in
+  <a href="https://en.wikipedia.org/wiki/Maildir">MailDir</a> format, allowing
+  you to use <a href="http://www.mutt.org">Mutt</a>, or any other
+  MailDir-based client,<sup><a href="#footnote_1">1</a></sup>
+  to manage your mail from the terminal without foregoing MacOS' features
+  for browsing and searching files.
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="install">Installation</h2>
+
+<p>Download the file below, open it, and copy the Muttlight bundle into
+  either <code>$HOME/Applications</code> or <code>/Applications</code>.</p>
+
+<figure>
+  <a href="https://github.com/tbrk/muttlight/releases/download/v1.0.0/Muttlight-1.0.0.dmg">
+    <img src="muttlight.png" srcset="muttlight@2x.png 2x" alt="Muttlight's icon: a cartoon dog holding a magnifying glass" title="Muttlight's icon" />
+    <div class="caption">Download Muttlight 1.0.0 (26 August 2017)</div>
+  </a>
+  <div class="caption">
+    <a href="https://github.com/tbrk/muttlight">(or the source code)</a>
+  </div>
+</figure>
+
+<p class="lessimportant">
+  Muttlight is copyright © Timothy Bourke 2017. It comes with absolutely
+  no warranty or support. It is free software made available under the
+  <a href="https://www.gnu.org/licenses/gpl-2.0.html">GPLv2</a>
+  license.
+  Muttlight incorporates functionality from the
+  <a href="https://dev.mutt.org/">Mutt</a> email client.
+</p>
+
+<p>
+  After installing Muttlight, launch it and the dialog box below will appear.
+</p>
+
+<figure id="fig_3">
+  <a href="muttlight-sshot.png">
+    <img id="fig_3" src="muttlight-sshot.png" alt="Screenshot of the Muttlight configuration dialog box." title="The Muttlight configuration dialog box." class="img-screenshot-small" />
+  </a>
+  <figcaption class="ondropshadow">
+    <span class="caption">Figure 3:</span> The Muttlight configuration
+    dialog box.
+  </figcaption>
+</figure>
+
+<p>
+  The text “Looking for extensions...” indicates that Muttlight is searching
+  your computer for files stored in MailDir directories.<sup><a href="#footnote_2">2</a></sup>
+  As files are found, their (abbreviated) extensions are added to the list.
+  The extensions are typically hostnames of machines on which you
+  run, or have at some point in time run,
+  <a href="http://www.fetchmail.info">fetchmail</a> or some other program
+  that downloads mail.
+  They typically appear in the
+  <a href="http://cr.yp.to/proto/maildir.html">names</a> of MailDir files
+  along with timestamp information and flags.
+  They are necessary for creating the required file associations for
+  searching, previewing, and opening files.
+</p>
+
+<p class="lessimportant">
+  (A warning is displayed if any
+   <a href="https://wiki2.dovecot.org/MailboxFormat/Maildir">DoveCot</a>
+   files are found. Muttlight cannot handle them as the
+   file extensions also include message size information.)
+</p>
+
+<p>
+  Select the extensions that you want to register and click “Apply”.
+  The following sections describe how you can test Muttlight and resolve
+  any difficulties.
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="quicklook">Previewing files</h2>
+
+<p>
+  Open a finder window on a MailDir subdirectory (normally called
+  <code>cur</code> or <code>new</code>).
+  If you see something resembling the image below, that is, with empty
+  document icons, then Muttlight is not yet working properly on your
+  machine.
+</p>
+
+<figure id="fig_4">
+  <a href="muttlight-ql-before.png">
+    <img src="muttlight-ql-before.png" alt="Screenshot of Finder before Muttlight installation." title="Screenshot of Finder before Muttlight installation." class="img-screenshot-small" />
+  </a>
+  <figcaption class="ondropshadow">
+    <span class="caption">Figure 4:</span> Finder previews with
+    Muttlight <strong>not</strong> working.
+  </figcaption>
+</figure>
+
+<p>
+  Close the window, open a terminal, and run the following commands to reset
+  the Quick Look manager and its cache.
+</p>
+
+<pre class="fixgap"><code>
+qlmanage -r cache
+qlmanage -r
+</code></pre>
+
+<p>
+  Then reopen the finder window. It should resemble the one below, that is,
+  with each thumbnail showing the file contents.
+  Pressing <code>⌘-Y</code>, or switching to ‘Cover Flow’—with the
+  <img src="coverflow.png" alt="The button used in the Finder to switch to Cover Flow mode" />
+  button or ⌘-4—should show larger previews.
+</p>
+
+<figure id="fig_5">
+  <a href="muttlight-ql-after.png">
+    <img id="fig_5" src="muttlight-ql-after.png" alt="Screenshot of Finder with Muttlight working." title="Screenshot of Finder with Muttlight working." class="img-screenshot-small" />
+  </a>
+  <figcaption class="ondropshadow">
+    <span class="caption">Figure 5:</span> Finder previews with
+    Muttlight working.
+  </figcaption>
+</figure>
+
+<p>
+  If the previewing is still not working,
+  ensure that Muttlight has been registered with the
+  ‘Launch Services’ database by running the following commands from
+  a terminal window (updating the path as required), and repeating the above
+  steps.
+</p>
+
+<pre class="fixgap"><code>
+export MUTTLIGHT=$HOME/Applications/Muttlight.app
+touch $(MUTTLIGHT)/Contents/MacOS/Muttlight
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f $(MUTTLIGHT)
+</code></pre>
+
+<p>
+  Failing that, you can get some debugging information by running
+  <code>qlmanage -d 4 -p &lt;path-to-mail&gt;</code>
+  and manually specifying the path to a mail file in a MailDir directory.
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="launcher">Opening files</h2>
+
+<p>
+  Opening a mail file, by pressing <code>⌘-O</code> in the
+  <a href="#fig_4">Finder</a>, or pressing <code>enter</code> in the
+  <a href="#fig_2">Spotlight window</a>, should open up a terminal window,
+  using <a href="https://www.iterm2.com">iTerm2</a> if available, and
+  Terminal otherwise, with Mutt open on the selected mail.
+  This feature is based on a shell script,
+</p>
+
+<pre class="fixgap"><code>
+Muttlight.app/Contents/MacOS/Mutt\ Launcher.app/Contents/Resources/script
+</code></pre>
+
+<p>
+  that can be edited directly. It has not been tested extensively and any
+  <a href="mailto:tim@tbrk.org">suggestions</a> or, even better,
+  <a href="https://github.com/tbrk/muttlight/pulls">pull requests</a>
+  are welcome.
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="spotlight">Searching with Spotlight</h2>
+
+<p>
+  Spotlight searches can be run from a graphical interface by either clicking
+  on the <img src="spotlight.png" alt="Spotlight icon" height="20" /> button in the
+  menu bar or pressing <code>⌘-SPACE</code>.
+  They can also be run from the command line with <a href="https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/mdfind.1.html">mdfind</a>.
+  That said, your mail files cannot appear in the search
+  results until they have been indexed.
+  You can reindex a particular directory from
+  <a href="https://support.apple.com/en-us/HT201716">Spotlight preferences</a>,
+  or using the command <code>mdimport -d 1 &lt;path&gt;</code>.
+  Alteratively, the Spotlight index for a volume
+  (<code>&lt;volume-path&gt;/.Spotlight-V100</code>) can be completely rebuilt
+  by running <code>sudo mdutil -E &lt;volume-path&gt;</code>,
+  but this may be very time consuming.
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="develoment">Is all this really necessary?</h2>
+
+<p>
+  Sadly, it seems so, which is annoying since the native Mail 
+  application can already index and preview <code>.eml</code> files.
+  Unfortunately, I do not know how to trick it into also treating files in
+  MailDir directories and the code is not publically available so I cannot
+  propose to patch it. Renaming all of your MailDir files to use the
+  <code>.eml</code> extension would give all of the features described above
+  (with more sophisticated previewing), but Mutt, fetchmail, etcetera, would
+  no longer work correctly. Further explanations and ideas are given in
+  the
+  <a href="https://github.com/tbrk/muttlight/blob/master/design.md#exploiting-apple-plugins">design notes</a>.
+</p>
+
+</div>
+            <div class="footnotes">
+              <ol>
+                <li id="footnote_1">The mbox format is not supported.
+    In any case, this format also complicates file synchronization and backups.
+    Switch to MailDir!</li>
+                <li id="footnote_2">Press
+    “Revert” to cancel the search.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2017-08-27 13:42:09 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <span class="active">
+                      <a href="muttlight.html">Muttlight</a>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Muttlight</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+        <script src="../js/bigfoot.min.js"></script>
+        <script>$.bigfoot()</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/muttlight.html",
+            "name": "Muttlight"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

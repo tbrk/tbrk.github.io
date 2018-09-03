@@ -1,0 +1,58 @@
+
+MATLAB=matlab
+MATLAB_FLAGS=-nodesktop -nosplash
+
+FIND_BBOX=gs -q -dSAFER -dNOPAUSE -dBATCH -sDEVICE=bbox
+
+# ##
+
+MODELS=matchwith.mdl \
+       matchshared.mdl
+
+MDL_MATCHWITH= matchwith-sys1.pdf \
+	       matchwith-sys2.pdf \
+	       matchwith-sys3.pdf \
+	       matchwith-scope.pdf
+
+MDL_MATCHSHARED= matchshared-sys1.pdf \
+		 matchshared-sys2.pdf \
+		 matchshared-sys3.pdf \
+		 matchshared-scope.pdf
+
+OBJS = $(MDL_MATCHWITH) $(MDL_MATCHSHARED)
+
+# ##
+
+all: $(OBJS)
+
+.INTERMEDIATE : $(OBJS:.pdf=.eps)
+
+$(MDL_MATCHWITH:.pdf=.eps) : matchwith.mdl
+	$(MATLAB) $(MATLAB_FLAGS) -r "printmodel('$(<:.mdl=)')" \
+		| tee $(<:.mdl=.log)
+
+$(MDL_MATCHSHARED:.pdf=.eps) : matchshared.mdl
+	$(MATLAB) $(MATLAB_FLAGS) -r "printmodel('$(<:.mdl=)')" \
+		| tee $(<:.mdl=.log)
+
+clean:
+	-@rm $(OBJS:.pdf=.eps)
+	-@rm $(MODELS:.mdl=.log)
+
+cleanall: clean
+	-@rm $(OBJS)
+
+# ##
+
+%.pdf : %.ps
+	ps2pdf "$<" > "$@"
+
+%.eps : %.ps
+	ps2eps -f "$<" > "$@"
+
+%.pdf: %.eps
+	awk '/^%%PageBoundingBox:/ {next} \
+	    /^%%BoundingBox:/ {system("$(FIND_BBOX) \"$<\" 2>&1"); next} \
+	    {print}' "$<" | epstopdf --filter --outfile="$@"
+	#epspdf --bbox "$<" "$@"
+

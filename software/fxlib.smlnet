@@ -1,0 +1,222 @@
+source .
+
+(* Catalog *)
+source Catalog
+
+structure CatError=Catalog/catError.sml,
+  CatFile=Catalog/catFile.sml
+
+functor CatHooks=Catalog/catHooks.sml,
+  CatOptions=Catalog/catOptions.sml,
+  CatParse=Catalog/catParse.sml,
+  ResolveCatalog=Catalog/catResolve.sml,
+  Catalog=Catalog/catalog.sml,
+  SocatParse=Catalog/socatParse.sml
+
+signature CatDtd=Catalog/catDtd.sml,
+  CatError=Catalog/catError.sml,
+  CatFile=Catalog/catFile.sml,
+  CatHooks=Catalog/catHooks.sml,
+  CatOptions=Catalog/catOptions.sml,
+  CatParse=Catalog/catParse.sml,
+  Catalog=Catalog/catalog.sml,
+  SocatParse=Catalog/socatParse.sml,
+  CatParams=Catalog/catParams.sml
+
+(* Parser *)
+source Parser
+
+signature Entities=Parser/entities.sml
+
+(* Parser/Base *)
+source Parser/Base
+
+signature BaseString=Parser/Base/baseString.sml
+
+(* Parser/Dfa *)
+source Parser/Dfa
+
+signature Dfa=Parser/Dfa/dfa.sml,
+  DfaData=Parser/Dfa/dfaData.sml,
+  DfaError=Parser/Dfa/dfaError.sml,
+  DfaOptions=Parser/Dfa/dfaOptions.sml,
+  DfaPassOne=Parser/Dfa/dfaPassOne.sml,
+  DfaPassTwo=Parser/Dfa/dfaPassTwo.sml,
+  DfaPassThree=Parser/Dfa/dfaPassThree.sml,
+  DfaString=Parser/Dfa/dfaString.sml,
+  DfaUtil=Parser/Dfa/dfaUtil.sml
+
+structure DfaBase=Parser/Dfa/dfaData.sml
+
+(* Parser/Dtd *)
+source Parser/Dtd
+
+signature DtdManager=Parser/Dtd/dtdManager.sml
+
+(* Parser/Error *)
+source Parser/Error
+
+signature ErrorMessage=Parser/Error/errorMessage.sml,
+  ErrorString=Parser/Error/errorString.sml,
+  ErrorUtil=Parser/Error/errorUtil.sml
+
+(* Parser/Params *)
+source Parser/Params
+
+signature Dtd=Parser/Params/dtd.sml,
+  Hooks=Parser/Params/hooks.sml,
+  ParserOptions=Parser/Params/parserOptions.sml,
+  Resolve=Parser/Params/resolve.sml
+
+structure ResolveNull=Parser/Params/resolve.sml,
+  IgnoreHooks=Parser/Params/ignore.sml
+
+functor ParserOptions=Parser/Params/parserOptions.sml
+
+(* Parser/Parse *)
+source Parser/Parse
+
+signature ParseBase=Parser/Parse/parseBase.sml,
+  ParseContent=Parser/Parse/parseContent.sml,
+  ParseDecl=Parser/Parse/parseDecl.sml,
+  ParseDtd=Parser/Parse/parseDtd.sml,
+  ParseLiterals=Parser/Parse/parseLiterals.sml,
+  ParseMisc=Parser/Parse/parseMisc.sml,
+  ParseNames=Parser/Parse/parseNames.sml,
+  ParseRefs=Parser/Parse/parseRefs.sml,
+  ParseTags=Parser/Parse/parseTags.sml,
+  ParseXml=Parser/Parse/parseXml.sml
+
+
+functor Parse=Parser/Parse/parseDocument.sml
+
+(* Unicode *)
+source Unicode
+
+signature Encoding=Unicode/encoding.sml
+
+(* Unicode/Chars *)
+source Unicode/Chars
+
+signature CharClasses=Unicode/Chars/charClasses.sml,
+  UniChar=Unicode/Chars/uniChar.sml,
+  UniClasses=Unicode/Chars/uniClasses.sml
+
+structure VectorDict=Unicode/Chars/charVecDict.sml,
+  DataSymTab=Unicode/Chars/dataDict.sml,
+  KeyData=Unicode/Chars/dataDict.sml
+
+(* Unicode/Decode *)
+source Unicode/Decode
+
+signature Decode=Unicode/Decode/decode.sml,
+  DecodeError=Unicode/Decode/decodeError.sml,
+  DecodeFile=Unicode/Decode/decodeFile.sml,
+  DecodeMisc=Unicode/Decode/decodeMisc.sml,
+  DecodeUcs2=Unicode/Decode/decodeUcs2.sml,
+  DecodeUcs4=Unicode/Decode/decodeUcs4.sml,
+  DecodeUtf16=Unicode/Decode/decodeUtf16.sml,
+  DecodeUtf8=Unicode/Decode/decodeUtf8.sml,
+  DecodeUtil=Unicode/Decode/decodeUtil.sml
+
+(* Unicode/Encode *)
+source Unicode/Encode
+
+signature Encode=Unicode/Encode/encode.sml,
+  EncodeBasic=Unicode/Encode/encodeBasic.sml,
+  EncodeError=Unicode/Encode/encodeError.sml,
+  EncodeMisc=Unicode/Encode/encodeMisc.sml
+
+(* Unicode/Uri *)
+source Unicode/Uri
+
+signature Uri=Unicode/Uri/uri.sml,
+  UriDecode=Unicode/Uri/uriDecode.sml,
+  UriEncode=Unicode/Uri/uriEncode.sml
+
+structure KeyUri=Unicode/Uri/uriDict.sml
+
+(* Util *)
+source Util
+
+signature IntLists=Util/intLists.sml,
+  IntSets=Util/intSets.sml,
+  Options=Util/options.sml,
+  UtilCompare=Util/utilCompare.sml,
+  UtilError=Util/utilError.sml,
+  UtilHash=Util/utilHash.sml,
+  UtilInt=Util/utilInt.sml,
+  UtilList=Util/utilList.sml,
+  UtilString=Util/utilString.sml,
+  UtilTime=Util/utilTime.sml
+
+(* Util/SymDict *)
+source Util/SymDict
+
+structure IntSymTab=Util/SymDict/intDict.sml,
+  IntListSymTab=Util/SymDict/intListDict.sml,
+  IntSetSymTab=Util/SymDict/intSetDict.sml,
+  KeyString=Util/SymDict/stringDict.sml,
+  KeyIntSet=Util/SymDict/intSetDict.sml
+
+functor SymTable=Util/SymDict/symbolTable.sml
+
+signature SymTable=Util/SymDict/symbolTable.sml,
+  Key=Util/SymDict/key.sml,
+  Dict=Util/SymDict/dict.sml
+
+(* Apps *)
+
+(* Apps/Canon *)
+source Apps/Canon
+signature CanonEncode=Apps/Canon/canonEncode.sml,
+  CanonOptions=Apps/Canon/canonOptions.sml,
+  CanonOutput=Apps/Canon/canonOutput.sml
+
+(* Apps/Copy *)
+source Apps/Copy
+signature CopyEncode=Apps/Copy/copyEncode.sml,
+  CopyOptions=Apps/Copy/copyOptions.sml,
+  CopyOutput=Apps/Copy/copyOutput.sml
+
+(* Apps/Null *)
+source Apps/Null
+signature NullOptions=Apps/Null/nullOptions.sml
+
+(* Apps/Esis *)
+source Apps/Esis
+signature Esis=Apps/Esis/esis.sml,
+  EsisOptions=Apps/Esis/esisOptions.sml,
+  EsisOutput=Apps/Esis/esisOutput.sml
+
+(* Apps/Viz *)
+source Apps/Viz
+signature Viz=Apps/Viz/viz.sml,
+  VizOptions=Apps/Viz/vizOptions.sml
+
+(* Compiling Apps (comment out to use the library): *)
+export CanonProg
+out fxcanon.exe
+make
+export
+
+export CopyProg
+out fxcopy.exe
+make
+export
+
+export NullProg
+out fxp.exe
+make
+export
+
+export EsisProg
+out fxesis.exe
+make
+export
+
+export VizProg
+out fxviz.exe
+make
+export
+

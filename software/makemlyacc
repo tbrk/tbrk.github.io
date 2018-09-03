@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Path to the MLton library source.
+# Used by this script to find the *.mlb files.
+MLBSRC=/usr/local/lib/mlton/sml
+
+# Path to the patch smlnj-lib source.
+# Used as the default root value in the generated code.
+LIBSRC=/usr/local/lib/mlton/sml
+
+echo "local"
+echo "val root = \"$LIBSRC\""
+echo "val mlyacc = ["
+cat $MLBSRC/mlyacc-lib/mlyacc-lib.mlb | sed 's/ *(\*.*\*) *//'  \
+                                      | egrep '\.(sml|sig)$'    \
+                                      | sed 's/^ *\(.*\)/"\1",/'
+echo '""]'
+echo 'in'
+echo 'val _ = List.app (fn"" => () | s => use(root^"/mlyacc-lib/"^s)) mlyacc'
+echo "end;"
+

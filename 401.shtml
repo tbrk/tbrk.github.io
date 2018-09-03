@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>401 Authorization Required</title>
+    <link rel="stylesheet" href="basic.css" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="home" title="Home" href="index.html" />
+    <link rel="author" title="Timothy Bourke"
+          href="mailto:tim@tbrk.org" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+<body>
+<h1>401 Authorization Required</h1>
+
+Invalid login credentials!
+
+</body>
+</html>

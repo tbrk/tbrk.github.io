@@ -1,0 +1,31 @@
+<loader version="1.0">
+	<application id="Mnemojojo">
+		<name >
+			Mnemojojo
+		</name>
+		<description >
+			Review Mnemosyne cards on a Blackberry
+		</description>
+		<version >
+			2.0.0
+		</version>
+		<vendor >
+			Timothy Bourke
+		</vendor>
+		<copyright >
+			Copyright (c) 2012 Timothy Bourke
+		</copyright>
+		<fileset Java="1.39">
+			<directory >
+				
+			</directory>
+			<files >
+				Mnemojojo.cod
+
+			</files>
+
+		</fileset>
+
+	</application>
+
+</loader>

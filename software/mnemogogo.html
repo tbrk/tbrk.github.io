@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Mnemogogo: making Mnemosyne mobile</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="System for reviewing Mnemosyne cards on mobile devices." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="FreeBSD" href="freebsd.html" />
+    <link rel="prev" title="Svgtoquiz" href="svgtoquiz.html" />
+    <link rel="last" title="Miscellany" href="miscellany.html" />
+    <link rel="next" title="Muttlight" href="muttlight.html" />
+    <link rel="up" title="Software" href="index.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta name="keywords" content="Mnemosyne Project, Mnemogogo, Mnemojojo, Mnemododo, spaced repetition, mobile devices, J2ME, Java, MIDP" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h1>Mnemogogo: making Mnemosyne mobile</h1>
+
+<p>
+<strong>Mnemogogo</strong> is a plugin extension for the spaced-repetition
+flash-card program <a href="http://www.mnemosyne-proj.org">Mnemosyne</a>.
+It enables cards to be reviewed on a mobile phone.
+Mnemogogo does not replace Mnemosyne—cards are still added and edited at a 
+computer.
+Rather it adds the ability to export several days worth of scheduled and new
+cards to a mobile device, like a phone or palm pilot, where they can be
+reviewed and graded before eventually being imported back into Mnemosyne.
+</p>
+
+<p>
+Exported cards are reviewed on a phone using custom apps.
+Three apps are currently available:
+</p>
+
+<ul>
+<li><a href="mnemododo.html">Mnemododo</a> for Android phones</li>
+<li><a href="mnemojojo.html">Mnemojojo</a> for Java (J2ME) phones</li>
+<li><a href="http://windowsphone.com/s?appid=733b0a97-ac6f-4cb9-96e6-c31394af76d1">ColibriM</a>
+	written by Zoten Apps (not me) for Windows phones</li>
+</ul>
+
+<p>
+Unfortunately, there is no support for iPhones.
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="install">Installation</h2>
+
+<ol class="stepbystep">
+    <li>If necessary, download and install
+    <a href="http://www.mnemosyne-proj.org/download-mnemosyne.php">Mnemosyne 2.x</a>.</li>
+
+  <li>Download the
+      <a href="http://www.mnemosyne-proj.org/plugins/mnemogogo">Mnemogogo plugin</a>.
+      (The previous version, for Mnemosyne 1.2.2 is still available
+      <a href="http://www.mnemosyne-proj.org/old/node/187">here</a>.)
+  </li>
+
+  <li>Start Mnemosyne, choose <code>Settings</code>/<code>Manage plugins...</code>,
+      then click <code>Install new plugin</code> and select the file downloaded
+      in the previous step.
+  </li>
+</ol>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="config">Configuration</h2>
+
+<ol class="stepbystep">
+  <li>Start Mnemosyne.</li>
+
+  <li>From the <code>Cards</code> menu, select <code>Mnemogogo</code>.</li>
+
+  <li>Select the <code>Options</code> panel, see <a href="#fig_1">Figure 1</a>.
+
+  <figure>
+    <img id="fig_1" src="mgogo-screenshot-options.png" alt="Screenshot of the options panel of the Mnemogogo dialog box." title="The Mnemogogo options panel" class="img-fluid" />
+      <figcaption>
+        <span class="caption">Figure 1:</span> The Mnemogogo options panel.
+      </figcaption>
+  </figure>
+  </li>
+
+  <li>Choose the number of days to include in the export.
+  I recommend choosing between 5 and 8 days.
+  More days means less frequent updates, but also that exports will take 
+  more space and time to store and load on your phone.
+  If you choose too many days, it may not be possible to run the client
+  software on your phone at  all.</li>
+
+  <li><p>Choose a directory to save the exported cards.
+      This directory must either be on your phone, or, if not, it must be 
+      later copied or synchronized with your phone.
+      More detailed instructions are given <a href="#syncing">below</a>.
+      Usually, it is most convenient to mount your phone's SD card (as a USB
+      mass storage device) and to export directly to a folder within it.
+  </p>
+
+  <p>For Mnemojojo, the Java client, it is usually best to export directly
+      into a top-level directory called <code>cards</code> on your phone or
+      SD-card.
+      For Mnemododo, the Android client, it makes no difference where the
+      cards are exported.</p>
+  </li>
+
+  <li>If you have a Java-enabled phone then choose the
+      <code>Mnemojojo</code> interface.
+      If you have an Android phone then choose the
+      <code>Mnemododo</code> interface.
+  </li>
+
+  <li>Fill in appropriate maximum values in the <code>Exported image
+      limits</code> section.
+      These values are used solely to tune the images exported to your
+      mobile phone so that they will fit on the screen and within the
+      available memory.
+      The export and mobile clients will work regardless of whether the
+      numbers are accurate or not.
+  </li>
+</ol>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="use">Use</h2>
+
+<ol class="stepbystep">
+  <li>From within Mnemosyne, open the Mnemogogo panel; see <a href="#fig_2">Figure 2</a>.
+  <figure id="fig_2">
+    <img id="fig_2" src="mgogo-screenshot-main.png" alt="Screenshot of the main panel of the Mnemogogo dialog box." title="The Mnemogogo dialog box" class="img-fluid" />
+      <figcaption>
+        <span class="caption">Figure 2:</span> The Mnemogogo main panel.
+      </figcaption>
+  </figure>
+  </li>
+
+  <li><p>Click the <code>export</code> button to export cards and statistics
+      to your phone.
+  This will also (temporarily) prevent reviewing within Mnemosyne, but it
+  will still be possible to add, edit, and delete cards.
+  It is <strong>not possible</strong> to simultaneously review cards on 
+  your PC and on your mobile phone.</p>
+
+  <p>Note that Mnemogogo only exports <em>active</em> categories.
+      Categories can be activated or deactivated from within Mnemosyne
+      (From the <code>Cards</code> menu: <code>(De)activate cards...</code>).</p></li>
+
+  <li id="syncing">If necessary, copy the exported subdirectory onto your 
+  mobile phone.<br />
+    This can be done manually after mounting your phone as an external hard 
+    drive, or by using software provided with your phone.
+    Alternatively, using dedicated synchronisation software will reduce the 
+    chance of making a mistake (and possibly losing hard-earned gradings).
+    Suitable applications include:
+    <ul class="in-list">
+      <li><a href="http://www.cis.upenn.edu/~bcpierce/unison/">unison</a></li>
+      <li><a href="http://www.fjsoft.at/">MyPhoneExplorer</a></li>
+    </ul>
+  </li>
+
+  <li>Safely unmount your phone and disconnect it from your computer (you
+      may need to disconnect from both the computer and from the phone
+      itself).</li>
+
+  <li>You are now ready to review the exported cards on your mobile phone,
+      per the <a href="mnemododo.html">instructions for Mnemododo (Android)</a>
+      or the <a href="mnemojojo.html">instructions for Mnemojojo (Java)</a>.</li>
+
+  <li id="gogo-use-import">After reviewing cards on your mobile phone, the 
+  statistics need to be imported back into Mnemosyne.
+  First, make the <code>cards</code> directory available on your PC at the 
+  path configured in the <code>Options</code> panel; either by mounting it 
+  appropriately, by copying the folder manually from the phone, or by 
+  running synchronisation software.
+  Then start Mnemogogo and click the <code>import</code> button.
+  </li>
+
+  <li>For further mobile reviews, simply repeat the above steps.
+  In particular, click <code>export</code> immediately after an import, and 
+  resynchronize, in order to continue mobile reviewing with updated 
+  cards.</li>
+</ol>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="sync">Synchronizing without the USB Mass Storage Device feature</h2>
+
+<p>
+  Some phones, like the Nexus 4 and the Samsung Galaxy S3, S4 and Note, do
+  not enable the <em>mount as USB Mass Storage Device</em> option, which is
+  the easiest way of exporting from and importing to Mnemogogo. They instead
+  provide the <em>MTP protocol</em>, which is not really well supported by
+  Windows, Mac, or Linux. In particular, programs like Mnemogogo cannot
+  simply use it to access files using the standard interface that has
+  existed for decades (file open, write, and close). Instead, they receive
+  strange errors like <em>The folder name is not valid</em>. Complaints
+  about this situation abound on the internet.
+</p>
+
+<p>
+  So, how do you get the files exported from Mnemogogo onto your phone?
+  I have four suggestions. Please <a href="mailto:tim@tbrk.org">mail me</a>
+  if you have any others.
+</p>
+
+<ul>
+  <li><a href="#sync-copy">Copy manually with Windows explorer.</a></li>
+  <li><a href="#sync-sdcard">Manually move your SD card between your phone and computer.</a></li>
+  <li><a href="#sync-propsw">Use the synchronization software that came with your phone.</a></li>
+  <li>Mac users can try <a href="http://www.android.com/filetransfer/">Android File Transfer</a></li>
+  <li><a href="#sync-cloud">Use a cloud synchronization service.</a></li>
+  <li><a href="#sync-app">Use a third-party wireless transfer app.</a></li>
+</ul>
+
+<p>
+  Many people will wonder why Mnemododo does not provide an in-built
+  synchronization feature. Mnemododo is focused on reviewing cards exported
+  from Mnemosyne. The design relies on other software to transfer files back
+  and forth. This works very well for phones that can be mounted as USB Mass
+  Storage Devices. The process is simple, fast, reliable, secure, and does
+  not expose your data to any third parties. For phones without this feature,
+  the procedures given below should help. If not, please do not hesitate to
+  <a href="mailto:tim@tbrk.org">contact me</a>.
+</p>
+
+<h3 id="sync-copy">Copy manually with Windows explorer.</h3>
+
+<p>
+  Of all the platforms, Windows provides the best support for the MTP protocol,
+  but, for some reason, the standard file access mechanism is not provided to
+  programs like Mnemogogo.
+  The work-around is to export/import locally and to manually copy back and forth
+  using Windows explorer.
+</p>
+
+<p>To export:</p>
+<ol>
+  <li>At your phone: quit Mnemododo using the back button.</li>
+
+  <li>At your computer: <a href="#use">export from Mnemogogo</a> to a folder
+    on your Desktop.</li>
+
+  <li>At your computer: after connecting your phone, drag and drop the
+    folder from your desktop into a folder on your phone. If necessary,
+    choose to replace all existing files.</li>
+
+  <li>Start Mnemododo.</li>
+</ol>
+
+<p>To import:</p>
+<ol>
+  <li>At your phone: quit Mnemododo using the back button.</li>
+
+  <li>Connect your phone to your computer.</li>
+
+  <li>At your computer: drag and drop the folder from your phone onto your
+    Desktop. Choose to replace all existing files.</li>
+
+  <li>At your computer: import from the newly-copied folder with
+    Mnemogogo.</li>
+</ol>
+
+<h3 id="sync-sdcard">Manually move your SD card between your phone and computer</h3>
+
+<ol>
+  <li>At your phone: quit Mnemododo using the back button.</li>
+
+  <li>At your phone: safely unmount the SD card (from the global settings
+    panel.)</li>
+
+  <li>Put the SD card into your computer and wait for it to appear.</li>
+
+  <li>At your computer: <a href="#use">import/export from
+      Mnemogogo</a> into a folder on the SD card.</li>
+
+  <li>At your computer: safely unmount the SD card.</li>
+
+  <li>Put the SD card back into your phone and wait for it to be mounted.</li>
+
+  <li>Start Mnemododo.</li>
+</ol>
+
+<h3 id="sync-propsw">Use the synchronization software that came with your phone.</h3>
+
+<p>Many phones come with proprietary synchronization software that can be
+  used to copy files back and forth between your computer and phone. This
+  feature can be used to transfer files between Mnemogogo and Mnemododo.</p>
+
+<p>
+  <em>Note:</em> it would seem that Samsung's <a href="www.samsung.com/us/kies/">Kies</a> application is not very good at
+  transferring folders. Please <a href="mailto:tim@tbrk.org">let me know</a>
+  if you have any success with it!
+</p>
+
+<p>To export from your computer:</p>
+
+<ol>
+  <li>Export from Mnemogogo to a folder somewhere on your computer.</li>
+
+  <li>Use the synchronization software to copy this folder onto your phone.</li>
+</ol>
+
+<p>To import from your phone:</p>
+
+<ol>
+  <li>At your phone: quit Mnemododo using the back button.</li>
+
+  <li>At your computer: use the synchronization software to copy this folder
+    back onto your phone <em>replacing</em> the files that were exported
+    before.</li>
+
+  <li>At your computer: use Mnemogogo to import this folder.</li>
+</ol>
+
+<h3 id="sync-cloud">Use a cloud synchronization service.</h3>
+
+<p>
+  There are many services, like <a href="https://www.dropbox.com">DropBox</a>
+  which can synchronize your computer and phone with online storage. They can
+  be used to copy files back and forth between your computer and phone. Note that
+  <a href="https://drive.google.com">Google Drive</a> cannot (yet) be used
+  for this purpose: it only works on newer Android phones and it is not
+  properly supported on Linux.
+</p>
+
+<p>
+  You will need to configure the cloud storage software on your computer to
+  synchronize a folder. You will also need to install the related app on your
+  phone and configure it to synchronize with the same folder.
+</p>
+
+<p>To export from your computer:</p>
+
+<ol>
+  <li>At your phone: if necessary, quit Mnemododo using the back button.</li>
+  <li>At your computer: export from Mnemogogo into the synchronized folder.</li>
+  <li>At your phone: wait for the new contents to appear and then start
+    Mnemododo.</li>
+</ol>
+
+<p>To import from your phone:</p>
+
+<ol>
+  <li>At your phone: quit Mnemododo using the back button.</li>
+  <li>At your computer: wait for the folder to synchronize completely, then
+  import into Mnemogogo.</li>
+</ol>
+
+<h3 id="sync-app">Use a third-party wireless transfer app.</h3>
+
+<p>
+  Several apps that can transfer files to and from your phone over a network
+  are available. These instructions describe the steps for
+  <a href="http://airdroid.com">AirDroid</a>, but other apps should work in
+  a similar way.
+</p>
+
+<p>
+  <em>Important!</em>: AirDroid <a href="http://forum.airdroid.com/discussion/575/safari/p1">requires</a>
+  the <a href="http://www.google.com/chrome">Chrome</a> web browser to
+  upload entire folders, and thus to work properly with Mnemogogo.
+</p>
+
+<p>Connecting to your phone:</p>
+
+<ol>
+  <li>At your phone: start the app. It should give a URL (like
+    <code>http://1.2.3.4:8888</code>) that you can use to connect to
+    your phone.</li>
+
+  <li>At your computer: type this URL into a web browser. You will
+    then normally need to accept the connection at your phone.</li>
+</ol>
+
+<p>To export from your computer:</p>
+
+<ol>
+  <li>At your phone: if necessary, quit Mnemododo using the back button.</li>
+  <li>At your computer: export from Mnemogogo into a folder on your computer.</li>
+
+  <li>
+    <p>If you are using AirDroid, drag the folder onto the upload panel, that
+      looks like this:</p>
+
+    <figure id="fig_3">
+      <img id="fig_3" src="airdroid-upload.png" alt="Screenshot of the AirDroid upload panel." title="The AirDroid upload panel." class="img-fluid" />
+	<figcaption>
+	  <span class="caption">Figure 3:</span> The AirDroid upload panel.
+	</figcaption>
+    </figure>
+
+    <p><em>Very important!:</em> Do not use the other upload buttons, they
+	  do not seem to transfer files without file extensions, so files
+	  like <code>CARDS</code> and <code>CONFIG</code> are not transferred.</p>
+  </li>
+
+  <li>At your phone: start Mnemododo.</li>
+</ol>
+
+<p>To import from your phone:</p>
+
+<ol>
+  <li>At your phone: quit Mnemododo using the back button.</li>
+
+  <li>At your computer: from within the AirDroid interface, locate the
+    folder you transferred earlier (normally under <code>.../airdroid/upload</code>),
+    right-click on it and choose <em>Download as ZIP</em>.</li>
+
+  <li>Open the zip file and copy the downloaded folder over the top of
+    the original folder on your computer, choosing to replace all the files.</li>
+
+  <li>Import the newly replaced folder using Mnemogogo.</li>
+</ol>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="solutions">Solutions to common problems</h2>
+
+<h3 id="lowercase">The filenames of the exported files and directories
+    (<code>STATS.CSV</code>, <code>IMG</code>, etc.) are in lowercase on
+    the phone.</h3>
+
+<p>All of the filenames must be in UPPERCASE letters. If you are using
+   Linux, you may have to add the <code>shortname=winnt</code> option to
+   the entry in <code>/etc/fstab</code> for the SD card filesystem.</p>
+
+<h3 id="corrupt">Help! My phone crashed and now Mnemododo complains that
+    ‟<code>The exported cards are corrupt</code>”.</h3>
+
+<p>This indicates that your phone crashed so suddenly that Mnemododo was not given
+    enough time to fully write the <code>STATS.CSV</code> file.
+    You should be able to recover most reviews by copying <code>STATS.BKP</code> over
+    the top of <code>STATS.CSV</code> and restarting Mnemododo.</p>
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2015-10-13 14:01:38 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <span class="active">
+                      <a href="mnemogogo.html">Mnemogogo</a>
+                    </span>
+                    <ul>
+                      <li>
+                        <a href="mnemododo.html">Mnemododo</a>
+                      </li>
+                      <li>
+                        <a href="mnemojojo.html">Mnemojojo</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-notes.html">extra notes</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-design.html">design</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-devel.html">development</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a class="button dropdown-toggle nav-link" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mnemogogo</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="mnemododo.html">Mnemododo</a>
+                  <a class="dropdown-item button" href="mnemojojo.html">Mnemojojo</a>
+                  <a class="dropdown-item button" href="mnemogogo-notes.html">extra notes</a>
+                  <a class="dropdown-item button" href="mnemogogo-design.html">design</a>
+                  <a class="dropdown-item button" href="mnemogogo-devel.html">development</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemogogo.html",
+            "name": "Mnemogogo"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - sml_tk patches</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Patches and tips for sml_tk" />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="NJ Lib in Poly/ML" href="poly_smlnj-lib.html" />
+    <link rel="prev" title="SML/NJ Reactive" href="smlnj-reactive.html" />
+    <link rel="up" title="Standard ML" href="sml.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+<h1>sml_tk patches</h1>
+
+<p>sml_tk is a package for Standard ML that interfaces with Tcl/Tk allowing
+Tk GUIs to be created in SML. Documentation and source code are available
+from the <a href="http://www.informatik.uni-bremen.de/~cxl/sml_tk">official
+web site</a>.</p>
+
+<p>The software does not seem to have been maintained since 2001. However,
+after some minor patches, it is still a viable and useful GUI package for
+SML.</p>
+
+<p><em>Win32:</em> it is necessary to use the <a href="http://www.smlnj.org/dist/working/110.60/NOTES/CYGWININSTALL">cygwin</a>
+version of SML/NJ on Windows because the standard version does not include a
+POSIX module. I have not tried using Poly/ML or compiling the
+tcl/tk-interface into sml_tk.</p>
+
+<p>Some updated patches and instructions are provided by 
+   <a href="http://www.asahi-net.or.jp/~hz7k-nzw/sml_tk/index.html">Kenji Nozawa</a>.</p>
+
+<!--************************************************************-->
+<h2>Patches</h2>
+
+<h3>for SML/NJ working versions prior to 110.61</h3>
+
+<p>There is a bug in the POSIX.TTY routines of SML/NJ 110.59 and 110.60 that
+causes a segmentation fault when running sml_tk. It is fixed by either of
+these patches: <a href="smlnj-110.59-ttyfix.patch">110.59</a>, <a href="smlnj-110.60-ttyfix.patch">110.60</a>. They are already included in
+the FreeBSD lang/sml-nj-devel port. <em>These patches were incorporated into
+version 110.61.</em></p>
+
+<p>The following expressions will cause a segmentation fault on an unpatched
+version of SML/NJ 110.58/59/60:</p>
+
+<pre>
+<code>val {cc, ...} = Posix.TTY.fieldsOf (Posix.TTY.getattr Posix.FileSys.stdin);</code>
+<code>val cc' = Posix.TTY.V.update (cc, []);</code>
+</pre>
+
+<p>The <code>config/install.sh</code> script only rebuilds the run-time
+library if it cannot be found in <code>bin/.run/run.$ARCH-$OPSYS</code>.
+This file should thus be deleted <em>after</em> applying the patch, and
+<em>before</em> rebuilding with <code>config/install.sh</code> (e.g.
+<code>rm bin/.run/run.x86-cygwin</code>).</p>
+
+<p>Reproducing and then fixing the bug on a Unix system:</p>
+<ol>
+<li>Download the 110.60 version of <samp>config.tgz</samp></li>
+<li><samp>gunzip -c config.tgz | tar xf -</samp></li>
+<li><samp>./config/install.sh</samp></li>
+<li><samp>./bin/sml</samp></li>
+<li>Evaluating the two expressions given above gives: <samp>./bin/sml: Fatal
+error -- unexpected fault, signal = 11, code = 0xb771e746</samp></li>
+<li><samp>patch -p0 &lt; smlnj-110.60-ttyfix.patch</samp></li>
+<li><samp>rm bin/.run/run.x86-linux</samp></li>
+<li><samp>./config/install.sh</samp></li>
+<li><samp>./bin/sml</samp></li>
+<li>Repeating step 5 should no longer give an error.</li>
+</ol>
+
+<h3>for sml_tk itself</h3>
+
+<p>Some minor adjustments to the sml_tk source are required for it to
+compile on SML/NJ 110.59. This <a href="sml_tk-patches-20080113.tar.gz">patch</a> contains the necessary
+adjustments plus some other minor fixes and extensions.</p>
+
+<h2>Walk through to demo</h2>
+
+<ol>
+<li>Install a patched version of SML/NJ 110.59 or 110.60.</li>
+<li>Download and untar the sml_tk <a href="http://www.informatik.uni-bremen.de/~cxl/sml_tk/smltk.tar.gz">sources</a></li>
+<li>Download and untar the <a href="sml_tk-patches-20080113.tar.gz">patches</a></li>
+<li><samp>patch -p0 &lt; sml_tk-patches/sml_tk-3.0.20080113.patch</samp></li>
+<li>Optional: <samp>patch -p0 &lt; sml_tk-patches/config-showColor.patch</samp></li>
+<li>Optional: <samp>patch -p0 &lt; sml_tk-patches/litem.patch</samp></li>
+<li>Optional: <samp>patch -p0 &lt; sml_tk-patches/widget_tree.sml-scrollbar.patch</samp></li>
+<li>Change into the <samp>sml_tk</samp> directory.</li>
+<li>Edit the Makefile setting values for:
+  <ol>
+    <li><samp>SMLTK_LIB</samp>: Path to the sml_tk/lib subdirectory, e.g.:
+        <samp>${PWD}/lib</samp></li>
+
+    <li><samp>SMLTK_TCL</samp>: Path to the wish executable, e.g.:
+        <samp>/usr/local/bin/wish8.4</samp></li>
+
+    <li><samp>SMLTK_BINARY</samp>: Path to create an sml_tk heap, e.g.:
+        <samp>./sml-tk</samp></li>
+
+  </ol></li>
+<li>Run <samp>make</samp></li>
+<li>Run the newly created heap, e.g. <samp>cd src; ./sml-tk</samp></li>
+<li>Try one of the examples: <samp>BigEx.go ();</samp> (which should start a
+small demo in a new window).</li>
+</ol>
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2010-04-20 11:02:54 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                    <ul>
+                      <li>
+                        <a href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                      </li>
+                      <li>
+                        <a href="sml-fxp.html">Fxp patches</a>
+                      </li>
+                      <li>
+                        <a href="smlnj-reactive.html">SML/NJ Reactive</a>
+                      </li>
+                      <li>
+                        <span class="active">
+                          <a href="sml_tk.html">sml_tk patches</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="sml.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Standard ML</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                  <a class="dropdown-item button" href="sml-fxp.html">Fxp patches</a>
+                  <a class="dropdown-item button" href="smlnj-reactive.html">SML/NJ Reactive</a>
+                  <a class="dropdown-item button" href="sml_tk.html">sml_tk patches</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">sml_tk patches</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/sml.html",
+            "name": "Standard ML"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/sml_tk.html",
+            "name": "sml_tk patches"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

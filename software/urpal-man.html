@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Urpal man page</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Manual page for Urpal" />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="up" title="Urpal" href="urpal.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+    <div class="manpage">
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+UNTITLED                             LOCAL                            UNTITLED
+
+
+</PRE>
+<H2>NAME</H2><PRE>
+     <span class="bold">urpal</span> -- manipulate Uppaal models from the command-line
+
+
+</PRE>
+<H2>SYNOPSIS</H2><PRE>
+     <span class="bold">urpal</span> [<span class="bold">-h</span> <span class="bold">-v</span> <span class="bold">-t</span>] [<span class="bold">-i</span> <span class="underline">file</span>] [<span class="bold">-o</span> <span class="underline">file</span>] [<span class="bold">-e</span> <span class="underline">commands</span>] [<span class="bold">-f</span> <span class="underline">scriptfile</span>]
+           [<span class="bold">-s</span> <span class="underline">settings</span>] [<span class="bold">-c</span> <span class="underline">configfile</span>]
+     <span class="bold">urpal</span> [<span class="bold">-s</span> <span class="underline">settings</span>] [<span class="bold">-c</span> <span class="underline">configfile</span>] [<span class="bold">--showconfig</span>]
+     <span class="bold">urpal</span> [<span class="bold">-i</span> <span class="underline">file</span>] [<span class="bold">-o</span> <span class="underline">file</span>] [<span class="bold">-s</span> <span class="underline">settings</span>] [<span class="bold">-c</span> <span class="underline">configfile</span>] [<span class="bold">--testflip</span>]
+
+
+</PRE>
+<H2>DESCRIPTION</H2><PRE>
+     Urpal is your pal for Uppaal.  Urpal parses an XML file containing timed
+     automaton templates, performs manipulations specified a simple command
+     language, and finally writes the results back to file.  The prime feature
+     is the ability to construct a testing automaton for determining trace
+     inclusion for a restricted class of timed automata.  Urpal is also able
+     to: duplicate automata; create automata to ready to accept all synchroni-
+     sations on a set of channels; prune transitions based on synchronising
+     action; conflate, drop and rename locations; and scale graphical repre-
+     sentations.
+
+     When constructing test automata, most, but not all, modelling features
+     are supported.  Automata must be deterministic, the tool does not check
+     this assumption, and every transition must be labelled.  Urgent locations
+     are expanded by adding an additional clock and invariant constraint.
+     Urgent channels and shared variables are addressed using the construc-
+     tions of Jensen, Larsen and Skou (refer <span class="underline">SEE</span> <span class="underline">ALSO</span>).  Committed locations
+     and broadcast channels are not handled (warnings are displayed).  Certain
+     combinations of universal quantifiers, selection bindings, and channel
+     arrays are rejected (refer Bourke and Sowmya, <span class="underline">SEE</span> <span class="underline">ALSO</span>).
+
+   <span class="bold">Settings</span>
+     Several tool parameters can be specified via configuration files.  Urpal
+     checks for configuration files in order: <span class="underline">INSTALLPREFIX/etc/urpalrc</span>,
+     <span class="underline">$HOME/.urpalrc</span>, and <span class="underline">$CWD/urpalrc</span>.  Settings are specified as name=value
+     pairs.  Named hierarchical sections are written in the form
+           section_name { ... }
+     Comments follow the conventions of C, except that they may be nested,
+     that is single line comments are written after a // and multi-line com-
+     ments between /* and */.  Paths and strings are written between double
+     quotes.  The available settings are
+     <span class="bold">dtd_path</span>
+             Path to the <span class="underline">flat-1</span><span class="bold">_</span><span class="underline">1.dtd</span> file giving the Uppaal Document Type
+             Definition.  If not given, Urpal attempts to fetch the necessary
+             information from the network at every run.
+     <span class="bold">max_label_width</span>
+             The wrapping length, as a number of characters, for transition
+             labels.
+     <span class="bold">max_declaration_width</span>
+             The wrapping length, as a number of characters, for declarations.
+     <span class="bold">new_color</span>
+             The color, in #RRGGBB format, to use for new locations and tran-
+             sitions when there is not a more specific setting.
+     <span class="bold">error_color</span>
+             The color to use for the Err location added by the maketest oper-
+             ation, and for transitions to that location.
+     <span class="bold">urgent_chanloc_color</span>
+             The color to use for locations and transitions added by the
+             maketest operation when handling urgent channels.
+     <span class="bold">split_shift_old,</span> <span class="bold">split_shift_new</span>
+             sections containing x and y entries.  When a location is `split'
+             as part of the maketest urgent channel construction, these param-
+             eters specify how far to shift the two components from the origi-
+             nal location.  By default, the original location is left in place
+             and the urgency testing location is positioned automatically, but
+             often the result is not very pleasing.
+     <span class="bold">tabulate_shift</span>
+             A section containing x and y entries, specifying where to locate
+             the results of tabulate, relative to the transition source loca-
+             tion.
+     <span class="bold">graphviz</span>
+             Contains two subentries
+             <span class="bold">path</span>    Locates the <B>graphviz(7)</B> installation directory, which
+                     must contain a <span class="underline">bin</span> subdirectory.
+             <span class="bold">engine</span>  Specifies which layout algorithm to use, either <B>fdp(1)</B> or
+                     <B>neato(1)</B>.  One will often give a better result than the
+                     other for a given automaton.
+     <span class="bold">debug</span>   Enable debugging output. 0=all, 1=very detailed, 2=detailed,
+             3=outline, 4=none.
+
+   <span class="bold">Command</span> <span class="bold">language</span>
+     The environment is a set of name/value pairs.  It is initialized from the
+     Uppaal model file, by creating an entry for each template, a <span class="underline">channels</span>
+     entry containing all of the global channel names, and a <span class="underline">variables</span> entry
+     containing all of the (non-const, non-clock) global variable names.  When
+     command evaluation is complete, all templates in the environment are
+     written to the output model file.  Command names cannot be used variable
+     identifiers.  Each command must be terminated with a semi-colon.
+
+     The basic commands are
+     <span class="bold">help</span>    Show a list of expression operators.
+     <span class="bold">list</span>    Prints out all template names, one per line.
+     <span class="bold">show</span>    Prints out all variable names and values.
+     <span class="bold">show</span> <span class="underline">id</span>
+             Prints out the value of the specified variable.
+     <span class="bold">id</span> <span class="bold">=</span> <span class="underline">expr</span>
+             Evaluates the expression and assigns the result to the given
+             variable.  This command can be used to duplicate templates, by
+             assigning them to a new name.
+     <span class="bold">drop</span> <span class="underline">expr</span>
+             Removes the given identifier from the environment.
+     <span class="bold">writegraphics</span> (<span class="underline">expr</span>, <span class="underline">path</span>, <span class="underline">PS</span> | <span class="underline">Dot</span> | <span class="underline">SVG</span>)
+             Rudimentary graphics output.  The expression must evaluate to a
+             template, whose depiction will be written to the given path in
+             the specified format (Postscript, Graphviz dot, or Scalable Vec-
+             tor Graphics format).
+     <span class="bold">quit</span>    End an interactive terminal session.
+     <span class="underline">expr</span>          Displays the result of evaluating the expression. Does not
+                   alter the environment.
+
+     All expressions have one of these types
+     <span class="bold">template</span>
+             Templates are read from, and written back into, Uppaal model
+             files.
+     <span class="bold">nameset</span>
+             Names of locations or channels which are written between braces
+             and separated by commas, e.g.  { a, b, c}.  It is not possible to
+             specify individual elements of channel arrays, also operators
+             like <span class="bold">names</span> and <span class="bold">channels</span> over approximate by returning the array
+             name whenever a single element is referenced.
+     <span class="bold">actionset</span>
+             When naming channels, a limiting input or output direction may be
+             specified after a name if the set is enclosed in bar-braces, e.g.
+             {| a!, b, c? |}.  Name sets are automatically coerced into action
+             sets as required.
+     <span class="bold">namemap</span>
+             Specify functions from names to other names, e.g.  { a -&gt; b, c -&gt;
+             a, b &lt;-&gt; d }.  Any name not given is mapped to itself.  A double
+             arrow indicates a swap, i.e.  { b &lt;-&gt; d } is shorthand for { b -&gt;
+             d, d -&gt; b }.
+
+     <span class="bold">actionmap</span> <span class="bold">map</span>
+             Specify functions from actions to other actions, e.g.  {| a! -&gt;
+             b?, a? -&gt; b!, c? &lt;-&gt; c! |}.  Name maps are automatically coerced
+             into action maps as required.
+
+     Several operators are available for constructing expressions
+     <span class="bold">acceptall</span>(<span class="underline">actionset</span>)
+                       Create an automaton that is always ready to synchronise
+                       on the given actions.
+     <span class="bold">actions</span>(<span class="underline">template</span>)
+                       Gives an actionset of all actions occurring in the tem-
+                       plate.
+     <span class="bold">channels</span>(<span class="underline">template</span>)
+                       Gives a nameset of all channels used within the tem-
+                       plate (regardless of direction).
+     <span class="bold">conflate</span>(<span class="underline">template</span>, <span class="underline">namemap</span>)
+                       For each n -&gt; n' in the namemap, all transitions to or
+                       from n are shifted to n', and the former is removed.
+     <span class="bold">drop</span>(<span class="underline">template</span>, <span class="underline">nameset</span>)
+                       Removes all the named locations.
+     <span class="bold">maketest</span>(<span class="underline">template</span>, <span class="underline">nameset</span>, <span class="underline">nameset</span>)
+                       Constructs an automaton for testing trace inclusion
+                       against the given set of channel names and variable
+                       names respectively.
+     <span class="bold">maketest</span>(<span class="underline">template</span>)
+                       Defaults to the channels and globals variables, respec-
+                       tively.
+     <span class="bold">multisecttime</span>(<span class="underline">template</span>, <span class="underline">factor</span>)
+                       Multiply clock comparison expressions in <span class="underline">template</span> by
+                       <span class="underline">factor</span>, which may be either an integer literal or a
+                       variable name.
+     <span class="bold">parameters</span>(<span class="underline">template</span>)
+                       Returns a nameset of non-const parameter names.
+     <span class="bold">renamelocs</span>(<span class="underline">template</span>, <span class="underline">namemap</span>)
+                       Simultaneous renaming of locations.
+     <span class="bold">renametrans</span>(<span class="underline">template</span>, <span class="underline">actionmap</span>)
+                       Simultaneous renaming of action labels.
+     <span class="bold">scale</span>(<span class="underline">template</span>, <span class="underline">float</span>)
+                       Scale the graphical representation of a template by the
+                       given amount.
+     <span class="bold">setinitial</span>(<span class="underline">template</span>, <span class="underline">name</span>)
+                       Set the initial state.
+     <span class="bold">split</span>(<span class="underline">template</span>, <span class="underline">actionmap</span>)
+                       For each a -&gt; a' split transitions labelled with a into
+                       two transitions connected via a committed location.
+                       The second transition will synchronise on a'.  Channel
+                       arrays are not supported.
+     <span class="bold">tabulate</span>(<span class="underline">template</span>, <span class="underline">nameset</span>)
+                       Make a table of labels for all transitions leaving or
+                       entering a location in the given set.
+     <span class="underline">template</span> <span class="bold">\</span> <span class="underline">actionset</span>
+                   Automaton restriction: removes all transitions labelled by
+                   an action in the set, and then any unconnected locations.
+     <span class="underline">set</span> <span class="bold">\</span> <span class="underline">set</span>     Set difference.
+     <span class="underline">set</span> <span class="bold">++</span> <span class="underline">set</span>    Set union.
+
+   <span class="bold">Testflip</span> <span class="bold">mode</span>
+     The option <span class="bold">--testflip</span> exercises the flip function that underlines the
+     maketest feature.  It reads an input file containing multiple sections
+           1.   A comment section describing the test.
+           2.   Declarations in the Uppaal description language.
+           3.   Zero or more transitions, each containing three lines:
+                1.   selection bindings,
+                2.   synchronisation expression (all transitions must synchro-
+                     nise on the same channel or array name),
+                3.   guard expression.
+                Lines should be left blank when empty.
+     Sections are separated by a line containing two hyphens `--'.
+
+     e.g.,
+           Simple test with selects
+           --
+           clock c1;
+           chan c[5][int[2,10]];
+           --
+           i : int[0,4], j : int[2,10]
+           c[i][j]?
+           c1&gt;4
+           --
+           i : int[0,4], j : int[2,10]
+           c[i][j]?
+           c1 &lt;= 3
+
+
+</PRE>
+<H2>OPTIONS</H2><PRE>
+     <span class="bold">-h</span>      Display help for command-line options.
+
+     <span class="bold">-v</span>      Show the version number.
+
+     <span class="bold">-t</span>      Start an interactive terminal.  This is the default if no other
+             commands are given.
+
+     <span class="bold">-i</span> <span class="underline">file</span>
+             Uppaal model file, in xml format, for input.
+
+     <span class="bold">-o</span> <span class="underline">file</span>
+             Path to write the resultant Uppaal model file.
+
+     <span class="bold">-e</span> <span class="underline">commands</span>
+             Given a sequence of commands directly.
+
+     <span class="bold">-f</span> <span class="underline">scriptfile</span>
+             Execute a sequence of commands from a file.
+
+     <span class="bold">-s</span> <span class="underline">settings</span>
+             Specify configuration settings directly.
+
+     <span class="bold">-c</span> <span class="underline">configfile</span>
+             Apply the given configuration file.
+
+     <span class="bold">--showconfig</span>
+             Show the current configuration options.
+
+     <span class="bold">--testflip</span>
+             Enter a special mode for executing flip test scripts.
+     Command and configuration options are executed in sequence from left to
+     right, multiple options may be given.  Only a single input and output
+     file may be specified.
+
+
+</PRE>
+<H2>EXAMPLES</H2><PRE>
+     List templates:
+           urpal -i model.xml -e 'list'
+
+     Construct the test automaton for a template P1:
+           urpal -i model.xml -o result.xml -e 'maketest(P1)'
+
+     Likewise, but exclude the a channel and make the result larger:
+           urpal -i model.xml -o result.xml -e 'maketest(scale(P1, 2.0))'
+
+
+</PRE>
+<H2>SEE ALSO</H2><PRE>
+     Timothy Bourke and Arcot Sowmya, <span class="underline">Tool</span> <span class="underline">support</span> <span class="underline">for</span> <span class="underline">verifying</span> <span class="underline">trace</span>
+     <span class="underline">inclusion</span> <span class="underline">with</span> <span class="underline">Uppaal</span>, <span class="underline">UNSW-CSE-TR-0723</span>, Technical Report, November 2007.
+
+     Mari<span class="bold">e</span>lle I.A. Stoelinga, <span class="underline">Alea</span> <span class="underline">Jacta</span> <span class="underline">est:</span> <span class="underline">Verification</span> <span class="underline">of</span> <span class="underline">probabilistic</span>
+     <span class="underline">real-time</span> <span class="underline">and</span> <span class="underline">parametric</span> <span class="underline">systems</span>, <span class="underline">PhD</span> <span class="underline">Thesis,</span> <span class="underline">Katholieke</span> <span class="underline">Universiteit,</span>
+     <span class="underline">Nijmegen</span>, April 2002.
+
+     Henrik Ejersbo Jensen, Kim Guldstrand Larsen, and Arne Skou, <span class="underline">Scaling</span> <span class="underline">up</span>
+     <span class="underline">Uppaal:</span> <span class="underline">Automatic</span> <span class="underline">verification</span> <span class="underline">of</span> <span class="underline">real-time</span> <span class="underline">systems</span> <span class="underline">using</span>
+     <span class="underline">compositionality</span> <span class="underline">and</span> <span class="underline">abstraction</span>, <span class="underline">Proc.</span> <span class="underline">6th</span> <span class="underline">int.</span> <span class="underline">sym.</span> <span class="underline">Formal</span> <span class="underline">Techniques</span>
+     <span class="underline">for</span> <span class="underline">Real-Time</span> <span class="underline">and</span> <span class="underline">Fault-Tolerance</span> <span class="underline">(FTRTFT)</span>, <span class="underline">Springer-Verlag</span>, 19-30,
+     September 2000.
+
+     <B>graphviz(7)</B>
+
+
+</PRE>
+<H2>AUTHORS</H2><PRE>
+     Timothy Bourke &lt;tim@tbrk.org&gt;
+
+
+</PRE>
+<H2>BUGS</H2><PRE>
+     The program has not yet undergone rigorous testing or review.  It is
+     still very much an experimental prototype.
+
+                               October 28, 2007
+</PRE>
+</div>
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2008-08-21 22:57:15 +0000</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                    <ul>
+                      <li>
+                        <span class="active">
+                          <a href="urpal-man.html">man page</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Urpal</li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">man page</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/urpal.html",
+            "name": "Urpal"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/urpal-man.html",
+            "name": "man page"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

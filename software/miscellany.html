@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Software Miscellany</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Miscellaneous scripts and notes" />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="FreeBSD" href="freebsd.html" />
+    <link rel="prev" title="Urpal" href="urpal.html" />
+    <link rel="up" title="Software" href="index.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+
+<!-- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -->
+<h1 id="matlabsimulink">Matlab/Simulink</h1>
+
+<h2 id="simulinktoeps">Producing eps files from Simulink models</h2>
+
+<dl>
+  <dt>Scenario</dt>
+  <dd><ul>
+      <li>Using <a href="http://www.mathworks.com/products/simulink/">Simulink</a>
+      for modelling dynamic systems.</li>
+
+      <li>Writing reports about those systems (using LaTeX, for instance).</li>
+  </ul></dd>
+
+  <dt>Problem</dt>
+  <dd>To automatically generate eps and pdf files from the model, all
+      its subsystems, and any graphs produced during its simulation.</dd>
+
+  <dt>Possible solution</dt>
+  <dd>This simple <a href="printmodel.m">matlab script</a>,
+      that uses ideas described across various websites and the Matlab/Simulink
+      user documentation.
+      The script is easily incorporated into a Makefile (see <a href="printmodel_Makefile">example</a>).</dd>
+</dl>
+
+<!-- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -->
+<h1 id="mutt">Mutt</h1>
+
+<h2 id="queryevolution">Querying evolution's address book</h2>
+
+<dl>
+  <dt>Scenario</dt>
+  <dd><ul>
+    <li>Using <a href="http://www.mutt.org">mutt</a> for sending email</li>
+    <li>But, <a href="http://www.gnome.org/projects/evolution">evolution</a>
+	for storing contacts</li>
+  </ul></dd>
+
+  <dt>Problem</dt>
+  <dd>Get addresses from evolution when sending messages from mutt.</dd>
+
+  <dt>Possible solution</dt>
+  <dd>This simple <a href="query_evolution_contacts.py">python script</a>,
+      that exploits the
+      <a href="http://live.gnome.org/Conduit/evolution-python">evolution library</a>,
+      using the ideas described
+      <a href="http://commandline.org.uk/python/three-useful-python-bindings/">here</a>.
+      (On Ubuntu: <code>sudo apt-get install python-evolution</code>.)</dd>
+</dl>
+
+<!-- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -->
+<h1 id="uppaal">Uppaal</h1>
+
+<h2 id="changesystem">Changing a system declaration</h2>
+
+<dl>
+
+  <dt>Scenario</dt>
+  <dd><ul>
+    <li><a href="http://www.uppaal.com">Uppaal</a> model-checker</li>
+  </ul></dd>
+
+  <dt>Problem</dt>
+  <dd>Change a system declaration from the command line so as to 
+  automatically generate different verification tasks.</dd>
+
+  <dt>Possible solution</dt>
+  <dd>This <a href="change_uppaal_system.xml">xslt stylesheet</a>.
+      It can be processed with <a href="http://xmlsoft.org/XSLT/xsltproc2.html">xsltproc</a>:
+<pre>
+xsltproc --stringparam system 'system Train, Gate;'        \
+         --novalid change_uppaal_system.xml inputmodel.xml \
+         &gt; outputmodel.xml
+</pre>
+  </dd>
+</dl>
+
+<!-- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -->
+<h1 id="vim">Vim</h1>
+
+<h2 id="checksender">Checking sender address</h2>
+
+<dl>
+
+  <dt>Scenario</dt>
+  <dd><ul>
+    <li><a href="http://www.mutt.org">mutt</a> email client</li>
+    <li><a href="http://www.vim.org">vim</a> editor</li>
+    <li>sending from more than one email account (e.g. separate personal and work
+    addresses)</li>
+  </ul></dd>
+
+  <dt>Problem</dt>
+  <dd>Emails are sometimes sent from an inappropriate address.</dd>
+
+  <dt>Possible solution</dt>
+  <dd>A simple <a href="checksenderaddress.vim">vim plugin script</a> that
+  checks the sender address, a database of personal contacts and offers a
+  choice of sender addresses if necessary. Further details are given inside
+  the script.</dd>
+
+</dl>
+
+<h2 id="otl2draft">Otl2draft</h2>
+
+<dl>
+  <dt>Requirement</dt>
+  <dd>
+    Convert outlines written with <a href="http://bike-nomad.com/vim/vimoutliner.html">The Vim Outliner</a>
+    into LaTeX drafts (or manipulate with Standard ML).
+  </dd>
+
+  <dt>Possible solution</dt>
+  <dd>A small program, otl2draft, that performs the conversion:
+    <ul>
+      <li><a href="https://github.com/tbrk/otl2draft/archive/otl2draft-1.0.0.tar.gz">source package</a>
+          (in Standard ML)</li>
+      <li><a href="https://github.com/tbrk/otl2draft">GitHub Repository</a></li>
+    </ul>
+  </dd>
+
+</dl>
+
+<h2 id="otlmarks">Otlmarks</h2>
+
+<dl>
+  <dt>Requirement</dt>
+  <dd>
+    Your web bookmarks are currently kept in the Google Chrome browser, but you
+    would prefer to use a
+    <a href="http://bike-nomad.com/vim/vimoutliner.html">Vim Outliner</a>
+    text file for more privacy, more convenient editing, and easier
+    synchronization (for example, using git).
+  </dd>
+
+  <dt>Possible solution</dt>
+  <dd>Use a small program, chromeotl, to convert your
+    <code>bookmarks.html</code> file into a <code>bookmarks.otl</code> file.
+    Delete your bookmarks from Chrome and use vim to store, search, synchronize,
+    and edit them instead.
+    Another small program, otlhtml, can turn the otl file into an html file
+    for easy use within any web browser. Both scripts are available on
+    <a href="https://github.com/tbrk/otlmarks">GitHub</a>.
+  </dd>
+</dl>
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2011-02-18 15:45:32 +0100</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <span class="active">
+                      <a href="miscellany.html">Miscellany</a>
+                    </span>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Miscellany</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/miscellany.html",
+            "name": "Miscellany"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

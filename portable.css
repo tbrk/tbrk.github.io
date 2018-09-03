@@ -1,0 +1,165 @@
+/*
+   For iPhone stylings, see:
+        http://building-iphone-apps.labs.oreilly.com/ch02.html
+ */
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+img {
+    max-width: 90%;
+}
+
+div#container {
+    text-align:center;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+div#menu {
+    float: clear
+    background-color: #0066cc;
+    border:none;
+    font-family:sans-serif;
+    text-align:left;
+    margin-top: 5em;
+    padding: 0;
+    padding-bottom: 5px;
+}
+
+div#menu h2 {
+    background-color: #ccc;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+    color: #222;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+
+    margin: 0;
+    text-shadow: 0px 1px 0px #fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#999));
+}
+
+div#menu ul {
+    list-style: none;
+    margin: 10px;
+    padding: 0;
+}
+
+div#menu ul li a {
+    background-color: white;
+    border: 1px solid #999999;
+    color: #222222;
+    display: block;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: -1px;
+    padding: 12px 10px;
+    text-decoration: none;
+}
+
+div#menu ul li:first-child a {
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+}
+div#menu ul li:last-child a {
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+}
+
+/* specialise sub menus */
+div#menu ul li ul {
+    margin: 0px;
+    padding-left: 15px;
+    border-left: thin dotted #999999;
+}
+div#menu ul li ul li a {
+}
+div#menu li ul li:first-child a {
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+}
+div#menu li ul li:last-child a {
+    -webkit-border-bottom-left-radius: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+}
+
+
+
+div#menu span.nolink a {
+    background-color: lightgray;
+}
+
+div#menu span.active a {
+    background-color: orange;
+}
+
+div#content {
+    text-align:left;
+}
+
+div.photocolumns {
+    font-family:sans-serif;
+    color:#000;
+    clear:both;
+}
+
+div.photocolumns div.left {
+    text-align:left;
+    padding-top:.5em;
+    padding-bottom:1em;
+}
+
+#address {
+    font-family:sans-serif;
+    color:#000;
+}
+
+#address #right {
+    padding-top:1em;
+}
+
+div.field span.value {
+    padding-left:.5em;
+}
+
+div.figure {
+    border: thin dotted gray;
+    margin: 1em;
+}
+
+div.figure div.subleft {
+    text-align:center;
+}
+
+div.figure div.subright {
+    text-align:center;
+    padding-top: 2em;
+}
+
+div.linkcolumns {
+}
+
+div.news                {
+                          width: 80%;
+                        }
+div.news dl             {
+                        }
+div.news dt             {
+                          display: block;
+                          padding-top: 2ex;
+                        }
+div.news dd             {
+                          display: inline;
+                        }
+
+div#footer              {
+                          margin-top: 2em;
+                          margin-bottom: 2em;
+                        }
+

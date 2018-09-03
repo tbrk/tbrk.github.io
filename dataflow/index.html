@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Synchronous Dataflow Programming</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Links to information on synchronous dataflow programming." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="last" title="Esterel" href="../esterel/index.html" />
+    <link rel="next" title="Esterel" href="../esterel/index.html" />
+    <link rel="up" title="Synchronous" href="../synchronous.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta name="keywords" content="dataflow, synchronous languages, lucid synchrone" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+
+<h1>Synchronous Dataflow Programming</h1>
+
+<h2 id="zelus">Zélus</h2>
+
+<p>Developed together with
+   <a href="http://www.di.ens.fr/~pouzet">Marc Pouzet</a>.</p>
+
+<p>Zélus is a first-order synchronous dataflow programming language (without
+  a clock calculus) extended with Ordinary Differential Equations (ODEs).
+  The ODEs permit the modelling of (a class of) physical systems. They can
+  be composed, in a disciplined and type-checked way, with discrete
+  programs, meaning that they can be reset and used within control strutures
+  like automata and conditional branches.</p>
+
+<p>Our work shows how to type and compile hybrid programs for simulation
+  using a numerical solver (like
+  <a href="http://computation.llnl.gov/casc/sundials/main.html">Sundials
+    CVODE</a>).
+  We make many experiments in the popular and powerful
+  <a href="http://www.mathworks.com/products/simulink/">Simulink</a> software
+  from <a href="http://www.mathworks.com">MathWorks</a> to better
+  understand the design space and the strengths and weaknesses of existing
+  languages.</p>
+
+<p>Zélus has its own <a href="http://zelus.di.ens.fr/">website</a> with a
+  list of <a href="http://zelus.di.ens.fr/examples.html">example</a>
+  code.
+  It is described in several papers, concentrating on</p>
+
+<ul class="lessgap">
+  <li>basic typing and compilation
+      (<a href="../papers/abstracts.html#lctes11">LCTES2011</a>),</li>
+  <li>typing and compiling automata
+      (<a href="../papers/abstracts.html#emsoft11">EMSOFT2011</a>),</li>
+  <li>the underlying semantics
+      (<a href="../papers/abstracts.html#jcss12">JCSS2012</a>),</li>
+  <li>implementation and use
+      (<a href="../papers/abstracts.html#hscc13">HSCC2013</a>),</li>
+  <li>the analysis of causality
+      (<a href="../papers/abstracts.html#hscc14">HSCC2014</a>), and,</li>
+  <li>application to SCADE Suite
+      (<a href="../papers/abstracts.html#cc2015">CC2015</a>).</li>
+</ul>
+
+<h2 id="lucidsynchrone">Lucid Synchrone</h2>
+
+<p>
+  <a href="http://www.di.ens.fr/~pouzet/lucid-synchrone">Lucid Synchrone</a>
+  is a higher-order functional language with infinite sequences as primitive
+  values.
+  It includes features normally associated with imperative languages,
+  like automata and signals.
+  It is developed by <a href="http://www.di.ens.fr/~pouzet">Marc Pouzet</a>.
+</p>
+
+<p>
+  These pages include
+</p>
+
+<ul class="lessgap">
+  <li>A <a href="../distfiles/lucid-synchrone_3.0.0b-1.0-1_i386.deb">.deb
+      package</a> for installing Lucid Synchrone on Ubuntu.</li>
+</ul>
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2015-05-19 09:16:15 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="../software/index.html">Software</a>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+                <ul>
+                  <li>
+                    <span class="active">
+                      <a href="index.html">Dataflow</a>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="../esterel/index.html">Esterel</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="../synchronous.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Synchronous</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="../dataflow/index.html">Dataflow</a>
+                  <a class="dropdown-item button" href="../esterel/index.html">Esterel</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Dataflow</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/synchronous.html",
+            "name": "Synchronous"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/dataflow/index.html",
+            "name": "Dataflow"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

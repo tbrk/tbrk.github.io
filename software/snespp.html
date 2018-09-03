@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - snespp</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="snespp module for FreeBSD" />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="up" title="FreeBSD" href="freebsd.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+    <h1>snespp</h1>
+
+    <p>snespp is a FreeBSD kernel module for Super NES/Famicon controllers
+    interfaced via a parallel port. It appears as a keyboard: buttons on the
+    controllers send key strokes to the operating system. snespp works under
+    both the system console and X windows, using the microseq interface to
+    reduce overhead.</p>
+
+    <p>The module and source are available under a revised <a href="bsdlicense2008.html">BSD license</a> from <a href="https://github.com/tbrk/snespp/archive/snespp-1.0.0.tar.gz">here</a>
+    (or on <a href="https://github.com/tbrk/snespp">GitHub</a>).
+    It used to be a part of the FreeBSD ports collection (emulators/snespp),
+    but I no longer have the time to maintain it.</p>
+
+    <div class="manpage">
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+<B>SNESPP(4)</B>                BSD Kernel Interfaces Manual                <B>SNESPP(4)</B>
+
+
+</PRE>
+<H2>NAME</H2><PRE>
+     <span class="bold">snespp</span> -- parallel port interface for Super Nintendo controllers
+
+
+</PRE>
+<H2>SYNOPSIS</H2><PRE>
+     <span class="bold">kldload</span> <span class="bold">snespp.ko</span>
+
+
+</PRE>
+<H2>DESCRIPTION</H2><PRE>
+     The <span class="bold">snespp</span> interface communciates with Super Nintendo (SNES) controllers
+     through the parallel port. It presents itself as a keyboard to the rest
+     of the operating system. Buttons pushed on a controller are sent as keys
+     to the system console or X window session. The device file can also be
+     opened and read as a <B>joy(4)</B> joystick.
+
+   <span class="bold">Hardware</span> <span class="bold">Interface</span>
+     The controller has 7 pins, of which 5 are used:
+
+                       +---------+-------
+                       | P C L D | X X G )
+                       +---------+-------
+
+     <span class="underline">P</span>: power, <span class="underline">C</span>: clock, <span class="underline">L</span>: latch, <span class="underline">D</span>: data, <span class="underline">G</span>: ground.
+
+     The controller contains chips that sample the state of all buttons when
+     <span class="underline">latch</span> is asserted. The button states are transmitted serially on the <span class="underline">data</span>
+     line in response to pulses on the <span class="underline">clock</span> signal.
+
+     The controller signals may be connected to a parallel port as follows:
+
+           <span class="bold">pin#</span>    <span class="bold">function</span>    <span class="bold">controller</span>
+           2       d0          clock
+           3       d1          latch
+           4-9     da2-7       power
+           16-19   gnd         ground
+           10      nAck        <B>data(1)</B>
+           11      Busy        <B>data(3)</B>
+           12      PaperEnd    <B>data(2)</B>
+           13      Select      <B>data(4)</B>
+           15      nError      <B>data(5)</B>
+
+     The power pins (da2-7) must be connected to the controller via diodes
+     (such as 1N4148), with the cathode (the end with the band) toward the
+     controller. The others may be connected directly. Multiple controllers
+     share signals except for the <span class="underline">data</span> lines which are numbered in the table
+     above. The voltage swing of parallel port pins in many laptops is insuf-
+     ficient to trigger a controller. Additional circuitry is required.
+
+   <span class="bold">Communication</span> <span class="bold">Protocol</span>
+     The controller state is sampled and communicated in response to the
+     sequence:
+           1.   drive <span class="underline">latch</span> high for 12usec,
+           2.   wait 6usec then lower <span class="underline">clock,</span>
+           3.   sample <span class="underline">data,</span>
+           4.   wait 6usec then raise <span class="underline">clock,</span>
+           5.   repeat another 11 times from step 2.
+
+     The <span class="bold">snespp</span> driver implements the sequence using <B>microseq(9)</B>.  It is
+     repeated every 16.6msec (60Hz) when the driver is active.
+
+   <span class="bold">OS</span> <span class="bold">Interface</span>
+     By default the <span class="bold">snespp</span> driver registers itself as a keyboard. Make and
+     break events are generated as controller buttons are pushed and released
+     respectively. The table below shows which keys are sent for the first two
+     controllers.
+
+           <span class="bold">button</span>    <span class="bold">data(1)</span>    <span class="bold">data(2)</span>
+           B         b          z
+           Y         y          c
+           Select    p          s
+           Start     o          Enter
+           Up        q          KP8
+           Down      w          KP2
+           Left      e          KP4
+           Right     u          KP6
+           A         a          KP+
+           X         x          KP0
+           L         l          1
+           R         r          2
+
+     The controller should be automatically attached by <B>kbdmux(4)</B>.
+
+     It is also possible to access the <B>data(1)</B> controller using the interface
+     described in <B>joy(4)</B> by opening and reading from <span class="underline">/dev/snespp0</span>.  In this
+     case the <span class="underline">Y</span> button is treated as button 1 and the <span class="underline">B</span> button as button 2.
+     The other buttons are ignored. The driver does not support the Linux joy-
+     stick interface (devel/linux-js).
+
+
+</PRE>
+<H2>IMPLEMENTATION</H2><PRE>
+     The serial protocol runs over <B>ppbus(4)</B> using efficient <B>microseq(9)</B>
+     sequences. A kernel thread executes the communication protocol at regular
+     intervals. It compares alternating snapshots of the button states to
+     determine which push and release events have occurred. Events are queued
+     into a circular buffer. Every six cycles a <B>taskqueue(9)</B> task is queued to
+     clear the buffer.
+
+     The buffer clearing task executes the keyboard callback function which
+     polls the keyboard interface for key events. Key events will be lost if
+     the clearing task does not operate frequently enough.
+
+
+</PRE>
+<H2>BUGS</H2><PRE>
+     Ideally the driver would stop polling the controller when not attached as
+     a keyboard. However, this feature is not currently possible due to a bug
+     in <B>kbdmux(4)</B>.
+
+
+</PRE>
+<H2>NOTES</H2><PRE>
+     By default the <span class="bold">snespp</span> driver polls for two controllers. Should more con-
+     trollers be connected the SNESPP_NUM_CONTROLLERS constant in &lt;<span class="underline">snespp.h</span>&gt;
+     should be changed and the driver recompiled.
+
+     The ppbus is held while the driver is active. Thus, the driver should be
+     unloaded before attaching another device to the parallel port.
+
+
+</PRE>
+<H2>SEE ALSO</H2><PRE>
+     <B>kbdcontrol(1)</B>, <B>joy(4)</B>, <B>ppbus(4)</B>, <B>microseq(9)</B>, <B>kbdmux(4)</B>.
+
+     The Jim Christy post to Sci.Electronics.
+
+
+</PRE>
+<H2>AUTHORS</H2><PRE>
+     Timothy Bourke &lt;tim@tbrk.org&gt;
+
+     Using protocol and wiring information from several www sites.
+
+FreeBSD 6.2                     March 25, 2007                     FreeBSD 6.2
+</PRE>
+</div>
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2010-12-21 20:28:13 +0100</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                    <ul>
+                      <li>
+                        <span class="active">
+                          <a href="snespp.html">snespp</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">FreeBSD</li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">snespp</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/freebsd.html",
+            "name": "FreeBSD"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/snespp.html",
+            "name": "snespp"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

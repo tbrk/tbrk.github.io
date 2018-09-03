@@ -1,0 +1,785 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Mnemododo: Android client for Mnemosyne</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Android client for reviewing Mnemosyne cards exported using Mnemogogo." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="last" title="development" href="mnemogogo-devel.html" />
+    <link rel="next" title="Mnemojojo" href="mnemojojo.html" />
+    <link rel="up" title="Mnemogogo" href="mnemogogo.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta name="keywords" content="Mnemosyne Project, Mnemogogo, Mnemododo, spaced repetition, mobile devices, phones, Android" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+
+<h1>Mnemododo: Android client for Mnemosyne</h1>
+
+<figure>
+  <img src="mnemododo.png" />
+  <div class="caption">
+      <a href="http://www.youtube.com/watch?v=okGSVcGz0co">View Mnemododo in action</a>
+  </div>
+</figure>
+
+<p>
+Mnemododo allows cards from Mnemosyne (a spaced-repetition flash-card
+program) to be reviewed on an Android-powered mobile phone.
+Mnemododo does not replace Mnemosyne: cards are still added, edited, and
+deleted using a desktop or laptop computer.
+Rather, cards for several days are exported using the
+<a href="mnemogogo.html">Mnemogogo plugin</a> and then transferred to a mobile
+phone where they can be reviewed on the go.
+When those cards have been reviewed, they are imported back into Mnemosyne,
+and more cards may be exported.
+</p>
+
+<p>
+Mnemododo has a few limitations:
+</p>
+
+<ul>
+<li>Cards cannot be edited (all editing is done through Mnemosyne).</li>
+</ul>
+
+<p>
+But many advantages:
+</p>
+
+<ul>
+    <li>support for HTML Markup,</li>
+    <li>support for Images including LaTeX markup (images are optimized for
+	viewing on a phone),</li>
+    <li>support for ‘map overlaying’,</li>
+    <li>support for sound,</li>
+    <li>statistics are still be contributed to the Mnemosyne project,</li>
+    <li>your cards are retained and managed in Mnemosyne,</li>
+    <li>the scheduling and grading algorithms are ported directly from
+	Mnemosyne,</li>
+    <li>the basic library has been tested and debugged over several months,
+	and,</li>
+    <li>the system does not require an internet connection.</li>
+</ul>
+
+<p>
+Mnemododo requires both the Mnemosyne application and the Mnemogogo plugin.
+They are both freely available for Windows, Mac, and Linux:
+</p>
+
+<ul>
+<li><a href="http://mnemosyne-proj.org/download-mnemosyne.php">Mnemosyne</a></li>
+<li><a href="http://www.mnemosyne-proj.org/plugins/mnemogogo">Mnemogogo plugin</a></li>
+</ul>
+
+<p>Thanks to the kind contributions of various people, Mnemododo is
+    currently localized for
+    Croatian (Jovica Popovic),
+    Danish (Henrik Skov Midtiby),
+    Dutch (Mirjam Bourke),
+    English,
+    French (Patrick Jayet and Jean-Baptiste Rouquier),
+    German (Karsten Breitig),
+    Hindi (Nishith Mohnot),
+    Polish (Mateusz Krzyzosiak),
+    Russian (Nikolay Chernov),
+    Simplified Chinese (<a href="http://goapk.com">goapk</a>),
+    Spanish (Paco Cubí),
+    and
+    Traditional Chinese (<a href="http://goapk.com">goapk</a>).
+    Please <a href="mailto:tim@tbrk.org">contact me</a> if you want
+    to translate it into your language.</p>
+
+<figure>
+  <a href="market://search?q=pname:org.tbrk.mnemododo">
+  <img id="qrcode" src="dodo-android-qrcode.png" alt="QR Code for Mnemododo at the Android Market." title="QR Code for Mnemododo at the Android Market." />
+  </a>
+  <div class="caption"><a href="http://market.android.com/details?id=org.tbrk.mnemododo">Download
+	  Mnemododo from the Android Market</a></div>
+
+  <div class="caption">
+      <a href="mnemogogo-notes.html#marketqa">Responses to comments on
+	  Android Market</a>
+  </div>
+</figure>
+
+<p>
+Mnemododo is open-source software
+(<acronym title="GNU Public License 2">GPL2</acronym>) but an official,
+signed, and compiled package is only available through the Android
+Marketplace for 3EUR.
+Think of it as buying me a beer!
+The price includes unlimited future updates.
+If you don't want to pay you can <a href="mnemogogo-devel.html">download the
+    source code</a> and build a package yourself, but I would encourage you to
+support my work through the modest fee.
+</p>
+
+<p>
+<a href="/distfiles/mnemododo-usa-1.0.2.apk">Mnemododo: USA States</a> is a
+demonstration version of Mnemododo with a fixed set of cards: the
+<a href="http://www.mnemosyne-proj.org/node/48">50 states</a>
+of the USA.
+It can be downloaded for free from both the Android Market and
+<a href="http://www.goapk.com/viewthread.php?tid=9908&amp;highlight=mnemododo">http://goapk.com</a> (Chinese),
+but it won't let you review your own cards.
+Besides using it to learn the names and locations of the states, you can use
+it to test whether Mnemododo will work on your phone.
+</p>
+
+<p>
+Care has been taken in the design and implementation of this software, but
+there may still be bugs. <strong>You use the software at your own risk and
+    without warranty!</strong>
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="phonestatus">Supported devices</h2>
+
+<p>
+Mnemododo should work on all Android phones with Android &gt;= 1.6.
+I have had specific confirmation for these devices:
+</p>
+
+<table class="table table-sm table-striped">
+  <tr><th colspan="2">Devices known to work</th></tr>
+
+  <tr><td class="key">Acer Liquid E</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">BlackBerry Playbook</td>
+      <td>Works (need to manually install apk file).</td></tr>
+
+  <tr><td class="key">HTC Desire</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">(Softbank) HTC Desire HD</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">HTC Evo 4G</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">HTC Legend</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">HTC Wildfire</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">HTC Wildfire S</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Huawei U8100</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Huawei U8350</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Maylong M-150 Tablet</td>
+      <td>Works (requires local apk file).</td></tr>
+
+  <tr><td class="key">Motorola Atrix</td>
+      <td>Works, but requires restricting the directory search to
+	  <code>/sdcard-ext</code></td></tr>
+
+  <tr><td class="key">Motorola Atrix 2</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Motorola Droid</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Motorola Droid Mini</td>
+      <td>Works but no <a href="mnemogogo.html#sync">USB Mass storage</a>.</td>
+  </tr>
+
+  <tr><td class="key">MyTouch 3G</td>
+      <td>Works.</td></tr>
+ 
+  <tr><td class="key">Nexus One</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Nexus 4</td>
+      <td>Works but <a href="mnemogogo.html#sync">allows MTP only</a> and some
+        may need to restrict the directory search to
+	<code>/sdcard/&lt;name-of-card-directory&gt;</code>.</td></tr>
+
+  <tr><td class="key">Pandigital Novel eReader</td>
+      <td>Works (requires ability to install apps and local apk file).</td></tr>
+
+  <tr><td class="key">Samsung Galaxy I 7500</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Samsung Galaxy Tab</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Samsung Galaxy S3</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Samsung Galaxy S4</td>
+      <td>Works but no <a href="mnemogogo.html#sync">USB Mass storage</a>.
+      </td></tr>
+
+  <tr><td class="key">Samsung Galaxy Spica</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Samsung Galaxy Young</td>
+      <td>Works but no <a href="mnemogogo.html#sync">USB Mass storage</a>.
+      </td></tr>
+
+  <tr><td class="key">Samsung Vibrant</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Sony PRS-T1 eReader</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Sony-Ericsson x10 mini pro</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">Sony Xperia S</td>
+      <td>Works.</td></tr>
+
+  <tr><td class="key">T-Mobile G1</td>
+      <td>Works.</td></tr>
+</table>
+
+<p>
+Even if your phone is not on this list, it will most likely work.
+But if you do try Mnemododo on a phone that isn't on this list then please
+let <a href="mailto:tim@tbrk.org">me</a> know how it goes.
+Thanks to everyone who already reported issues or success.
+</p>
+
+<p>
+Please be aware that many newer phones cannot be mounted as <em>USB mass
+storage devices</em>, which makes synchronization slightly <a href="mnemogogo.html#sync">more
+complicated</a> than usual but it is still possible.
+Unfortunately, the replacement protocol (MTP) is not as well supported
+by operating systems and libraries as the standard
+<code>open</code>/<code>write</code>/<code>close</code> functions which have
+existed for decades.
+</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="configuration">Initial configuration</h2>
+
+<ol class="stepbystep">
+  <li>
+  Follow the Mnemogogo instructions to
+  <a href="mnemogogo.html#install">install</a> and
+  <a href="mnemogogo.html#config">configure</a> Mnemogogo on
+  your PC, and to <a href="mnemogogo.html#use">export</a> some cards onto
+  your phone's SD-card.
+  </li>
+
+  <li>
+  Start Mnemododo on your phone.
+  The first time you do this, you will be prompted to accept a
+  <acronym title="End User License Agreement">EULA</acronym> (the GPL2),
+  and then the screen shown in <a href="#fig_3a">Figure 3(a)</a> will
+  appear.
+
+  <div class="container-fluid" id="fig_3">
+    <div class="row">
+      <div class="col-sm-6">
+	<figure>
+	  <a href="dodo-initial.png">
+	    <img id="fig_3a" src="dodo-initial-small.png" alt="Screenshot of the initial screen." title="Screen when starting Mnemododo for the first time" />
+	  </a>
+	  <figcaption>
+	      <span class="caption">(a)</span> Screen when starting
+	      Mnemododo for the first time
+	  </figcaption>
+	</figure>
+      </div>
+      <div class="col-sm-6">
+	<figure>
+	  <a href="dodo-settings.png">
+	  <img id="fig_3b" src="dodo-settings-small.png" alt="Screenshot of the settings screen." title="The settings screen" />
+	  </a>
+	  <figcaption>
+	      <span class="caption">(b)</span> The settings screen (<a href="dodo-settings-b.png">scrolled</a>).
+	  </figcaption>
+	</figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+	<figcaption class="figure-main-caption">
+	    <span class="caption">Figure 3:</span> Mnemododo initial and settings
+	    screens.
+	</figcaption>
+      </div>
+    </div>
+  </div>
+  </li>
+
+  <li>
+  Press the <kbd>Menu</kbd> button on your phone and choose
+  <kbd>Settings</kbd>.
+  The screen shown in <a href="#fig_3a">Figure 3(b)</a> will
+  appear.
+  There are several options, but only the first one, <kbd>Card
+      directory</kbd>, needs to be changed.
+  Selecting it should bring up a list of all the exported card
+  directories found on your phone.
+  If the option is disabled with the text ‘<i>(None were found on this
+  device!)</i>’, then Mnemododo has been unable to find any exported
+  directories: please check that the files exported by Mnemogogo are
+  accessible.
+  </li>
+
+  <li>
+  Press the <kbd>Back</kbd> button to return to the main screen.
+  Mnemododo will load your cards and you can start reviewing them.
+  </li>
+
+</ol>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="use">Daily Use</h2>
+
+<ol class="stepbystep">
+  <li>
+  Mnemododo begins by presenting scheduled cards one-by-one and then, when these
+  are finished, new or forgotten cards (those graded 0 or 1).
+  </li>
+
+  <li>
+  The question screen for a card is shown first, as in <a href="#fig_4">Figures 4(a) and (b)</a>.
+  The category of the current card is shown in the top-left corner, and the 
+  number of scheduled cards remaining is shown in the top-right corner.
+
+  <div class="container-fluid" id="fig_4">
+    <div class="row">
+      <div class="col-sm-6">
+	<figure>
+	  <a href="dodo-hinge-q.png">
+	    <img id="fig_4a" src="dodo-hinge-q-small.png" alt="Screenshot of a card with a text-based question." title="(a) Text-based question" />
+	  </a>
+	  <figcaption>
+	    <span class="caption">(a)</span> Text-based question
+	  </figcaption>
+	</figure>
+      </div>
+      <div class="col-sm-6">
+	<figure>
+	  <a href="dodo-bretagne-q.png">
+	      <img id="fig_4b" src="dodo-bretagne-q-small.png" alt="Screenshot of a card with a map-based question." title="(a) Map-based question" />
+	  </a>
+	  <figcaption>
+	    <span class="caption">(b)</span> Map-based question
+	  </figcaption>
+	</figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+	<figcaption class="figure-main-caption">
+	  <span class="caption">Figure 4:</span>
+	  Screenshots of questions in Mnemododo.
+	</figcaption>
+      </div>
+    </div>
+  </div>
+  </li>
+
+  <li>
+  Pressing the <kbd>Show answer</kbd> button shows the answer screen, as 
+  in <a href="#fig_5">Figures 5(a) and (b)</a>.
+
+  <div class="container-fluid" id="fig_5">
+    <div class="row">
+      <div class="col-sm-6">
+	<figure>
+	  <a href="dodo-hinge-a.png">
+	      <img id="fig_5a" src="dodo-hinge-a-small.png" alt="Screenshot of a card with a text-based answer." title="(a) Text-based answer" />
+	  </a>
+	  <figcaption>
+	    <span class="caption">(a)</span> Text-based answer (with images)
+	  </figcaption>
+	</figure>
+      </div>
+      <div class="col-sm-6">
+	<figure>
+	  <a href="dodo-bretagne-a.png">
+	      <img id="fig_5b" src="dodo-bretagne-a-small.png" alt="Screenshot of a card with a map-based answer." title="(a) Map-based answer" />
+	  </a>
+	  <figcaption>
+	    <span class="caption">(b)</span> Map-based answer
+	  </figcaption>
+	</figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+	<figcaption class="figure-main-caption">
+	  <span class="caption">Figure 5:</span>
+	  Screenshots of answers in Mnemododo.
+	</figcaption>
+      </div>
+    </div>
+  </div>
+  </li>
+
+  <li>
+  A card is graded by pressing one of the <kbd>0</kbd>–<kbd>5</kbd>
+  buttons (there is a setting to make these buttons larger if necessary).
+  The question screen of the next card is then presented.
+  </li>
+
+  <li>
+  Several additional features are available while reviewing cards.
+  They can be accessed by pressing the <kbd>Menu</kbd> key.
+  It is possible to:
+  <ul class="inlist">
+    <li>
+      skip the current card (it will be shown again next time Mnemododo is
+      restarted),</li>
+
+    <li>
+    to display statistics for the current card (see <a href="#fig_6a">Figure 6(a)</a>), and,
+    </li>
+
+    <li>
+    to display the schedule of cards remaining on your phone (see <a href="#fig6b">Figure 6(b)</a>).
+    </li>
+  </ul>
+
+  <div class="container-fluid" id="fig_6">
+    <div class="row">
+      <div class="col-sm-6">
+	<figure>
+	   <a href="dodo-statistics.png">
+	     <img id="fig_6a" src="dodo-statistics-small.png" alt="Screenshot of the statistics dialog box." title="(a) Statistics dialog box" />
+	   </a>
+	   <figcaption>
+	     <span class="caption">(a)</span> Statistics dialog box
+	   </figcaption>
+	</figure>
+      </div>
+      <div class="col-sm-6">
+	<figure>
+	  <a href="dodo-schedule.png">
+	    <img id="fig_6b" src="dodo-schedule-small.png" alt="Screenshot of the schedule dialog box." title="(b) Schedule dialog box" />
+	  </a>
+	  <figcaption>
+	    <span class="caption">(b)</span> Schedule dialog box
+	  </figcaption>
+	</figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+	<figcaption class="figure-main-caption">
+	  <span class="caption">Figure 6:</span> Schedule and statistics dialog boxes.
+	</figcaption>
+      </div>
+    </div>
+  </div>
+  </li>
+
+  <li>
+  When the number of exported cards runs out (the number of scheduled cards
+  remaining turns yellow the day before the exported cards expire, and red
+  when they have expired), or you want to review cards 
+  with Mnemosyne again, quit Mnemododo and import the updated statistics as 
+  described <a href="mnemogogo.html#use">on this page</a>.
+  </li>
+
+</ol>
+
+<h2 id="features">Other features</h2>
+
+<p>Mnemododo's user interface is intentionally minimalistic to help you concentrate on studying,
+   but there are a few tricks to access more advanced features.</p>
+
+  <figure id="fig_7">
+      <img id="fig_7" src="dodo-features.png" alt="Extra interface features." title="Extra features of the Mnemododo interface." class="img-fluid" />
+    <figcaption>
+      <span class="caption">Figure 7:</span>
+      Extra features of the Mnemododo interface.
+    </figcaption>
+  </figure>
+
+<p>Besides these features, you can also <em>long press</em> on the Category tick boxes to
+  enable or disable all categories at once. This is a useful way of selecting a particular
+  category: first disable them all and then select the one you want to study.</p>
+
+<p><strong>Styles.</strong>
+  The display of cards in Mnemododo is influenced by two <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets">.CSS</a>
+  files in the export directory. <code>DEFAULT.CSS</code> is overwritten by
+  Mnemogogo at each export—it captures some of the display settings
+  configured within Mnemosyne. You should not edit this file, but reading it
+  may help you understand how to create your own <code>STYLE.CSS</code>
+  file. A <code>STYLE.CSS</code> file is not touched by Mnemogogo, but is
+  read by Mnemododo. The html code in the
+  <code>CARDS</code> file is rendered directly: question text is enclosed in
+  a <code>&lt;div id="q"&gt;</code>, and answer text in a <code>&lt;div
+    id="a"&gt;</code>. The <a href="http://mnemosyne-proj.org/plugins/gogostyle">Gogostyle</a> plugin
+  can be used to wrap certain character sequences in named
+  <code>&lt;span&gt;</code> tags, which enables you, for example, to display
+  Chinese characters in a larger font or a different colour.
+</p>
+
+<!--
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>The initial configuration of Mnemododo is sometimes a bit tedious.
+  Mnemododo does not always manage to find the folder exported from
+  <a href="mnemogogo.html">Mnemogogo</a> and
+  <a href="mnemogogo.html#sync">copied onto a phone</a>.
+  </p>
+
+  <div class="figure" id="fig_8">
+      <img
+	id="fig_8"
+	src="dodo-flowchart.png"
+	alt="Flowchart describing the search for card directories."
+	title="The Mnemododo card search procedure." />
+    <br />
+    <div class="caption">
+      <span class="caption">Figure 8:</span>
+      The Mnemododo card search procedure.
+    </div>
+  </div>
+
+  <p><a href="#fig_8">Figure 8</a> outlines the logic used by Mnemododo to
+    decide where to look for exported cards. Three locations (paths) are
+    important:</p>
+
+<dl>
+  <dt>External storage path</dt>
+  <dd>The path to external storage is shown on the initial ‘No cards’ screen—in
+      <a href="#fig_3a">Figure 3(a)</a> it is <code>/mnt/sdcard</code>.</dd>
+
+  <dt>External files path</dt>
+  <dd>This path is only available under <strong>Android 2.2 (API level
+      8)</strong> or later. It is app-specific and usually relative to the <em>external
+      storage path</em> described above.
+    Mnemododo creates this location if it does not exist and shows its value
+    on the initial ‘No cards’ screen—in <a href="#fig_3a">Figure 3(a)</a> it is
+    <code>/Android/data/org.tbrk.mnemododo/files</code>. This is the
+    recommended place to put your exported cards, but note that it will
+    be deleted (and your cards too!) if Mnemododo is uninstalled.</dd>
+
+  <dt>Restricted path</dt>
+  <dd>The value of the <em>Restrict directory search</em> setting. This path
+    is sometimes useful for optimizing the search for card directories. It
+    is normally relative to the <em>external storage path</em>.</dd>
+</dl>
+  
+<p>If the <em>restricted path</em> is not empty, Mnemododo searches at both
+  this path and the <em>external files path</em>.</p>
+
+<p>If the <em>restricted path</em> is empty, Mnemododo searches at the
+  <em>external files path</em>. If it finds anything, it looks no further,
+  otherwise, it searches the entire <em>external storage path</em>, which
+  may take quite a long time, and which may or may not succeed depending on
+  the model of the phone, the version of android installed, and the contents
+  of the external storage.</p>
+  
+<p>If all else fails, there is also a free app called <a
+    href="https://play.google.com/store/apps/details?id=org.tbrk.mnemododo.tester">Mnemododo:
+    Tester</a> that can (sometimes) help diagnose initial configuration
+    problems by producing a log file of the search for card directories.
+    These log files are often very helpful, but be aware that they may contain
+    a list of all the directory names on your phone.</p>
+
+<p>Please <a href="mailto:tim@tbrk.org">contact me</a> if you need help!</p>
+-->
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2014-07-10 15:32:49 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                    <ul>
+                      <li>
+                        <span class="active">
+                          <a href="mnemododo.html">Mnemododo</a>
+                        </span>
+                      </li>
+                      <li>
+                        <a href="mnemojojo.html">Mnemojojo</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-notes.html">extra notes</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-design.html">design</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-devel.html">development</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="mnemogogo.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mnemogogo</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="mnemododo.html">Mnemododo</a>
+                  <a class="dropdown-item button" href="mnemojojo.html">Mnemojojo</a>
+                  <a class="dropdown-item button" href="mnemogogo-notes.html">extra notes</a>
+                  <a class="dropdown-item button" href="mnemogogo-design.html">design</a>
+                  <a class="dropdown-item button" href="mnemogogo-devel.html">development</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Mnemododo</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemogogo.html",
+            "name": "Mnemogogo"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemododo.html",
+            "name": "Mnemododo"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

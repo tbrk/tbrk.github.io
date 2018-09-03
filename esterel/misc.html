@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Miscellaneous Esterel Resources</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Files and tips for programming in Esterel." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="Backhoe" href="backhoe.html" />
+    <link rel="prev" title="Backhoe" href="backhoe.html" />
+    <link rel="up" title="Esterel" href="index.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta name="keywords" content="esterel, synchronous languages, pretty printing, a2ps" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+<h1>Miscellaneous Esterel Resources</h1>
+
+<p>This page contains three sections:</p>
+<ul>
+  <li><a href="#win32build">Win32 Build Tools</a></li>
+  <li><a href="#ctype_b">Fixing ctype_b problems</a></li>
+  <li><a href="#a2ps">a2ps stylesheet</a></li>
+</ul>
+
+<!--************************************************************-->
+<h2 id="win32build">Installing Win32 build tools for Esterel</h2>
+
+<p>A compiler is required in order to process the C output of the
+<samp>esterel</samp> compiler. Additionally, a linker and several library
+files are required by the <samp>xes</samp> simulator. These components are
+available without charge for the Win32 environment but, unfortunately, not
+as a single package.</p>
+
+<p>The <em>Visual C++ Toolkit 2003</em> includes a compiler,
+<samp>cl.exe</samp>, and linker, <samp>link.exe</samp>. To install: </p>
+
+<ol>
+
+<li>Download the installer from <a href="http://msdn.microsoft.com/visualc/vctoolkit2003">http://msdn.microsoft.com/visualc/vctoolkit2003</a></li>
+
+<li>Run <samp>VCToolkitSetup.exe</samp>, and work through the Installer
+wizard.</li>
+
+<li>By default the binaries are installed to <samp>c:\Program
+    Files\Microsoft Visual C++ Toolkit 2003\bin</samp>. This
+    directory should be added to the system path:
+    <ol>
+    <li>Open the control panel</li>
+    <li>Open the System icon</li>
+    <li>Choose the <samp>Advanced</samp> tab</li>
+    <li>Click on <samp>Environment Variables...</samp></li>
+    <li>Find and edit the <samp>Path</samp> variable (adding,
+        for example: <samp>"c:\Program Files\Microsoft Visual
+        C++ Toolkit 2003\bin"</samp>)</li>
+    </ol></li>
+</ol>
+
+<p>Being able to run <samp>cl.exe</samp> and <samp>link.exe</samp>
+	from a command shell is requisite for compiling and simulating
+	Esterel programs.
+</p>
+
+<p>It may well be possible to use another C compiler and linker. In this
+case, the <samp>xesterel</samp> options (<samp>Options/General
+Preferences.../C Compiler</samp>) should be updated, as should the
+<samp>xes.def</samp> file (<samp>...\Esterel\lib\xes\xes.def</samp>, line
+29). This author has made no such attempt. </p>
+
+<p><samp>xes</samp> requires several static (mostly <em>not</em> dynamic)
+libraries in order to link and simulate a compiled Esterel program:
+<samp>advapi32.dll</samp>, <samp>user32.lib</samp>, <samp>gdi32.lib</samp>,
+<samp>comdlg32.lib</samp>, <samp>winspool.lib</samp>, and
+<samp>msvcrt.lib</samp>. All but the last are available within the
+<em>Microsoft Windows Platform SDK</em> which one can <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3-A93E-40C0EC4F68E5&amp;displaylang=en">download</a>
+without charge. The version required is the <em>Windows ServerⓇ 2003 SP1
+Platform SDK Web Install</em> for i386, <samp>PSDK-x86.exe</samp>. Only a
+single component need be installed: <samp>Microsoft Windows Core SDK/Build
+Environment/Build Environment (x86 32-bit)</samp>.  By default the required
+files are installed to <samp>c:\Program Files\Microsoft Platform
+SDK\Lib</samp></p>
+
+<p>To acquire <samp>msvcrt.lib</samp> one should download and install both
+the <samp>.NET Framework Redistributable Package version 2.0</samp> and the
+<samp>.NET Framework 2.0 Software Development Kit</samp> (both in Beta 1
+version at the time of writing). They are available for <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=916ec067-8bdc-4737-9430-6cec9667655c&amp;DisplayLang=en">download</a>
+without charge. By default the required file is installed to
+<samp>c:\Program Files\Microsoft Visual Studio 8\VC\lib</samp>. </p>
+
+<p>After installing both packages, the required files should either be
+copied into the same directory as the Esterel object file
+(<samp>*.obj</samp>) to be simulated, or the relevant paths should be added
+to the <samp>LIB</samp> environment variable. </p>
+
+<!--************************************************************-->
+<h2 id="ctype_b">Fixing Esterel v5.92 __ctype_b problems</h2>
+
+<p>The Esterel v5.92 tools are old but still quite useful. Unfortunately the
+<samp>xes</samp> binary no longer functions with recent releases of the <a href="http://www.gnu.org/software/libc/">GNU C library</a>. This page
+presents a possible solution that does not require any recompilation (which
+would otherwise be ideal if the source code were available).</p>
+
+<h3>The problem</h3>
+
+<p>Running <samp>xes</samp> results in errors:</p>
+
+<pre>
+### --- Linking ... 
+### cc -o /tmp/xes10240364203113.exe backhoe_sim.o
+/opt/esterelv5_92.linux/lib/libxes.a
+/opt/esterelv5_92.linux/tcltk/lib/libtk8.2.a
+/opt/esterelv5_92.linux/tcltk/lib/libtcl8.2.a -L/usr/X11R6/lib -lX11 -ldl
+-lm
+*** /opt/esterelv5_92.linux/tcltk/lib/libtcl8.2.a(tclUnixPipe.o): In
+function `TclpCreateTempFile':
+tclUnixPipe.c:(.text+0xf0): warning: the use of `tmpnam' is dangerous,
+better use `mkstemp'
+/opt/esterelv5_92.linux/lib/libxes.a(client.o): In function `_XesRecord':
+client.c:(.text+0x4e): undefined reference to `__ctype_b'
+/opt/esterelv5_92.linux/tcltk/lib/libtk8.2.a(tkGet.o): In function
+`Tk_GetScreenMM':
+tkGet.c:(.text+0x7dd): undefined reference to `__ctype_b'
+tkGet.c:(.text+0x87e): undefined reference to `__ctype_b'
+/opt/esterelv5_92.linux/tcltk/lib/libtk8.2.a(tkGet.o): In function
+`Tk_GetPixels':
+tkGet.c:(.text+0x92f): undefined reference to `__ctype_b'
+tkGet.c:(.text+0xa20): undefined reference to `__ctype_b'
+/opt/esterelv5_92.linux/tcltk/lib/libtk8.2.a(tkOption.o):tkOption.c:(.text+0x197):
+more undefined references to `__ctype_b' follow
+collect2: ld returned 1 exit status
+make: *** [backhoe_sim.exe] Error 1
+</pre>
+
+<h3>A solution</h3>
+
+<p>Either, simply replace the <samp>libtk8.2.a</samp> that is disributed
+    with the Esterel compiler with <a href="libtk8.2.a">this
+    version</a>, or build your own using the following instructions.</p>
+
+<p>Add the <samp>__ctype_b</samp> data (and dependencies) into the Tk
+    archive—the one distributed with the Esterel compiler—so that it is
+    available when code is linked into a simulator binary by
+    <samp>xes</samp>.</p>
+
+<ol>
+<li>Acquire a <samp>libc.a</samp> file from an earlier version of
+    glibc-devel. Version 2.1.2 was contemporaneous with Tcl/Tk 8.2.3:
+   <ol>
+   <li>Download <a href="http://rpm.pbone.net/index.php3?stat=26&amp;dist=4&amp;size=8253274&amp;name=glibc-devel-2.1.2-11.i386.rpm">
+   glibc-devel-2.1.2-11.i386.rpm</a></li>
+   <li>Extract <samp>usr/libc</samp>:
+<pre>
+mkdir -p usr/lib
+rpm2cpio glibc-devel-2.1.2-11.i386.rpm | cpio -i usr/lib/libc.a
+mv usr/lib/libc.a .
+rmdir -p lib/usr
+</pre></li>
+   </ol></li>
+
+<li>Extract three required object files:
+<pre>
+ar x libc.a ctype-info.o C-ctype.o C_name.o
+</pre></li>
+
+<li>Add them to libtk8.2.a:
+<pre>
+ar q $(ESTEREL_HOME)/tcltk/lib/libtk8.2.a C-ctype.o C_name.o ctype-info.o 
+</pre></li>
+</ol>
+
+<h3>Why not just recompile Tcl/Tk?</h3>
+
+<p><samp>libxes.a</samp> also requires the older ctype data structure:</p>
+
+<pre>
+### --- Linking ... 
+### cc -o /tmp/xes11063364203545.exe backhoe_sim.o
+/opt/esterelv5_92.linux/lib/libxes.a
+/opt/esterelv5_92.linux/tcltk/lib/libtk8.2.a
+/opt/esterelv5_92.linux/tcltk/lib/libtcl8.2.a -L/usr/X11R6/lib -lX11 -ldl
+-lm
+*** /opt/esterelv5_92.linux/tcltk/lib/libtcl8.2.a(tclUnixPipe.o): In
+function `TclpCreateTempFile':
+tclUnixPipe.c:(.text+0xd7): warning: the use of `tmpnam' is dangerous,
+better use `mkstemp'
+/opt/esterelv5_92.linux/lib/libxes.a(client.o): In function `_XesRecord':
+client.c:(.text+0x4e): undefined reference to `__ctype_b'
+collect2: ld returned 1 exit status
+make: *** [backhoe_sim.exe] Error 1
+</pre>
+
+<p>Although Tcl/Tk 8.2.3 does still compile after some minor patching:</p>
+
+<ol>
+<li><a href="http://www.tcl.tk/software/tcltk/downloadnow82.html">Download</a>:
+  <ul>
+    <li>Tk 8.2 sources (<samp>tk8.2.3.tar.gz</samp>)</li>
+    <li>Tcl 8.2 sources (<samp>tcl8.2.3.tar.gz</samp>)</li>
+  </ul></li>
+
+<li>Extract both tarballs into the same directory.</li>
+<li>Apply the <a href="tcl+tk-8.2.3.patch">patch</a> (<samp>patch -p0
+&lt; tcl+tk-8.2.3.patch</samp>).</li>
+<li><samp>cd tcl8.2.3/unix</samp></li>
+<li><samp>./configure --disable-shared</samp></li>
+<li><samp>make</samp></li>
+<li><samp>cd tk8.2.3/unix</samp></li>
+<li><samp>./configure --disable-shared</samp></li>
+<li><samp>make</samp></li>
+<li><samp>cp tcl8.2.3/unix/libtcl8.2.a $ESTEREL_HOME/tcltk/lib/libtcl8.2.a</samp></li>
+<li><samp>cp tk8.2.3/unix/libtk8.2.a $ESTEREL_HOME/tcltk/lib/libtk8.2.a</samp></li>
+</ol>
+
+<!--************************************************************-->
+<h2 id="a2ps">Printing with a2ps</h2>
+
+<p>This <a href="esterel.ssh">style sheet</a> enables <a href="http://www.inf.enst.fr/~demaille/a2ps">a2ps</a> to <dfn title="e.g. display keywords in bold face, or comments in italics.">pretty
+print</dfn> Esterel programs, it is based on version
+5.92 of the Esterel primer. To install:</p>
+
+<ul>
+  <li>for a single user:<ol>
+      <li>Save the style sheet in <samp>$HOME/.a2ps</samp></li>
+      <li>If necessary, create a <samp>sheets.map</samp> file in the
+              same directory.</li>
+      <li>Add a line to the file: <samp>esterel: /*.strl/</samp></li>
+      </ol></li>
+
+  <li>for an entire system:<ol>
+      <li>Save the style sheet in the <samp>sheets</samp>
+              subdirectory of the a2ps system directory (e.g.
+              <samp>/usr/local/share/a2ps</samp>).</li>
+      <li>Add a line to the <samp>sheets.map</samp> file in the
+              same directory: <samp>esterel: /*.strl/</samp></li>
+      </ol></li>
+</ul>
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2010-08-05 08:58:53 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="../software/index.html">Software</a>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+                <ul>
+                  <li>
+                    <a href="../dataflow/index.html">Dataflow</a>
+                  </li>
+                  <li>
+                    <a href="index.html">Esterel</a>
+                    <ul>
+                      <li>
+                        <a href="backhoe.html">Backhoe</a>
+                      </li>
+                      <li>
+                        <span class="active">
+                          <a href="misc.html">Miscellany</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="../synchronous.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Synchronous</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="../dataflow/index.html">Dataflow</a>
+                  <a class="dropdown-item button" href="../esterel/index.html">Esterel</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Esterel</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="backhoe.html">Backhoe</a>
+                  <a class="dropdown-item button" href="misc.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Miscellany</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/synchronous.html",
+            "name": "Synchronous"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/esterel/index.html",
+            "name": "Esterel"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/esterel/misc.html",
+            "name": "Miscellany"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

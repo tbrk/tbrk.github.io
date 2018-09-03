@@ -1,0 +1,780 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Mnemojojo: J2ME client for Mnemosyne</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="J2ME client for reviewing Mnemosyne cards exported using Mnemogogo." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="Mnemododo" href="mnemododo.html" />
+    <link rel="prev" title="Mnemododo" href="mnemododo.html" />
+    <link rel="last" title="development" href="mnemogogo-devel.html" />
+    <link rel="next" title="extra notes" href="mnemogogo-notes.html" />
+    <link rel="up" title="Mnemogogo" href="mnemogogo.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta name="keywords" content="Mnemosyne Project, Mnemogogo, Mnemojojo, spaced repetition, mobile devices, phones, J2ME, Java, MIDP" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h1>Mnemojojo: J2ME client for Mnemosyne</h1>
+
+<p>
+Mnemojojo allows cards from Mnemosyne (a spaced-repetition flash-card
+program) to be reviewed on most mobile phones that support Java (J2ME).
+Mnemojojo does not replace Mnemosyne: cards are still added, edited, and
+deleted using a desktop or laptop computer.
+Rather, cards for several days are exported using the
+<a href="mnemogogo.html">Mnemogogo plugin</a> and then transferred to a mobile
+phone where they can be reviewed on the go.
+When those cards have been reviewed, they are imported back into Mnemosyne,
+and more cards may be exported.
+</p>
+
+<p>Mnemojojo has a few limitations:</p>
+
+<ul>
+<li>Cards cannot be edited (all editing is done through Mnemosyne).</li>
+<li>The user interface is only available in English.</li>
+</ul>
+
+<p>But many advantages:</p>
+
+<ul>
+    <li>support for HTML Markup,</li>
+    <li>support for Images including LaTeX markup (images are optimized for
+	viewing on a phone),</li>
+    <li>support for sound (requires appropriate decoders on phone),</li>
+    <li>support for ‘map overlaying’,</li>
+    <li>statistics are still be contributed to the Mnemosyne project,</li>
+    <li>your cards are retained and managed in Mnemosyne,</li>
+    <li>the scheduling and grading algorithms are ported directly from
+	Mnemosyne</li>
+    <li>the basic library has been tested and debugged over several months,
+	and,</li>
+    <li>the system does not require an internet connection.</li>
+</ul>
+
+<p>Mnemojojo requires both the Mnemosyne application and the Mnemogogo plugin.
+They are both freely available for Windows, Mac, and Linux:</p>
+
+<ul>
+<li><a href="http://mnemosyne-proj.org/download-mnemosyne.php">Mnemosyne</a></li>
+<li><a href="http://www.mnemosyne-proj.org/old/node/187">Mnemogogo plugin</a></li>
+</ul>
+
+<p>Mnemojojo can be downloaded from the 
+<a href="http://www.mnemosyne-proj.org/old/node/187">Mnemosyne Project web 
+site</a> or via the links <a href="#download">below</a>.</p>
+
+<p>Care has been taken in the design and implementation of this software,
+    and I now use it daily, but there may still be bugs.
+    <strong>You use the
+  software at your own risk and without warranty!</strong></p>
+
+<p>Mnemojojo is completely free.
+You do not have to pay anything to use it or to have the source code.
+But, you are also welcome to send me a tip if you find the software useful!</p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7----- " />
+<input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal &#x2014; The safer, easier way to pay online." />
+<img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1" />
+</form>
+
+<p>The screen shots were produced using the open-source
+<a href="http://www.microemu.org">MicroEmulator</a> software.</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="phonestatus">Supported devices</h2>
+
+<p>
+Several devices are known to work:
+</p>
+
+<table class="table table-sm table-striped">
+  <tr><th colspan="2">Devices known to work</th></tr>
+  <tr><td class="key">BlackBerry Curve 8300 (with OS v4.5.0.110)</td>
+      <td>Works perfectly (the j2me build has security prompts, but the
+	  BlackBerry-specific build shouln't).</td></tr>
+  <tr><td class="key">BlackBerry Storm 9530</td>
+      <td>Works perfectly (the security prompts can be
+	  <a href="mnemogogo-notes.html#security-prompts-bb9530">disabled</a> 
+	  if necessary, but the BlackBerry-specific build shouldn't have any).</td></tr>
+  <tr><td class="key">BlackBerry Bold 9700</td>
+      <td>The BlackBerry-specific build works well, although the
+	  configuration screen cannot be swipe scrolled.</td>
+  </tr>
+  <tr><td class="key">BlackBerry Torch 9800</td>
+      <td>The BlackBerry-specific build works well, although the
+	  configuration screen cannot be swipe scrolled.</td>
+  </tr>
+  <tr><td class="key">HTC Touch HD (Blackstone WM 6.1)</td>
+      <td>Works perfectly</td></tr>
+  <tr><td class="key">HTC Windows Mobile 6 + Esmertec Jbed
+		      Java MIDlet Manager</td>
+      <td>Works (the security prompts can be
+	  <a href="mnemogogo-notes.html#security-prompts-esmertec">disabled</a>).</td></tr>
+  <tr><td class="key">HTC Touch Dual (Windows Mobile 6 Professional)</td>
+      <td>Does not load with the default JVM, but works with the Esmertec
+	  JVM.</td>
+  </tr>
+  <tr><td class="key">LG KP501</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">M002L</td>
+      <td>Works perfectly</td></tr>
+  <tr><td class="key">Motorola A1200</td>
+      <td>Works perfectly (security prompts can be
+	  <a href="http://www.motorolafans.com/forums/rokr-z6/12101-how-change-applications-permissions.html">disabled</a>).</td></tr>
+  <tr><td class="key">Nokia 6121</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Nokia 6210 classic</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Nokia 6300</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Nokia C1-02 (Series 40, 6th edition)</td>
+      <td>Works perfectly (security prompts can be disabled).</td></tr>
+  <tr><td class="key">Nokia C5</td>
+      <td>Works (but with security prompts)</td></tr>
+  <tr><td class="key">Nokia E52</td>
+      <td>Works (but with security prompts;
+	  possible unconfirmed problem with sound; may need to reduce the
+	  number of cards loaded at once)</td></tr>
+  <tr><td class="key">Nokia E61</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Nokia E71</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Nokia N8</td>
+      <td>Works with touch screen (the configure keys feature crashes)</td></tr>
+  <tr><td class="key">Nokia E90</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Nokia N95</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Nokia N97 Mini</td>
+      <td>Works perfectly</td></tr>
+  <tr><td class="key">Nokia 5800 (Express Music)</td>
+      <td>Works perfectly (better handling of security prompts)</td></tr>
+  <tr><td class="key">Nokia X2-00</td>
+      <td>Works (only one security prompt at startup)</td></tr>
+  <tr><td class="key">Palm TX</td>
+      <td>Works perfectly (requires IBM WebSphere Micro Environment Java
+	  Virtual Machine 5.7.2)</td></tr>
+  <tr><td class="key">Samsung Wave GT-S8500</td>
+      <td>Works perfectly (one-off security prompt on startup; need onscreen keys to scroll cards)</td></tr>
+  <tr><td class="key">Samsung Wave II GT-S8530</td>
+      <td>Works perfectly.</td></tr>
+  <tr><td class="key">Samsung SGH-i780</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Sony Ericsson W580i</td>
+      <td>Works perfectly</td></tr>
+  <tr><td class="key">Sony Ericsson W595s</td>
+      <td>Works perfectly (can be set to trusted mode)</td></tr>
+  <tr><td class="key">Sony Ericsson K750/K750(i)</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Sony Ericsson W760i</td>
+      <td>Works perfectly</td></tr>
+  <tr><td class="key">Sony Ericsson W800i</td>
+      <td>Works perfectly (but with security prompts)</td></tr>
+  <tr><td class="key">Sony Ericsson K850i</td>
+      <td>Works perfectly (One security prompt at startup, the font can
+	  be <a href="mnemogogo-notes.html#fonts-sonyericcson">configured</a>.)</td></tr>
+  <tr><td class="key">Toshiba g900 (with Esmertec java emulator)</td>
+      <td>Works (but with security prompts and a small font)</td></tr>
+</table>
+
+<p>Mnemojojo loads statistics, card text, and images from the memory of a 
+mobile phone and its connected memory cards.
+On some devices each access generates an annoying security confirmation 
+message.
+Several confirmations are required when starting, confirmations are then 
+needed every fifty cards or so, for each image, and when quitting.
+If security confirmations cannot be disabled on your phone please complain 
+to the manufacturer (not to me)!</p>
+
+<p>For the latest Nokia phones (e.g. 5800, E75), at least, <a href="http://blogs.s60.com/author/aleksiuotila/">Aleksi Uotila</a> says 
+that this issue has been <a href="http://blogs.s60.com/2008/10/enhancing-the-security-prompting-for-java-apps">fixed</a>.</p>
+
+<p><b>Windows Mobile users: </b><em>(especially HTC phones)</em> Apparently,
+    the default JVM will not load Mnemojojo.
+    Many people have, however, reported success using the <a href="http://forum.xda-developers.com/showthread.php?t=407667">Esmertec JVM</a>,
+    where it should also be possible to <a href="http://www.tbrk.org/software/mnemogogo-notes.html#security-prompts-esmertec">disable
+	security prompts</a>.
+</p>
+
+<table class="table table-sm table-striped">
+  <tr><th colspan="2">Devices with known problems</th></tr>
+  <tr><td class="key">LG GS390 Prime (and GS290)</td>
+      <td>Non-signed apps cannot access the SD card using JSR-75.</td></tr>
+  <tr><td class="key">LG Rumor Touch</td>
+      <td>Crashes, freezes the phone, or restarts the phone when writing the
+	  configuration file or statistics.</td></tr>
+  <tr><td class="key">Motorola i290</td>
+      <td>Needs compilation in Motorola SDK to install, even then throws
+	  an exception on startup.</td></tr>
+  <tr><td class="key">Nokia 5130c</td>
+      <td>Runs but terminates quickly with an OutOfMemory exception.</td></tr>
+  <tr><td class="key">Nokia 6303i</td>
+      <td>Fails on startup with <code>Class Not Found /path/FireMidlet</code>.
+	  The latest version of Mnemojojo may work on this phone; please let me
+	  know either way.</td></tr>
+  <tr><td class="key">Philips 892</td>
+      <td>Does not support JSR-75. Mnemojojo starts but the search for cards
+	  never terminates.</td></tr>
+</table>
+
+<!--<p>Please let <a href="mailto:tim@tbrk.org">me</a> know if you are willing
+and able to help debug these devices.</p>-->
+
+<p>If your phone is not on either of these lists, please try Mnemojojo and let <a href="mailto:tim@tbrk.org">me</a> know how it goes.
+Thanks to everyone who already reported issues or success.</p>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="install">Installation</h2>
+
+<p>Mnemojojo requires MIDP 2.0, CLDC 1.1, JSR-75 and usually 0.5 to 1.0 
+    megabytes of heap space.
+    There are two builds: a <em>jar</em> file that should work on most
+    Java (J2ME) devices, and a <em>cod</em> file for BlackBerry devices.</p>
+
+<p>The <a href="http://devices.enough.de/interactivedb/welcome.faces">J2ME
+   Polish device database</a> can help to determine whether your phone provides
+   the required libraries.</p>
+
+<h3 id="install-j2me">Most Java (J2ME) devices</h3>
+
+<p>The steps required to install Mnemojojo will vary from phone to phone, but 
+there are three basic approaches:</p>
+
+<ol>
+  <li>Manually copy the installer files onto your phone and then open them 
+  on the phone.</li>
+  <li>Install the files using a program like Nokia PC Suite.</li>
+  <li>Download and install the files directly from the Internet using your 
+  phone's browser.</li>
+</ol>
+
+<p id="download">The latest version of the main application or ‘jar file’ can be downloaded 
+from:</p>
+
+<ul>
+  <li>
+      <a href="../distfiles/mnemojojo-2.0.0.jar">http://www.tbrk.org/distfiles/mnemojojo-2.0.0.jar</a>
+  </li>
+</ul>
+
+<p>Some devices may also require a description or ‘jad file’, which can be 
+downloaded from:</p>
+
+<ul>
+  <li>
+      <a href="../distfiles/mnemojojo-2.0.0.jad">http://www.tbrk.org/distfiles/mnemojojo-2.0.0.jad</a>
+  </li>
+</ul>
+
+<h3 id="install-blackberry">BlackBerry devices</h3>
+
+<p>The BlackBerry build is signed and supports the BlackBerry command
+    buttons.
+    Installing Java applications on BlackBerry phones seems to be a bit tricky
+    sometimes.
+    There are three approaches you might try:
+</p>
+
+<dl>
+    <dt>Web-based installation from Getjar</dt>
+    <dd>
+    <ol>
+	<li>Goto <a href="http://m.getjar.com">http://m.getjar.com</a></li>
+	<li>Select <kbd>Quick Download</kbd></li>
+	<li>Enter the code: <kbd>35319</kbd></li>
+    </ol>
+    </dd>
+
+    <dt>Installation with BlackBerry desktop software</dt>
+    <dd>
+    <ol>
+	<li>Download the BlackBerry zip file from 
+	    <a href="../distfiles/mnemojojo-2.0.0-bb.zip">here</a>.</li>
+	<li>Unzip it to give two files: <a href="../distfiles/mnemojojo-2.0.0.alx">Mnemododo.alx</a> and
+	    <a href="../distfiles/mnemojojo-2.0.0.cod">Mnemojojo.cod</a>.</li>
+
+	<li>Start the BlackBerry <kbd>Application Loader Tool</kbd> and
+	    then select the <code>Mnemododo.alx</code> file.</li>
+    </ol>
+    </dd>
+
+    <dt>Installation by email</dt>
+    <dd>
+    If you are still having trouble, you could try installing the standard
+    <code>mnemojojo.jar</code> file, either directly from
+    <a href="../distfiles/mnemojojo-2.0.0.jar">here</a>, or by
+    first emailing it to your BlackBerry, and then saving it locally, before
+    opening it with <kbd>Files</kbd> (thanks to Galal Gough for this tip).
+    </dd>
+</dl>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="configuration">Configuration</h2>
+
+<ol class="stepbystep">
+  <li>
+  Follow the Mnemogogo instructions to
+  <a href="mnemogogo.html#install">install</a> and
+  <a href="mnemogogo.html#config">configure</a> Mnemogogo on
+  your PC, and to <a href="mnemogogo.html#use">export</a> some cards.
+  </li>
+
+  <li>
+  Start Mnemojojo on your phone. The about screen shown in
+  <a href="#fig_3">Figure 3</a> should appear.
+  <div class="container-fluid" id="fig_3">
+    <div class="row">
+      <div class="col-sm-6">
+	<figure>
+	  <img id="fig_3a" src="jojosshot_about.png" alt="Screenshot of top part of about screen." title="Top part: logo and credits" />
+	  <figcaption>
+	    <span class="caption">(a)</span> Top part: logo and credits
+	  </figcaption>
+	</figure>
+      </div>
+      <div class="col-sm-6">
+	<figure>
+	  <img id="fig_3b" src="jojosshot_config.png" alt="Screenshot of bottom part of about screen." title="Bottom part: configuration options" />
+	  <figcaption>
+	    <span class="caption">(b)</span> Bottom part: configuration options
+	  </figcaption>
+	</figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+	<figcaption class="figure-main-caption">
+	  <span>Figure 3:</span> The Mnemojojo about screen.
+	</figcaption>
+      </div>
+    </div>
+  </div>
+  </li>
+    
+  <li>
+  Press up and down to scroll through the various configuration options 
+  (or drag the scrollbar on touchscreen devices).
+  Press select (or tap a control) to change an option.
+  Option values are remembered across invocations, but forgotten after 
+  reinstallation.
+  There are nine options:
+
+  <dl>
+    <dt id="jojo-config-cards">Change card directory</dt>
+    <dd>
+    The first time you use Mnemojojo, you must indicate the directory that
+    contains the exported cards.
+    Mnemojojo checks for a directories called <code>cards</code> at the 
+    top-level of each drive.
+    It also provides options to automatically search through all
+    subdirectories, which may generate annoying <a href="#problems-sec">security 
+      alerts</a>, or to manually browse for a directory.
+    The path, once chosen, will be remembered automatically the next time 
+    Mnemojojo is started.
+    </dd>
+
+    <dt id="jojo-config-touchbuttons">Show touchscreen buttons</dt>
+    <dd>
+    On devices with keypads, cards are graded by pressing the appropriate 
+    number key.
+    Some touchscreen devices, however, do not have a keypad.
+    Instead Mnemojojo can display on-screen buttons for showing card 
+    answers and grading cards.
+    See Figures <a href="#fig_4">4(b)</a> and <a href="#fig_5">5(b)</a> 
+    for examples.</dd>
+
+    <dt id="jojo-config-leftright">Configure command keys</dt>
+    <dd>These keys are used to choose from the options presented at the 
+    bottom of the screen; for example, in <a href="#fig_3">Figure 3</a>, 
+    between <kbd>Ok</kbd> and <kbd>Exit</kbd>.
+    Mnemojojo usually configures them correctly automatically (thanks to 
+    the underlying UI toolkit), but on some devices they must be set 
+    manually. (This option is not present on the BlackBerry-specific build,
+    since the built-in keys should work automatically.)</dd>
+
+    <dt id="jojo-config-grading">Configure grading keys</dt>
+    <dd>These keys are used to grade cards (<kbd>0</kbd> to 
+    <kbd>5</kbd>), to skip cards (<kbd>*</kbd>), and to show card 
+    statistics (<kbd>#</kbd>).
+    On some devices, like the Nokia E61i, it is necessary to press a 
+    ‘shift’ key before pressing a number key.
+    As this quickly becomes tedious, Mnemojojo allows the grading keys 
+    to be remapped if necessary.</dd>
+
+    <dt id="jojo-config-fontsize">Card font size</dt>
+    <dd>The size of the font used for displaying cards can be changed to 
+    suit your mobile and eyesight.</dd>
+
+    <dt id="jojo-config-center">Center card text</dt>
+    <dd>Text and graphics are left-aligned by default.
+    If this option is selected, they will be centered on the screen, but
+    be aware centering does not currently work properly with all combinations
+    of bold, italic, or underlined text due to a <a href="http://sourceforge.net/projects/fire-j2me/forums/forum/643293/topic/3518825">limitation</a>
+    in the underlying library.
+    </dd>
+
+    <dt id="jojo-config-playauto">Play sounds automatically</dt>
+    <dd>By default, any sounds on a card are played automatically when the
+	card is displayed.
+	When this box is unticked, sounds are only played when the replay
+	button (either on screen or on the keypad) is pressed.
+    </dd>
+
+    <dt id="jojo-config-darkmode">Dark mode</dt>
+    <dd>Uses darker colours for the background and buttons.
+	Useful for reviewing cards in the dark, and, potentially, for
+	conserving battery power.
+    </dd>
+
+    <dt id="jojo-config-loadahead">Cards to load ahead</dt>
+    <dd>
+    The text of exported cards are stored in a single file.
+    This option determines how many of those cards should be read into 
+    memory simultaneously.
+    If too many cards are loaded, your mobile may not have enough free 
+    memory to display images, or even, to run Mnemojojo at all.
+    If too few cards are loaded at a time, you may be bothered by more 
+    security prompts, or long pauses between cards while the file is 
+    rescanned.
+    Thus, this number should only be reduced if your phone is running 
+    out of memory or not displaying images.
+    It can be increased if your phone makes more memory available to 
+    Java applications.
+    </dd>
+  </dl>
+  </li>
+
+  <li>
+  After installing Mnemojojo, you must select <kbd>Change card
+  directory</kbd> to detect and choose the location of the exported
+  cards.
+  </li>
+</ol>
+
+<!-- - - - - - - - - - - - - - - - - - - - -  -->
+<h2 id="use">Daily Use</h2>
+
+<ol class="stepbystep">
+  <li>
+  If necessary, start Mnemojojo and, at the about screen, choose a card
+  directory.
+  Then press <kbd>Ok</kbd>.
+  </li>
+
+  <li>
+  The question screen for a card is shown first, as in <a href="#fig_4">Figures 4(a) and (b)</a>.
+  The category of the current card is shown in the top-left corner, and the 
+  number of scheduled cards remaining is shown in the top-right corner.
+  The <kbd>*</kbd> key can be pressed to skip a card.
+
+  <div class="container-fluid" id="fig_4">
+    <div class="row">
+      <div class="col-sm-6">
+	<figure>
+	  <img id="fig_3a" src="jojosshot_hingeq.png" alt="Screenshot of a card with a text-based question." title="(a) Text-based question" />
+	  <figcaption>
+	    <span class="caption">(a)</span> Text-based question
+	  </figcaption>
+	</figure>
+      </div>
+      <div class="col-sm-6">
+	<figure>
+	  <img id="fig_3b" src="jojosshot_bretq.png" alt="Screenshot of a card with a map-based question." title="(b) Map-based question" />
+	  <figcaption>
+	    <span class="caption">(b)</span> Map-based question (with touch screen buttons)
+	  </figcaption>
+	</figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+	<figcaption class="figure-main-caption">
+	  <span class="caption">Figure 4:</span> Screenshots of questions in Mnemojojo.
+	</figcaption>
+      </div>
+    </div>
+  </div>
+  </li>
+
+  <li>
+  Pressing the <kbd>Show</kbd> button shows the answer screen, as 
+  in <a href="#fig_5">Figures 5(a) and (b)</a>.
+
+  <div class="container-fluid" id="fig_5">
+    <div class="row">
+      <div class="col-sm-6">
+	<figure>
+	  <img id="fig_5a" src="jojosshot_hingea.png" alt="Screenshot of a card with a text-based answer." title="(a) Text-based answer" />
+	  <figcaption>
+	    <span class="caption">(a)</span> Text-based answer (with images)
+	  </figcaption>
+	</figure>
+      </div>
+      <div class="col-sm-6">
+	<figure>
+	  <img id="fig_5b" src="jojosshot_breta.png" alt="Screenshot of a card with a map-based answer." title="(b) Map-based answer" />
+	  <figcaption>
+	    <span class="caption">(b)</span> Map-based answer (with touch screen buttons)
+	  </figcaption>
+	</figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+	<figcaption class="figure-main-caption">
+	  <span class="caption">Figure 5:</span> Screenshots of answers in Mnemojojo.
+	</figcaption>
+      </div>
+    </div>
+  </div>
+  </li>
+
+  <li>
+  Pressing one of the <kbd>0</kbd>–<kbd>5</kbd> keys, or optionally  
+  touching the on-screen buttons will grade the card.
+  The question screen of the next card is then presented.
+  </li>
+
+  <li>
+  When the number of exported cards runs out, or you want to review cards 
+  with Mnemosyne again, quit Mnemojojo and import the updated statistics as 
+  described <a href="mnemogogo.html#gogo-use-import">elsewhere</a>.
+  </li>
+
+</ol>
+
+<p>
+<strong>Note:</strong>
+The <kbd>#</kbd> key can be pressed at any time to show a statistics 
+screen similar to the example in <a href="#fig_6">Figure 6</a>.
+</p>
+
+<figure id="fig_6">
+  <img src="jojosshot_stats.png" alt="Screenshot of the statistics screen within Mnemojojo." title="The Mnemojojo statistics screen" />
+  <figcaption>
+    <span class="caption">Figure 6:</span> The Mnemojojo statistics screen.
+  </figcaption>
+</figure>
+
+<p>Several details are shown:</p>
+
+<ol>
+  <li>
+  The number of days worth of exported cards that remain until another 
+  export from Mnemosyne is required, and the number of cards scheduled for 
+  each day.
+  </li>
+
+  <li>
+  The statistics for the current card.
+  </li>
+
+  <li>
+  The path to the cards that are currently being displayed.
+  </li>
+
+  <li>
+  The numbers of free and total bytes available to Mnemojojo.
+  </li>
+</ol>
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2013-09-14 14:19:40 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                    <ul>
+                      <li>
+                        <a href="mnemododo.html">Mnemododo</a>
+                      </li>
+                      <li>
+                        <span class="active">
+                          <a href="mnemojojo.html">Mnemojojo</a>
+                        </span>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-notes.html">extra notes</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-design.html">design</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-devel.html">development</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="mnemogogo.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mnemogogo</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="mnemododo.html">Mnemododo</a>
+                  <a class="dropdown-item button" href="mnemojojo.html">Mnemojojo</a>
+                  <a class="dropdown-item button" href="mnemogogo-notes.html">extra notes</a>
+                  <a class="dropdown-item button" href="mnemogogo-design.html">design</a>
+                  <a class="dropdown-item button" href="mnemogogo-devel.html">development</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Mnemojojo</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemogogo.html",
+            "name": "Mnemogogo"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemojojo.html",
+            "name": "Mnemojojo"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

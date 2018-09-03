@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - svgtoquiz</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Generates flash cards from svg files." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="FreeBSD" href="freebsd.html" />
+    <link rel="prev" title="Standard ML" href="sml.html" />
+    <link rel="last" title="Miscellany" href="miscellany.html" />
+    <link rel="next" title="Mnemogogo" href="mnemogogo.html" />
+    <link rel="up" title="Software" href="index.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+<h1 id="svgtoquiz">svgtoquiz</h1>
+
+<p>
+The <b>svgtoquiz</b> script generates graphical question/answer pairs
+for flash-card programs, like:
+</p>
+<ul>
+    <li><a href="http://www.mnemosyne-proj.org/index.php">The Mnemosyne
+	Project</a>, which has some great features including a spaced
+	repetition scheduling algorithm that aims to optimise learning, and
+	the ability to embed latex renderings—including characters from the
+	<acronym title="International Phonetic Alphabet">IPA</acronym>—and
+	images.
+	I personally use Mnemosyne, and it is the default output format of
+	svgtoquiz.</li>
+
+    <li><a href="http://digital-haze.net/ndsrs.php">ndsrs</a>, a
+	spaced-repetition flash-card program for the Nintendo DS.
+	See <a href="#ndsrs">below</a> for some screenshots.
+	There is an <code>--export=ndsrs</code> option in svgtoquiz for
+	generating an ndsrs import file.
+	This feature was developed with the information and testing of Uwe
+	Beiküfner.</li>
+
+    <li>Support for other flash-card programs can be added via export
+	plugins.
+	Please <a href="mailto:tim@tbrk.org">contact me</a> if
+	interested.</li>
+</ul>
+
+<p>
+Svgtoquiz  generates card sets for memorising details of images, such as 
+states or countries from a map, or the names of bones or muscles from a 
+schematic of the body.
+It reads an <acronym title="Scalable Vector Graphics">svg</acronym> file and 
+extracts all <code>path</code> elements whose <code>id</code> attributes 
+match a given regular expression.
+It highlights each path in turn, by changing the fill colour, and produces 
+image files that Mnemosyne can read.
+The script also produces an <acronym title="Extensible Markup  Language">XML</acronym> file, containing a set of questions and answers 
+linked to the generated graphic files, for import into Mnemosyne.
+If the id values are not suitable as questions, a separate <acronym title="Comma Separated Values">csv</acronym> file can be created, in Excel 
+for example, to map each id value to more appropriate text.
+</p>
+
+<p>
+Many svg files can be found on the Internet, for example at <a href="http://commons.wikimedia.org/">Wikimedia Commons</a> (especially the
+<a href="http://commons.wikimedia.org/wiki/Category%3ASVG_maps">maps 
+section</a>).
+For example this <a href="http://commons.wikimedia.org/wiki/Image%3AMap_of_USA_CA.svg">map of the 
+USA</a> was used to produce cards for memorising the fifty united states of 
+America.
+</p>
+
+<figure id="fig_1">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+	<img id="fig_1a" src="svgtoquiz_ex1.png" alt="screenshot of a card produced by svgtoquiz." title="Figure 1a: Example question: Where is Florida?" class="img-fluid" />
+      </div>
+      <div class="col-sm-6">
+	<img id="fig_1b" src="svgtoquiz_ex2.png" alt="screenshot of another card produced by svgtoquiz." title="Figure 1a: Example question: Which state is this?" class="img-fluid" />
+      </div>
+    </div>
+  </div>
+  <figcaption>
+    <span class="caption">Figure 1:</span> Example questions 
+  </figcaption>
+</figure>
+
+<p>
+By default the script considers all path elements that have an id attribute, 
+but there is also a <code>--groups</code> option that processes svg groups 
+at a given depth, and options <code>--enter-group</code> and
+<code>--not-enter-group</code> that take regular expressions describing
+which groups to enter (treat transparently) and which to handle as elements
+(treat opaquely).
+This web page, some examples in the distribution, the output of the
+<code>-h</code> option, and the source code itself are currently the only 
+documentation, I plan to add a manual page as time permits.
+Please <a href="mailto:tim@tbrk.org">email me</a> examples that 
+do not work, or, even better, send patches!
+</p>
+
+<!-- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -->
+<h2 id="extract_and_name">Extracting and naming image elements</h2>
+
+<p>The set of flash cards produced by svgtoquiz comprises both images and 
+textual labels, for instance ‘Florida’ in <a href="#fig_1">Figure 1</a>.
+By default the labels are taken from the <code>id</code> attributes of the 
+svg <code>path</code> elements.
+Sometimes, however, the names of these elements are not helpful, for example 
+a particular country may have the id
+‘<code>path1208</code>’ instead of more informative text.
+Also, only some of the paths should normally be turned into question/answer  
+pairs.
+</p>
+
+<p>
+There are two ways to add meaningful labels. Either edit the svg source and 
+use regular expressions to select paths, using options <code>--id-regex</code>
+and <code>--not-id-regex</code>.
+Or create an auxiliary csv file that maps ids to labels, possibly using the 
+<code>--match-csv</code> option to ignore ids not listed inside the file.
+</p>
+
+<h3 id="edit_svg">Editing svg labels in Inkscape</h3>
+
+<p>This technique has the advantage of enhancing the original svg image, 
+although extra care must be taken to preserve groupings.</p>
+
+<ol>
+<li>Open the svg image in Inkscape.</li>
+<li>Select all the elements and choose <code>Ungroup</code> from the 
+<code>Object</code> menu. It may be necessary to repeat this step multiple 
+times.
+Svgtoquiz ignores the ids of grouped elements.</li>
+<li>Right-click on any element and choose <code>Object Properties</code>. 
+Leave the window that appears open for the remainder.</li>
+<li>Click on each element in turn, edit the id and label in the properties 
+window and click <code>set</code>. The id may only contain <acronym title="A  through Z, in upper and lower case, digits and most basic  punctuation">ASCII</acronym> characters. Consider using ids that can be 
+matched with a regular expression, for example: precede each with an 
+underscore.</li>
+<li>Finally save the image.</li>
+</ol>
+
+<h3 id="create_csv">Creating an auxiliary csv file</h3>
+
+<p>When processing an svg file, svgtoquiz automatically looks for a csv file 
+with a matching name.
+The csv file has one row for each path, ids are matched against the first 
+column, and labels are taken from the second.
+An example extract from a csv file is shown on the left in <a href="#fig_2">Figure 2</a>, below.</p>
+
+<figure>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+	<table class="csvfile">
+	<tr><td colspan="2" style="text-align: center">...</td></tr>
+	<tr><td>FL</td><td>Florida</td></tr>
+	<tr><td>GA</td><td>Georgia</td></tr>
+	<tr><td>HI</td><td>Hawaii</td></tr>
+	<tr><td>ID</td><td>Idaho</td></tr>
+	<tr><td>IL</td><td>Illinois</td></tr>
+	<tr><td>IN</td><td>Indiana</td></tr>
+	<tr><td>IA</td><td>Iowa</td></tr>
+	<tr><td>KS</td><td>Kansas</td></tr>
+	<tr><td>KY</td><td>Kentucky</td></tr>
+	<tr><td>LA</td><td>Louisiana</td></tr>
+	<tr><td colspan="2" style="text-align: center">...</td></tr>
+	</table>
+      </div>
+      <div class="col-sm-6">
+	<img id="fig_2" src="svgtoquiz_csvgui.png" alt="screenshot of the --gui-csv-edit interface." title="Figure 2: --gui-csv-edit interface" class="img-fluid" />
+      </div>
+    </div>
+    <figcaption>
+      <span class="caption">Figure 2:</span> Example csv file <em>(left)</em>, 
+      graphical  interface <em>(right)</em>
+    </figcaption>
+  </div>
+</figure>
+
+<p>This file can be created in a text editor or spreadsheet, but because 
+relating ids to labels can be tedious, svgtoquiz has a feature for editing 
+the file, Type:</p>
+
+<pre>svgtoquiz.py --gui-csv-edit &lt;filename&gt;</pre>
+
+<p>An editor window, as per Figure 2, will appear.
+The image size can be adjusted with the <code>--zoom</code> option.
+Each path is presented in turn, the
+<code>--id-regex</code> and <code>--not-id-regex</code> options permit some 
+automatic filtering by regular expression.
+Enter a label and click <code>next</code> to add a row to the csv file.
+Click <code>ignore</code> to skip over an element.
+Click <code>save</code> when finished and use the <code>--match-csv</code> 
+option when running svgtoquiz again to generate the flash cards.
+</p>
+
+<!-- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -->
+<h2 id="misc_tips">Miscellaneous tips and features</h2>
+
+<h3 id="rgb_to_indexed">Reducing the size of card sets</h3>
+
+<p>Inkscape and rsvg create <acronym title="Red Green Blue&#x2014;able to  represent thousands of colours">RGB</acronym> png files, but <abbr title="Contain a lookup table of 256 colours">indexed</abbr> png files are 
+much smaller.
+Converting the files produced by svgtoquiz into the indexed format can halve 
+the size of a card set.
+<a href="http://www.ImageMagick.org">ImageMagick</a> contains a 
+<code>convert</code> command that does the job.
+This (unix) shell script converts all of the png files in the current 
+working directory:</p>
+
+<pre>for f in *.png; do \
+    convert -colors 256 $f $f.png &amp;&amp; mv $f.png $f; \
+done</pre>
+
+<p>In most cases the converted images will appear identical to the 
+originals.</p>
+
+
+<h3 id="svg_groups">SVG Groups</h3>
+
+<p>To respect groups, at the top level, use the option
+<code>--groups=0</code>.
+To descend into the first level of groups, usually inkscape layers, use
+<code>--groups=1</code>.</p>
+
+<p>The <code>--enter-group=&lt;regex&gt;</code> and
+<code>--not-enter-group=&lt;regex&gt;</code> options afford more control.
+The arguments are <a href="http://docs.python.org/lib/re-syntax.html">python regular
+expressions</a>, matched against either the full id or the part selected by
+the <code>--id-regex</code> option.
+The <code>--not-enter-group</code> setting takes precedence.</p>
+
+<p>Use svg grouping to generate a single highlighted question/answer card
+for a set of paths.</p>
+
+<!-- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -->
+<h2 id="download">Downloads and installation</h2>
+
+<p>Download <b>v2.0.1</b> (20131006):</p>
+
+<ul>
+<li><a href="../distfiles/svgtoquiz-2.0.1.tar.gz">Source code</a></li>
+<li><a href="../distfiles/svgtoquiz-2.0.1-py2.7.egg">Python 2.7 egg</a></li>
+<li><a href="../distfiles/svgtoquiz-2.0.1.win32.exe">Windows installer</a></li>
+</ul>
+
+<p>The source repository is on <a href="https://launchpad.net/svgtoquiz">launchpad</a>.</p>
+
+<p>
+Svgtoquiz is written in <a href="http://www.python.org">Python</a>.
+It requires three libraries:
+</p>
+
+<ul>
+<li><a href="">Tkinter</a></li>
+<li><a href="http://www.pythonware.com/products/pil/index.htm">Python 
+Imaging Library (PIL)</a></li>
+<li><a href="http://peak.telecommunity.com/DevCenter/setuptools">setuptools</a></li>
+</ul>
+
+<p>It also requires an external program for turning svg files into png 
+files.
+There are currently two possibilities:</p>
+
+<ul>
+<li><a href="http://www.inkscape.org">Inkscape</a></li>
+<li><a href="http://librsvg.sourceforge.net/">rsvg</a></li>
+</ul>
+
+<p>Both work well; rsvg seems faster but does not support Unicode 
+properly.</p>
+
+<h3 id="unix_install">Installation on Unix</h3>
+
+<ol>
+  <li>Install the Python Imaging library.
+      <ul>
+      <li><em>Ubuntu</em>:
+<pre>sudo apt-get install python-imaging
+sudo apt-get install python-imaging-tk</pre>
+      </li>
+      <li><em>FreeBSD</em>: install the
+      <a href="http://www.freshports.org/graphics/py-imaging">graphics/py-imaging</a>
+      port.</li>
+      </ul>
+  </li>
+
+  <li>Install Tkinter.
+      <ul>
+      <li><em>Ubuntu</em>: <code>sudo apt-get install python-tk</code></li>
+      <li><em>FreeBSD</em>: install the
+      <a href="http://www.freshports.org/x11-toolkits/py-tkinter/">x11-toolkits/py-tkinter</a>
+      port.</li>
+      </ul>
+  </li>
+
+  <li>Install either:
+    <ul>
+      <li>Inkscape<br /><em>Ubuntu</em>: <code>sudo apt-get install 
+      inkscape</code>,
+                  <br /><em>FreeBSD</em>:
+      <a href="http://www.freshports.org/graphics/inkscape/">graphics/inkscape</a></li>
+      <li>librsvg<br /><em>Ubuntu</em>: <code>sudo apt-get install librsvg2-bin</code>,
+                 <br /><em>FreeBSD</em>:
+      <a href="http://www.freshports.org/graphics/librsvg2">graphics/librsvg2</a></li>
+    </ul>
+  </li>
+
+  <li>Download the Python 2.7 Egg and type:
+      <pre>easy_install svgtoquiz-2.0.0-py2.7.egg</pre>
+      What documentation there is can then be extracted with
+      <pre>svgtoquiz --extract-docs=doc</pre>
+  </li>
+</ol>
+
+<p>Thanks to Patrick Kenny for feedback and testing on Ubuntu.</p>
+
+<p>An alternative is to download the source package and try installing from 
+setup.py—it should download the module dependencies.</p>
+
+
+<h3 id="windows_install">Installation on Windows</h3>
+
+<ol>
+  <li>Install <a href="http://pypi.python.org/pypi/setuptools">setuptools</a>.
+  </li>
+  <li>Install
+      <a href="http://effbot.org/downloads/#pil">Python Imaging Library</a>.
+  </li>
+  <li>Install
+      <a href="http://www.inkscape.org/download/?lang=en">Inkscape</a>.
+  </li>
+  <li>Download and run the Windows installer.
+      What documentation there is can then be extracted from a command 
+      prompt:
+      <pre>C:\Python25\Scripts\svgtoquiz --extract-docs=doc</pre>
+      (modifying the path as appropriate, or even <a href="http://technet2.microsoft.com/windowsserver/en/library/4029b464-c281-49af-84d5-6cd092e61a651033.mspx?mfr=true">adding 
+      it to the system path</a>.)</li>
+</ol>
+
+<p>Thanks to Paul Chivers for testing and patches for Windows.</p>
+
+
+<h3 id="mac_install">Installation on Mac</h3>
+
+<p>This should be similar to the <a href="#unix_install">instructions for 
+Unix</a>.
+Tobias Hill reports his experience installing rsvg:
+</p>
+
+<ol>
+  <li>Install <a href="http://darwinports.com">Darwin ports</a>.</li>
+  <li>Ensure that <code>/opt/local/bin</code> is on the search path.</li>
+  <li>Update Darwin Ports: <code>sudo port -d selfupdate</code>.</li>
+  <li>Install <a href="http://librsvg.darwinports.com/">rsvg</a>:
+      <code>sudo port install rsvg</code>
+      <br />It may be necessary to run this command several times.</li>
+</ol>
+
+
+<h3 id="other_install">Installation and packaging</h3>
+
+<p>Suggestions to improve the installation instructions are welcome.
+Feel free to repackage and distribute the script provided the <a href="bsdlicense2008.html">BSD license</a> is respected.
+</p>
+
+<h2 id="more_examples">More examples</h2>
+
+<figure id="fig_3">
+  <div class="row">
+    <div class="col-lg-6">
+      <a href="http://commons.wikimedia.org/wiki/Image:Human_skeleton_front.svg">
+      <img id="fig_3a" src="svgtoquiz_skeleton.png" alt="Card from LadyOfHats's Human_skeleton_front.svg." title="Figure 3a: Example question: What is this bone?" class="img-fluid" />
+      </a>
+    </div>
+    <div class="col-lg-6">
+      <a href="http://commons.wikimedia.org/wiki/Image:D&#xE9;partements%2Br&#xE9;gions_(France).svg">
+      <img id="fig_3b" src="svgtoquiz_france.png" alt="Card from historicair's D&#xE9;partements+r&#xE9;gions_(France).svg." title="Figure 3b: Example question: Where is Rh&#xF4;ne-Alpes?" class="img-fluid" />
+      </a>
+    </div>
+  </div>
+  <figcaption>
+  <span class="caption">Figure 3:</span> More example cards 
+  </figcaption>
+</figure>
+
+<p>The examples of <a href="#fig_3">Figure 3</a> further demonstrate both the
+beauty of images available on the <a href="http://commons.wikimedia.org/">Wikimedia Commons</a> and the possibilities of
+svgtoquiz.
+The image at right demonstrates a patch submitted to the <a href="http://www.mnemosyne-proj.org">Mnemosyne Project</a>
+that overlays the answer image on top of the original question image, which
+was the same map with the Rhône-Alpes region coloured green.</p>
+
+<h2 id="other_projects">Other Projects</h2>
+
+<h3 id="ndsrs">Card generation for ndsrs</h3>
+
+<p>Uwe Beiküfner is using svgtoquiz as part of his program for generating
+    decks for the <a href="http://digital-haze.net/ndsrs.php">ndsrs</a>
+    flash card program on Nintendo DS.
+    Some screenshots are shown in <a href="#fig_4">Figure 4</a>.</p>
+
+<figure id="fig_4">
+  <div class="row">
+    <div class="col-lg-6">
+      <img id="fig_4a" src="svgtoquiz_ndsrs1.png" alt="Screenshot from ndsrs showing flash card of German state." title="Figure 4a: Where is Mecklenburg-Vorpommern?" class="img-fluid" />
+    </div>
+    <div class="col-lg-6">
+      <img id="fig_4b" src="svgtoquiz_ndsrs2.png" alt="Screenshot from ndsrs showing flash card of USA." title="Figure 4b: Where is Arkansas?" class="img-fluid" />
+    </div>
+  </div>
+  <figcaption>
+  <span class="caption">Figure 4:</span> Screenshots from NDSRS 
+  </figcaption>
+</figure>
+
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2013-10-06 14:36:54 +0200</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <span class="active">
+                      <a href="svgtoquiz.html">Svgtoquiz</a>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Svgtoquiz</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/svgtoquiz.html",
+            "name": "Svgtoquiz"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

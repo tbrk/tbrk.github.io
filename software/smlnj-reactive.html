@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - SML/NJ Reactive library: tutorial &amp; patches</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Notes on the SML/NJ Reactive library" />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="NJ Lib in Poly/ML" href="poly_smlnj-lib.html" />
+    <link rel="prev" title="Fxp patches" href="sml-fxp.html" />
+    <link rel="last" title="sml_tk patches" href="sml_tk.html" />
+    <link rel="next" title="sml_tk patches" href="sml_tk.html" />
+    <link rel="up" title="Standard ML" href="sml.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+<h1>SML/NJ Reactive Library: tutorial</h1>
+
+  <p>A Reactive library is distributed with <a href="http://www.smlnj.org">SML/NJ</a>, but the documentation is limited.
+  It is described by its author, <a href="http://www.ccs.neu.edu/home/riccardo/">Riccardo Pucella</a>, in the
+  paper <a href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=674156">Reactive
+  Programming in Standard ML</a>. This page briefly describes the library
+  and gives examples of its use.</p>
+
+  <p>A detailed description of the programming model and its motivation are
+  given on the <a href="http://www-sop.inria.fr/meije/rp/">Reactive
+  Programming site</a> of <a href="http://www-sop.inria.fr/mimosa/Frederic.Boussinot/">Frédéric
+  Boussinot</a>.
+  </p>
+
+  <p>The <a href="http://rml.lri.fr/">ReactiveML</a> programming language of
+  <a href="https://www.lri.fr/~mandel/">Louis Mandel</a> is a
+  modern mix of reactive programming and ML
+  (<a href="http://caml.inria.fr/ocaml/">OCaml</a>)—it is language rather
+  than library based.
+  </p>
+
+<h2 id="patch">Patch</h2>
+
+  <p>There are bugs in the library up to at least SML/NJ 110.60. This <a href="reactive.diff">patch</a> can be applied to (a copy of) the
+  <code>src/smlnj-lib/Reactive</code> directory.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+  <p>The Reactive library of SML/NJ implements the reactive programming
+  approach of <a href="http://www-sop.inria.fr/mimosa/rp/SugarCubes/index.html">SugarCubes</a>,
+  which was inspired by the synchronous language Esterel. Reactive programs
+  respond to events (input signals) over sequences of discrete instants. The
+  detection and rejection of incoherent or non-deterministic programs is
+  avoided in SugarCubes by restricting judgements on signal absence to the
+  end of an instant, and only allowing weak preemption. This greatly
+  simplifies issues of composition and modularity at the cost of a
+  restricted programming model and the possibility that a response to an
+  event may occur over several reactions.</p>
+
+  <p>Programs are built from <code>instruction</code> values, they are
+  executed by constructing <code>machine</code> values. Communication with
+  and within a program is via pure signals. The type <code>signal</code> is
+  a synonym for <code>Atom.atom</code>. Expressions over signals
+  are built in the <code>config</code> type.</p>
+
+<h2 id="simpleprogram">A simple program</h2>
+
+  <p>The library routines are introduced into the top-level environment via
+  these commands:</p>
+
+<pre>
+CM.make "$/reactive-lib.cm";
+open Reactive;
+infix || &amp;;
+</pre>
+
+  <p>A simple program might print the string <em>Hello</em> in the first
+  instant, and the string <em>World</em> in the second. SML commands are
+  included in a Reactive program by wrapping them as <code>action</code>
+  instructions:</p>
+
+<pre>
+val printHello = action (fn _=&gt; TextIO.print "Hello\n");
+val printWorld = action (fn _=&gt; TextIO.print "World\n");
+</pre>
+
+  <p>Here we ignore the argument of type <code>machine</code> passed to
+  actions because our commands do not depend on signals in the execution
+  environment.</p>
+
+  <p>The <code>stop</code> instruction ends a reaction instant. Instructions
+  may be sequenced with the <code>&amp;</code> operator—more usually
+  written as a semi-colon (<code>;</code>):</p>
+
+<pre>
+val hellomac = machine {body = printHello &amp; stop &amp; printWorld,
+                        inputs=[], outputs=[]};
+</pre>
+
+  <p>This machine does not have any input or output signals, it
+  processes a single reaction at each <code>run</code> command:</p>
+
+<pre>
+run hellomac;	(* Reaction 1 displays: Hello *)
+run hellomac;	(* Reaction 2 displays: World *)
+</pre>
+
+  <p>The <code>run</code> command returns <code>false</code> if further
+  reactions are possible, and <code>true</code> if the program has
+  terminated</p>
+
+  <p>Processing both instants a second time is possible after resetting the
+  machine:</p>
+
+<pre>
+reset hellomac;
+</pre>
+
+<h2 id="usingsignals">Using signals</h2>
+
+  <p>A more interesting program would respond to external input signals.
+  Signals are created by passing a name to the <code>atom</code>
+  constructor:</p>
+
+<pre>
+val TOGGLE = Atom.atom "TOGGLE";
+val ON = Atom.atom "ON";
+val OFF = Atom.atom "OFF";
+</pre>
+
+  <p>The <code>await</code> instruction blocks until the specified signal is
+  present:</p>
+
+<pre>
+val awaitToggle = await (posConfig TOGGLE);
+</pre>
+
+  <p>The <code>posConfig</code> constructor is necessary because
+  <code>await</code> is able to respond to more general expressions over
+  events.</p>
+
+  <p>Signals are emitted with the <code>emit</code> instruction. A simple
+  program responds to <code>TOGGLE</code> signals by alternately emitting
+  <code>ON</code> and <code>OFF</code>:</p>
+
+<pre>
+val alt = machine {body= loop (awaitToggle &amp; (emit ON) &amp; stop &amp;
+                               awaitToggle &amp; (emit OFF) &amp; stop),
+                   inputs=[TOGGLE], outputs=[ON, OFF]};
+</pre>
+
+  <p>The signal values used previously (<code>TOGGLE</code>, <code>ON</code>
+  and <code>OFF</code>) are just names. The ‘live’ signal
+  identifiers must be extracted from the machine using <code>inputsOf</code>
+  and <code>outputsOf</code>, before they may be changed or queried:</p>
+
+<pre>
+val [altTOGGLE] = inputsOf alt;
+val [altON, altOFF] = outputsOf alt;
+</pre>
+
+  <p>These values are associated with the specified machine. The inputs may
+  be set before running a reaction with <code>setInSignal</code>. The
+  outputs may be queried after running a reaction with
+  <code>getOutSignal</code>:</p>
+
+<pre>
+run alt;
+map getOutSignal [altON, altOFF];
+
+setInSignal (altTOGGLE, true);
+run alt;
+map getOutSignal [altON, altOFF];
+
+setInSignal (altTOGGLE, true);
+run alt;
+map getOutSignal [altON, altOFF];
+</pre>
+
+  <p>The outputs have the value <code>true</code> iff they were emitted in
+  the previous run.</p>
+
+<h2 id="abro">A final example: ABRO</h2>
+
+  <p>The ABRO example is described by
+    <a href="http://www-sop.inria.fr/members/Gerard.Berry/">Gérard Berry</a> in the <a href="ftp://ftp-sop.inria.fr/meije/esterel/papers/primer.pdf">Esterel
+  primer</a> as a means of contrasting the <em>Write Things Once (WTO)</em>
+  principle of Esterel with a finite state machine specification. It is also
+  a simple example of the parallel (<code>||</code>) and preemption
+  (<code>trapWith</code>) operators:</p>
+
+<pre>
+val A = atom "A";
+val B = atom "B";
+val R = atom "R";
+val O = atom "O";
+
+fun await_notr s = await (andConfig (posConfig s, negConfig R));
+val halt = loop stop;
+val abroprog =  stop &amp; (
+                    loop (
+                        trapWith (posConfig R,
+                                  ((await_notr A) || (await_notr B))
+                                  &amp;
+                                  emit O
+                                  &amp;
+                                  halt,
+                                  stop
+                        )));
+val abro = machine {inputs=[A, B, R], outputs=[O], body=abroprog};
+
+map (Atom.toString o inputSignal) (inputsOf abro);
+map (Atom.toString o outputSignal) (outputsOf abro);
+
+val [A, B, R] = inputsOf abro;
+val [O] = outputsOf abro;
+</pre>
+
+  <p>Since the Reactive library does not support strong preemption, the
+  <code>await</code> statements must check that <code>R</code> is absent by
+  watching a configuration equivalent to: <code>S and (not R)</code> where
+  <code>S</code> is either <code>A</code> or <code>B</code>. Not quite
+  WTO!</p>
+
+  <p>The program emits <code>O</code> when both <code>A</code> and
+  <code>B</code> have been received; in any order or simultaneously. The
+  <code>R</code> signal causes the program to forget any previously received
+  signals. In contrast to Esterel, the <code>stop</code> instructions
+  initially and in the <code>trapWith</code> handler are necessary because
+  the Reactive library <code>await</code> instruction is
+  <em>immediate</em> (it may begin and terminate in the same reaction).
+  Without the <code>stop</code> handler the loop becomes
+  <em>instantaneous</em>.</p>
+  
+  <p>The program may be exercised in the standard way:</p>
+
+<pre>
+run abro;
+getOutSignal O;
+
+app setInSignal [(A, true), (B, false), (R, false)];
+val terminated = run abro;
+val O_present = getOutSignal O;
+
+app setInSignal [(A, false), (B, true), (R, false)];
+val terminated = run abro;
+val O_present = getOutSignal O;
+
+app setInSignal [(A, false), (B, false), (R, true)];
+val terminated = run abro;
+val O_present = getOutSignal O;
+
+app setInSignal [(A, true), (B, true), (R, false)];
+val terminated = run abro;
+val O_present = getOutSignal O;
+
+reset abro;
+</pre>
+
+<h2 id="finalremarks">Final remarks</h2>
+
+<p>Comments and corrections are encouraged. Please <a href="mailto:tim@tbrk.org">email</a> them.</p>
+
+<p>The <a href="http://www-sop.inria.fr/mimosa/rp/SugarCubes/index.html">materials
+on SugarCubes</a> clearly and thoroughly describe the programming model
+implemented by the Reactive library.</p>
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2014-03-04 08:43:55 +0100</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                    <ul>
+                      <li>
+                        <a href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                      </li>
+                      <li>
+                        <a href="sml-fxp.html">Fxp patches</a>
+                      </li>
+                      <li>
+                        <span class="active">
+                          <a href="smlnj-reactive.html">SML/NJ Reactive</a>
+                        </span>
+                      </li>
+                      <li>
+                        <a href="sml_tk.html">sml_tk patches</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="sml.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Standard ML</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                  <a class="dropdown-item button" href="sml-fxp.html">Fxp patches</a>
+                  <a class="dropdown-item button" href="smlnj-reactive.html">SML/NJ Reactive</a>
+                  <a class="dropdown-item button" href="sml_tk.html">sml_tk patches</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">SML/NJ Reactive</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/sml.html",
+            "name": "Standard ML"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/smlnj-reactive.html",
+            "name": "SML/NJ Reactive"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - fxp patches</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Patches for fxp" />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="NJ Lib in Poly/ML" href="poly_smlnj-lib.html" />
+    <link rel="prev" title="NJ Lib in Poly/ML" href="poly_smlnj-lib.html" />
+    <link rel="last" title="sml_tk patches" href="sml_tk.html" />
+    <link rel="next" title="SML/NJ Reactive" href="smlnj-reactive.html" />
+    <link rel="up" title="Standard ML" href="sml.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+<h1>fxp patches</h1>
+
+<p>Fxp comprises a library and sample applications for parsing and
+manipulating XML documents. It is written in Standard ML.</p>
+
+<p>I have used Fxp in an SML application that processes XML-formatted input;
+it works well. Fxp is also remarkably portable, depending only on a minimum
+of features from the SML Basis Library, despite supporting Unicode encodings.</p>
+
+<p>The patches <a href="fxp-2.0.patch">downloadable</a> from this page,</p>
+
+<ul class="lessgap">
+<li>incorporate Kevin S. Millikin's
+
+<a href="http://www2.cs.tum.edu/~berlea/Fxp/working.html">patches</a>
+for compilation under working versions (110.65) of <a href="http://www.smlnj.org/">SML/NJ</a>,</li>
+
+<li>incorporate Wesley W. Terpstra's <a href="http://www2.cs.tum.edu/~berlea/Fxp/mlton.html">patches</a> for <a href="http://mlton.org/">MLton</a>,</li>
+
+<li>update the Compilation Manager (.cm) files to enable library
+    stabilisation, and simultaneous use of both blessed and working versions
+    of SML/NJ, and,</li>
+
+<li>include a <a href="fxlib.smlnet">script</a> and minor patches for
+compilation, under Windows, with
+<a href="http://www.cl.cam.ac.uk/research/tsg/SMLNET/">sml.net</a>,</li>
+
+<li>include two minor patches for compilation with <a href="http://www.polyml.org/">Poly/ML</a>.</li>
+
+</ul>
+
+<p>The patches do <em>not</em> update the makefile. The FreeBSD <a href="http://www.freshports.org/textproc/sml-fxp/">port</a> includes most of
+the patches and an updated (pmake) makefile.</p>
+
+<p>To apply the patches:</p>
+
+<ol class="lessgap">
+<li><a href="http://www2.cs.tum.edu/~berlea/Fxp/#GET">Download</a> and
+extract the Fxp source files.</li>
+
+<li><a href="fxp-2.0.patch">Download</a> the patch file and apply with
+<samp>patch -p0 &lt; fxp-2.0.patch</samp></li>
+</ol>
+
+<!--************************************************************-->
+<h2>Building the applications</h2>
+
+<h3>SML/NJ (blessed and working)</h3>
+
+<p>Use the makefile (with minor modifications for the working version), to
+create an SML/NJ heap and script file. SML/NJ must be installed to run the
+applications.</p>
+
+<h3>SML/NJ (working version under Unix)</h3>
+
+<p>Use the <samp>ml-build</samp> and <samp>heap2exec</samp> utilities to
+create stand-alone executables (SML/NJ is not required to run them).</p>
+
+<pre>
+ml-build src/Apps/Null/null.cm Null.null fxp
+heap2exec fxp.x86-* fxp
+ml-build src/Apps/Canon/canon.cm Canon.canon fxcanon
+heap2exec fxcanon.x86-* fxcanon
+ml-build src/Apps/Copy/copy.cm Copy.copy fxcopy
+heap2exec fxcopy.x86-* fxcopy
+ml-build src/Apps/Esis/esis.cm Esis.esis fxesis
+heap2exec fxesis.x86-* fxesis
+ml-build src/Apps/Viz/viz.cm Viz.viz fxviz
+heap2exec fxviz.x86-* fxviz
+</pre>
+
+<h3>MLton (Unix, or Windows with Cygwin or MinGW)</h3>
+
+<p>Build stand-alone executables with <samp>mlton</samp>.</p>
+
+<pre>
+mlton -output fxp src/Apps/Null/null.mlb
+mlton -output fxcanon src/Apps/Canon/canon.mlb
+mlton -output fxcopy src/Apps/Copy/copy.mlb
+mlton -output fxesis src/Apps/Esis/esis.mlb
+mlton -output fxviz src/Apps/Viz/viz.mlb
+</pre>
+
+<h3>sml.net (windows with .net framework components)</h3>
+
+<p>Use the script to build stand-alone Windows executables.</p>
+
+<pre>
+smlnet @src/fxlib
+</pre>
+
+<!--************************************************************-->
+<h2>Using the library</h2>
+
+<h3>SML/NJ Blessed version (110.7)</h3>
+
+<p>First stabilise the library, from within the interactive loop, to speed
+up interactive development cycles.</p>
+<pre>CM.stabilize' ("src/fxlib.cm", true);</pre>
+
+<p>Before using the fxp signatures and structures, type:</p>
+<pre>CM.make' "src/fxlib.cm";</pre>
+
+<p>The same path to <samp>fxlib.cm</samp> can be added to custom
+<samp>.cm</samp> files.</p>
+
+<h3>SML/NJ Working version (110.65+)</h3>
+
+<p>First, define an anchor by adding a line to either
+<samp>/usr/local/smlnj/lib/pathconfig</samp> or
+<samp>$HOME/.smlnj-pathconfig</samp>:</p>
+
+<pre>fxlib.cm /usr/local/lib/fxp-2.0/src</pre>
+
+<p>Then, stabilise the library, from within the interactive loop, to speed
+up interactive development cycles.</p>
+<pre>CM.stabilize true "$/fxlib.cm";</pre>
+
+<p>Before using the fxp signatures and structures, type:</p>
+<pre>CM.make "$/fxlib.cm";</pre>
+
+<p>The same reference to <samp>$/fxlib.cm</samp> can be added to custom
+<samp>.cm</samp> files.</p>
+
+<h3>MLton</h3>
+
+<p>Add the path to <samp>fxlib.mlb</samp> to custom <samp>.mlb</samp> files
+when required.</p>
+
+<h3>sml.net</h3>
+
+<p>Edit the <samp>fxlib.smlnet</samp> script by commenting out the last 25
+lines. Then process the script before any others that require the Fxp
+signatures and structures.</p>
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2008-06-07 06:04:19 +0000</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                    <ul>
+                      <li>
+                        <a href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                      </li>
+                      <li>
+                        <span class="active">
+                          <a href="sml-fxp.html">Fxp patches</a>
+                        </span>
+                      </li>
+                      <li>
+                        <a href="smlnj-reactive.html">SML/NJ Reactive</a>
+                      </li>
+                      <li>
+                        <a href="sml_tk.html">sml_tk patches</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="sml.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Standard ML</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                  <a class="dropdown-item button" href="sml-fxp.html">Fxp patches</a>
+                  <a class="dropdown-item button" href="smlnj-reactive.html">SML/NJ Reactive</a>
+                  <a class="dropdown-item button" href="sml_tk.html">sml_tk patches</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">Fxp patches</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/sml.html",
+            "name": "Standard ML"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/sml-fxp.html",
+            "name": "Fxp patches"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

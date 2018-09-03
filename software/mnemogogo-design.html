@@ -1,0 +1,481 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - Mnemogogo: design overview</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="Proposal for reviewing Mnemosyne cards on mobile devices." />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="Mnemododo" href="mnemododo.html" />
+    <link rel="prev" title="extra notes" href="mnemogogo-notes.html" />
+    <link rel="last" title="development" href="mnemogogo-devel.html" />
+    <link rel="next" title="development" href="mnemogogo-devel.html" />
+    <link rel="up" title="Mnemogogo" href="mnemogogo.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta name="keywords" content="Mnemosyne, Mnemogogo, spaced repetition, mobile devices" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/bigfoot.min.css" type="text/css" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h1>Mnemogogo design overview</h1>
+
+<p>The <a href="http://www.mnemosyne-proj.org/index.php">Mnemosyne Project</a>
+    is a program for memorising facts from flash cards using a <a href="http://en.wikipedia.org/wiki/Spaced_repetition">spaced
+    repetition</a> algorithm.
+    It is written in <a href="http://www.python.org">Python</a> using the <a href="http://www.qtsoftware.com">Qt</a> windowing toolkit.
+    It runs on PCs under most common operating systems (Windows, Linux,
+    Mac, *BSD).
+</p>
+
+<p>
+    Mnemosyne is most effective when used daily, but it can be difficult to
+    find free time in front of a computer.
+    Making Mnemosyne available on mobile platforms, like mobile phones,
+    handheld games, and Portable Media Players, would make it possible to
+    review cards anywhere and anytime.
+    This would be a great advantage for many users.
+</p>
+
+<p>
+    This document outlines a simple and open design for making Mnemosyne
+    mobile.
+    The design applies to the existing Mnemosyne 1.0, which can no longer be
+    changed, but it should also be adaptable to Mnemosyne 2.0, which could
+    be adapted if required.
+</p>
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h2 id="history">Document details</h2>
+
+<table class="table table-sm">
+    <tr><th colspan="3">Revision history</th></tr>
+    <tr><td>20090402</td><td>First draft</td><td>T. Bourke</td></tr>
+    <tr><td>20090423</td><td>Mention shared database option</td><td>T. Bourke</td></tr>
+</table>
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h2 id="principles">Principles</h2>
+
+<ol>
+    <li>There is no single mobile platform.
+	Users will want to use Mnemosyne on, for example,
+	<ul>
+	    <li><a href="http://www.symbian.org/">Symbian S40/S60
+		    phones</a>,</li>
+	    <li><a href="http://www.apple.com/iphone/">iPhones</a>,</li>
+	    <li><a href="http://www.android.com/">Android phones</a>,</li>
+	    <li>the <a href="http://www.nintendo.com/ds">Nintendo DS</a>
+		(for example, see
+		<a href="http://digital-haze.net/ndsrs.php">ndsrs</a>),</li>
+	    <li><a href="http://www.adobe.com/products/flashlite/">Flash Lite players</a> 
+		(for instance, the
+		 <a href="http://www.cowonamerica.com/products/cowon/d2">Cowon D2</a>),
+		and,</li>
+	    <li><a href="http://maemo.org">Maemo tablets</a>.</li>
+    </ul></li>
+
+    <li>Many programming languages are used across devices.
+	For instance, Java, C++, Python, Flash.
+	Devices will have differing display capabilities, for instance the
+	S60 phones have a <a href="http://www.forum.nokia.com/info/sw.nokia.com/id/47d8a7fe-768c-44e5-bc26-fcba0a05e35e/S60_Platform_Browser_Control_API_Guide_v2_0_en.pdf.html">browser control</a>
+	for displaying HTML but S40 phones do not.
+	Most devices will not support all Unicode characters.</li>
+
+    <li>While reviewing cards on a mobile device is reasonable, entering or
+	editing cards is less convenient and more easily done at a PC.
+	Omitting this feature also simplifies the programming task.</li>
+
+    <li>Card databases by themselves are not large, approximately 2MB
+	for 7000 cards, but adding images or sounds may increase the size by
+	a factor of ten.
+	The simplest architecture involves loading the entire card database into
+	memory.
+	Mnemosyne 1.0 works in this way.</li>
+
+    <li>Hosting cards on a website is not always the ideal solution.</li>
+</ol>
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h2 id="proposal">Proposal</h2>
+
+<p>The Mnemosyne program remains critical for:</p>
+    <ol><li>Creating and editing cards.</li>
+	<li>Maintaining and backing up the card database.</li>
+	<li>Uploading logs to the project server.</li>
+	<li>Reviewing cards when most convenient.</li>
+    </ol>
+
+<p>Three separate components are introduced for mobile reviewing:</p>
+    <ol>
+	<li>A <a href="#lockingexporter">locking exporter</a> plugin
+	    for Mnemosyne that provides a simple user interface and
+	    architecture.
+	    The would be reusable.</li>
+
+	<li>Various <a href="#interfacescripts">interface scripts</a> that
+	    are called by the locking export plugin to produce data suitable
+	    for mobile devices.</li>
+
+	<li>Various <a href="#players">players</a> that run on mobile
+	    devices to review and grade cards.</li>
+    </ol>
+
+<p>There are two main possiblities for the locking export
+	plugin<sup><a href="#footnote_1">1</a></sup>:</p>
+    <ol>
+	<li><em>N-days ahead:</em> the exporter only produces enough cards
+	    for the next <em>N</em> days.</li>
+
+	<li><em>Fully synchronizing:</em> a full copy of the database is
+	    maintained on the mobile device.
+	    Changes are periodically synchronized from the Mnemosyne master
+	    copy.
+	    Sharing the whole Mnemosyne database between devices is
+	    effectively fully synchronizing, it may be a practical approach
+	    under Mnemosyne 2.0 but it is likely to make implementing
+	    players more complicated.</li>
+    </ol>
+
+<p>This document proposes the <em>N-days ahead approach</em>, which has
+    two main advantages:</p>
+    <ol>
+	<li>It is simpler to implement. Both in terms of the locking
+	    exporter and various players.</li>
+
+	<li>It requires less resources on mobile devices.
+	    Further the available resources can be traded against the number
+	of days worth of exported cards.</li>
+    </ol>
+
+<p>The main disadvantage is that synchronisations must be performed more
+    regularly.</p>
+
+<p>The design does not address synchronization between exported files and
+    mobile devices.
+   It is envisaged that this step will be performed manually in early
+   versions until more experience is gained.</p>
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h3 id="lockingexporter">The Locking Exporter</h3>
+
+<p>The locking exporter will be a Mnemosyne plugin.
+    It will add a menu option and single form <acronym title="Graphical User  Interface">GUI</acronym>.
+    The exporter will have two modes: <em>local review</em> and <em>mobile
+	review</em>.
+    In local review, Mnemosyne is used for all tasks.
+    In mobile review, Mnemosyne can be used to add, edit, and delete cards
+    but not to review them; the show answer and grading buttons will be
+    disabled.</p>
+
+<p>The GUI will show which mode is active, and offer two buttons:</p>
+    <ol>
+	<li><em>Export</em>, which switches from local reviewing to mobile
+	    reviewing.</li>
+	<li><em>Import</em>, which switches from mobile reviewing to local
+	    reviewing.</li>
+    </ol>
+
+<p>It will be possible to <em>force</em> a switch back to local reviewing.</p>
+
+<p>The GUI will also show three configuration options:</p>
+    <ol>
+	<li><em>Number of days:</em> the value <em>N</em> of days to export.</li>
+	<li><em>Path:</em> the path to export to, or import from.</li>
+	<li><em>Type:</em> the type of device.
+	    This option selects an interface script.</li>
+    </ol>
+
+<p>The parameter values will be stored in Mnemosyne's configuration store
+    between runs.</p>
+
+<p>Exporting does the following:</p>
+    <ol>
+	<li>Selects all cards scheduled for the next <em>N</em> days, plus
+	    <em>N * 1.05</em> times the <em>Number of grade 0 cards to hold
+	    in your hand</em> new cards to export.</li>
+
+	<li>Calls the interface script to commence the export, passing the
+	    export/import path.
+	    (Ideally this would instantiate an exporting object.)</li>
+
+	<li>Calls the interface script for each card that is to be exported,
+	    passing its id, question text, answer text, and statistics.
+	    (Optionally calling normal Mnemosyne plugins to process this data
+	    before exporting.
+	     Such plugins should also be used to handle LaTeX markup.)</li>
+	
+	<li>Calls the interface script to finalise the export.</li>
+
+	<li>Switches to mobile reviewing mode.</li>
+    </ol>
+
+<p>Importing does the following:</p>
+    <ol>
+	<li>Calls the interface script to commence the export, passing the
+	    export/import path.
+	    (Ideally this would instantiate an importing object.)</li>
+
+	<li>Iterates over an import routine that returns the id and
+	    statistics for a single card.
+	    The statistics are merged back into the database.</li>
+
+	<li>Calls the interface script to finalise the import.</li>
+
+	<li>Switches to local reviewing mode.</li>
+    </ol>
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h3 id="interfacescripts">Interface Scripts</h3>
+
+<p>When exporting interface scripts transform the Mnemosyne data into
+    the format most easiest to process on a particular mobile device.
+    This may mean converting the Mnemosyne <acronym title="Hyper Text Markup  Lanuage">HTML</acronym> format into gif or png files, as <a href="http://www.mnemosyne-proj.org/node/155">Antonini's script</a>
+    does now, or other tools like
+    <a href="http://khtml2png.sourceforge.net/">khtml2png</a> do, converting
+    certain Unicode characters into images, etcetera.
+    Interface scripts also store the card statistics in a form that can be
+    readily loaded into memory and manipulated on the mobile device; this
+    may be a binary format.
+    Interface scripts will manage the structure of files and directories at
+    the import/export path, including copying and transforming image files
+    from other locations as required.</p>
+
+<p>When importing, interface scripts simply read the cards statistics file
+    and pass the data back to the exporter.</p>
+
+<p>Interface scripts will be handled similarly to normal Mnemosyne plugins.</p>
+
+<!-- * * * * * * * * * * * * * * * * * * * * -->
+<h3 id="players">Players</h3>
+
+<p>Each player will have a small number of essential features:</p>
+<ol>
+    <li>Read/write a card statistics file.</li>
+    <li>Display a question and wait for a <em>show answer</em> button press.</li>
+    <li>Display an answer and wait for a <em>grading</em> button press.</li>
+    <li>Update the card statistics.</li>
+</ol>
+
+<p>The implementation of items 1–3 is shared with the interface script,
+    which can accomodate for limitations of the <acronym title="Application  Programming Interfaces">APIs</acronym> to which the player has access.</p>
+
+<p>Item 4 requires reimplementing the Mnemosyne scheduling (<acronym title="Super Memo 2">SM2</acronym>) algorithm in the player
+    implementation language.
+    Namely, the functions <code>process_answer</code> and
+    <code>rebuild_revision_queue</code> from the Mnemosyne core library.
+    These algorithms could be isolated as functions that might be
+    shared across many players.
+    They must give identical results to the official Mnemosyne version.
+    A script could be developed to run schedulers, in any language, and
+    compare their results to the official version.
+    It would, however, have to account for some randomization.</p>
+
+<p>Players could provide additional features.
+    They should probably implement the answer overlay patch.
+    They may or may not support sound.</p>
+
+</div>
+            <div class="footnotes">
+              <ol>
+                <li id="footnote_1">A third alternative is to have mobile clients access
+    the Mnemosyne database directly, as is currently done when running
+    Mnemosyne on multiple computers from a USB stick.
+    This alternative will likely become more practical in Mnemosyne 2.x.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2009-11-22 20:56:11 +0000</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                    <ul>
+                      <li>
+                        <a href="mnemododo.html">Mnemododo</a>
+                      </li>
+                      <li>
+                        <a href="mnemojojo.html">Mnemojojo</a>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-notes.html">extra notes</a>
+                      </li>
+                      <li>
+                        <span class="active">
+                          <a href="mnemogogo-design.html">design</a>
+                        </span>
+                      </li>
+                      <li>
+                        <a href="mnemogogo-devel.html">development</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="mnemogogo.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mnemogogo</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="mnemododo.html">Mnemododo</a>
+                  <a class="dropdown-item button" href="mnemojojo.html">Mnemojojo</a>
+                  <a class="dropdown-item button" href="mnemogogo-notes.html">extra notes</a>
+                  <a class="dropdown-item button" href="mnemogogo-design.html">design</a>
+                  <a class="dropdown-item button" href="mnemogogo-devel.html">development</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item active">design</li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+        <script src="../js/bigfoot.min.js"></script>
+        <script>$.bigfoot()</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemogogo.html",
+            "name": "Mnemogogo"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/mnemogogo-design.html",
+            "name": "design"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>

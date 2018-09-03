@@ -1,0 +1,50 @@
+<!ELEMENT sitepage (title,
+		      ((description, lastmod, keyword*,
+			author?, prepage?, header?, ?style, ?script,
+			content, postpage?)
+		      |redirect
+		      ))>
+<!ELEMENT title       (#PCDATA) >
+<!ATTLIST title prefix CDATA "yes" >
+<!ATTLIST title suffix CDATA "yes" >
+<!ELEMENT description (#PCDATA) >
+<!ELEMENT lastmod     (#PCDATA) >
+<!ELEMENT keyword     (#PCDATA) >
+<!ELEMENT author      (#PCDATA) >
+<!ATTLIST author href CDATA #REQUIRED >
+<!ELEMENT style       (#PCDATA)>
+<!ELEMENT redirect    (EMPTY) >
+<!ATTLIST redirect href CDATA #REQUIRED >
+<!ELEMENT import      (EMPTY) >
+<!ATTLIST import href CDATA #REQUIRED >
+<!ATTLIST import xmlns CDATA #FIXED "">
+
+<!-- Include all of xhtml-1.1 except the Core Structure Module,
+     which includes body, head, html and title tags. -->
+<!ENTITY % xhtml-struct.module "IGNORE" >
+<!ENTITY % xhtml PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+			"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" >
+<!ENTITY % Block.extra "|import" >
+<!ENTITY % Inline.extra "|footnote" >
+%xhtml;
+
+<!-- content contains xhtml block elements -->
+<!ELEMENT content     ( %Block.mix; )+ >
+<!ATTLIST content mainid CDATA "main" >
+<!ATTLIST content footer CDATA "yes" >
+
+<!-- header contains xhtml block elements -->
+<!ELEMENT header      ( %HeadOpts.mix; )+ >
+<!ATTLIST header charset CDATA "UTF-8" >
+
+<!-- page-specific scripts -->
+<!ELEMENT script             (#PCDATA)>
+<!ATTLIST src script         CDATA #IMPLIED>
+
+<!-- footnote contains xhtml block elements -->
+<!ELEMENT footnote    (#PCDATA | %Inline.mix; )* >
+<!ATTLIST footnote xmlns CDATA #FIXED "">
+
+<!ELEMENT prepage     (#PCDATA) >
+<!ELEMENT postpage    (#PCDATA) >
+

@@ -1,0 +1,31 @@
+--- tcl8.2.3/unix/configure.orig	2006-12-20 15:42:37.000000000 +1100
++++ tcl8.2.3/unix/configure	2006-12-20 15:42:48.000000000 +1100
+@@ -4587,7 +4587,7 @@
+ 	    # results, and the version is kept in special file).
+ 	
+ 	    if test -r /etc/.relid -a "X`uname -n`" = "X`uname -s`" ; then
+-		system=MP-RAS-`awk '{print }' /etc/.relid'`
++		system=MP-RAS-`awk '{print }' /etc/.relid`
+ 	    fi
+ 	    if test "`uname -s`" = "AIX" ; then
+ 		system=AIX-`uname -v`.`uname -r`
+@@ -5507,7 +5507,7 @@
+ 	    # results, and the version is kept in special file).
+ 	
+ 	    if test -r /etc/.relid -a "X`uname -n`" = "X`uname -s`" ; then
+-		system=MP-RAS-`awk '{print }' /etc/.relid'`
++		system=MP-RAS-`awk '{print }' /etc/.relid`
+ 	    fi
+ 	    if test "`uname -s`" = "AIX" ; then
+ 		system=AIX-`uname -v`.`uname -r`
+--- tk8.2.3/unix/configure.orig	2006-12-20 15:48:00.000000000 +1100
++++ tk8.2.3/unix/configure	2006-12-20 15:48:21.000000000 +1100
+@@ -1454,7 +1454,7 @@
+ 	    # results, and the version is kept in special file).
+ 	
+ 	    if test -r /etc/.relid -a "X`uname -n`" = "X`uname -s`" ; then
+-		system=MP-RAS-`awk '{print }' /etc/.relid'`
++		system=MP-RAS-`awk '{print }' /etc/.relid`
+ 	    fi
+ 	    if test "`uname -s`" = "AIX" ; then
+ 		system=AIX-`uname -v`.`uname -r`

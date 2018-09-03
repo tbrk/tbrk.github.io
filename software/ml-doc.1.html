@@ -1,0 +1,1265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type"    : "WebSite",
+    "name"     : "tbrk.org",
+    "alternateName" : "Timothy Bourke",
+    "url"      : "http://www.tbrk.org"
+  }
+  </script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <title>Timothy Bourke - ml-doc.1</title>
+<!--[if lt IE 7]>
+    <style type='text/css'>
+	html { overflow: auto; }
+	body { overflow: hidden; font-size: 100%; }
+	div#container { overflow: auto; }
+    </style>
+    <script type="text/javascript">onload = function() {
+	try {container.focus() } catch {} }</script>
+  <![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta name="description" content="(unofficial) ML-Doc manual page" />
+    <link rel="home" title="Home" href="../index.html" />
+    <link rel="first" title="NJ Lib in Poly/ML" href="poly_smlnj-lib.html" />
+    <link rel="prev" title="sml_tk patches" href="sml_tk.html" />
+    <link rel="up" title="Standard ML" href="sml.html" />
+    <link rel="author" title="Timothy Bourke" href="https://plus.google.com/106045092518852678199?rel=author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div class="tp-all">
+      <div class="tp-all-inner">
+        <div class="tp-content-container">
+          <div class="tp-content">
+            <div id="main" class="main">
+    <div class="manpage">
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+UNTITLED                             LOCAL                            UNTITLED
+
+
+</PRE>
+<H2>NAME</H2><PRE>
+     <span class="bold">extract-sig</span> -- generate SML
+     <span class="bold">extract-info</span>, <span class="bold">merge-info</span> -- generate intermediate files
+     <span class="bold">html-gen</span>, <span class="bold">html-index</span>, <span class="bold">html-toc</span> -- generate HTML
+     <span class="bold">latex-gen</span>, <span class="bold">proof-latex</span> -- generate LaTeX
+     <span class="bold">filter-index</span>, <span class="bold">mk-mldoc-makefile</span> -- miscellaneous ml-doc tools
+
+
+</PRE>
+<H2>SYNOPSIS</H2><PRE>
+     <span class="bold">extract-sig</span> [<span class="bold">-config</span> <span class="underline">config-file</span>] [<span class="bold">-dir</span> <span class="underline">output-dir</span>] <span class="underline">mldoc-files</span>
+     <span class="bold">extract-info</span> [<span class="bold">-config</span> <span class="underline">config-file</span>] [<span class="bold">-dir</span> <span class="underline">output-dir</span>] <span class="underline">mldoc-files</span>
+     <span class="bold">merge-info</span> [<span class="bold">-config</span> <span class="underline">config-file</span>] [<span class="bold">-o</span> <span class="underline">output-file</span>] <span class="underline">info-files</span>
+     <span class="bold">html-index</span> [<span class="bold">-config</span> <span class="underline">config-file</span>] [<span class="bold">-dir</span> <span class="underline">output-dir</span>] [<span class="bold">-o</span> <span class="underline">output-file</span>]
+                 [<span class="bold">-info</span> <span class="underline">path</span>] [<span class="bold">-cols</span> <span class="underline">num</span>]
+                 [<span class="bold">-all</span> | <span class="bold">-sig</span> | <span class="bold">-struct</span> | <span class="bold">-exn</span> | <span class="bold">-type</span> | <span class="bold">-val</span>]
+     <span class="bold">html-toc</span> [<span class="bold">-config</span> <span class="underline">config-file</span>] [<span class="bold">-dir</span> <span class="underline">output-dir</span>] [<span class="bold">-o</span> <span class="underline">output-file</span>]
+                 [<span class="bold">-info</span> <span class="underline">path</span>] [<span class="bold">-depth</span> <span class="underline">num</span>]
+     <span class="bold">html-gen</span> [<span class="bold">-config</span> <span class="underline">config-file</span>] [<span class="bold">-dir</span> <span class="underline">output-dir</span>] [<span class="bold">-info</span> <span class="underline">path-to-infofile</span>]
+                 [<span class="bold">-wid</span> <span class="underline">num</span>] <span class="underline">mldoc-file</span>
+     <span class="bold">latex-gen</span> [<span class="bold">-config</span> <span class="underline">config-file</span>] [<span class="bold">-dir</span> <span class="underline">output-dir</span>] [<span class="bold">-doc</span>] [<span class="bold">-index</span>]
+                 [<span class="bold">-info</span> <span class="underline">path-to-infofile</span>] <span class="underline">mldoc-file</span>
+     <span class="bold">proof-latex</span> [<span class="bold">-config</span> <span class="underline">config-file</span>] [<span class="bold">-dir</span> <span class="underline">output-dir</span>] [<span class="bold">-doc</span>] [<span class="bold">-index</span>]
+                 [<span class="bold">-info</span> <span class="underline">path-to-infofile</span>] <span class="underline">mldoc-file</span>
+     <span class="bold">filter-index</span>
+     <span class="bold">mk-mldoc-makefile</span> [<span class="bold">-help</span>] [<span class="bold">-bin</span> <span class="underline">dir</span>] [<span class="bold">-html</span> <span class="underline">dir</span>] [<span class="bold">-info</span> <span class="underline">dir</span>] [<span class="bold">-latex</span> <span class="underline">dir</span>]
+                 [<span class="bold">-proof</span> <span class="underline">dir</span>] [<span class="bold">-root</span> <span class="underline">file</span>] <span class="underline">mldoc-files</span>
+
+
+</PRE>
+<H2>DESCRIPTION</H2><PRE>
+     ML-Doc is a system for producing reference manuals for SML libraries. It
+     can produce high quality documentation with extensive indexing, like the
+     published SML Basis Library reference manual, and also HTML for online
+     use.
+
+     ML-Doc is different to systems like javadoc that extract documentation
+     from source files.  Rather, the documentation <span class="underline">is</span> the primary artifact--in
+     fact <span class="bold">extract-sig</span> can be used to create source files from documentation.
+     The <B>mkdoc(1)</B> utility, however, can produce first drafts from source
+     files.  ML-Doc is most useful for documenting stable library interfaces.
+
+     ML-Doc files, marked by the extension <span class="underline">.mldoc</span>, are SGML documents conform-
+     ing to the ML-Doc document type definition.
+
+     This manual has four major sections besides the present one:
+     <span class="underline">OPTIONS</span>                describes command line options and configuration
+                            files.
+     <span class="underline">USING</span> <span class="underline">ML-DOC</span>           describes how the toolset is used to produce docu-
+                            mentation and includes subsections on <span class="underline">HTML</span>
+                            <span class="underline">Templates</span> and <span class="underline">Entities</span>.
+     <span class="underline">WRITING</span> <span class="underline">DOCUMENTATION</span>  describes the markup used within <span class="underline">*.mldoc</span> files.
+     <span class="underline">SGML</span> <span class="underline">VS</span> <span class="underline">HTML/XML</span>       discusses some SGML features absent from HTML and
+                            XML.
+
+   <span class="bold">Generating</span> <span class="bold">SML</span>
+     <span class="bold">extract-sig</span> -- Extracts SML signatures from <span class="underline">*.mldoc</span> documentation.
+
+   <span class="bold">Generating</span> <span class="bold">intermediate</span> <span class="bold">files</span>
+     <span class="bold">extract-info</span> -- Produces intermediate files summarising interfaces and
+     the section hierarchy.
+
+     <span class="bold">merge-info</span> -- Combines intermediate files into a single master info file.
+
+   <span class="bold">Generating</span> <span class="bold">HTML</span>
+     <span class="bold">html-index</span> -- Produces HTML index files from a master info file.
+
+     <span class="bold">html-toc</span> -- Transform a master info file and HTML template into a table
+     of contents.
+
+     <span class="bold">html-gen</span> -- Generate HTML output given template, master info, and mldoc
+     input files.
+
+   <span class="bold">Generating</span> <span class="bold">LaTeX</span>
+     <span class="bold">latex-gen</span> -- Produce LaTex for printing given master info and mldoc input
+     files.
+
+     <span class="bold">proof-latex</span> -- Produce LaTeX for proofing given master info and mldoc
+     input files.
+
+   <span class="bold">Miscellaneous</span>
+     <span class="bold">filter-index</span> -- Reads a list of index entries, one per line, from stan-
+     dard input, removes any duplicates, and writes the sorted entries to
+     standard output.
+
+     <span class="bold">mk-mldoc-makefile</span> -- Create a Makefile that ties all the other tools
+     together.
+
+
+</PRE>
+<H2>OPTIONS</H2><PRE>
+     Many command line options can also be specified in a configuration file,
+     using the names given in brackets.
+
+     <span class="bold">-config</span> <span class="underline">config-file</span>
+             Defaults to <span class="underline">Config.cfg</span>.  Contains global and per-tool settings.
+
+     <span class="bold">-cols</span> <span class="underline">num</span>
+             (NumColumns) Number of columns in the index. Defaults to 3.
+
+     <span class="bold">-debug</span>  (Debug) Currently unused.
+
+     <span class="bold">-depth</span> <span class="underline">num</span>
+             (Depth) Sections nested more deeply than this number will not be
+             listed in the table of contents.  Defaults to 3.
+
+     <span class="bold">-dir</span> <span class="underline">output-dir</span>
+             (OutDir) Specifies where to write output files.  The default is
+             different for each tool:
+                   <span class="bold">extract-sig</span>    <span class="underline">Sigs</span>
+                   <span class="bold">extract-info</span>   <span class="underline">Info</span>
+                   <span class="bold">html-index</span>     <span class="underline">HTML</span>
+                   <span class="bold">html-toc</span>       <span class="underline">HTML</span>
+                   <span class="bold">html-gen</span>       <span class="underline">HTML</span>
+                   <span class="bold">latex-gen</span>      <span class="underline">Hardcopy</span>
+                   <span class="bold">proof-latex</span>    <span class="underline">Proof</span>
+
+     <span class="bold">-doc</span>    (Standalone) Currently unused.
+
+     <span class="bold">-index</span>  Currently unused.
+
+     <span class="bold">-info</span> <span class="underline">path</span>
+             (MasterInfoFile) Locates the output of <span class="bold">merge-info</span>.  Defaults to
+             <span class="underline">Info/LaTeX.info</span> for the hardcopy and proof tools, and
+             <span class="underline">Info/HTML.info</span> for the HTML tools.
+
+     <span class="bold">-mldoc</span>  (MLDocDir) Names the subdirectory of the <span class="underline">*.mldoc</span> files. Defaults
+             to ML-Doc.
+
+     <span class="bold">-o</span> <span class="underline">output-file</span>
+             (OutFile) Specifies where to write output.  For <span class="bold">html-index</span> the
+             default depends on the index generated:
+                   all       <span class="underline">index-all.html</span>
+                   sig       <span class="underline">index-sig.html</span>
+                   struct    <span class="underline">index-struct.html</span>
+                   exn       <span class="underline">index-exn.html</span>
+                   type      <span class="underline">index-type.html</span>
+                   val       <span class="underline">index-val.html</span>
+             Otherwise the name depends on the tool:
+                   <span class="bold">merge-info</span>    <span class="underline">Info/Master.info</span>
+                   <span class="bold">html-toc</span>      <span class="underline">toc.html</span>
+
+     <span class="bold">-all</span> | <span class="bold">-sig</span> | <span class="bold">-struct</span> | <span class="bold">-exn</span> | <span class="bold">-type</span> | <span class="bold">-val</span>
+             Specify which index to generate, defaulting to <span class="bold">-all</span>:
+                   <span class="bold">-all</span>       unified identifier index
+                   <span class="bold">-sig</span>       signatures
+                   <span class="bold">-struct</span>    structures
+                   <span class="bold">-exn</span>       exceptions
+                   <span class="bold">-type</span>      types
+                   <span class="bold">-val</span>       values
+
+     <span class="bold">-wid</span> <span class="underline">num</span>
+             (PreWid).  Width of the output device. Currently unused. Defaults
+             to 60.
+
+     There are some additional options that can only be given in a configura-
+     tion file:
+     <span class="bold">BaseURL</span>          Applies to the HTML grouping (described below).  If the
+                      RelativeLinks flag is true then intra-document links
+                      will be relative, otherwise the value of BaseURL, if
+                      present, is added as an HTML BASE tag.
+     <span class="bold">Catalog</span>          Global option. Names the catalog file. Defaults to
+                      <span class="underline">CATALOG</span>.
+     <span class="bold">RelativeLinks</span>    Applies to the HTML grouping.  See BaseURL above.
+                      Defaults to false.
+     <span class="bold">Root</span>             Applies to <span class="bold">html-gen</span>.  Currently unused.
+     <span class="bold">SGMLS</span>            Applies to the Tools grouping. Path to an SGML validat-
+                      ing parser. Defaults to <span class="underline">/usr/local/bin/nsgmls</span>.
+     <span class="bold">Template</span>         Applies to <span class="bold">html-index</span>, <span class="bold">html-toc</span>, and <span class="bold">html-gen</span>.  Names
+                      the template file.
+     <span class="bold">TopLevelSection</span>  Applies to <span class="bold">latex-gen</span> and <span class="bold">proof-latex</span>.  Defaults to
+                      Chapter.  Other permitted values are Part and Section.
+                      Controls the generation of LaTeX sections.
+
+     A configuration file contains name/value pairs separated within and
+     between by white space. Single-line comments begin with a `#'.  Groupings
+     are made by giving a name followed by contained options enclosed in
+     braces, { ... }.  Values are either names, decimal or hexadecimal liter-
+     als, the latter prefixed with `0x', strings enclosed in double quotes, or
+     logical values (`TRUE' or `FALSE').  As a brief example:
+
+           # Catalog.cfg
+           Catalog "CATALOG"
+
+           HTML {
+               BaseURL          "CML"
+               RelativeLinks    TRUE
+               PreWid           70
+           }
+
+     <span class="bold">mk-mldoc-makefile</span> does not currently respect the configuration file,
+     instead it uses command line options, which differ somewhat from the
+     other tools:
+
+     <span class="bold">-help</span>   Display a summary of options.
+
+     <span class="bold">-bin</span> <span class="underline">dir</span>
+             Specifies where the ML-Doc tool binaries are installed. Defaults
+             to <span class="underline">/usr/local/bin</span>.
+
+     <span class="bold">-html</span> <span class="underline">dir</span>
+             Output directory for HTML files. Defaults to <span class="underline">HTML</span>.
+
+     <span class="bold">-info</span> <span class="underline">dir</span>
+             Output directory for info files. Defaults to <span class="underline">Info</span>.
+
+     <span class="bold">-latex</span> <span class="underline">dir</span>
+             Output directory for LaTeX files.  Defaults to <span class="underline">Hardcopy</span>.
+
+     <span class="bold">-proof</span> <span class="underline">dir</span>
+             Output directory for proof LaTeX files. Defaults to <span class="underline">Proof</span>.
+
+     <span class="bold">-root</span> <span class="underline">file</span>
+             If present, the generated Makefile will run LaTeX against the
+             given filename, which should not have a .tex extension.
+
+
+</PRE>
+<H2>USING ML-DOC</H2><PRE>
+   <span class="bold">Directory</span> <span class="bold">structure</span>
+     An ML-Doc <span class="underline">project</span> comprises a set of files and directories that, at a
+     minimum, will include:
+
+     <span class="underline">CATALOG</span>         Typically links to <span class="underline">Entities.sgml</span> in the same directory
+                     and the installed ML-Doc <span class="underline">CATALOG</span> file.  See FILES.
+
+     <span class="underline">Config.cfg</span>      Global and per-tool configuration options.  See OPTIONS.
+
+     <span class="underline">Entities.sgml</span>   Contains entities local to the project. These entities
+                     are used for abbrevations and referencing external docu-
+                     ments and files.  See Entities.
+
+     <span class="underline">ML-Doc/</span>         The source <span class="underline">*.mldoc</span> SGML documentation.
+
+     <span class="underline">index.template</span>  Template used by <span class="bold">html-index</span>.
+
+     <span class="underline">page.template</span>   Template used by <span class="bold">html-gen</span>.
+
+     <span class="underline">toc.template</span>    Template used by <span class="bold">html-toc</span>.
+
+     Running <span class="bold">mk-mldoc-makefile</span> adds:
+
+     <span class="underline">Makefile</span>        Orchestrates the manifold programs to produce documenta-
+                     tion.
+
+     The other tools place their output in additional subdirectories.  Empty
+     subdirectories and any child directories therein must be created before
+     running the tools.  The default names are:
+
+     <span class="underline">HTML/</span>           Output from the <span class="bold">html-gen</span>, <span class="bold">html-toc</span>, and <span class="bold">html-index</span> tools.
+
+     <span class="underline">Hardcopy/</span>       Output from <span class="bold">latex-gen</span>.
+
+     <span class="underline">Info/</span>           Output from <span class="bold">extract-info</span>, further augmented by
+                     <span class="bold">merge-info</span>, to be used by the other tools.
+
+     <span class="underline">Proof/</span>          Output from <span class="bold">proof-latex</span>.
+
+     <span class="underline">Sigs/</span>           SML code created by <span class="bold">extract-sig</span>.
+
+   <span class="bold">HTML</span> <span class="bold">Templates</span>
+     Templates are HTML files containing special entities. The <span class="bold">html-*</span> tools
+     replace entities with details from <span class="underline">*.mldoc</span> and <span class="underline">*.info</span> files.  Each tool
+     works from a distinct template named in the configuration file.
+
+           <span class="bold">Tool</span> <span class="bold">name</span> <span class="bold">(in</span> <span class="bold">configuration</span> <span class="bold">file)</span>    <span class="bold">Typical</span> <span class="bold">Template</span> <span class="bold">value</span>
+           HTML-Gen                             <span class="underline">page.template</span>
+           HTML-Index                           <span class="underline">index.template</span>
+           HTML-TOC                             <span class="underline">toc.template</span>
+
+     The entities are:
+           &amp;body;            placeholder for document body
+           &amp;filename;        document filename without extension
+           &amp;title;           document title
+           &amp;version;         document version
+           &amp;doc.date;        document date in "month day, year" format
+           &amp;doc.year;        document year (4 digit format)
+           &amp;doc.day;         document day
+           &amp;doc.month;       document month (as a string)
+           &amp;doc.monthnum;    document month (as a number from 1-12)
+           &amp;today.date;      current date in "month day, year" format
+           &amp;today.year;      current year (4 digit format)
+           &amp;today.day;       current day
+           &amp;today.month;     current month (as a string)
+           &amp;today.monthnum;  current month (as a number from 1-12)
+           &amp;base.url;        URL of the root directory of the document
+           &amp;parent.url;      URL of the parent document
+           &amp;root.url;        URL of the document root
+           &amp;index.url;       URL of the document index
+           &amp;toc.url;         URL of the table of contents
+
+   <span class="bold">Entities</span>
+     Entities are used within ML-Doc to include mathematical and other spe-
+     cialised symbols, to abbreviate titles and other text, to reference
+     files, and to name certain output files.  The latter three purposes are
+     served by including a customised <span class="underline">Entities.sgml</span> file within a project.
+
+     Specialised symbols include various mathematical symbols (described under
+     <span class="underline">Mathematics</span>), the HTML 2.0 standard entities, e.g.  &amp;nbsp;, &amp;copy;, and
+     these SGML/LaTeX symbols:
+           &amp;LT;        &lt;            &amp;LTE;       &lt;=
+           &amp;GT;        &gt;            &amp;GTE;       &gt;=
+           &amp;NEQ;       !=           &amp;AMP;       &amp;
+           &amp;DQUOTE;    "            &amp;BAR;       |
+           &amp;DASH;      -
+
+     Abbreviations encourage consistency and facilitate certain types of
+     updates.  These definitions, in an <span class="underline">Entities.sgml</span> file, are a good exam-
+     ple:
+           &lt;!ENTITY SMLBASIS SDATA "SML Basis Library"&gt;
+           &lt;!ENTITY SMLNJ    SDATA "SML/NJ"&gt;
+     References, which will be expanded in the output text, may then be made
+     from <span class="underline">*.mldoc</span> files:
+           This feature requires the &amp;SMLNJ; libraries.
+
+     Documentation will sometimes need to reference the ML-Doc descriptions of
+     other libraries; such as those of the SML Basis, SML/NJ, or Concurrent
+     ML.  The reference tags described under <span class="underline">References</span> (e.g.  SIGREF, AREF
+     and DOCREF) provide this facility via a DOCUMENT attribute whose value
+     must be an entity listed in <span class="underline">Entities.sgml</span>, a bracketing ampersand and
+     semicolon are not used for such values.  The entity resolves to an iden-
+     tifying string, which is sought within the configuration file,
+     <span class="underline">Config.cfg</span>, to find an <span class="underline">external</span> <span class="underline">document</span> <span class="underline">entry</span>.  As an example, consider
+     a constructor reference:
+           &lt;CONREF DOCUMENT=SML-BASIS-DOC STRID="Option"/NONE/
+     The DOCUMENT attribute value, SML-BASIS-DOC, is defined in the project
+     entity file, <span class="underline">Entities.sgml</span>:
+           &lt;!ENTITY SML-BASIS-DOC SDATA "SML-Basis-Doc"&gt;
+     The entity value, SML-Basis-Doc, in turn refers to an entry in the con-
+     figuration file:
+           ...
+           SML-Basis-Doc {
+               InfoFile   "/usr/local/smlnj/smlnj-lib/Doc/BasisInfo/HTML.info"
+               BaseURL    "www.standardml.org/Basis"
+               RootURL    "www.standardml.org/Basis/index.html"
+
+           }
+           ...
+     This example refers to a master info file installed with SML/NJ and
+     directs hyperlinks to the online documentation.
+
+     Entities are also used within ML-Doc to specify values for the FILE
+     attribute, which specifies an input file for the (currently unsupported)
+     FIGURE tag, and names an output file for the SIGBODY tag.  <span class="bold">extract-sig</span>
+     expands the given entity to name the source code it produces, e.g. given
+     an entity declaration:
+           &lt;!ENTITY CML-SIG SDATA "cml-sig.sml"&gt;
+     The specifications in
+           &lt;SIGBODY SIGID="CML" FILE=CML-SIG&gt;
+     would be extracted to a file named <span class="underline">cml-sig.sml</span>.
+
+   <span class="bold">General</span> <span class="bold">Use</span>
+     A simplified sequence of steps for creating ML-Doc documentation:
+
+     1.   Create and populate the basic directory structure, as per <span class="underline">Directory</span>
+          <span class="underline">Structure</span>.
+
+     2.   Use <B>mkdoc(1)</B> to produce skeleton <span class="underline">*.mldoc</span> files.  Add explanatory
+          text to each.
+
+     3.   Add other <span class="underline">*.mldoc</span> files to link together into a continuous whole,
+          and to explain the various interfaces.
+
+     4.   Create a <span class="underline">Makefile</span> with <span class="bold">mk-mldoc-makefile</span>, as shown under <span class="underline">EXAMPLES</span>.
+
+     5.   Use the make targets to generate documentation.
+
+                HTML      Default. Produce HTML pages.
+
+                Hardcopy  Create LaTeX files for generating the final docu-
+                          ment.
+
+                Proof     Create LaTeX files for generating a review document.
+
+                clean     Run the individual clean-html, clean-info,
+                          clean-latex, and clean-proof targets to remove gen-
+                          erated files.
+
+     6.   LaTeX documentation requires further processing as described below.
+
+     7.   Any changes to the library interface should be made against the
+          <span class="underline">*.mldoc</span> files, <span class="bold">extract-sig</span> is able to extract an updated SML ver-
+          sion.
+
+     LaTeX documents require a <span class="underline">root</span> <span class="underline">file</span> to specify the document class and
+     indexes.  For example, if the first file is called <span class="underline">intro.mldoc</span> then
+     <span class="underline">manual.tex</span> might resemble:
+
+           \documentclass{mldoc-book}
+           \mldMakeTopicIndex\mldMakeIdIndex\mldMakeRaisesIndex
+           \newcommand{\kw}[1]{\textbf{#1}}
+
+           \begin{document}
+             \input{intro}
+             \mldPrintTopicIndex\mldPrintIdIndex\mldPrintRaisesIndex
+           \end{document}
+     The kw command formats identifiers.  The mldoc class and style files must
+     be in a path searched by LaTeX.  Updating the TEXINPUTS environment vari-
+     able is one way of ensuring this. E.g. under bash:
+           export TEXINPUTS=".:/usr/local/share/ml-doc/lib/LaTeX:".
+     The <span class="underline">EXAMPLES</span> section shows how to run the LaTeX tools.
+
+
+</PRE>
+<H2>WRITING DOCUMENTATION</H2><PRE>
+     This section essentially elaborates on the <span class="underline">ml-doc.dtd</span> file.  An ML-Doc
+     file begins with the declaration:
+           &lt;!DOCTYPE ML-DOC SYSTEM&gt;
+     and contains header elements followed by one or more, potentially nested,
+     sections.
+
+     There are four types of header element. Only TITLE is mandatory.  They
+     may be given in any order.
+
+           VERSION    The version of the documentation, with attributes:
+                            VERID  e.g.  `1.4'.
+                            YEAR   Year of release.
+                            MONTH  (optional) Month of release.
+                            DAY    (optional) Day of release.
+                      E.g.  &lt;VERSION VERID="1.4" YEAR=2007 MONTH=8 DAY=12&gt;
+
+           COPYRIGHT  Identify a copyright holder with attributes:
+                            OWNER  The copyright owner.
+                            YEAR   Year of assertion.
+                      E.g.  &lt;COPYRIGHT OWNER="Mega Corp" YEAR=2003&gt;
+                      Multiple COPYRIGHT elements may be present.
+
+           AUTHOR     Identifies the document author, with attributes:
+                            NAME   Name of author.
+                            EMAIL  Email address of author.
+                            YEAR   Year written.
+                            MONTH  (optional) Month written.
+                            DAY    (optional) Day written.
+                      E.g.  &lt;AUTHOR NAME="J. Doe" EMAIL="doej@mega.co"
+                      YEAR=2006&gt;
+
+           TITLE      The document title. E.g.  &lt;TITLE&gt;Superhash
+                      Structure&lt;/TITLE&gt;
+
+     Sections begin with a HEAD element, followed by zero or more paragraphs
+     (PP and FLOAT elements), and then zero or more nested sections, included
+     files and/or interfaces.  The SECTION tag has three optional attributes:
+           LABEL     A string used for making cross-references (from SECREF).
+           NONUMBER  If present, the section will not be numbered in LaTeX
+                     output.
+           NOTOC     Excludes the section from the table of contents.  Only
+                     valid if NONUMBER is present.
+     HEAD and PP elements have no attributes. For FLOAT elements see <span class="underline">GENERAL</span>
+     <span class="underline">MARKUP</span>.  E.g.
+           &lt;SECTION&gt;
+             &lt;HEAD&gt;General Markup&lt;/HEAD&gt;
+             &lt;PP&gt;
+             Various tags provide...
+             &lt;SECTION&gt;
+               &lt;HEAD&gt;Formatting&lt;/HEAD&gt;
+               &lt;PP&gt;
+               Tags available for inline...
+             &lt;/SECTION&gt;
+             ...
+           &lt;/SECTION&gt;
+
+     Typically a separate <span class="underline">*.mldoc</span> file will be used for each major topic, such
+     as introductory or background text, and interface (signature, structure
+     or functor).  A corresponding <span class="underline">*.html</span> file, for HTML output, and/or <span class="underline">*.tex</span>
+     file, for LaTeX output, is generated for each ML-Doc source file.  A com-
+     plete document is constructed by including, with INCLFILE tags, individ-
+     ual files within a hierarchy of sections.  Inclusions become hyperlinks
+     in HTML output and inserted pages in LaTeX output. An INCLFILE has a sin-
+     gle, mandatory FILE attribute specifying a relative or absolute file
+     path. The .mldoc extension is implied. E.g.
+           &lt;INCLFILE FILE="lib/hash-sig"&gt;
+
+     SGML comments, e.g.  &lt;!-- check source code. --&gt;, are ignored.
+
+     SML objects are described between INTERFACE tags which have optional
+     LABEL attributes for making cross-references. An INTERFACE element con-
+     tains, in order: a HEAD element (as per SECTION), an optional SEEALSO
+     element containing one or more references (see <span class="underline">References</span>), optional
+     paragraphs of introductory text, an <span class="underline">object</span> <span class="underline">description</span>, and optional
+     paragraphs of concluding text.
+
+   <span class="bold">Object</span> <span class="bold">Descriptions</span>
+     Object description elements may have a STATUS attribute, with value
+     REQUIRED, OPTIONAL, or PROPOSED.  There are three types of element for
+     describing objects provided by a library:
+           SIGNATURE  With mandatory SIGID attribute.
+           STRUCTURE  With mandatory STRID attribute.
+           FUNCTOR    With mandatory FCTID attribute.
+
+     Example outline of an interface:
+           &lt;INTERFACE&gt;
+             &lt;HEAD&gt;The &lt;CD/Hash/ structure&lt;/HEAD&gt;
+             &lt;SEEALSO&gt;
+               &lt;STRREF DOCUMENT=SML-BASIS-DOC TOPID/Option/
+               &lt;STRREF DOCUMENT=SML-BASIS-DOC TOPID/Time/
+             &lt;/SEEALSO&gt;
+
+             &lt;PP&gt;
+             Optional text after synopsis.
+
+             &lt;STRUCTURE STRID="CML"&gt;
+             ...
+             &lt;/STRUCTURE&gt;
+
+             &lt;PP&gt;
+             Optional final discussion.
+           &lt;/INTERFACE&gt;
+     It is usually easier to generate object descriptions directly from SML
+     source files using <B>mkdoc(1)</B>.
+
+     The SIGBODY element is central to describing objects.  It must be
+     included in SIGNATUREs, may be included in STRUCTUREs and FUNCTORs, and
+     has two optional attributes:
+           SIGID  Identifies the signature being described. It is used for
+                  cross-referencing.  When a SIGBODY is given within a
+                  SIGNATURE, both may have identical SIGID values. Within a
+                  STRUCTURE the SIGID attribute is usually the `signature
+                  version' of the outer STRID.  It is a succinct way of
+                  describing both interface and implementation, e.g.
+                        &lt;STRUCTURE STRID="ControlSet"&gt;
+                          &lt;SIGBODY SIGID="CONTROL_SET" FILE=CONTROL-SET&gt;
+                          ...
+                          &lt;/SIGBODY&gt;
+                        &lt;/STRUCTURE&gt;
+           FILE   The <B>mkdoc(1)</B> utility uses the value of this attribute to
+                  name extracted SML files.  SIGID and FILE are typically
+                  omitted on SIGBODYs used as functor arguments.
+     A SIGBODY contains one or more SPEC and/or SPECBREAK elements.  The for-
+     mer is described under <span class="underline">Specifications</span>.  The latter is used to form sub-
+     groups of related specifications, when marked with a NEWLINE attribute,
+     blank lines are placed in both extracted signatures and generated output.
+
+     A SIGNATURE contains a SIGBODY which may be followed by a series of
+     SIGINSTANCE elements that list structures implementing the signature,
+     each containing an ID, zero or more WHERETYPE elements, and optionally a
+     COMMENT.  A WHERETYPE element states which signature types are instanti-
+     ated in an implementation, it consists of an optional TYPARAM binding,
+     the ID of the type, and a TY type constraint. The COMMENT, TYPARAM, and
+     TY elements are described below. The SIGINSTANCE tag has two optional
+     attributes:
+           STATUS  Having a value of REQUIRED, OPTIONAL, or PROPOSED.
+           OPAQUE  Indicates an opaque signature binding.
+     This example from the SML/NJ Library:
+           &lt;SIGNATURE SIGID="ORD_MAP"&gt;
+             &lt;SIGBODY SIGID="ORD_MAP" FILE=ORD-MAP&gt;
+             ...
+             &lt;SIGINSTANCE OPAQUE&gt;&lt;ID&gt;IntBinaryMap
+               &lt;WHERETYPE&gt;&lt;ID&gt;Key.ord_key&lt;TY&gt;Int.int
+               &lt;COMMENT&gt;
+               ...
+             &lt;SIGINSTANCE OPAQUE&gt;&lt;ID&gt;IntListMap
+               &lt;WHERETYPE&gt;&lt;ID&gt;Key.ord_key&lt;TY&gt;Int.int
+               &lt;COMMENT&gt;
+               ...
+           &lt;/SIGNATURE&gt;
+     would yield a synopsis:
+           signature ORD_MAP
+           structure IntBinaryMap :&gt; ORD_MAP
+           structure IntListMap :&gt; ORD_MAP
+
+     A STRUCTURE contains either a full SIGBODY, as described above, or simply
+     the name of (ID), or reference to (SIGREF) a signature described else-
+     where.  A name or reference may be followed by WHERETYPE type realisa-
+     tions.  An OPAQUE element can be placed before the signature body, name
+     or reference, to signify an opaque binding, e.g.
+           &lt;STRUCTURE STRID="Store"&gt;
+             &lt;OPAQUE&gt;
+             &lt;SIGREF/ORD_SET/
+             &lt;WHERETYPE&gt;&lt;ID&gt;Key.ord_key&lt;TY&gt;String.string
+           &lt;/STRUCTURE&gt;
+
+     The contents of a FUNCTOR are identical to those of a STRUCTURE, except
+     that they must begin with an argument element, which takes one of two
+     forms:
+           short    An argument name (ID) followed by the name of (ID), or
+                    reference (SIGREF) to a signature.
+           general  A SIGBODY element containing specifications, notably of
+                    SUBSTRUCT and TYPE elements.
+     E.g.  functor ListSetFn (ORD_KEY): ORD_SET could be written:
+           &lt;FUNCTOR FCTID="ListSetFn"&gt;
+             &lt;ID/K/&lt;ID&gt;ORD_KEY&lt;/ID&gt;   &lt;!--argument--&gt;
+             &lt;ID&gt;ORD_SET              &lt;!--result--&gt;
+           &lt;/FUNCTOR&gt;
+     The second ID could have been written as a SIGREF, the third could have
+     been given in full using SIGBODY.
+
+   <span class="bold">Specifications</span>
+     A SIGBODY comprises a list of SPEC elements, each containing either a
+     single substructure specification, or multiple specifications of the same
+     kind (though types and eqtypes may be mixed), and optionally followed by
+     a comment.  The specification element types are:
+
+     INCLUDE        An ID or SIGREF naming an included signature, optionally
+                    followed by WHERETYPE realisations.  E.g.
+                    &lt;SPEC&gt;&lt;INCLUDE&gt;&lt;SIGREF DOCUMENT=SML-BASIS-DOC/OS_IO/
+
+     SUBSTRUCT      The contents are identical to those of STRUCTURE except
+                    that the first contained element must be an ID naming the
+                    substructure, e.g.
+                    &lt;SPEC&gt;&lt;SUBSTRUCT&gt;Key&lt;SIGREF/ORD_KEY/&lt;/SUBSTRUCT&gt;
+
+     SHARING        An ID followed by one or more pairings of EQU and ID ele-
+                    ments. The SHARING element may include a TYPE attribute.
+                    E.g.
+                    &lt;SPEC&gt;
+                      &lt;SHARING TYPE&gt;&lt;ID&gt;A.vector&lt;EQU&gt;&lt;ID&gt;V.vector
+                      &lt;SHARING TYPE&gt;&lt;ID&gt;A.elem&lt;EQU&gt;&lt;ID&gt;V.elem
+                      ...
+
+     EXN            An ID and optional TY, e.g.
+                    &lt;EXN&gt;&lt;ID&gt;Fail&lt;TY&gt;string
+                    or taking advantage of SGML short-hand (the ID tag is
+                    optional):
+                    &lt;EXN&gt;Fail&lt;TY&gt;string
+
+     TYPE / EQTYPE  An optional TYPARAM, an ID, and an optional TY, e.g.
+                    &lt;TYPE&gt;&lt;TYPARAM&gt;'a&lt;ID&gt;queue
+
+     DATATYPE       An optional TYPARAM, an ID, and a list of CONS elements,
+                    each containing an ID followed by optional TY and COMMENT
+                    elements, e.g.
+                    &lt;SPEC&gt;
+                      &lt;DATATYPE&gt;&lt;TYPARAM&gt;'a&lt;ID&gt;option
+                                &lt;CONS&gt;NONE
+                                &lt;CONS&gt;SOME&lt;TY&gt;'a
+                      &lt;/DATATYPE&gt;
+                    A DATATYPE element may be marked with a COMPACT attribute
+                    that directs the output generators to place all of the
+                    constructors on a single line if possible.
+
+     DATATYPEDEF    An ID followed by another ID or a TYREF.  Adds a datatype
+                    replication, e.g.
+                    &lt;DATATYPEDEF&gt;&lt;ID&gt;access_mode&lt;/ID&gt;
+                      &lt;TYREF STRID="OS.FileSys" DOCUMENT=SML-BASIS-DOC&gt;
+                        OS.FileSys.access_mode&lt;/TYREF&gt;
+                    &lt;/DATATYPEDEF&gt;
+
+     VAL            An ID followed by a TY and optionally a RAISES element
+                    containing one or more EXNREFs, e.g.
+                    &lt;SPEC&gt;
+                      &lt;VAL&gt;fact&lt;TY&gt;int -&gt; int
+                               &lt;RAISES&gt;&lt;EXNREF/Domain/
+                                       &lt;EXNREF/Overflow/
+
+   <span class="bold">Comments</span>
+     Comments may be included as the last item within a SIGINSTANCE, SPEC, or
+     CONS element. A COMMENT contains one or more paragraphs (PP), each
+     optionally preceded by a PROTOTY element that contains one or more PROTO
+     elements showing, in SML, how an object might be called or used with
+     argument names.  To take an example from the SML Basis Library:
+           &lt;SPEC&gt;
+             &lt;VAL&gt;before&lt;TY&gt;('a * unit) -&gt; 'a
+             &lt;COMMENT&gt;
+               &lt;PROTOTY&gt;
+                 &lt;PROTO&gt;
+                   &lt;ARG/a/ before &lt;ARG/b/
+               &lt;PP&gt;
+               returns &lt;ARG/a/. It provides a notational shorthand for
+               evaluating &lt;ARG/a/, then &lt;ARG/b/, before returning the
+               value of &lt;ARG/a/.
+     The specific argument names make it easier to write a description of what
+     the function does.
+
+     The final element within a PROTO can be EVALTO, which should contain SML
+     showing the result of evaluating the expression.
+
+   <span class="bold">References</span>
+     There are several ways to cross-reference:
+
+     SML objects       Signatures, structures, functors, and their contents.
+                       Further details follow this list.
+
+     External objects  An IDREF element references an external non-SML identi-
+                       fier.  An optional KIND attribute describes what is
+                       being referred to, e.g. a C function or a system call.
+                       If the NOINDEX attribute is present the identifier
+                       instance is not noted in an index.  E.g.  &lt;IDREF
+                       KIND="POSIX" NOINDEX/printf/
+
+     HTML anchors      Cross-linking for HTML output. An ADEF with mandatory
+                       TAG attribute defines an anchor name for a run of text.
+                       AREF elements, also with TAG attributes, link back to
+                       the matching name.  Reference is made to anchors in
+                       other documents by setting the DOCUMENT attribute to an
+                       entity value, see Entities.  E.g.
+                       &lt;ADEF TAG="FLUSHWARNING"&gt;Disaster results if a flush
+                       is attempted after closing the pipe&lt;/ADEF&gt;.
+                          ...
+                       Heed the &lt;AREF TAG="FLUSHWARNING"&gt;earlier&lt;/AREF&gt; warning.
+
+     URLs              A URL tag links to an external resource specified by an
+                       HREF attribute. This tag is ignored when generating
+                       LaTeX output.
+
+     External ML-Doc   Reference is made to other ML-Doc documents with a
+                       DOCREF element that specifies an entity with the
+                       DOCUMENT attribute, e.g.
+                        ...features of the &lt;DOCREF
+                         DOCUMENT=SML-BASIS-DOC/SML Basis Library/...
+
+     Sections/floats   Cross-references may be made to SECTIONs or FLOATs that
+                       have LABEL attributes. The former using SECREF and the
+                       latter with FLOATREF.  Both require a LABEL attribute
+                       of their own.  Neither contain text, which comes
+                       instead from the referenced object.  E.g.
+                       &lt;SECTION LABEL="Files"&gt;
+                       ...
+                       &lt;SECTION LABEL="Storage"&gt;
+                         &lt;HEAD&gt;Sockets&lt;/HEAD&gt;
+                         &lt;PP&gt;
+                         The &lt;SECREF LABEL="Files"&gt; section describes...
+
+     Citations         A CITE element refers to a bibliography entry.  It is
+                       not supported by the HTML generators.  The value of the
+                       KEY attribute is passed directly into LaTeX.
+
+     The remainder of this section discusses references to SML objects.  These
+     references are included in the document index, if not marked with a
+     NOINDEX attribute, and become hyperlinks in HTML output, unless marked
+     with a NOLINK attribute.  A DOCUMENT attribute is used to reference
+     another ML-Doc project.
+
+     The SML object reference tags are:
+           SIGREF     Refer to a complete signature, e.g.
+                      &lt;SIGREF/MONO_ARRAY_SORT/
+           FCTREF     Refer to a functor, e.g.
+                      The &lt;FCTREF NOLINK/ArrayQSortFn/ implements...
+           FCTARGREF  Refer to the argument of a functor.
+           STRREF     Refer to a structure or substructure.
+           EXNREF     Refer to an exception, e.g.
+                      &lt;RAISES&gt;
+                        &lt;EXNREF STRID="General" DOCUMENT=SML-BASIS-DOC/Size/
+           TYREF      Refer to a type, e.g.
+                      ...constructor &lt;TYREF SIGID="UREF"&gt;uref&lt;/TYREF&gt; with...
+
+           CONREF     Refer to a datatype constructor, e.g.
+                      ...then it returns &lt;CONREF STRID="Option"/NONE/
+           VALREF     Refer to a value, e.g &lt;VALREF&gt;randMin&lt;/VALREF&gt;.
+
+     A context attribute should be given with the latter five tags when they
+     refer to a specification in another part of the module hierarchy.  There
+     are four, mutually exclusive, possibilities:
+           SIGID  For specifications in SIGNATUREs.
+           STRID  For specifications in STRUCTUREs or SUBSTRUCTs.
+           FCTID  For specifications in FUNCTORs.
+           TOPID  For specifications available at the top-level without quali-
+                  fication. No value is given.
+     Examples may be seen throughout this document.  The partial path given in
+     the *ID attribute and the reference text are merged when there is overlap
+     between the rightmost components of the former and the leftmost compo-
+     nents of the latter. For example, in cases like:
+           &lt;TYREF STRID="OS.FileSys"&gt;OS.FileSys.access_mode&lt;/TYREF&gt;
+     An *ID attribute is not required when the reference is to another element
+     in the same SIGBODY.
+
+   <span class="bold">Formatting</span>
+     Tags available for inline formatting:
+           <span class="bold">tag</span>    <span class="bold">effect</span>
+           EM     emphasis
+           IT     italics
+           BF     bold
+           TT     typewriter
+           CD     code
+           ARG    function argument
+           KW     keyword
+     Program text may also be displayed, rather than inlined with the tag
+     CODE.  Both CD and CODE tags may carry a LANG attribute having a value of
+     either "sml" or "c".
+
+   <span class="bold">Tables</span>
+     Tables are as in HTML but initial COL tags are mandatory:
+           &lt;TABLE&gt;
+             &lt;COL ALIGN=LEFT PARBOX="5em"&gt;&lt;COL ALIGN=CENTER&gt;&lt;COL ALIGN=RIGHT&gt;
+             &lt;TR&gt;&lt;TH&gt;Colour&lt;TH&gt;Code&lt;TH&gt;Comment
+             &lt;TR&gt;&lt;TD&gt;Red&lt;TD&gt;&lt;CD/#FF0000/&lt;TD&gt;Plain red
+             &lt;TR&gt;&lt;TD&gt;Blue&lt;TD&gt;&lt;CD/#0000FF/&lt;TD&gt;Plain blue
+           &lt;/TABLE&gt;
+     Table heading (TH) and cell (TD) elements have optional ALIGN and COLSPAN
+     attributes. Tables that span multiple pages should be marked LONG.
+
+   <span class="bold">Floats</span>
+     Source code and (non-LONG) tables may be floated:
+           &lt;FLOAT LABEL="modlist" CAPALIGN=TOP&gt;
+             &lt;CAPTION&gt;Module List
+             &lt;TABLE&gt;...&lt;/TABLE&gt;
+           &lt;/FLOAT&gt;
+     The LABEL attribute is obligatory and may be referenced from a FLOATREF.
+
+   <span class="bold">Lists</span>
+     There are three types of lists:
+     <span class="bold">-</span>   itemized (bulleted items), e.g.
+         &lt;ITEMIZE&gt;
+           &lt;ITEM&gt;First item
+           &lt;ITEM&gt;Second item
+         &lt;/ITEMIZE&gt;
+
+     <span class="bold">-</span>   enumerated (numbered), e.g.
+         &lt;ENUM&gt;
+           &lt;ITEM&gt;First item
+           &lt;ITEM&gt;Second item
+         &lt;/ENUM&gt;
+
+     <span class="bold">-</span>   descriptive, e.g.
+         &lt;DESCRIP&gt;
+           &lt;DTAG/first/&lt;ITEM&gt;text about first item
+           &lt;DTAG/second/&lt;ITEM&gt;text about second item
+         &lt;/DESCRIP&gt;
+
+   <span class="bold">Miscellaneous</span> <span class="bold">Text</span> <span class="bold">Blocks</span>
+     Paragraphs may be grouped based on intent:
+
+     EXAMPLE      For extended examples.
+
+     QUESTION     Presents a note on, or discussion of, open design issues.
+
+     IMPLNOTE     Implementation notes, e.g. expected efficiency.
+
+     RATIONALE    Explain the reasons behind design decisions.
+
+     SYSNOTE      Comments specific to an architecture (named with the ARCH
+                  attribute) or operating system (the OPSYS attribute).
+     As an example:
+           &lt;PP&gt;
+           &lt;RATIONALE&gt;
+             &lt;PP&gt;
+             These functions...
+             &lt;PP&gt;
+             An alternative...
+           &lt;/RATIONALE&gt;
+
+   <span class="bold">Regular</span> <span class="bold">Expressions</span>
+     Regular expressions may be included within text (RE) or displayed on
+     their own line (REGEXP).  Literal characters are tagged as GRAM.LIT and
+     displayed in typewriter font (other possible atoms are GRAM.NONTERM in
+     italics, GRAM.TERM in roman, and GRAM.KW in bold).  E.g.
+           &lt;RE&gt;&lt;GRAM.LIT/i/&lt;GRAM.LIT/f/&lt;/RE&gt;
+     gives: if
+
+     Characters sets, displayed between square brackets, are built with
+     GRAM.CSET.  Sets may include character atoms and ranges, e.g.
+           &lt;REGEX&gt;&lt;GRAM.CSET&gt;&lt;GRAM.RANGE&gt;&lt;GRAM.LIT/A/&lt;GRAM.LIT/F/&lt;GRAM.RANGE&gt;
+                             &lt;GRAM.RANGE&gt;&lt;GRAM.LIT/a/&lt;GRAM.LIT/f/&lt;GRAM.RANGE&gt;
+                             &lt;/GRAM.CSET&gt;&lt;/REGEX&gt;
+     gives: [A-Fa-f]
+
+     Closures are expressed by grouping characters and specifying a count,
+     e.g.
+           &lt;RE&gt;&lt;GRAM.GRP ONE-OR-MORE&gt;&lt;GRAM.LIT/a/&lt;GRAM.LIT/b/&lt;/GRAM.GRP&gt;&lt;/RE&gt;
+     gives: (ab)+
+
+     Possible counts are: ONE (the default), ZERO-OR-ONE, ZERO-OR-MORE,
+     ONE-OR-MORE.
+
+     Alternation, regular expressions separated by bars, is also possible,
+     e.g.
+           &lt;RE&gt;&lt;GRAM.ALT&gt;
+               &lt;GRAM.LIT/A/
+               &lt;GRAM.GRP ZERO-OR-MORE&gt;&lt;GRAM.LIT/B/&lt;/GRAM.GRP&gt;
+               &lt;/GRAM.ALT&gt;&lt;/RE&gt;
+     gives: A | B*
+
+   <span class="bold">Mathematics</span>
+     Some support is provided for type-setting mathematics. Formulas may be
+     placed in running text (MATH), displayed (on a separate line,
+     DISPLAYMATH) or made into a table of equations, e.g.
+           &lt;EQNARRAY&gt;
+             &lt;EQN&gt;x + y&lt;EQNREL/=/2&lt;/EQN&gt;
+             &lt;EQN&gt;y&lt;EQNREL/&gt;=/0&lt;/EQN&gt;
+           &lt;/EQNARRAY&gt;
+     gives:
+           x + y    =     2
+           y        &gt;=    0
+
+     Other features:
+           subscripts        &lt;MATH&gt;x&lt;SUB/i+1/&lt;/MATH&gt;
+           superscripts      &lt;MATH&gt;x&lt;SUP/2*3/&lt;/MATH&gt;
+           modulo            &lt;MATH&gt;x&lt;MOD/y+z/&lt;/MATH&gt;
+                             <span class="underline">displayed</span> <span class="underline">as:</span> x (mod (y+z))
+           fractions         &lt;MATH&gt;&lt;FRAC&gt;1&lt;OVER&gt;2&lt;/FRAC&gt;&lt;/MATH&gt;
+           absolute value    &lt;MATH&gt;&lt;NORM&gt;x + y&lt;/NORM&gt;&lt;/MATH&gt;
+           ceiling           &lt;MATH&gt;&lt;CEILING&gt;x + y&lt;/CEILING&gt;&lt;/MATH&gt;
+           floor             &lt;MATH&gt;&lt;FLOOR&gt;x + y&lt;/FLOOR&gt;&lt;/MATH&gt;
+           sets              &lt;MATH&gt;&lt;SET&gt;x | x &gt; 2&lt;/SET&gt;&lt;/MATH&gt;
+
+     Argument variables, e.g.  &lt;ARG/lset/, may be included in formulas, as may
+     normal (roman) text, e.g.
+           &lt;MTEXT/if not empty/
+
+     The predefined mathematical entities are:
+           &amp;CUP;       &amp;CAP;          &amp;EXISTS;      FORALL
+           &amp;GREATER;   &amp;GREATEREQ;    &amp;IN;          &amp;LESS;
+           &amp;LESSEQ;    &amp;NOTEQ;        &amp;NOTIN;       &amp;OMINUS;
+           &amp;OPLUS;     &amp;OTIMES;       &amp;PI;          &amp;PLUSMINUS;
+           &amp;MINUSPLUS; &amp;INF;
+
+   <span class="bold">Indexing</span>
+     A hardcopy document contains up to three separate indexes:
+           topic   General index (by topic)
+           id      SML identifier index
+           raises  Raised exception index
+     In HTML, separate indexes for signatures, structs, and types are possi-
+     ble.
+
+     Entries are extracted automatically from interface descriptions. They may
+     also be inserted into text manually with the INDEX tag, e.g.
+           This module handles &lt;INDEX KEY="Error Reporting"&gt;error reporting.
+     creating an entry in the General Index, by default, with appropriate page
+     number:
+           Error Reporting, 14
+
+     The index--one of "topic, id" or "raises"--is specified with the WHICH
+     attribute. The SEE attribute replaces the page number with the given
+     text.
+
+     The key-view tag specifies alternate text or formatting for an index
+     entry.  Extra sub-index tags can be added, with optional key-views, to
+     provide one or two extra levels of specificity, e.g.
+           This module handles &lt;INDEX KEY="Error Reporting"&gt;
+             &lt;KEY-VIEW&gt;&lt;IT/Error Reporting/&lt;/KEY-VIEW&gt;
+             &lt;SUBINDEX KEY="Module"&gt;
+           &lt;/INDEX&gt;error reporting.
+     Gives:
+           <span class="underline">Error</span> <span class="underline">Reporting</span>
+               Module, 14
+
+     Topics that span bodies of text are delimited with START and STOP
+     attributes, e.g.
+           &lt;INDEX KEY="Displays" START&gt; This chapter discusses display
+           characteristics of...
+             ...which concludes our discussion.&lt;INDEX KEY="Displays" STOP&gt;
+     Could produce:
+           Displays, 19--25
+
+
+</PRE>
+<H2>SGML vs HTML/XML</H2><PRE>
+     Although the basics of editing ML-Doc will be familiar to most authors of
+     HTML and XML, SGML has some peculiarities that are designed to make edit-
+     ing `by hand' easier.
+
+     Many end-tags are optional, as in HTML, but unlike in XML, e.g.
+           &lt;PP&gt;
+           No explicit end-tag is given for this paragraph...
+           &lt;PP&gt;
+             ...before moving into the next
+
+     The usual start and end-tags are acceptable:
+           &lt;CD&gt;'a&lt;/CD&gt;
+     But <span class="underline">null</span> <span class="underline">end-tags</span> can also be used for the same effect:
+           &lt;CD/'a/
+
+     Attribute names are often optional when an enumerated value is required,
+     i.e. instead of &lt;GRAM.GRP COUNT=ONE&gt; one can also write &lt;GRAM.GRP ONE&gt;.
+     some attribute values can be stated without a name, i.e. instead of:
+           &lt;SPECBREAK NEWLINE=NEWLINE&gt;
+     one can write:
+           &lt;SPECBREAK NEWLINE&gt;
+
+     Attribute values need not always be enclosed in double quotes.
+
+     These details are well described in Chapter 9 of <span class="underline">SGML</span> <span class="underline">and</span> <span class="underline">HTML</span> <span class="underline">Explained</span>
+     (refer <span class="underline">SEE</span> <span class="underline">ALSO</span>).
+
+
+</PRE>
+<H2>FILES</H2><PRE>
+     System-wide ML-Doc files and directories are stored at:
+           /usr/local/share/ml-doc
+     Notably:
+           lib/catalog                       Master catalog file.
+           lib/ml-doc.dtd                    DTD of ML-Doc language.
+           lib/entities.sgml                 Entity definitions (see
+                                             Entities).
+           lib/LaTeX/                        LaTeX class and style files for
+                                             Hardcopy and Proof output.
+
+
+</PRE>
+<H2>EXAMPLES</H2><PRE>
+     After creating the directory structure (see <span class="underline">Directory</span> <span class="underline">Structure</span>), and
+     writing up the ML-Doc files (see <span class="underline">WRITING</span> <span class="underline">DOCUMENTATION</span>), create a
+     <span class="underline">Makefile</span>:
+           find ML-Doc -name '*.mldoc' -print | mk-mldoc-makefile
+
+     Then produce HTML documentation:
+           make
+     and/or LaTeX:
+           make Hardcopy
+
+     Creating/updating a signature file:
+           extract-sig ML-Doc/sync-var.mldoc
+
+     Processing LaTeX output:
+           latex manual
+           makeindex -o manual.ind manual.idx    # topic index
+           makeindex -o manual.nnd manual.ndx    # identifier index
+           makeindex -o manual.rnd manual.rdx    # exception index
+           latex manual
+
+
+</PRE>
+<H2>BUGS</H2><PRE>
+     The utilities do not provide helpful error messages, usually just
+     uncaught exceptions.
+
+     The toolset does not seem, in totality, to handle sub-directories under
+     <span class="underline">ML-Doc</span> very well. Soft links provide a rudimentary work around.
+
+     The FIGURE tag is not implemented.
+
+     The GRAMMAR and GRAM.SEP tags are not supported.
+
+     Neither SUM, PROD, UNION, nor INTERSECT are implemented.
+
+     SUB and SUP do not work well together, i.e. squaring the ith x will not
+     be typeset properly:
+           &lt;MATH&gt;x&lt;SUB/i/&lt;SUP/2/&lt;/MATH&gt;
+
+     It is not clear what MGROUP does. The contents are wrapped in brackets ()
+     in HTML output and invisible parentheses {} in LaTeX output.
+
+     The target added by the <span class="bold">-root</span> option of <span class="bold">mk-mldoc-makefile</span> does not run
+     <B>makeindex(1)</B>.
+
+     It is not clear how to write mutually recursive DATATYPE or VAL specifi-
+     cations, nor is it clear what the REC attribute signifies .
+
+     The DOCREF tag is not supported. There is no way of referencing INTERFACE
+     elements (i.e. the LABEL attribute is redundant).
+
+
+</PRE>
+<H2>SEE ALSO</H2><PRE>
+     <B>mkdoc(1)</B>, <span class="underline">/usr/local/share/ml-doc/lib/ml-doc.dtd</span>.
+
+     John H. Reppy, <span class="underline">Concurrent</span> <span class="underline">Programming</span> <span class="underline">in</span> <span class="underline">ML</span>, <span class="underline">Cambridge</span> <span class="underline">University</span> <span class="underline">Press</span>,
+     1999.
+
+     Emden R. Gansner and John H. Reppy, <span class="underline">The</span> <span class="underline">Standard</span> <span class="underline">ML</span> <span class="underline">Basis</span> <span class="underline">Library</span>,
+     <span class="underline">Cambridge</span> <span class="underline">University</span> <span class="underline">Press</span>, 2004.
+
+     Martin Bryan, <span class="underline">SGML</span> <span class="underline">and</span> <span class="underline">HTML</span> <span class="underline">Explained</span>, <span class="underline">Addison</span> <span class="underline">Wesley</span> <span class="underline">Longman</span>, 1997,
+     available online: http://www.is-thought.co.uk/book/home.htm.
+
+
+</PRE>
+<H2>AUTHORS</H2><PRE>
+     John H. Reppy &lt;jhr@cs.uchicago.edu&gt; wrote and maintains ML-Doc.
+     Andrew Appel &lt;appel@princeton.edu&gt; wrote the first version of <span class="bold">latex-gen</span>.
+     Lal George &lt;lg@network-speed.com&gt; wrote the <span class="bold">proof-latex</span> tool.
+
+     Timothy Bourke &lt;tim@tbrk.org&gt; wrote this man page for the FreeBSD port
+     based on documentation and source files from the distribution.
+
+FreeBSD 6.2                     August 2, 2007                     FreeBSD 6.2
+</PRE>
+</div>
+</div>
+          </div>
+          <div class="tp-footer">
+            <div class="tp-footercontent">
+              <div class="tp-footer-author">Written by:
+	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
+              <div class="tp-footer-date">LastChangedDate: 2008-06-07 06:04:19 +0000</div>
+            </div>
+          </div>
+        </div>
+        <div class="tp-menu">
+          <div class="tp-innermenu">
+            <h2>Site menu</h2>
+            <ul>
+              <li>
+                <a href="../index.html">Home</a>
+              </li>
+              <li>
+                <a href="../papers/papers.html">Publications</a>
+              </li>
+              <li>
+                <a href="index.html">Software</a>
+                <ul>
+                  <li>
+                    <a href="freebsd.html">FreeBSD</a>
+                  </li>
+                  <li>
+                    <a href="sml.html">Standard ML</a>
+                    <ul>
+                      <li>
+                        <a href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                      </li>
+                      <li>
+                        <a href="sml-fxp.html">Fxp patches</a>
+                      </li>
+                      <li>
+                        <a href="smlnj-reactive.html">SML/NJ Reactive</a>
+                      </li>
+                      <li>
+                        <a href="sml_tk.html">sml_tk patches</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="svgtoquiz.html">Svgtoquiz</a>
+                  </li>
+                  <li>
+                    <a href="mnemogogo.html">Mnemogogo</a>
+                  </li>
+                  <li>
+                    <a href="muttlight.html">Muttlight</a>
+                  </li>
+                  <li>
+                    <a href="treeplate.html">Treeplate</a>
+                  </li>
+                  <li>
+                    <a href="urpal.html">Urpal</a>
+                  </li>
+                  <li>
+                    <a href="miscellany.html">Miscellany</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="../synchronous.html">Synchronous</a>
+              </li>
+              <li>
+                <a href="../itp.html">Theorem proving</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar tp-navbar bg-primary">
+          <div id="navbarSupportedContent">
+            <h2 style="display: none">Navigation Links</h2>
+            <ul class="nav tp-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../index.html">tbrk</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button tp-navbar-home" href="../index.html">Home</a>
+                  <a class="dropdown-item button" href="../papers/papers.html">Publications</a>
+                  <a class="dropdown-item button" href="../software/index.html">Software</a>
+                  <a class="dropdown-item button" href="../synchronous.html">Synchronous</a>
+                  <a class="dropdown-item button" href="../itp.html">Theorem proving</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="index.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="freebsd.html">FreeBSD</a>
+                  <a class="dropdown-item button" href="sml.html">Standard ML</a>
+                  <a class="dropdown-item button" href="svgtoquiz.html">Svgtoquiz</a>
+                  <a class="dropdown-item button" href="mnemogogo.html">Mnemogogo</a>
+                  <a class="dropdown-item button" href="muttlight.html">Muttlight</a>
+                  <a class="dropdown-item button" href="treeplate.html">Treeplate</a>
+                  <a class="dropdown-item button" href="urpal.html">Urpal</a>
+                  <a class="dropdown-item button" href="miscellany.html">Miscellany</a>
+                </div>
+              </li>
+              <li class="nav-item">/</li>
+              <li class="nav-item dropdown">
+                <a href="sml.html" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Standard ML</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item button" href="poly_smlnj-lib.html">NJ Lib in Poly/ML</a>
+                  <a class="dropdown-item button" href="sml-fxp.html">Fxp patches</a>
+                  <a class="dropdown-item button" href="smlnj-reactive.html">SML/NJ Reactive</a>
+                  <a class="dropdown-item button" href="sml_tk.html">sml_tk patches</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/anchor.min.js"></script>
+        <script>
+  anchors.options = {
+    placement: 'left'
+  };
+  anchors.add('h1[id],h2[id],h3[id],h4[id],h5[id]')
+</script>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+      
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "http://www.tbrk.org/software/index.html",
+            "name": "Software"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "http://www.tbrk.org/software/sml.html",
+            "name": "Standard ML"
+          }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "http://www.tbrk.org/software/ml-doc.1.html",
+            "name": "ML-Doc.1 man page"
+          }
+          }
+    ]}
+    </script>
+  </body>
+</html>
