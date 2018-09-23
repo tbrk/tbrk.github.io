@@ -253,7 +253,7 @@ To descend into the first level of groups, usually inkscape layers, use
 
 <p>The <code>--enter-group=&lt;regex&gt;</code> and
 <code>--not-enter-group=&lt;regex&gt;</code> options afford more control.
-The arguments are <a href="http://docs.python.org/lib/re-syntax.html">python regular
+The arguments are <a href="https://docs.python.org/3/library/re.html?highlight=regular%20expression#regular-expression-syntax">python regular
 expressions</a>, matched against either the full id or the part selected by
 the <code>--id-regex</code> option.
 The <code>--not-enter-group</code> setting takes precedence.</p>
@@ -267,9 +267,9 @@ for a set of paths.</p>
 <p>Download <b>v2.0.1</b> (20131006):</p>
 
 <ul>
-<li><a href="../distfiles/svgtoquiz-2.0.1.tar.gz">Source code</a></li>
-<li><a href="../distfiles/svgtoquiz-2.0.1-py2.7.egg">Python 2.7 egg</a></li>
-<li><a href="../distfiles/svgtoquiz-2.0.1.win32.exe">Windows installer</a></li>
+<li><a href="https://launchpad.net/svgtoquiz/trunk/2.0.1/+download/svgtoquiz-2.0.1.tar.gz">Source code</a> <span class="fingerprint">(md5: 56ae70bdce50e0b3d9df789e4272847a)</span></li>
+<li><a href="https://launchpad.net/svgtoquiz/trunk/2.0.1/+download/svgtoquiz-2.0.1-py2.7.egg">Python 2.7 egg</a> <span class="fingerprint">(md5: f8932822661805ac5c4bcf110c5468f4)</span></li>
+<li><a href="https://launchpad.net/svgtoquiz/trunk/2.0.1/+download/svgtoquiz-2.0.1.win32.exe">Windows installer</a> <span class="fingerprint">(md5: 3df5bf14e1aec00db51daed6982d3f91)</span></li>
 </ul>
 
 <p>The source repository is on <a href="https://launchpad.net/svgtoquiz">launchpad</a>.</p>
@@ -362,8 +362,8 @@ setup.py—it should download the module dependencies.</p>
       What documentation there is can then be extracted from a command 
       prompt:
       <pre>C:\Python25\Scripts\svgtoquiz --extract-docs=doc</pre>
-      (modifying the path as appropriate, or even <a href="http://technet2.microsoft.com/windowsserver/en/library/4029b464-c281-49af-84d5-6cd092e61a651033.mspx?mfr=true">adding 
-      it to the system path</a>.)</li>
+      (modifying the path as appropriate, or even adding
+      it to the system path.)</li>
 </ol>
 
 <p>Thanks to Paul Chivers for testing and patches for Windows.</p>
@@ -379,8 +379,8 @@ Tobias Hill reports his experience installing rsvg:
 <ol>
   <li>Install <a href="http://darwinports.com">Darwin ports</a>.</li>
   <li>Ensure that <code>/opt/local/bin</code> is on the search path.</li>
-  <li>Update Darwin Ports: <code>sudo port -d selfupdate</code>.</li>
-  <li>Install <a href="http://librsvg.darwinports.com/">rsvg</a>:
+  <li>Update MacPorts: <code>sudo port -d selfupdate</code>.</li>
+  <li>Install <a href="https://www.macports.org/ports.php?by=library&amp;substr=librsvg">rsvg</a>:
       <code>sudo port install rsvg</code>
       <br />It may be necessary to run this command several times.</li>
 </ol>

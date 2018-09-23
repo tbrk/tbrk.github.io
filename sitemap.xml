@@ -4,7 +4,7 @@
     <loc>http://www.tbrk.org/index.html</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2017-03-19</lastmod>
+    <lastmod>2018-03-24</lastmod>
   </url>
   <url>
     <loc>http://www.tbrk.org/mail.html</loc>
@@ -22,13 +22,13 @@
     <loc>http://www.tbrk.org/papers/papers.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2017-07-05</lastmod>
+    <lastmod>2017-07-07</lastmod>
   </url>
   <url>
     <loc>http://www.tbrk.org/papers/abstracts.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <lastmod>2017-06-25</lastmod>
+    <lastmod>2017-09-21</lastmod>
   </url>
   <url>
     <loc>http://www.tbrk.org/software/index.html</loc>
@@ -136,7 +136,7 @@
     <loc>http://www.tbrk.org/software/muttlight.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <lastmod>2015-10-13</lastmod>
+    <lastmod>2017-08-27</lastmod>
   </url>
   <url>
     <loc>http://www.tbrk.org/software/treeplate.html</loc>

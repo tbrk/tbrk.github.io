@@ -41,19 +41,114 @@
 
 <!--************************************************************-->
 <div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="procieee2018" itemprop="headline">Building a Hybrid Systems
+    Modeler on Synchronous Languages Principles</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
+  <div class="author">
+    <span itemprop="author">J.-L. Colaço</span>
+    <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
+  <div class="author">
+    <span itemprop="author">C. Pasteur</span>
+    <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	  École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2018-09-17">17 September 2018</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    Hybrid systems modeling languages that mix discrete and continuous time
+    signals and systems are widely used to develop Cyber-Physical systems
+    where control software interacts with physical devices.
+    Compilers play a central role, statically checking source models,
+    generating intermediate representations for testing and verification,
+    and producing sequential code for simulation and execution on target
+    platforms.
+  </p>
+  <p>
+    This paper presents a novel approach to the design and implementation
+    of a hybrid systems language, built on synchronous language principles
+    and their proven compilation techniques.
+    The result is a hybrid systems modeling language in which synchronous
+    programming constructs can be mixed with Ordinary Differential
+    Equations (ODEs) and zero-crossing events, and a runtime that delegates
+    their approximation to an off-the-shelf numerical solver.
+  </p>
+  <p>
+    We propose an ideal semantics based on non standard analysis, which
+    defines the execution of a hybrid model as an infinite sequence of
+    infinitesimally small time steps.
+    It is used to specify and prove correct three essential compilation
+    steps: (1) a type system that guarantees that a continuous-time signal
+    is never used where a discrete-time one is expected and conversely;
+    (2) a type system that ensures the absence of combinatorial loops;
+    (3) the generation of statically scheduled code for efficient execution.
+    Our approach has been evaluated in two implementations: the academic
+    language Zélus, which extends a language reminiscent of Lustre with
+    ODEs and zero-crossing events, and the industrial prototype Scade
+    Hybrid, a conservative extension of Scade 6.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Semantics;
+    Numerical models;
+    Programming;
+    Cyber-physical systems;
+    Discrete-time systems;
+    Differential Equations;
+    Systems Modeling.
+  </span>
+</div>
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">IEEE</span>
+</div>
+
+<div class="notelist">
+<ul>
+  <li>
+    This paper is available online in the
+    <a href="https://ieeexplore.ieee.org/document/8466987/">IEEE Xplore Digital Library</a>.
+  </li>
+
+  <li>
+    A <a href="https://hal.inria.fr/hal-01879026/document">preprint</a>
+    is also available.
+  </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
   <h3 id="scopes2018" itemprop="headline">Towards a verified Lustre compiler
     with modular reset</h3>
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~brun/"><span itemprop="author">L. Brun</span></a>
+    <a href="http://www.di.ens.fr/~brun/"><span itemprop="author">L. Brun</span></a>
     <span class="affiliation">(École normale supérieure and Inria)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div>
 </div>
@@ -109,14 +204,14 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="https://sites.google.com/site/juninoueprofessional/"><span itemprop="author">J. Inoue</span></a>
+    <a href="https://sites.google.com/site/juninoueprofessional/"><span itemprop="author">J. Inoue</span></a>
     <span class="affiliation">(AIST)</span></div><span class="comma">,</span><br />
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div>
 </div>
@@ -193,20 +288,20 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
   <div class="author">
-    <span itemprop="author">B. Pagano</span>
+    <span itemprop="author">B. Pagano</span>
     <span class="affiliation">(Esterel-Technologies)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div>
 </div>
@@ -295,20 +390,20 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
-    <span itemprop="author">F. Carcenac</span>
+    <span itemprop="author">F. Carcenac</span>
     <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span> 
   <div class="author">
-    <span itemprop="author">B. Pagano</span>
+    <span itemprop="author">B. Pagano</span>
     <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
   <div class="author">
-    <span itemprop="author">C. Pasteur</span>
+    <span itemprop="author">C. Pasteur</span>
     <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span> 
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div>
 </div>
@@ -368,7 +463,7 @@
   </li>
 
   <li>Examples and proofs are available
-      <a href="http://zelus.di.ens.fr/emsoft2016/">online</a>.
+      <a href="http://zelus.di.ens.fr/emsoft2017/">online</a>.
   </li>
 </ul>
 </div>
@@ -384,11 +479,11 @@
     <a href="http://www.di.ens.fr/~baudart/"><span itemprop="author">G. Baudart</span></a>
     <span class="affiliation">(IBM Research)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div>
 </div>
@@ -455,11 +550,11 @@
     <a href="http://www.rtsys.informatik.uni-kiel.de/en/team/rvh"><span itemprop="author">R. von Hanxleden</span></a>
     <span class="affiliation">(CAU Kiel)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://pop-art.inrialpes.fr/~girault/"><span itemprop="author">A. Girault</span></a>
+    <a href="http://pop-art.inrialpes.fr/~girault/"><span itemprop="author">A. Girault</span></a>
 	<span class="affiliation">(Inria)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2017-09">September 2017</div>
@@ -516,24 +611,24 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~brun/"><span itemprop="author">L. Brun</span></a>
+    <a href="http://www.di.ens.fr/~brun/"><span itemprop="author">L. Brun</span></a>
     <span class="affiliation">(École normale supérieure and Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="https://pages.lip6.fr/Pierre-Evariste.Dagand/"><span itemprop="author">P.-É. Dagand</span></a>
+    <a href="https://pages.lip6.fr/Pierre-Evariste.Dagand/"><span itemprop="author">P.-É. Dagand</span></a>
     <span class="affiliation">(Univ. Pierre et Marie Curie, CNRS, and Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://gallium.inria.fr/~xleroy/"><span itemprop="author">X. Leroy</span></a>
+    <a href="http://gallium.inria.fr/~xleroy/"><span itemprop="author">X. Leroy</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://perso.ens-lyon.fr/lionel.rieg/"><span itemprop="author">L. Rieg</span></a>
+    <a href="http://www-verimag.imag.fr/~riegl/"><span itemprop="author">L. Rieg</span></a>
     <span class="affiliation">(Yale and Collège de France)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2017-06">June 2017</div>
@@ -608,18 +703,18 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
     <a href="https://pages.lip6.fr/Pierre-Evariste.Dagand/"><span itemprop="author">P.-É. Dagand</span></a>
     <span class="affiliation">(Univ. Pierre et Marie Curie, CNRS, and Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://perso.ens-lyon.fr/lionel.rieg/"><span itemprop="author">L. Rieg</span></a>
+    <a href="http://www-verimag.imag.fr/~riegl/"><span itemprop="author">L. Rieg</span></a>
     <span class="affiliation">(Collège de France)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2017-01">January 2017</div>
@@ -686,11 +781,11 @@
     <a href="http://guillaume.baudart.eu"><span itemprop="author">G. Baudart</span></a>
     <span class="affiliation">(DI, École normale supérieure and Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and École normale supérieure)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2016-08">August 2016</div>
@@ -769,7 +864,7 @@
     <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span> <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div>
 </div>
@@ -780,7 +875,7 @@
   Many critical real-time embedded systems are implemented as a set of
   processes that execute periodically with bounded jitter and communicate
   with bounded transmission delay. The quasi-synchronous abstraction was
-  introduced by P. Caspi for model-checking the safety properties of
+  introduced by P. Caspi for model-checking the safety properties of
   applications running on such systems. The simplicity of the abstraction is
   appealing: the only events are process activations; logical steps account
   for transmission delays; and no process may be activated more than twice
@@ -843,7 +938,7 @@
     <span class="affiliation">(AIST)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div>
 </div>
@@ -886,7 +981,7 @@
     A brief
     <a href="http://inria-parkas.github.io/sundialsml/mlworkshop2016.pdf">abstract</a>
     appears in the informal proceedings of the
-    <a href="http://www.mlworkshop.org/ml2016/">workshop</a>.
+    <a href="http://www.mlworkshop.org/workshops/ml2016">workshop</a>.
     A longer description is under preparation.
   </li>
   <li>
@@ -986,7 +1081,7 @@
     <a href="http://www.di.ens.fr/~baudart/"><span itemprop="author">G. Baudart</span></a>
     <span class="affiliation">(DI, École normale supérieure and Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
@@ -1061,17 +1156,17 @@
     <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
-    <span itemprop="author">J.-L. Colaço</span>
+    <span itemprop="author">J.-L. Colaço</span>
     <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
   <div class="author">
-    <span itemprop="author">B. Pagano</span>
+    <span itemprop="author">B. Pagano</span>
     <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
   <div class="author">
-    <span itemprop="author">C. Pasteur</span>
+    <span itemprop="author">C. Pasteur</span>
     <span class="affiliation">(ANSYS/Esterel-Technologies)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div>
 </div>
@@ -1305,20 +1400,20 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and DI, École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
   <div class="author">
-    <span itemprop="author">B. Pagano</span>
+    <span itemprop="author">B. Pagano</span>
     <span class="affiliation">(Esterel-Technologies)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 	  École normale supérieure and Inria)</span></div>
 </div>
@@ -1397,11 +1492,11 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria; ENS)</span></div>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
     <span class="affiliation">(ENS; Inria)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2013-11">November 2013</div>
@@ -1486,40 +1581,40 @@
 <div class="authors">
 
   <div class="author">
-    <a href="http://www.ssrg.nicta.com.au/people/?cn=Toby+Murray"><span itemprop="author">T. Murray</span></a>
+    <a href="http://www.ssrg.nicta.com.au/people/?cn=Toby+Murray"><span itemprop="author">T. Murray</span></a>
     <span class="affiliation">(NICTA and UNSW)</span></div><span class="comma">,</span>
 
   <div class="author">
-    <a href="http://www.ssrg.nicta.com.au/people/?cn=Daniel+Matichuk"><span itemprop="author">D. Matichuk</span></a>
+    <a href="http://www.ssrg.nicta.com.au/people/?cn=Daniel+Matichuk"><span itemprop="author">D. Matichuk</span></a>
     <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
 
   <div class="author">
-    <a href="http://ssrg.nicta.com.au/people/?cn=Matthew+Brassil"><span itemprop="author">M. Brassil</span></a>
+    <a href="https://www.ubc.ca/about/people.html?matt-brassil"><span itemprop="author">M. Brassil</span></a>
     <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
 
   <div class="author">
-    <a href="http://peteg.org/"><span itemprop="author">P. Gammie</span></a>
+    <a href="http://peteg.org/"><span itemprop="author">P. Gammie</span></a>
     <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
 
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
 
   <div class="author">
-    <a href="http://seanseefried.com/"><span itemprop="author">S. Seefried</span></a>
+    <a href="http://seanseefried.com/"><span itemprop="author">S. Seefried</span></a>
     <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
 
   <div class="author">
-    <a href="http://www.ssrg.nicta.com.au/people/?cn=Corey+Lewis"><span itemprop="author">C. Lewis</span></a>
+    <a href="http://www.ssrg.nicta.com.au/people/?cn=Corey+Lewis"><span itemprop="author">C. Lewis</span></a>
     <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
 
   <div class="author">
-    <a href="http://www.ssrg.nicta.com.au/people/?cn=Xin+Gao"><span itemprop="author">X. Gao</span></a>
+    <a href="http://www.ssrg.nicta.com.au/people/?cn=Xin+Gao"><span itemprop="author">X. Gao</span></a>
     <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
 
   <div class="author">
     <span class="and">and</span>
-    <a href="http://www.cse.unsw.edu.au/~kleing/"><span itemprop="author">G. Klein</span></a>
+    <a href="http://www.cse.unsw.edu.au/~kleing/"><span itemprop="author">G. Klein</span></a>
     <span class="affiliation">(NICTA and UNSW)</span></div>
 
 </div>
@@ -1581,11 +1676,11 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(NICTA and Inria)</span></div>
     <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie and DI,
 				   École normale supérieure and
 				   Inria)</span></div>
@@ -1657,11 +1752,11 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and École normale supérieure)</span></div>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
     <span class="affiliation">(University of NSW)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2013-12">December 2013</div>
@@ -1732,17 +1827,17 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(NICTA)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://ssrg.nicta.com.au/people/?cn=Matthias+Daum"><span itemprop="author">M. Daum</span></a>
+    <a href="http://www-wjp.cs.uni-sb.de/leute/individuum.php?person=83"><span itemprop="author">M. Daum</span></a>
     <span class="affiliation">(NICTA, UNSW)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.doclsf.de/"><span itemprop="author">G. Klein</span></a>
+    <a href="http://www.doclsf.de/"><span itemprop="author">G. Klein</span></a>
     <span class="affiliation">(NICTA, UNSW)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://xaph.net/"><span itemprop="author">R. Kolanski</span></a>
+    <a href="http://xaph.net/"><span itemprop="author">R. Kolanski</span></a>
     <span class="affiliation">(NICTA, UNSW)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2012-07">July 2012</div>
@@ -1774,14 +1869,14 @@
 <ul>
     <li>
 	This paper was presented at
-	<a href="http://www.informatik.uni-bremen.de/cicm2012/cicm.php">CICM</a>
-	(<a href="http://www.informatik.uni-bremen.de/cicm2012/cicm.php?event=mkm">MKM track</a>)
+	<a href="https://www.cicm-conference.org/2012/cicm.php">CICM</a>
+	(<a href="https://www.cicm-conference.org/2012/cicm.php?event=mkm">MKM track</a>)
 	in July 2012, where it won the best paper award.
     </li>
 
     <li> 
     Published in
-    <a href="http://link.springer.com/book/10.1007/978-3-642-31374-5/page/1">Intelligent
+    <a href="http://dx.doi.org/10.1007/978-3-642-31374-5">Intelligent
     Computer Mathematics, LNCS 7362</a>,
     <a href="http://dx.doi.org/10.1007/978-3-642-31374-5_3">pp 32-48</a>.
     </li>
@@ -1802,17 +1897,17 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
   <div class="author">
-    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
     <span class="affiliation">(DI, École normale supérieure)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2011-10">October 2011</div>
@@ -1875,17 +1970,17 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
   <div class="author">
-    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
     <span class="affiliation">(École normale supérieure)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2012-05">May 2012</div>
@@ -1955,17 +2050,17 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
+    <a href="http://www.irisa.fr/distribcom/benveniste/"><span itemprop="author">A. Benveniste</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
   <div class="author">
-    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
+    <a href="http://www.irisa.fr/prive/Benoit.Caillaud/"><span itemprop="author">B. Caillaud</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
 	<span class="affiliation">(Univ. Pierre et Marie Curie; LIENS,
 	  École normale supérieure)</span></div>
 </div>
@@ -2045,26 +2140,26 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://people.cs.aau.dk/~adavid/"><span itemprop="author">A. David</span></a>
+    <a href="http://people.cs.aau.dk/~adavid/"><span itemprop="author">A. David</span></a>
     <span class="affiliation">(Aalborg University)</span></div><span class="comma">,</span><br />
   <div class="author">
-    <a href="http://people.cs.aau.dk/~kgl/"><span itemprop="author">K. G. Larsen</span></a>
+    <a href="http://people.cs.aau.dk/~kgl/"><span itemprop="author">K.G. Larsen</span></a>
     <span class="affiliation">(Aalborg University)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.montefiore.ulg.ac.be/~legay/"><span itemprop="author">A. Legay</span></a>
+    <a href="http://www.montefiore.ulg.ac.be/~legay/"><span itemprop="author">A. Legay</span></a>
     <span class="affiliation">(Inria)</span></div><span class="comma">,</span><br />
   <div class="author">
-    <a href="http://www.irccyn.ec-nantes.fr/~lime/"><span itemprop="author">D. Lime</span></a>
+    <a href="http://www.irccyn.ec-nantes.fr/~lime/"><span itemprop="author">D. Lime</span></a>
     <span class="affiliation">(Ecole Centrale de Nantes)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://people.cs.aau.dk/~ulrik/"><span itemprop="author">U. Nyman</span></a>
+    <a href="http://people.cs.aau.dk/~ulrik/"><span itemprop="author">U. Nyman</span></a>
     <span class="affiliation">(Aalborg University)</span></div><span class="comma">,</span>
   <span class="and">and</span><br />
   <div class="author">
-    <a href="http://www.itu.dk/~wasowski/"><span itemprop="author">A. Wąsowski</span></a>
+    <a href="http://www.itu.dk/~wasowski/"><span itemprop="author">A. Wąsowski</span></a>
 	<span class="affiliation">(IT University of Copenhagen)</span></div>
 <br />
 
@@ -2112,7 +2207,7 @@
       <a href="href://www.tbrk.org/papers/wadt10.tar.gz">download</a>.</li>
 
   <li>My main contribution to this workshop paper involved the adaptation of
-      the infrared sensor case study from my <a href="phdthesis">PhD
+      the infrared sensor case study from my <a href="#phdthesis">PhD
 	  thesis</a>, to the theory and tool developed by my coauthors.</li>
 
   <li>There was a rigorous review process for inclusion in the proceedings
@@ -2128,7 +2223,7 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(NICTA; UNSW CSE)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2009-12">December 2009</div>
@@ -2217,11 +2312,11 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(NICTA; UNSW CSE)</span></div>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
     <span class="affiliation">(UNSW CSE)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2009-11">November 2009</div>
@@ -2299,11 +2394,11 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(NICTA; UNSW CSE)</span></div>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
     <span class="affiliation">(UNSW CSE)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2008-10">October 2008</div>
@@ -2369,14 +2464,14 @@
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.cse.unsw.edu.au/~leonidr/"><span itemprop="author">L. Ryzhyk</span></a>
+    <a href="http://www.cse.unsw.edu.au/~leonidr/"><span itemprop="author">L. Ryzhyk</span></a>
     <span class="affiliation">(NICTA; UNSW CSE)</span></div><span class="comma">,</span>
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(NICTA; UNSW CSE)</span></div><span class="comma">,</span>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.cse.unsw.edu.au/~ikuz/"><span itemprop="author">I. Kuz</span></a>
+    <a href="http://www.cse.unsw.edu.au/~ikuz/"><span itemprop="author">I. Kuz</span></a>
     <span class="affiliation">(NICTA; UNSW CSE)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2007-06">June 2007</div>
@@ -2428,11 +2523,11 @@ incorrect behaviours at runtime.</p>
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(UNSW CSE; NICTA)</span></div>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
     <span class="affiliation">(UNSW CSE; NICTA; UNSW Asia)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2006-10">October 2006</div>
@@ -2489,11 +2584,11 @@ related work is discussed.</p>
 
 <div class="authors">
   <div class="author">
-    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(UNSW CSE; NICTA)</span></div>
   <span class="and">and</span>
   <div class="author">
-    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
+    <a href="http://www.cse.unsw.edu.au/~sowmya/"><span itemprop="author">A. Sowmya</span></a>
     <span class="affiliation">(UNSW CSE; NICTA)</span></div>
 </div>
 <div class="date" itemprop="datePublished" content="2005-04">April 2005</div>
@@ -2521,7 +2616,7 @@ describes the implementation of an Argos block for Simulink.</p>
 <div class="notelist">
 <ul>
 
-  <li><a href="iehsc05.pdf">Available</a> in F. E. Tay, editor,
+  <li><a href="iehsc05.pdf">Available</a> in F.E. Tay, editor,
   <em>International Journal of Software Engineering and Knowledge
   Engineering: Selected Papers from the 2005 International Conference on
   Embedded and Hybrid Systems</em>, volume 15(2), <a href="http://dx.doi.org/10.1142/S0218194005002300">pages
