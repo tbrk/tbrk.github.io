@@ -41,6 +41,82 @@
 
 <!--************************************************************-->
 <div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="jfla19" itemprop="headline">Arguments cadencés dans un
+      compilateur Lustre vérifié</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div>
+  <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+      <span class="affiliation">(Univ. Pierre et Marie Curie and DI,
+	École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2019-01">January/February 2019</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+  Lustre est un langage synchrone pour programmer des systèmes avec des 
+  schémas-blocs desquels un code impératif de bas niveau est généré 
+  automatiquement.
+  Des travaux récents utilisent l'assistant de preuve Coq pour spécifier un 
+  compilateur d'un noyau de Lustre vers le langage Clight de CompCert pour 
+  ensuite générer du code assembleur.
+  La preuve de correction de l'ensemble relie la sémantique de flots de Lustre 
+  avec la sémantique impérative du code assembleur.
+  </p>
+
+  <p>
+  Chaque flot dans un programme Lustre est associé avec une \og{}horloge\fg{} 
+  statique qui représente ses instants d'activation.
+  La compilation transforme les horloges en des instructions conditionnelles 
+  qui déterminent quand les valeurs associées sont calculées.
+  Les travaux précédents faisaient l'hypothèse simplificatrice que toutes les 
+  entrées et sorties d'un bloc partagent la même horloge.
+  Cet article décrit une façon de supprimer cette restriction.
+  Elle exige d'abord d'enrichir les règles de typage des horloges et le modèle 
+  sémantique.
+  Ensuite, pour satisfaire le modèle sémantique de Clight, on ajoute une étape 
+  de compilation pour assurer que chaque variable passée directement à un 
+  appel de fonction a été initialisée.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Langages synchrones (Lustre);
+    Assistants de preuve (Coq);
+    Compilation vérifiée
+  </span>
+</div>
+<!--
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+-->
+
+<div class="notelist">
+<ul>
+    <li>
+      Cet article a été présenté aux <a href="http://jfla.inria.fr">Journées
+      Francophones des Langages Applicatifs</a>
+      (<a href="https://dpt-info.u-strasbg.fr/~magaud/JFLA2019/">JFLA 2019</a>)
+      aux Rousses dans le Haut-Jura en janvier/février 2019.
+    </li>
+
+    <li>
+      L'article est disponible sur
+      <a href="https://hal.inria.fr/hal-02005639/document">HAL</a>.
+    </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
   <h3 id="fdl2019" itemprop="headline">Symbolic Simulation of Dataflow
     Synchronous Programs with Timers</h3>
 
