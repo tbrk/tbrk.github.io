@@ -47,20 +47,47 @@
   at NICTA (now <a href="http://www.data61.csiro.au">Data61</a>) in Sydney
   where the <a href="http://isabelle.in.tum.de">Isabelle</a> interactive
   theorem prover (ITP) is applied to the verification of embedded systems
-  code. Ever since I am rather addicted to working with ITPs—it is much
-  more fun (and far less error-prone) to work with formal models inside
+  code. Ever since I'm rather addicted to working with ITPs—it's much
+  more fun and far less error-prone to work with formal models inside
   such a system rather than just on paper!
 </p>
 
-<ul class="mainitems">
+<h2 id="velus">Vélus: a formally verified Lustre compiler</h2>
 
-  <li>I assisted <a href="http://sketis.net">Makarius Wenzel</a>
-    with the <a href="http://www4.in.tum.de/~wenzelm/lri/Isabelle_Paris_2014/">2014
-      Isabelle tutorial at the ENS</a>. Makarius, amongst other things,
-    developed the Isar language for structured proofs and the PIDE interface
-    to Isabelle.</li>
+<p>
+    <a href="https://velus.inria.fr">Vélus</a> is a compiler for a subset
+	of Lustre and Scade that is specified in Coq (with some OCaml).
+    It integrates the <a href="http://compcert.inria.fr">CompCert</a> C
+    compiler to define the semantics of machine operations (integer addition,
+    floating-point multiplication, etcetera) and to generate assembly code
+    for different architectures. The research challenges are</p>
 
+<ul>
+    <li>
+	to mechanize (i.e., put into Coq) the semantics of the
+	programming constructs used in modern languages for
+	Model-Based Development;
+    </li>
+
+    <li>
+	to implement compilation passes and prove them correct;
+    </li>
+    <li>
+	to interactively verify source programs and guarantee that the
+	obtained invariants also hold of the generated code.
+    </li>
 </ul>
+
+<p>
+    This project is a collaboration with
+    <a href="https://www.di.ens.fr/~brun/">Lélio Brun</a>,
+    <a href="https://pages.lip6.fr/Pierre-Evariste.Dagand/">Pierre-Évariste Dagand</a>,
+    <a href="https://people.mpi-sws.org/~pjeanmaire/">Paul Jeanmaire</a>,
+    <a href="https://xavierleroy.org/">Xavier Leroy</a>,
+    <a href="https://www.di.ens.fr/~pouzet/">Marc Pouzet</a>,
+    and
+    <a href="http://www-verimag.imag.fr/~riegl/">Lionel Rieg</a>.
+</p>
 
 <h2 id="awn">Invariant proofs of network protocols
   <small class="text-muted">(AWN and AODV)</small></h2>
