@@ -186,6 +186,26 @@ xsltproc --stringparam system 'system Train, Gate;'        \
   </dd>
 </dl>
 
+<!-- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -->
+<h1 id="microcontrollers">Microcontrollers</h1>
+
+<h2 id="atmeltwi">ATmega328P 2-wire Serial Interface</h2>
+
+<p>
+The specification for software access to the TWI (Two Wire Interface)/I2C
+module of certain Atmel microcontrollers, notably the one used in the
+Arduino Uno, is described in §22 of the
+<a href="https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-DS-DS40002061A.pdf">ATmega48A/PA/88A/PA/168A/PA/328/P Data Sheet</a>.
+I made this
+<a href="atmega_twi_states.pdf">state machine specification</a>
+that summarizes the tables and sequence diagrams from the data sheet.
+Please <a href="mailto:tim@tbrk.org">mail me</a> if you find any errors or
+have suggestions to improve it.
+I didn't bother writing a formal specification since the idea is to explain
+rather than to describe precisely.
+It is intended to be read in conjunction with the data sheet.
+</p>
+
 </div>
           </div>
           <div class="tp-footer">
