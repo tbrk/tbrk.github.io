@@ -41,6 +41,87 @@
 
 <!--************************************************************-->
 <div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="jfla21" itemprop="headline">Normalisation vérifiée du langage Lustre</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <span itemprop="author">P. Jeanmaire</span>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://vertmo.org"><span itemprop="author">B. Pesin</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div>
+    <span class="and">and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+      <span class="affiliation">(École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2021-04">April 2021</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+Lustre est un langage synchrone à flots de données conçu pour programmer des
+systèmes embarqués.
+Dans le cadre du projet Vélus, nous avons développé et formalisé dans Coq
+un compilateur qui accepte une forme normalisée du langage et la compile vers
+du code impératif.
+Si cette forme réduite prend en charge un code généré depuis une interface
+utilisateur basée sur les schémas-blocs, nous voulons offrir au programmeur
+la possibilité de manipuler le langage complet.
+  </p>
+
+  <p>
+Dans cet article nous présentons l'étape de normalisation, qui transforme le
+langage de programmation en langage normalisé.
+Cette transformation est décomposée en trois étapes afin de simplifier les
+preuves de correction.
+Pour établir la préservation de la sémantique, il est nécessaire de démontrer
+que les trois passes préservent certaines propriétés statiques et
+dynamiques du langage.
+En particulier, il faut prouver le lien entre le typage des horloges et
+la sémantique dynamique pour pouvoir raisonner sur la suite de la compilation.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Langages synchrones (Lustre);
+    Assistants de preuve (Coq);
+    Compilation vérifiée
+  </span>
+</div>
+<!--
+<div class="publisher">
+  <span class="publisher-label">Publisher:</span>
+  <span class="publisher" itemprop="publisher">ACM</span>
+</div>
+-->
+
+<div class="notelist">
+<ul>
+    <li>
+      Cet article sera présenté aux <a href="http://jfla.inria.fr">Journées
+      Francophones des Langages Applicatifs</a>
+      (<a href="http://jfla.inria.fr/jfla2021.html">JFLA 2021</a>)
+      à Saint Médard d'Excideuil en Dordogne en avril 2021.
+    </li>
+
+<!--
+    <li>
+      L'article est disponible sur
+      <a href="https://hal.inria.fr/hal-02005639/document">HAL</a>.
+      Il y a un fichier <a href="jfla19.bib">.bib</a>.
+    </li>
+-->
+</ul>
+</div>
+</div>
+
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
   <h3 id="popl2020" itemprop="headline">Mechanized Semantics and Verified
     Compilation for a Dataflow Synchronous Language with Reset
   </h3>
