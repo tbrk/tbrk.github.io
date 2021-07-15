@@ -41,6 +41,76 @@
 
 <!--************************************************************-->
 <div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+  <h3 id="emsoft21" itemprop="headline">Verified Lustre Normalization with
+	Node Subsampling</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="https://www.di.ens.fr/paul.jeanmaire/"><span itemprop="author">P. Jeanmaire</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://vertmo.org"><span itemprop="author">B. Pesin</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div>
+    <span class="and">, and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+      <span class="affiliation">(École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2021-10">October 2021</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    Dataflow languages allow the specification of reactive systems by
+    mutually recursive stream equations, functions, and boolean activation
+    conditions called clocks. Lustre and Scade are dataflow languages for
+    programming embedded systems. Dataflow programs are compiled by a
+    succession of passes. This article focuses on the normalization pass
+    which rewrites programs into the simpler form required for code
+    generation.
+  </p>
+
+  <p>
+    Vélus is a compiler from a normalized form of Lustre to CompCert's
+    Clight language. Its specification in the Coq interactive theorem prover
+    includes an end-to-end correctness proof that the values prescribed by
+    the dataflow semantics of source programs are produced by executions of
+    generated assembly code. We describe how to extend Vélus with a
+    normalization pass and to allow subsampled node inputs and outputs. We
+    propose semantic definitions for the unrestricted language, divide
+    normalization into three steps to facilitate proofs, adapt the clock
+    type system to handle richer node definitions, and extend the end-to-end
+    correctness theorem to incorporate the new features. The proofs require
+    reasoning about the relation between static clock annotations and the
+    presence and absence of values in the dynamic semantics. The
+    generalization of node inputs requires adding a compiler pass to ensure
+    the initialization of variables passed in function calls.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Synchronous languages (Lustre);
+    Interactive Theorem Proving (Coq);
+    Verified Compilation
+  </span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+      This article will be presented at the ACM SIGBED International
+      Conference on <a href="https://esweek.org/emsoft/">Embedded Software (EMSOFT 2021)</a>
+      as part of <a href="https://esweek.org">ESWEEK 2021</a> in October 2021.
+    </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
   <h3 id="jfla21" itemprop="headline">Normalisation vérifiée du langage Lustre</h3>
 
 <div class="authors">
@@ -48,12 +118,12 @@
     <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
     <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
-    <span itemprop="author">P. Jeanmaire</span>
+    <a href="https://www.di.ens.fr/paul.jeanmaire/"><span itemprop="author">P. Jeanmaire</span></a>
     <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
   <div class="author">
     <a href="http://vertmo.org"><span itemprop="author">B. Pesin</span></a>
     <span class="affiliation">(Inria and École normale supérieure)</span></div>
-    <span class="and">and</span>
+    <span class="and">, and</span>
   <div class="author">
     <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
       <span class="affiliation">(École normale supérieure and Inria)</span></div>
