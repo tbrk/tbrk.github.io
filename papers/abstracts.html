@@ -41,6 +41,83 @@
 
 <!--************************************************************-->
 <div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+<h3 id="jfla23" itemprop="headline">Analyse de dépendance vérifiée pour
+    un langage synchrone à flot de données</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <a href="http://vertmo.org"><span itemprop="author">B. Pesin</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div>
+    <span class="and">, and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+      <span class="affiliation">(École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2023-01">January 2023</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    Vélus est une formalisation d'un langage synchrone à flots de données et
+    de sa compilation dans l'assistant de preuve Coq. Il inclut une
+    définition de la sémantique dynamique du langage, un compilateur
+    produisant du code impératif, et une preuve de bout en bout que le
+    compilateur préserve la sémantique des programmes.
+  </p>
+
+  <p>
+    Dans cet article, on spécifie dans Vélus la sémantique de deux
+    structures d'activation présentes dans les compilateurs modernes: switch
+    et déclarations locales. Ces nouvelles constructions nécessitent une
+    adaptation de l'analyse statique de dépendance de Vélus, qui produit un
+    graphe acyclique comme témoin de la bonne formation d'un programme. On
+    utilise ce témoin pour construire un schéma d'induction propre aux
+    programmes bien formés. Ce schéma permet de démontrer le déterminisme du
+    modèle sémantique dans Coq.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Langages synchrones (Lustre, Scade 6);
+    Assistants de preuve (Coq);
+    Compilation vérifiée
+  </span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+      Cet article a été présenté aux <a href="http://jfla.inria.fr">Journées
+      Francophones des Langages Applicatifs</a>
+      (<a href="http://jfla.inria.fr/jfla2023.html">JFLA 2023</a>)
+      à Praz-sur-Arly en janvier/février 2023.
+    </li>
+
+    <li>
+      L'article est disponible sur
+      <a href="https://hal.inria.fr/hal-03936656/document">HAL</a>.
+      Il y a un fichier <a href="jfla23.bib">.bib</a>.
+    </li>
+
+    <li>
+      Des <a href="https://velus.inria.fr/jfla2023">Liens</a> vers le 
+      code source
+      <!--
+      <a href="https://github.com/INRIA/velus/tree/jfla23-artifact">code source</a>
+      -->
+      Coq et une
+      <a href="https://velus.inria.fr/jfla2023/tryvelus/index.html">démonstration</a>
+      sont disponibles en ligne.
+    </li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
   <h3 id="emsoft21" itemprop="headline">Verified Lustre Normalization with
 	Node Subsampling</h3>
 
@@ -101,10 +178,37 @@
 <div class="notelist">
 <ul>
     <li>
-      This article will be presented at the ACM SIGBED International
+      This article was presented online at the ACM SIGBED International
       Conference on <a href="https://esweek.org/emsoft/">Embedded Software (EMSOFT 2021)</a>
       as part of <a href="https://esweek.org">ESWEEK 2021</a> in October 2021.
+      It was awarded the <a href="https://esweek.org/awards/">best paper award</a>.
+      The proceedings are published as
+      <a href="https://dl.acm.org/toc/tecs/2021/20/5s">ACM Transactions on Embedded Computing Systems 20(5s)</a>.
     </li>
+
+    <li>
+      The article is available in the
+      <a href="https://dl.acm.org/doi/10.1145/3477041">ACM Digital Library</a>
+      and also on <a href="https://hal.inria.fr/hal-03370264/document">HAL</a>.
+      The <a href="https://velus.inria.fr/emsoft2021/emsoft2021-poster.pdf">poster</a>,
+      and <a href="https://velus.inria.fr/emsoft2021/emsoft2021-slides.pdf">slides</a>,
+      and <a href="https://youtu.be/qaNAMVMJ3PI">trailer</a>
+      are also available online.
+    </li>
+
+    <li>
+      <a href="https://velus.inria.fr/emsoft2021">Links</a> into the associated Coq
+      <a href="https://github.com/INRIA/velus/tree/emsoft21-artifact">source files</a>
+      and a <a href="https://velus.inria.fr/emsoft2021/tryvelus/index.html">demo</a>
+      are available online.
+    </li>
+
+    <li>
+      A <a href="https://sigbed.org/2022/04/12/emsoft-2021-best-paper-verified-lustre-normalization-with-node-subsampling/">summary</a>
+      is posted on the <a href="https://sigbed.org/blog/">SIGBED Blog</a>.
+    </li>
+
+    <li>There is a <a href="emsoft21.bib">.bib</a> file.</li>
 </ul>
 </div>
 </div>
@@ -3033,7 +3137,7 @@ describes the implementation of an Argos block for Simulink.</p>
             <div class="tp-footercontent">
               <div class="tp-footer-author">Written by:
 	<a href="https://plus.google.com/106045092518852678199?rel=author">Timothy Bourke</a></div>
-              <div class="tp-footer-date">LastChangedDate: 2017-09-21 15:29:47 +0200</div>
+              <div class="tp-footer-date">LastChangedDate: 2019-11-12 10:31:55 +0100</div>
             </div>
           </div>
         </div>
