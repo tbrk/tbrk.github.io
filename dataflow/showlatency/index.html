@@ -41,6 +41,11 @@ h1 {
 }
 #schedule td.label .phase-offset { padding-top: 1ex; }
 
+#schedule td.latency-title {
+  text-align: right;
+  color: gray;
+}
+
 .onchain {
   background: repeating-linear-gradient(0deg,
                               rgb(235,235,235),
@@ -91,7 +96,7 @@ h1 {
 }
 
 #schedule td.inactive .compute { visibility: hidden; }
-#schedule td.inactive .latency-delta { visibility: hidden; }
+#schedule td.inactive .concomitance { visibility: hidden; }
 /* #schedule td.not-inrange .compute { color: silver; } */
 
 .compute { font-size: x-large; }
@@ -164,7 +169,7 @@ textarea.wide {
 .rate { color: gray; }
 .percent-symbol { color: gray; }
 .sample-ratio { }
-.nonstandard-microcausality {
+.nonstandard-concomitance {
   padding-left: 1em;
   color: gray;
   font-style: italic;
@@ -187,20 +192,19 @@ textarea.wide {
   }
 }
 
-.latency-delta {
-  font-size: x-small;
+.concomitance {
+  font-family: sans-serif;
+  font-size: xx-small;
 }
-.latency-delta::before { content: "(+"; }
-.latency-delta::after  { content: ")"; }
 
-td.not-inrange .latency-delta { color: silver; }
+td.not-inrange .concomitance-delta { color: silver; }
 
 .clickable {
   cursor: pointer;
   color: #8b008b;
 }
 
-#latency-row td {
+#latency-row-backward td, #latency-row-forward td {
   font-size: small;
   text-align: center;
   cursor: cell;
@@ -358,24 +362,25 @@ li {
         </h1>
 
         <div id="help-box" class="help" style="display: none;">
-          <p>This simple applet gives a way to visualize latency 
-          calculations in the rate-synchronous model. The idea is to (i) 
-          specify a chain element-by-element, (ii) to manually specify a 
-          schedule, and (iii) to see the resulting end-to-end latency values 
-          and generated constraints.</p>
+          <p>This simple app gives a way to visualize latency calculations 
+          in the rate-synchronous model. The idea is to (i) specify a chain 
+          element-by-element, (ii) to manually specify a schedule, and (iii) 
+          to see the resulting end-to-end latency values and generated 
+          constraints.</p>
 
           <ol>
             <li>Select a period for the chain input and click 
               <em>start</em>.</li>
 
             <li>Add new links in the chain by specifying the operator, 
-              microcausality, and, if necessary, the sampling ratio.
+              concomitance (‘f’ or ‘b’), and, if necessary, the sampling 
+              ratio.
               <ul>
                 <li><em>direct</em>: write-before-read within a period</li>
                 <li><em>last</em>: read-before-write within a period</li>
                 <li><em>any</em>: unconstrained sampling at same period</li>
-                <li><em>when</em>: fast-to-slow rate transition (read after 
-                  initial write)</li>
+                <li><em>when</em>: fast-to-slow rate transition (write 
+                  before first read)</li>
                 <li><em>when last</em>: fast-to-slow rate transition (read 
                   before last write)</li>
                 <li><em>current</em>: slow-to-fast rate transition</li>
@@ -384,11 +389,17 @@ li {
 
             <li>Clicking on the slots sets the <em>phase offset</em> for the 
               corresponding variable.
-              The gray areas are excluded by scheduling and microcausality 
+              The gray areas are excluded by dependency and concomitance 
               constraints.
-              The pairwise latencies are shown above the reader arrows.
-              The end-to-end latencies are shown at bottom, clicking on one 
-              highlights the corresponding path through the schedule.</li>
+              The concomitance of each writer and reader is
+              shown above the reader arrows.
+              The backward end-to-end latencies (data age/last-to-last) are 
+              shown along the bottom.
+              The forward end-to-end latencies (reaction 
+              time/first-to-first) are shown along the top.
+              Click on any of the latencies to highlight the corresponding 
+              path through the schedule.
+            </li>
 
             <li>Add a <em>latency bound</em> and click <em>update</em> to 
               generate ILP constraints on the end-to-end latency and 
@@ -401,15 +412,23 @@ li {
               The left-hand-sides of certain inequalities are shown on the 
               same line in gray.
               The values of the enabled <em>chainlat</em> constraints should 
-              correspond with the end-to-end latencies calculated by a 
-              direct algorithm and shown at the bottom of the main 
-              diagram.</li>
+              correspond with the end-to-end latencies shown above (forward) 
+              or below (backward, exists) the schedule.
+            </li>
 
-            <li>The <em>simplify</em> option applies simple constant 
-              propagation when generating constraints.
+            <li>
               The <em>exists</em> option generates a single set of 
-              constraints so that there need only exist a latency chain that 
-              satisfies the given bound.</li>
+              constraints so that there need only exist a backward latency 
+              chain that satisfies the given bound.
+              The <em>forward</em> option constrains all forward data 
+              propagation paths and thus the “reaction time”/ 
+              “first-to-first” latency.
+              The <em>backward</em> option constrains all backward data 
+              propagation paths and thus the “data age”/ “last-to-last” 
+              latency.
+              The <em>simplify</em> option applies simple constant 
+              propagation when generating constraints.
+            </li>
 
             <li>The small pencil button next to the title gives a way to 
               copy-and-paste latency chains.
@@ -452,8 +471,8 @@ li {
               <option id="when-last" value="when last">when last</option>
               <option id="current" value="current">current</option>
             </select>
-            (<input id="microcausality" type="checkbox"/>
-            <label for="microcausality" id="microcausality_label">CoF</label>)
+            (<input id="concomitance" type="checkbox"/>
+            <label for="concomitance" id="concomitance_label">f</label>)
             <label for="new_arg" id="new_arg_label">sampling ratio:</label>
             <input type="text" id="new_arg" size="5" value="2"/>
             <input id="add" type="button" value="add"/>
@@ -467,15 +486,25 @@ li {
       <div id="bottom-pane" class="pane noprint">
         <form id="form_bounds" action="" method="get"
               style="display: none;" class="panel">
-          <label for="bound">latency bound:</label>
+          <label for="bound">latency </label>
+          <select id="latmode" autocomplete="off">
+            <option id="exists" value="exists">exists</option>
+            <option id="forward" value="forward">forward</option>
+            <option id="backward" value="backward">backward</option>
+          </select>
+          <select id="latrel" autocomplete="off">
+            <option id="lt" value="&lt;">&lt;</option>
+            <option id="le" value="&lt;=" selected="selected">&lt;=</option>
+            <option id="eq" value="=">=</option>
+            <option id="ge" value="&gt;=">&gt;=</option>
+            <option id="gt" value="&gt;">&gt;</option>
+          </select>
           <input type="text" id="bound" size="5" value="10"/>
+          <input id="simplify" name="simplify" type="checkbox" />
+          <label for="simplify">simplify</label>
           <input id="update" type="button" value="update"/>
           <input id="edit" type="button" value="edit"/>
           <input id="solve" type="button" value="solve"/>
-          <input id="simplify" name="simplify" type="checkbox" />
-          <label for="simplify">simplify</label>
-          <input id="exists_only" name="exists_only" type="checkbox" />
-          <label for="exists_only">exists only</label>
         </form>
         <div id="glpk" style="display: none">
           <textarea id="constraints-edit" rows=30 cols=60
