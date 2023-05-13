@@ -1,0 +1,490 @@
+<html>
+  <head>
+    <title>Presseail: show latency</title>
+    <meta charset="UTF-8"/>
+    <style>
+
+.noselect {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}
+
+body {
+  margin-left: 0px;
+  margin-right: 8px;  // for scroll bars
+}
+
+h1 {
+  margin-top: 5px;
+}
+
+.title-link {
+  font-size: smaller;
+  text-decoration: none;
+  color:black;
+}
+
+#schedule {
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+#schedule td.label {
+  padding-right: 1em;
+  font-family: helvetica, sans-serif;
+  font-size: x-small;
+  white-space: nowrap;
+}
+#schedule td.label .phase-offset { padding-top: 1ex; }
+
+.onchain {
+  background: repeating-linear-gradient(0deg,
+                              rgb(235,235,235),
+                              rgb(235,235,235) 5px,
+                              rgb(245,245,245) 5px,
+                              rgb(245,245,245) 10px
+                             );
+  background-blend-mode: multiply;
+}
+
+#schedule td.slot {
+  padding-top: 4px;
+  padding-bottom: 0px;
+  padding-left: 2px;
+  padding-right: 2px;
+
+  border-top: none;
+  border-bottom: 2px solid black;
+
+  min-width: 2em;
+  text-align: center;
+
+  cursor: cell;
+}
+
+@media screen {
+  #schedule td.slot {
+    border-left: thin dashed lightgray;
+    border-right: thin dashed lightgray;
+  }
+}
+@media print {
+  #schedule td.slot {
+    border-left: thin dashed black;
+    border-right: thin dashed black;
+  }
+}
+
+@media print {
+  body{
+    -webkit-print-color-adjust: exact; /* Chrome & webkit browsers */
+    color-adjust: exact;               /* Firefox & IE */
+  }
+}
+
+#schedule td.not-inrange {
+  border-bottom: 2px solid silver;
+}
+
+#schedule td.inactive .compute { visibility: hidden; }
+#schedule td.inactive .latency-delta { visibility: hidden; }
+/* #schedule td.not-inrange .compute { color: silver; } */
+
+.compute { font-size: x-large; }
+.contributes { color: crimson; }
+
+
+.splitter {
+  height: 100%;
+  flex-flow:column;
+  width: 100%;
+  display: flex;
+}
+
+@media print {
+  .noprint {
+    display: none;
+  }
+}
+
+@media screen {
+  .pane {
+    height: 50%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
+    min-height: 10px;
+    overflow-y: scroll;
+  }
+}
+
+#separator {
+    cursor: row-resize;
+    background-color: #aaa;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 10px;
+    width: 100%;
+
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.column {
+  flex: 50%;
+  padding-right: 10px;
+}
+
+.row {
+  display: flex;
+}
+
+textarea.wide {
+     width: 100%;
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+}
+
+#log {
+  margin: 2px;
+  padding-top: 5px;
+}
+
+.choice { color: forestgreen; }
+
+.keyword {}
+.variable { color: darkblue; }
+.rate { color: gray; }
+.percent-symbol { color: gray; }
+.sample-ratio { }
+.nonstandard-microcausality {
+  padding-left: 1em;
+  color: gray;
+  font-style: italic;
+}
+
+@media screen {
+  #schedule td.period-even {
+    background-color: white;
+  }
+  #schedule td.period-odd {
+    background-color: cornsilk;
+  }
+}
+@media print {
+  #schedule td.period-even {
+    background-color: white;
+  }
+  #schedule td.period-odd {
+    background-color: cornsilk;
+  }
+}
+
+.latency-delta {
+  font-size: x-small;
+}
+.latency-delta::before { content: "(+"; }
+.latency-delta::after  { content: ")"; }
+
+td.not-inrange .latency-delta { color: silver; }
+
+.clickable {
+  cursor: pointer;
+  color: #8b008b;
+}
+
+#latency-row td {
+  font-size: small;
+  text-align: center;
+  cursor: cell;
+}
+
+form.panel {
+  padding: 4px;
+  background-color: gainsboro;
+  border-radius: 5px;
+}
+
+#form_in_var {
+  text-align: center;
+  width: 45em;
+}
+
+#form_new_var {
+  width: 48em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+#form_bounds {
+  width: 45em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+input.out-of-date {
+  color: red;
+}
+
+.lpformat {
+  border: thin gray dotted;
+  font-family: helvetica, sans-serif;
+}
+
+.solved {
+  border: thin green solid;
+}
+
+.nosolution {
+  border: thick red solid;
+}
+
+.lpformat span.label {
+  display: inline-block;
+  min-width: 10em;
+  font-style: italic;
+  padding-right: 1em;
+}
+.lpformat span.constant { color: forestgreen; }
+.lpformat span.bound { color: forestgreen; }
+.lpformat span.variable { color: darkblue; }
+.lpformat span.constant + span.variable:before { color: gray; content: " · "; }
+.lpformat span.relation {
+  color: darkred;
+  padding-left: .5em;
+  padding-right: .5em;
+}
+.lpformat span.operator {
+  color: black;
+  padding-left: .5em;
+  padding-right: .5em;
+}
+.lpformat span.comma { padding-right: .5em; }
+.lpformat .section { padding-top: 1em; padding-below: 0.5em; }
+.lpformat .section:first-child { padding-top: 0em; }
+.lpformat .heading {
+  color: firebrick;
+  font-size: large;
+  font-style: bold;
+}
+.lpformat .comment {
+  color: lightgray;
+  padding-left: 1em;
+}
+
+.lpformat .constrains-latency-path span.label {
+  color: red;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 5px;
+  border: 1px solid #888;
+  width: 40em;
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal form {
+  margin: 5px;
+  height: 1.5em;
+}
+
+.modal input {
+  float: right;
+  margin-top: 4px;
+}
+
+#direct-edit-text {
+  width: 100%;
+  resize: vertical;
+}
+
+.help {
+  max-width: 45em;
+  background-color: #e5e8e8;
+  border-radius: 5px;
+}
+
+li {
+  margin-bottom: .5em;
+}
+    </style>
+  </head>
+  <body>
+    <script src="showlatency.bc.js"></script>
+    <script src="glpk.js"></script>
+
+    <div class="splitter">
+
+      <div id="top-pane" class="pane">
+        <h1>
+          <span id="title">Presseail: show latency</span>
+          <a href="#" id="direct-edit" class="title-link noprint">✎</a>
+          <a href="#" id="show-help" class="title-link noprint">ⓘ</a>
+        </h1>
+
+        <div id="help-box" class="help" style="display: none;">
+          <p>This simple applet gives a way to visualize latency 
+          calculations in the rate-synchronous model. The idea is to (i) 
+          specify a chain element-by-element, (ii) to manually specify a 
+          schedule, and (iii) to see the resulting end-to-end latency values 
+          and generated constraints.</p>
+
+          <ol>
+            <li>Select a period for the chain input and click 
+              <em>start</em>.</li>
+
+            <li>Add new links in the chain by specifying the operator, 
+              microcausality, and, if necessary, the sampling ratio.
+              <ul>
+                <li><em>direct</em>: write-before-read within a period</li>
+                <li><em>last</em>: read-before-write within a period</li>
+                <li><em>any</em>: unconstrained sampling at same period</li>
+                <li><em>when</em>: fast-to-slow rate transition (read after 
+                  initial write)</li>
+                <li><em>when last</em>: fast-to-slow rate transition (read 
+                  before last write)</li>
+                <li><em>current</em>: slow-to-fast rate transition</li>
+              </ul>
+            </li>
+
+            <li>Clicking on the slots sets the <em>phase offset</em> for the 
+              corresponding variable.
+              The gray areas are excluded by scheduling and microcausality 
+              constraints.
+              The pairwise latencies are shown above the reader arrows.
+              The end-to-end latencies are shown at bottom, clicking on one 
+              highlights the corresponding path through the schedule.</li>
+
+            <li>Add a <em>latency bound</em> and click <em>update</em> to 
+              generate ILP constraints on the end-to-end latency and 
+              causality, and to fix the schedule.
+              While normally the constraints restrict possible schedules, 
+              here the idea is to validate the results.
+              Click on <em>solve</em> to run
+              <a href="https://github.com/jvail/glpk.js">glpk.js</a>.
+              Its log is shown at bottom.
+              The left-hand-sides of certain inequalities are shown on the 
+              same line in gray.
+              The values of the enabled <em>chainlat</em> constraints should 
+              correspond with the end-to-end latencies calculated by a 
+              direct algorithm and shown at the bottom of the main 
+              diagram.</li>
+
+            <li>The <em>simplify</em> option applies simple constant 
+              propagation when generating constraints.
+              The <em>exists</em> option generates a single set of 
+              constraints so that there need only exist a latency chain that 
+              satisfies the given bound.</li>
+
+            <li>The small pencil button next to the title gives a way to 
+              copy-and-paste latency chains.
+              Click the info button again to hide this text.</li>
+          </ol>
+        </div>
+
+        <div id="direct-edit-modal" class="modal">
+          <div class="modal-content">
+            <span id="direct-edit-modal-close" class="modal-close">&times;</span>
+            <textarea id="direct-edit-text" rows=10 cols=20></textarea>
+            <form action="" method="get">
+              <input id="direct-edit-modal-update" type="button" value="Update" />
+            </form>
+          </div>
+        </div>
+
+        <form id="form_in_var" action="" method="get" class="panel">
+          <label for="in_name">input variable:</label>
+          <input type="text" id="in_name" size="5" value="x"/>
+          <label for="in_period">period:</label>
+          <input type="text" id="in_period" size="5" value="1"/>
+          <input id="start" type="button" value="start"/>
+        </form>
+
+        <table id="schedule">
+        </table>
+
+        <div class="noprint">
+          <form id="form_new_var" action="" method="get"
+                style="display: none;" class="panel">
+            <label for="new_name">new variable:</label>
+            <input type="text" id="new_name" size="5"/>
+            <label for="new_def">definition:</label>
+            <select id="new_def" autocomplete="off">
+              <option id="direct" value="direct">direct</option>
+              <option id="last" value="last">last</option>
+              <option id="unconstrained" value="any">any</option>
+              <option id="when" value="when" selected="selected">when</option>
+              <option id="when-last" value="when last">when last</option>
+              <option id="current" value="current">current</option>
+            </select>
+            (<input id="microcausality" type="checkbox"/>
+            <label for="microcausality" id="microcausality_label">CoF</label>)
+            <label for="new_arg" id="new_arg_label">sampling ratio:</label>
+            <input type="text" id="new_arg" size="5" value="2"/>
+            <input id="add" type="button" value="add"/>
+            <input id="drop" style="display: none;" type="button" value="drop"/>
+          </form>
+        </div>
+      </div>
+
+      <div id="separator" class="noprint"></div>
+
+      <div id="bottom-pane" class="pane noprint">
+        <form id="form_bounds" action="" method="get"
+              style="display: none;" class="panel">
+          <label for="bound">latency bound:</label>
+          <input type="text" id="bound" size="5" value="10"/>
+          <input id="update" type="button" value="update"/>
+          <input id="edit" type="button" value="edit"/>
+          <input id="solve" type="button" value="solve"/>
+          <input id="simplify" name="simplify" type="checkbox" />
+          <label for="simplify">simplify</label>
+          <input id="exists_only" name="exists_only" type="checkbox" />
+          <label for="exists_only">exists only</label>
+        </form>
+        <div id="glpk" style="display: none">
+          <textarea id="constraints-edit" rows=30 cols=60
+                    class="wide" style="display: none"></textarea>
+          <div id="constraints" class="lpformat"></div>
+          <pre id="log"></pre>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
