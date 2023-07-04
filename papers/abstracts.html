@@ -41,6 +41,80 @@
 
 <!--************************************************************-->
 <div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+<h3 id="ecrts2023" itemprop="headline">Scheduling and Compiling
+    Rate-Synchronous Programs with End-To-End Latency Constraints</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="comma">,</span>
+  <div class="author">
+    <span itemprop="author">V. Bregeon</span>
+    <span class="affiliation">(Airbus S.A.S.)</span></div><span class="and">, and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+      <span class="affiliation">(École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2023-07">July 2023</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    We present an extension of the synchronous-reactive model for specifying
+    multi-rate systems. A set of periodically executed components and their
+    communication dependencies are expressed in a Lustre-like programming
+    language with features for load balancing, resource limiting, and specifying
+    end-to-end latencies. The language abstracts from execution time and phase
+    offsets. This permits simple clock typing rules and a stream-based
+    semantics, but requires each component to execute within an overall base
+    period. A program is compiled to a single periodic task in two stages.
+    First, Integer Linear Programming is used to determine phase offsets using
+    standard encodings for dependencies and load balancing, and a novel encoding
+    for end-to-end latency. Second, a code generation scheme is adapted to
+    produce step functions. As a result, components are synchronous relative to
+    their respective rates, but not necessarily simultaneous relative to the
+    base period. This approach has been implemented in a prototype compiler and
+    validated on an industrial application.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Synchronous languages (Lustre);
+    Integer Linear Programming;
+    Real-Time Embedded Systems;
+    Compilation
+  </span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+      This article will be presented in Vienna at the
+      <a href="https://www.ecrts.org/">35th Euromicro Conference on
+ 	Real-Time Systems (ECRTS 2023)</a> in July 2023.
+      The proceedings are published as
+      <a href="https://drops.dagstuhl.de/opus/portals/lipics/index.php?semnr=16278">LIPICS Vol 262</a>.
+    </li>
+
+    <li>
+      The article is available on
+      <a href="https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=18030">DROPS</a>.
+      The <a href="https://www.tbrk.org/dataflow/showlatency/">showlatency tool</a>
+      allows to visualize latency chains and experiment with the constraint
+      generation algorithm.
+      See, for example,
+      <a href="https://www.tbrk.org/dataflow/showlatency/?chain=chain%20assemblage%0Adynamics%20::%201%20%2F%202%20@%201;%0Ah_filter%20=%20dynamics%20when%20(%3F%20%25%202)%20@%202;%0Aalt_hold%20=%20h_filter%20when%20(%3F%20%25%202)%20@%206;%0Avz_control%20=%20alt_hold%20@%206;%0Aelevator%20=%20current%20(vz_control,%20(%3F%20%25%204))%20%2FCoB%20@%201;%0Alatency%20exists%20%3C=%202">Figure 4</a>
+      and
+      <a href="https://www.tbrk.org/dataflow/showlatency/index.html?chain=chain%20branchselect%0Aw%20%3A%3A%201/9%20@%203%3B%0Ax%20%3D%20current%20%28w%2C%20%28%3F%20%25%203%29%29%20@%201%3B%0Ay%20%3D%20x%20when%20%28%3F%20%25%203%29%20@%203%3B%0Az%20%3D%20current%20%28y%2C%20%28%3F%20%25%203%29%29%20@%202%3B%0Alatency%20exists%20%3C%3D%2011">Figure 5</a>
+      from the article.
+    </li>
+
+    <li>There is a <a href="ecrts23.bib">.bib</a> file.</li>
+</ul>
+</div>
+</div>
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
 <h3 id="jfla23" itemprop="headline">Analyse de dépendance vérifiée pour
     un langage synchrone à flot de données</h3>
 
