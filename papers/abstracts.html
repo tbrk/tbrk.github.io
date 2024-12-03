@@ -41,6 +41,53 @@
 
 <!--************************************************************-->
 <div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+<h3 id="tcrs2024" itemprop="headline">Lustre, fast first and fresh</h3>
+
+<div class="authors">
+  <div class="author">
+    <a href="http://www.tbrk.org/"><span itemprop="author">T. Bourke</span></a>
+    <span class="affiliation">(Inria and École normale supérieure)</span></div><span class="and"> and</span>
+  <div class="author">
+    <a href="http://www.di.ens.fr/~pouzet/"><span itemprop="author">M. Pouzet</span></a>
+      <span class="affiliation">(École normale supérieure and Inria)</span></div>
+</div>
+<div class="date" itemprop="datePublished" content="2024-10">October 2024</div>
+
+<div class="abstract" itemprop="description">
+  <p>
+    The rate-synchronous model formalizes an industrial approach for composing Lustre nodes that execute at different rates. Such programs are compiled to cyclic sequential code in two steps. First, an Integer Linear Program is solved to assign each component to a phase relative to its period. Second, the corresponding step functions are ordered for execution within a cycle of the generated code. By default, programs are deterministic: for any valid schedule, the generated code calculates the values decreed by the source dataflow semantics at the specified rates. In practice, though, specifying precise values in the source program is sometimes unnecessary, impracticable, and overly constraining. In this case, the ILP constraints can be relaxed, though not necessarily completely, and their solution decides which dataflow semantics applies. Care is still required to ensure that code generation remains deterministic.
+  </p>
+</div>
+
+<div class="keywords"><span>Keywords:</span>
+  <span class="keywords" itemprop="keywords">
+    Time-Centric Reactive Software;
+    Dataflow Synchronous Programming
+  </span>
+</div>
+
+<div class="notelist">
+<ul>
+    <li>
+        The material in this article was presented in Raleigh, NC, USA at
+        the workshop on <a href="https://www.tcrs.io/">Time-Centric Reactive Software</a>,
+	as part of <a href="https://esweek.org/archive/"> ESWEEK 2024</a> in October 2024.
+    </li>
+
+    <li>
+	The <a href="https://doi.org/10.1109/LES.2024.3498932">article</a>
+	is published in <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4563995">IEEE Embedded Systems Letters</a>.
+	An <a href="file:///home/tbourke/Downloads/tcrs24.pdf">author version</a>
+	is available on <a href="https://inria.hal.science/hal-04815075">HAL</a>.
+    </li>
+
+    <li>There is a <a href="tcrs24.bib">.bib</a> file.</li>
+</ul>
+</div>
+</div>
+
+<!--************************************************************-->
+<div class="paper" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
 <h3 id="emsoft2023" itemprop="headline">Verified Compilation of Synchronous
     Dataflow with State Machines</h3>
 
